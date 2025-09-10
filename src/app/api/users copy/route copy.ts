@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { connectToDatabase } from '@/lib/mongodb';
+import { connectDB } from '@/lib/mongodb';
 import bcrypt from 'bcryptjs';
 
 export async function POST(request: NextRequest) {
   try {
-    const { db } = await connectToDatabase();
+    const { db } = await connectDB();
     const { action, ...userData } = await request.json();
     
     if (action === 'register') {

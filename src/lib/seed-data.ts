@@ -1,4 +1,4 @@
-import { connectToDatabase } from './mongodb';
+import { connectDB } from './mongodb';
 
 export const sampleTours = [
   {
@@ -207,7 +207,7 @@ export const sampleLocations = [
 
 export async function seedDatabase() {
   try {
-    const { db } = await connectToDatabase();
+    const { db } = await connectDB();
     
     // Clear existing data
     await db.collection('tours').deleteMany({});

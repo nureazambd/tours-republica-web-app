@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { connectToDatabase } from '@/lib/mongodb';
+import { connectDB } from '@/lib/mongodb';
 
 export async function GET(request: NextRequest) {
   try {
-    const { db } = await connectToDatabase();
+    const { db } = await connectDB();
     const { searchParams } = new URL(request.url);
     
     // Get query parameters
@@ -83,7 +83,7 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const { db } = await connectToDatabase();
+    const { db } = await connectDB();
     const tourData = await request.json();
     
     // Add timestamps

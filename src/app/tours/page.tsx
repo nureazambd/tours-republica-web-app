@@ -1,5 +1,7 @@
 "use client";
 
+import AirportTransferBanner from "@/components/home/AirportTransferBanner";
+import TourHeroSection from "@/components/home/TourHeroSection";
 import Layout from "@/components/layout/Layout";
 import TourFilter from "@/components/tours/TourFilter";
 import TourGrid from "@/components/tours/TourGrid";
@@ -21,7 +23,7 @@ export default function ToursPage() {
     <Layout>
       <div className="min-h-screen bg-gray-50">
         {/* Page Header */}
-        <section className="bg-gradient-to-r from-secondary-800 to-secondary-700 text-white py-16">
+        {/* <section className="bg-gradient-to-r from-secondary-800 to-secondary-700 text-white py-16">
           <div className="container-custom text-center">
             <h1 className="text-4xl lg:text-5xl font-bold mb-4">
               Discover Amazing Tours
@@ -31,7 +33,9 @@ export default function ToursPage() {
               the Dominican Republic
             </p>
           </div>
-        </section>
+        </section> */}
+
+        <TourHeroSection />
 
         {/* Tours Content */}
         <section className="py-12">
@@ -44,9 +48,17 @@ export default function ToursPage() {
             {/* Tours Grid */}
             <div className="lg:w-3/4">
               <TourGrid filters={filters} setFilters={setFilters} />
+
+
+              {/* Airport Transfer Banner Section */}
+              <AirportTransferBanner />
+
             </div>
+
           </div>
         </section>
+
+
       </div>
     </Layout>
   );
