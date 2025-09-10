@@ -21,7 +21,7 @@ const TourGrid = ({ filters, setFilters }: any) => {
       duration: "Half Day (4-6 hours)",
       pickup: "Punta Cana",
       category: "adventure",
-      image: "/buggy.jpg",
+      image: "/images/tours/Aventura-en-Buggys.png",
     },
     {
       id: 2,
@@ -35,7 +35,7 @@ const TourGrid = ({ filters, setFilters }: any) => {
       duration: "Full Day (8-10 hours)",
       pickup: "Santo Domingo",
       category: "culture",
-      image: "/images/tours/Saona-Island-Day-Trip.png",
+      image: "/images/tours/Santo-Domingo-City-Tour-cityTour.png",
     },
     {
       id: 3,
@@ -49,15 +49,15 @@ const TourGrid = ({ filters, setFilters }: any) => {
       duration: "Full Day (8-10 hours)",
       pickup: "Bayahibe",
       category: "nature",
-      image: "/saona.jpg",
+      image: "/images/tours/Saona-Island-Day-Trip.png",
     },
 
 
     {
       id: 4,
-      title: "Aventura En Buggys",
+      title: "Tapas Tour",
       description:
-        "Explore the highlights of Punta Cana in a thrilling half-day off-road dune buggy.",
+        "Explore the highlights of Punta Cana in a thrilling half-day off-road dune buggy..",
       price: 50,
       originalPrice: 75,
       rating: 4.8,
@@ -65,13 +65,13 @@ const TourGrid = ({ filters, setFilters }: any) => {
       duration: "Half Day (4-6 hours)",
       pickup: "Punta Cana",
       category: "adventure",
-      image: "/buggy.jpg",
+      image: "/images/tours/Tapas-Tour.png",
     },
     {
       id: 5,
-      title: "Santo Domingo City Tour",
+      title: "From Santo Domingo...",
       description:
-        "Explore the highlights of Santo Domingo in a thrilling cultural city trip.",
+        "Explore the highlights of Punta Cana in a thrilling half-day off-road dune buggy..",
       price: 120,
       originalPrice: 150,
       rating: 4.6,
@@ -79,21 +79,21 @@ const TourGrid = ({ filters, setFilters }: any) => {
       duration: "Full Day (8-10 hours)",
       pickup: "Santo Domingo",
       category: "culture",
-      image: "/santo.jpg",
+      image: "/images/tours/From-Santo-Domingo.png",
     },
     {
       id: 6,
-      title: "Saona Island Day Trip",
+      title: "Bike Tour",
       description:
-        "Escape to a tropical paradise with crystal-clear waters and white sand beaches.",
+        "Explore the highlights of Punta Cana in a thrilling half-day off-road dune buggy..",
       price: 180,
       originalPrice: 200,
       rating: 4.9,
       reviewCount: 45,
       duration: "Full Day (8-10 hours)",
       pickup: "Bayahibe",
-      category: "transport",
-      image: "/saona.jpg",
+      category: "adventure",
+      image: "/images/tours/Bike-Tour.png",
     },
   ];
 
