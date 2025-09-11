@@ -1,246 +1,164 @@
+'use client';
 import Layout from '@/components/layout/Layout';
-import CarBookingForm from '@/components/car-booking/CarBookingForm';
-import CarFleet from '@/components/car-booking/CarFleet';
-import { Car, Shield, Clock, MapPin, Users, Star } from 'lucide-react';
-
-export default function CarBookingPage() {
-  const features = [
-    {
-      icon: Shield,
-      title: 'Fully Insured',
-      description: 'All vehicles come with comprehensive insurance coverage'
-    },
-    {
-      icon: Clock,
-      title: '24/7 Support',
-      description: 'Round-the-clock assistance for any issues or emergencies'
-    },
-    {
-      icon: MapPin,
-      title: 'Free Delivery',
-      description: 'Complimentary vehicle delivery to your hotel or location'
-    },
-    {
-      icon: Users,
-      title: 'Professional Drivers',
-      description: 'Experienced local drivers available upon request'
-    }
-  ];
-
-  const testimonials = [
-    {
-      name: 'Sarah Johnson',
-      rating: 5,
-      comment: 'Excellent service! The car was clean, reliable, and delivered right to our hotel. Made exploring the island so much easier.',
-      location: 'United States'
-    },
-    {
-      name: 'Marco Rodriguez',
-      rating: 5,
-      comment: 'Great experience with Tours Republica. The driver was professional and knew all the best spots. Highly recommend!',
-      location: 'Spain'
-    },
-    {
-      name: 'Emma Thompson',
-      rating: 4,
-      comment: 'Good value for money. The booking process was smooth and the car was exactly as described. Will use again!',
-      location: 'United Kingdom'
-    }
-  ];
-
+import { Star } from 'lucide-react';
+import BookingForm from './BookingForm';
+export default function BookCarPage() {
   return (
     <Layout>
-      <div className="min-h-screen bg-gray-50">
-        {/* Hero Section */}
-        <section className="relative bg-gradient-to-r from-secondary-800 to-secondary-700 text-white py-20">
-          <div className="container-custom">
-            <div className="text-center">
-              <div className="bg-white/20 backdrop-blur-sm w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Car className="w-10 h-10" />
+    <div className="font-rubik bg-gray-50 text-gray-800">
+      
+      {/* HERO SECTION */}
+      <section className="relative text-white text-center h-[544px] pt-32 px-4 bg-blue-900">
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-70"
+          style={{ backgroundImage: "url('/images/bookacar/full-shot-adults-traveling-with-kid.png')" }}
+        />
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            Reliable Airport Transportation You Can Trust
+          </h1>
+          <p className="text-lg opacity-90">
+            Enjoy a smooth, private ride to and from the airport without any hassle.
+          </p>
+        </div>
+      </section>
+
+      {/* BOOKING FORM */}
+      {/* <section className="bg-white shadow-xl rounded-xl -mt-32 max-w-5xl mx-auto px-6 py-8 relative z-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label className="text-sm font-medium mb-1 block">Pick-up Location</label>
+            <div className="flex items-center border rounded-md px-3 py-2">
+              <MapPin className="w-4 h-4 text-gray-400 mr-2" />
+              <input className="w-full outline-none" placeholder="Airport or Hotel" />
+            </div>
+          </div>
+          <div>
+            <label className="text-sm font-medium mb-1 block">Drop-off Location</label>
+            <div className="flex items-center border rounded-md px-3 py-2">
+              <MapPin className="w-4 h-4 text-gray-400 mr-2" />
+              <input className="w-full outline-none" placeholder="Hotel or Address" />
+            </div>
+          </div>
+          <div>
+            <label className="text-sm font-medium mb-1 block">Passengers</label>
+            <div className="flex items-center border rounded-md px-3 py-2">
+              <Users className="w-4 h-4 text-gray-400 mr-2" />
+              <input type="number" className="w-full outline-none" placeholder="2" />
+            </div>
+          </div>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+          <div>
+            <label className="text-sm font-medium mb-1 block">Pickup Date</label>
+            <div className="flex items-center border rounded-md px-3 py-2">
+              <CalendarDays className="w-4 h-4 text-gray-400 mr-2" />
+              <input type="date" className="w-full outline-none" />
+            </div>
+          </div>
+          <div>
+            <label className="text-sm font-medium mb-1 block">Pickup Time</label>
+            <div className="flex items-center border rounded-md px-3 py-2">
+              <Clock className="w-4 h-4 text-gray-400 mr-2" />
+              <input type="time" className="w-full outline-none" />
+            </div>
+          </div>
+          <div className="flex items-end">
+            <button className="w-full bg-primary-500 hover:bg-primary-600 text-white font-semibold py-3 rounded-md flex items-center justify-center gap-2 transition">
+              <Search className="w-4 h-4" />
+              Find Cars
+            </button>
+          </div>
+        </div>
+      </section> */}
+
+     <BookingForm/>
+
+      {/* WHY BOOK WITH US */}
+      <section className="py-16 text-center">
+        <h2 className="text-3xl font-bold mb-10">Why Book With Us?</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          {[
+            { icon: '🚖', title: 'Airport Welcome Service' },
+            { icon: '💰', title: 'Best Price Guarantee' },
+            { icon: '🚗', title: 'Modern Comfortable Vehicles' },
+            { icon: '📞', title: '24/7 Customer Support' },
+          ].map((item, idx) => (
+            <div key={idx} className="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
+              <div className="text-3xl mb-4">{item.icon}</div>
+              <h3 className="font-semibold text-lg">{item.title}</h3>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* VEHICLE CATEGORIES */}
+      <section className="py-16 bg-gray-100 text-center">
+        <h2 className="text-3xl font-bold mb-4">Vehicle Categories</h2>
+        <p className="text-gray-600 mb-10">Options for couples, families, and executive travel.</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {[
+            { img: '/images/vehicles/small.png', label: 'Small - For Couples & Small Families' },
+            { img: '/images/vehicles/large.png', label: 'Large - For Groups & Big Families' },
+            { img: '/images/vehicles/executive.png', label: 'Executive - Luxury Vehicles' },
+          ].map((vehicle, idx) => (
+            <div key={idx} className="bg-white rounded-xl overflow-hidden shadow hover:shadow-lg transition">
+              <img src={vehicle.img} className="w-full h-40 object-contain bg-white p-4" />
+              <div className="p-4 font-medium text-gray-700">{vehicle.label}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* BOOKING STEPS */}
+      <section className="py-16 text-center bg-white">
+        <h2 className="text-3xl font-bold mb-8">How It Works</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          {['Choose Route', 'Provide Details', 'Confirm Booking', 'Meet Driver'].map((step, i) => (
+            <div key={i} className="p-6 border rounded-lg shadow bg-gray-50">
+              <div className="text-3xl font-bold text-primary-500 mb-2">0{i + 1}</div>
+              <p className="font-semibold">{step}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* HAPPY CUSTOMERS */}
+      <section className="py-16 bg-gray-100 text-center">
+        <h2 className="text-3xl font-bold mb-6">Happy Customers</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-6xl mx-auto">
+          {[1, 2, 3, 4, 5, 6, 7, 8].map(i => (
+            <img
+              key={i}
+              src={`/images/gallery/${i}.jpg`}
+              alt={`Customer ${i}`}
+              className="rounded-lg object-cover w-full h-32 sm:h-40"
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="py-16 bg-white text-center">
+        <h2 className="text-3xl font-bold mb-10">What Our Clients Say</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          {[1, 2, 3, 4].map(i => (
+            <div key={i} className="bg-gray-50 p-6 rounded-lg shadow">
+              <div className="flex justify-center mb-3">
+                {[...Array(5)].map((_, idx) => (
+                  <Star key={idx} className="w-4 h-4 text-yellow-400 fill-current" />
+                ))}
               </div>
-              <h1 className="text-4xl lg:text-5xl font-bold mb-6">
-                Book Your Perfect Ride
-              </h1>
-              <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-                Explore the Dominican Republic at your own pace with our premium vehicle rental service. 
-                From economy cars to luxury SUVs, we have the perfect vehicle for your adventure.
+              <p className="text-sm">
+                "Outstanding service and very professional drivers. Will book again!"
               </p>
+              <div className="mt-3 font-semibold">Customer {i}</div>
             </div>
-          </div>
-        </section>
+          ))}
+        </div>
+      </section>
 
-        {/* Features */}
-        <section className="py-16 bg-white">
-          <div className="container-custom">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">Why Choose Our Car Rental?</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                We provide reliable, safe, and comfortable transportation solutions for all your Dominican Republic adventures.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {features.map((feature, index) => {
-                const Icon = feature.icon;
-                return (
-                  <div key={index} className="text-center">
-                    <div className="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Icon className="w-8 h-8 text-primary-500" />
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-800 mb-3">{feature.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{feature.description}</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* Car Fleet */}
-        <section className="py-16">
-          <div className="container-custom">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Vehicle Fleet</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                Choose from our diverse selection of well-maintained vehicles, perfect for any type of Dominican Republic adventure.
-              </p>
-            </div>
-            <CarFleet />
-          </div>
-        </section>
-
-        {/* Booking Form */}
-        <section className="py-16 bg-white">
-          <div className="container-custom">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">Book Your Vehicle</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                Fill out the form below to reserve your perfect vehicle. We'll confirm your booking within 2 hours.
-              </p>
-            </div>
-            <div className="max-w-4xl mx-auto">
-              <CarBookingForm />
-            </div>
-          </div>
-        </section>
-
-        {/* Testimonials */}
-        <section className="py-16">
-          <div className="container-custom">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">What Our Customers Say</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                Don't just take our word for it. Here's what our satisfied customers have to say about our car rental service.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {testimonials.map((testimonial, index) => (
-                <div key={index} className="bg-white rounded-2xl shadow-lg p-6">
-                  <div className="flex items-center space-x-1 mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <Star 
-                        key={i} 
-                        className={`w-5 h-5 ${i < testimonial.rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} 
-                      />
-                    ))}
-                  </div>
-                  <p className="text-gray-600 mb-4 leading-relaxed">"{testimonial.comment}"</p>
-                  <div className="border-t pt-4">
-                    <div className="font-semibold text-gray-800">{testimonial.name}</div>
-                    <div className="text-sm text-gray-600">{testimonial.location}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Pricing Info */}
-        <section className="py-16 bg-white">
-          <div className="container-custom">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">Transparent Pricing</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                No hidden fees, no surprises. Our pricing includes everything you need for a worry-free rental experience.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-gray-50 rounded-xl p-6">
-                <h3 className="text-lg font-bold text-gray-800 mb-4">What's Included</h3>
-                <ul className="space-y-2 text-gray-600">
-                  {[
-                    'Comprehensive insurance',
-                    'Free hotel delivery',
-                    '24/7 roadside assistance',
-                    'GPS navigation system',
-                    'Full tank of gas',
-                    'Emergency contact support'
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-green-500 rounded-full flex-shrink-0"></div>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="bg-gray-50 rounded-xl p-6">
-                <h3 className="text-lg font-bold text-gray-800 mb-4">Additional Services</h3>
-                <ul className="space-y-2 text-gray-600">
-                  {[
-                    'Professional driver (+$50/day)',
-                    'Child safety seats (+$10/day)',
-                    'Additional driver (+$15/day)',
-                    'Airport pickup (+$25)',
-                    'Extended coverage (+$20/day)',
-                    'Fuel service (+$30)'
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="bg-gray-50 rounded-xl p-6">
-                <h3 className="text-lg font-bold text-gray-800 mb-4">Requirements</h3>
-                <ul className="space-y-2 text-gray-600">
-                  {[
-                    'Valid driver\'s license',
-                    'International driving permit',
-                    'Credit card for deposit',
-                    'Minimum age: 25 years',
-                    'Passport or ID',
-                    'Proof of insurance (optional)'
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-orange-500 rounded-full flex-shrink-0"></div>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Call to Action */}
-        <section className="py-16 bg-gradient-to-r from-primary-500 to-secondary-500 text-white">
-          <div className="container-custom text-center">
-            <h2 className="text-3xl font-bold mb-4">Ready to Hit the Road?</h2>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Book your vehicle today and start exploring the beautiful Dominican Republic at your own pace.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-primary-500 hover:bg-gray-100 font-semibold px-8 py-3 rounded-lg transition-colors duration-200">
-                Book Now
-              </button>
-              <button className="border border-white text-white hover:bg-white hover:text-primary-500 font-semibold px-8 py-3 rounded-lg transition-colors duration-200">
-                Contact Us
-              </button>
-            </div>
-          </div>
-        </section>
-      </div>
+    </div>
     </Layout>
   );
 }
-

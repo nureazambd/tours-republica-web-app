@@ -49,9 +49,12 @@ module.exports = {
         foreground: '#111827',     // dark gray text
         border: '#e5e7eb',         // Tailwind gray-200
       },
+      // fontFamily: {
+      //   sans: ['Inter', 'system-ui', 'sans-serif'],
+      //   poppins: ['Poppins', 'sans-serif'],
+      // },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        poppins: ['Poppins', 'sans-serif'],
+        sans: ['var(--font-rubik)', 'sans-serif'],
       },
       boxShadow: {
         'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',

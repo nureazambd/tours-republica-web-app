@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
-import { Rubik } from "next/font/google";
+import { Inter } from "next/font/google";
+import { Rubik } from 'next/font/google'
 import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
+import Header from "@/components/layout/Header";
 
-const rubik = Rubik({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-rubik',
-  display: 'swap',
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Tours Republica - Explore the Heart of Santo Domingo",
@@ -60,9 +57,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={rubik.variable}>
+    <html lang="en">
       {/* 👇 suppressHydrationWarning prevents extension-injected attrs from breaking hydration */}
-      <body className="font-sans" suppressHydrationWarning>
+      <body className={inter.className} suppressHydrationWarning>
         <AuthProvider>
           {/* ✅ Header available on all pages */}
           <main className="min-h-screen">{children}</main>
