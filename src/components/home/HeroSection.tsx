@@ -81,8 +81,8 @@ const HeroSection = () => {
 
 
       {/* Feature Icons Section */}
-      <div className="absolute bottom-0 left-0 w-full z-10 bg-white/10 backdrop-blur-sm border-t border-white/20">
-        <div className="container-custom py-8">
+      <div className="absolute bottom-0 left-0 w-full h-[80px] z-10 bg-white/10 backdrop-blur-sm border-t border-white/20">
+        <div className="container-custom py-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Instant Confirmation */}
             {/* <div className="flex items-center space-x-4 text-white">

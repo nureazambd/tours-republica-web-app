@@ -3,7 +3,6 @@
 import Layout from '@/components/layout/Layout';
 import LocationHeroSection from '@/components/locations/LocationHeroSection';
 import { Star } from 'lucide-react';
-import Link from 'next/link';
 
 export default function LocationsPage() {
   const destinations = [
@@ -68,21 +67,14 @@ export default function LocationsPage() {
           <div className="container-custom">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
               {destinations.map((destination) => (
-                <Link
-                  key={destination.id}
-                  href={{
-                    pathname: '/tours',
-                    query: { location: destination.name }, // ✅ Pass location in query
-                  }}
-                  className="group relative transition-all duration-1000 ease-[cubic-bezier(0.4,0,0.2,1)] lg:col-span-1 hover:lg:col-span-2"
-                >
-                  <div className="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform transition-all duration-1000 ease-[cubic-bezier(0.4,0,0.2,1)]">
+                <div key={destination.id} className="group">
+                  <div className="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300">
                     {/* Image Section */}
-                    <div className="relative h-64 overflow-hidden cursor-pointer">
+                    <div className="relative h-64 overflow-hidden">
                       <img
                         src={destination.image}
                         alt={destination.name}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 ease-[cubic-bezier(0.4,0,0.2,1)]"
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                       <div className="absolute inset-0 bg-black/30" />
                       <div className="absolute bottom-4 left-4 text-white text-lg font-semibold drop-shadow-md">
@@ -99,13 +91,11 @@ export default function LocationsPage() {
                       {/* Rating */}
                       <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-lg flex items-center space-x-1">
                         <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                        <span className="text-sm font-medium text-gray-700">
-                          {destination.rating}
-                        </span>
+                        <span className="text-sm font-medium text-gray-700">{destination.rating}</span>
                       </div>
                     </div>
                   </div>
-                </Link>
+                </div>
               ))}
             </div>
           </div>

@@ -23,31 +23,70 @@ export default function BookCarPage() {
         </div>
       </section>
 
+      {/* BOOKING FORM */}
+      {/* <section className="bg-white shadow-xl rounded-xl -mt-32 max-w-5xl mx-auto px-6 py-8 relative z-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label className="text-sm font-medium mb-1 block">Pick-up Location</label>
+            <div className="flex items-center border rounded-md px-3 py-2">
+              <MapPin className="w-4 h-4 text-gray-400 mr-2" />
+              <input className="w-full outline-none" placeholder="Airport or Hotel" />
+            </div>
+          </div>
+          <div>
+            <label className="text-sm font-medium mb-1 block">Drop-off Location</label>
+            <div className="flex items-center border rounded-md px-3 py-2">
+              <MapPin className="w-4 h-4 text-gray-400 mr-2" />
+              <input className="w-full outline-none" placeholder="Hotel or Address" />
+            </div>
+          </div>
+          <div>
+            <label className="text-sm font-medium mb-1 block">Passengers</label>
+            <div className="flex items-center border rounded-md px-3 py-2">
+              <Users className="w-4 h-4 text-gray-400 mr-2" />
+              <input type="number" className="w-full outline-none" placeholder="2" />
+            </div>
+          </div>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+          <div>
+            <label className="text-sm font-medium mb-1 block">Pickup Date</label>
+            <div className="flex items-center border rounded-md px-3 py-2">
+              <CalendarDays className="w-4 h-4 text-gray-400 mr-2" />
+              <input type="date" className="w-full outline-none" />
+            </div>
+          </div>
+          <div>
+            <label className="text-sm font-medium mb-1 block">Pickup Time</label>
+            <div className="flex items-center border rounded-md px-3 py-2">
+              <Clock className="w-4 h-4 text-gray-400 mr-2" />
+              <input type="time" className="w-full outline-none" />
+            </div>
+          </div>
+          <div className="flex items-end">
+            <button className="w-full bg-primary-500 hover:bg-primary-600 text-white font-semibold py-3 rounded-md flex items-center justify-center gap-2 transition">
+              <Search className="w-4 h-4" />
+              Find Cars
+            </button>
+          </div>
+        </div>
+      </section> */}
+
      <BookingForm/>
 
       {/* WHY BOOK WITH US */}
       <section className="py-16 text-center">
-          <div className="relative z-10 max-w-4xl mx-auto mb-[56px] mt-[112px] px-4">
-          <h2 className="text-4xl md:text-[48px] font-semibold mb-2">
-            Book now ! It's Quick and Simple
-          </h2>
-          <p className="text-[16px] opacity-90">
-            Secure your booking easily with our trusted, hassle-free process.
-          </p>
-        </div>
+        <h2 className="text-3xl font-bold mb-10">Why Book With Us?</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
           {[
-            { icon: '🚖', title: 'Airport Welcome Service', describe: 'Friendly representatives greet you on arrival to ensure a smooth start.' },
-            { icon: '💰', title: 'Best Price Rate Guaranteed', describe: 'Competitive rates with no hidden fees — get the best value.' },
-            { icon: '🚗', title: 'Modern, Comfortable Vehicles', describe: 'Choose from a fleet of clean, well-maintained, and up-to-date cars.' },
-            { icon: '📞', title: '24/7 Customer Support', describe: 'We’re here to help anytime, day or night, for a hassle-free experience.' },
+            { icon: '🚖', title: 'Airport Welcome Service' },
+            { icon: '💰', title: 'Best Price Guarantee' },
+            { icon: '🚗', title: 'Modern Comfortable Vehicles' },
+            { icon: '📞', title: '24/7 Customer Support' },
           ].map((item, idx) => (
-            <div key={idx} className="bg-[#DADFE6] p-6 h-[280px] text-left w-[280px] rounded-lg shadow hover:shadow-md transition">
-              <div className='w-[232px] h-[192px]'>
-                <div className="text-[48px] mb-[32px]">{item.icon}</div>
-              <h3 className="font-semibold text-[20px]">{item.title}</h3>
-              <p className="font-regular text-[14px] my-[16px]">{item.describe}</p>
-              </div>
+            <div key={idx} className="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
+              <div className="text-3xl mb-4">{item.icon}</div>
+              <h3 className="font-semibold text-lg">{item.title}</h3>
             </div>
           ))}
         </div>
@@ -55,8 +94,8 @@ export default function BookCarPage() {
 
       {/* VEHICLE CATEGORIES */}
       <section className="py-16 bg-gray-100 text-center">
-        <h2 className="text-3xl font-bold mb-4">We cover all your transportation needs</h2>
-        <p className="text-gray-600 mb-10">Whether you’re traveling as a couple or with a small family, we’ve got you covered.</p>
+        <h2 className="text-3xl font-bold mb-4">Vehicle Categories</h2>
+        <p className="text-gray-600 mb-10">Options for couples, families, and executive travel.</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {[
             { img: '/images/vehicles/small.png', label: 'Small - For Couples & Small Families' },

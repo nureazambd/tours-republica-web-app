@@ -1,26 +1,11 @@
 "use client";
 
-import React, { useState, useMemo, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { Star, MapPin, Clock, Grid, List } from "lucide-react";
 
 const TourGrid = ({ filters, setFilters }: any) => {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-  const searchParams = useSearchParams();
-
-  // 🔍 Get location from URL query (e.g., ?location=Punta+Cana)
-  const locationFromURL = searchParams.get("location");
-
-  // 🧠 Set location from URL into filters
-  useEffect(() => {
-    if (locationFromURL && filters.location !== locationFromURL) {
-      setFilters((prev: any) => ({
-        ...prev,
-        location: locationFromURL,
-      }));
-    }
-  }, [locationFromURL]);
 
   // --- Sample Data (replace with API later) ---
   const tours = [
@@ -120,7 +105,7 @@ const TourGrid = ({ filters, setFilters }: any) => {
           ? filters.categories.includes(t.category.toLowerCase())
           : true
       )
-      .filter((t) => t.price <= filters.priceRange[1])
+      .filter((t) => t.price <= filters.priceRange[1]) // Price range
       .filter((t) =>
         filters.rating > 0 ? Math.floor(t.rating) >= filters.rating : true
       )
@@ -150,7 +135,7 @@ const TourGrid = ({ filters, setFilters }: any) => {
 
   return (
     <div>
-      {/* Header */}
+      {/* Header with Sort + View */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
         <div>
           <h2 className="text-2xl font-bold text-gray-800">
@@ -205,13 +190,16 @@ const TourGrid = ({ filters, setFilters }: any) => {
               viewMode === "list" ? "flex gap-4" : ""
             }`}
           >
+            {/* Image */}
             <div className={viewMode === "list" ? "w-1/3" : "w-full"}>
               <div className="relative h-full">
                 <img
                   src={t.image}
                   alt={t.title}
                   className={`object-cover ${
-                    viewMode === "list" ? "h-full w-full" : "w-full h-48"
+                    viewMode === "list"
+                      ? "h-full w-full"
+                      : "w-full h-48"
                   }`}
                 />
                 <div className="absolute top-3 left-3 bg-teal-500 text-white text-sm font-semibold px-3 py-1 rounded-lg">
@@ -224,29 +212,42 @@ const TourGrid = ({ filters, setFilters }: any) => {
               </div>
             </div>
 
+            {/* Content */}
             <div className={viewMode === "list" ? "p-5 flex-1" : "p-5"}>
+              {/* Rating */}
               <div className="flex items-center text-sm text-gray-600 mb-2">
                 <Star className="w-4 h-4 text-yellow-500 mr-1" />
                 <span className="font-medium">{t.rating}</span>
                 <span className="ml-1">({t.reviewCount} Reviews)</span>
               </div>
+
+              {/* Title */}
               <h3 className="text-lg font-semibold text-gray-800">{t.title}</h3>
               <p className="text-gray-500 text-sm mt-1 line-clamp-2">
                 {t.description}
               </p>
+
+              {/* Pickup */}
               <div className="flex items-center text-sm text-gray-600 mt-3 space-x-2">
                 <MapPin className="w-4 h-4" />
                 <span>Pickup: {t.pickup}</span>
               </div>
+
+              {/* Duration */}
               <div className="flex items-center text-sm text-gray-600 mt-2">
                 <Clock className="w-4 h-4 mr-2" />
                 <span>{t.duration}</span>
               </div>
+
+              {/* Price + Button */}
               <div className="flex justify-between items-center mt-4">
                 <div>
-                  <p className="text-gray-500 text-sm line-through">${t.originalPrice}</p>
+                  <p className="text-gray-500 text-sm line-through">
+                    ${t.originalPrice}
+                  </p>
                   <p className="text-xl font-bold text-gray-800">
-                    ${t.price} <span className="text-sm text-gray-500">pp</span>
+                    ${t.price}{" "}
+                    <span className="text-sm text-gray-500">pp</span>
                   </p>
                 </div>
                 <Link
