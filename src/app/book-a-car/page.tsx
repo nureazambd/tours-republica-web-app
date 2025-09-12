@@ -28,7 +28,7 @@ export default function BookCarPage() {
       {/* WHY BOOK WITH US */}
       <section className="py-16 text-center">
           <div className="relative z-10 max-w-4xl mx-auto mb-[56px] mt-[112px] px-4">
-          <h2 className="text-4xl md:text-[48px] font-semibold mb-2">
+          <h2 className="text-4xl md:text-[48px] font- text-[24px] mb-2">
             Book now ! It's Quick and Simple
           </h2>
           <p className="text-[16px] opacity-90">
@@ -45,7 +45,7 @@ export default function BookCarPage() {
             <div key={idx} className="bg-[#DADFE6] p-6 h-[280px] text-left w-[280px] rounded-lg shadow hover:shadow-md transition">
               <div className='w-[232px] h-[192px]'>
                 <div className="text-[48px] mb-[32px]">{item.icon}</div>
-              <h3 className="font-semibold text-[20px]">{item.title}</h3>
+              <h3 className="font- text-[24px] text-[20px]">{item.title}</h3>
               <p className="font-regular text-[14px] my-[16px]">{item.describe}</p>
               </div>
             </div>
@@ -55,15 +55,24 @@ export default function BookCarPage() {
 
       {/* VEHICLE CATEGORIES */}
       <section className="py-16 bg-gray-100 text-center">
-        <h2 className="text-3xl font-bold mb-4">We cover all your transportation needs</h2>
-        <p className="text-gray-600 mb-10">Whether you’re traveling as a couple or with a small family, we’ve got you covered.</p>
+        {/* <h2 className="text-3xl font-bold mb-4">We cover all your transportation needs</h2>
+        <p className="text-gray-600 mb-10">Whether you’re traveling as a couple or with a small family, we’ve got you covered.</p> */}
+
+        <div className="relative z-10 max-w-4xl mx-auto mb-[56px] mt-[112px] px-4">
+          <h2 className="text-4xl md:text-[48px] font- text-[24px] mb-2">
+            We cover all your transportation needs
+          </h2>
+          <p className="text-[16px] opacity-90">
+            Whether you’re traveling as a couple or with a small family, we’ve got you covered.
+          </p>
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {[
-            { img: '/images/vehicles/small.png', label: 'Small - For Couples & Small Families' },
-            { img: '/images/vehicles/large.png', label: 'Large - For Groups & Big Families' },
-            { img: '/images/vehicles/executive.png', label: 'Executive - Luxury Vehicles' },
+            { img: '/images/bookacar/vehicles/For-Couples-and-Small-Families.png', label: 'Small - For Couples & Small Families' },
+            { img: '/images/bookacar/vehicles/For-Groups-and-Large-Families.png', label: 'Large - For Groups & Big Families' },
+            { img: '/images/bookacar/vehicles/Luxury-Executive-Cars.png', label: 'Executive - Luxury Vehicles' },
           ].map((vehicle, idx) => (
-            <div key={idx} className="bg-white rounded-xl overflow-hidden shadow hover:shadow-lg transition">
+            <div key={idx} className="bg-white rounded-xl overflow-hidden shadow hover:shadow-lg transition w-[380px] h-[280px]">
               <img src={vehicle.img} className="w-full h-40 object-contain bg-white p-4" />
               <div className="p-4 font-medium text-gray-700">{vehicle.label}</div>
             </div>
@@ -73,12 +82,28 @@ export default function BookCarPage() {
 
       {/* BOOKING STEPS */}
       <section className="py-16 text-center bg-white">
-        <h2 className="text-3xl font-bold mb-8">How It Works</h2>
+        <div className="relative z-10 max-w-4xl mx-auto mb-[56px] mt-[112px] px-4">
+          <h2 className="text-4xl md:text-[48px] font- text-[24px] mb-2">
+           Book now ! It's Quick and Simple
+          </h2>
+          <p className="text-[16px] opacity-90">
+            Secure your ride in just a few easy steps — fast, hassle-free, and ready when you are.
+          </p>
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-          {['Choose Route', 'Provide Details', 'Confirm Booking', 'Meet Driver'].map((step, i) => (
-            <div key={i} className="p-6 border rounded-lg shadow bg-gray-50">
-              <div className="text-3xl font-bold text-primary-500 mb-2">0{i + 1}</div>
-              <p className="font-semibold">{step}</p>
+          {[
+          {title:'Choose Route', description:'Select your route and preferred vehicle to confirm and prepare your smooth journey ahead.'},
+          {title:'Provide Your Details', description:'Share your personal and contact information to confirm and secure your booking smoothly.'},
+          {title:'Payment Details', description:'Complete your secure and easy payment online to confirm and finalize your booking today.'},
+          {title:'Meet Your Driver', description:'Meet your professional and friendly driver on time to begin and enjoy your booked ride.'}, 
+          // '', 
+          // 'Confirm Booking', 
+          // 'Meet Driver'
+        ].map((step, i) => (
+            <div key={i} className="p-4 text-left border rounded-lg shadow bg-gray-50 w-[280px] h-[287px] mx-auto">
+              <div className="text-[96px] font-bold text-[#6FCCDC]">0{i + 1}</div>
+              <h3 className="font-medium text-[24px]">{step.title}</h3>
+              <p className="text-[14px] mt-2 text-gray-600">{step.description}</p>
             </div>
           ))}
         </div>
@@ -113,7 +138,7 @@ export default function BookCarPage() {
               <p className="text-sm">
                 "Outstanding service and very professional drivers. Will book again!"
               </p>
-              <div className="mt-3 font-semibold">Customer {i}</div>
+              <div className="mt-3 font- text-[24px]">Customer {i}</div>
             </div>
           ))}
         </div>
