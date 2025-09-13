@@ -48,7 +48,7 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Desktop Auth */}
+          {/* Desktop Auth Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
             <div className="relative">
               <button
@@ -121,71 +121,6 @@ const Header = () => {
           </div>
         </div>
       </div>
-
-      {/* ✅ Mobile Menu Content */}
-      {isMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-gray-200 shadow-sm">
-          <nav className="flex flex-col space-y-2 px-4 py-4">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-gray-700 hover:text-primary-500 font-medium text-sm"
-                onClick={() => setIsMenuOpen(false)} // Close menu on click
-              >
-                {item.name}
-              </Link>
-            ))}
-          </nav>
-
-          <div className="border-t border-gray-200 px-4 py-4">
-            {!user ? (
-              <div className="flex flex-col space-y-2">
-                <Link
-                  href="/login"
-                  className="text-sm text-gray-700 hover:text-primary-500"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Sign In
-                </Link>
-                <Link
-                  href="/signup"
-                  className="text-sm text-gray-700 hover:text-primary-500"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Create Account
-                </Link>
-              </div>
-            ) : (
-              <div className="flex flex-col space-y-2">
-                <Link
-                  href="/profile"
-                  className="text-sm text-gray-700 hover:text-primary-500"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Profile
-                </Link>
-                <Link
-                  href="/profile/bookings"
-                  className="text-sm text-gray-700 hover:text-primary-500"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Booking History
-                </Link>
-                <button
-                  onClick={() => {
-                    logout();
-                    setIsMenuOpen(false);
-                  }}
-                  className="text-left text-sm text-red-600 hover:text-red-700"
-                >
-                  Logout
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
     </header>
   );
 };
