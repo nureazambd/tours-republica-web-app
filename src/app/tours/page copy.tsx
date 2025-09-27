@@ -22,19 +22,7 @@ export default function ToursPage() {
   return (
     <Layout>
       <div className="min-h-screen bg-gray-50">
-        {/* Page Header */}
-        {/* <section className="bg-gradient-to-r from-secondary-800 to-secondary-700 text-white py-16">
-          <div className="container-custom text-center">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-4">
-              Discover Amazing Tours
-            </h1>
-            <p className="text-xl text-white/90 max-w-2xl mx-auto">
-              Explore our handpicked collection of unforgettable experiences in
-              the Dominican Republic
-            </p>
-          </div>
-        </section> */}
-
+        {/* Hero Section */}
         <TourHeroSection />
 
         {/* Tours Content */}
@@ -45,20 +33,16 @@ export default function ToursPage() {
               <TourFilter filters={filters} setFilters={setFilters} />
             </div>
 
-            {/* Tours Grid */}
-            <div className="lg:w-3/4">
+            {/* Tours Grid & Banner */}
+            <div className="lg:w-3/4 space-y-12">
+              {/* Tours Grid */}
               <TourGrid filters={filters} setFilters={setFilters} />
 
-
-              {/* Airport Transfer Banner Section */}
+              {/* Airport Transfer Banner */}
               <AirportTransferBanner />
-
             </div>
-
           </div>
         </section>
-
-
       </div>
     </Layout>
   );

@@ -1,0 +1,75 @@
+version: '3.8'
+
+services:
+  # ----------------------------------------------------------------------
+  # Next.js Application Service
+  # ----------------------------------------------------------------------
+  nextjs-app:
+    # Use the current directory (where the Dockerfile is) as the build context
+    build:
+      context: .
+      # Specify the Dockerfile name if it's not 'Dockerfile'
+      # dockerfile: Dockerfile 
+    
+    # Map port 3000 inside the container to port 3000 on your host machine
+    ports:
+      - "3000:3000"
+      
+    # Environment variables for the Next.js app
+    environment:
+      # This variable is crucial for the Next.js app to connect to the MongoDB service
+      # The hostname is the name of the MongoDB service defined in this file (mongodb)
+      # You should replace this with the actual environment variable your app uses
+      MONGODB_URI: mongodb://mongodb:27017/nextjsdb
+      # Optionally, specify the Node.js environment
+      NODE_ENV: production
+      JWT_SECRET: "YOUR_SUPER_SECRET_KEY_HERE"
+      
+    # Explicitly set the network the service will use (optional, but good practice)
+    networks:
+      - nextjs-network
+      
+    # Ensure the app waits for MongoDB to be up before starting (optional, but recommended)
+    depends_on:
+      - mongodb
+    
+    # Restart the container if it stops, unless manually stopped
+    restart: always
+
+  # ----------------------------------------------------------------------
+  # MongoDB Database Service
+  # ----------------------------------------------------------------------
+  mongodb:
+    # Use the official MongoDB image
+    image: mongo:latest 
+    
+    # Optionally map port 27017 to access MongoDB from the host (e.g., with a GUI tool)
+    # Remove this section if you only want the Next.js app to access it
+    ports:
+      - "27017:27017" 
+      
+    # Store the database data in a persistent volume
+    # This ensures your data is not lost when the container is stopped or removed
+    volumes:
+      - mongo-data:/data/db 
+      
+    # Use the same network as the Next.js app
+    networks:
+      - nextjs-network
+      
+    # Restart the container if it stops, unless manually stopped
+    restart: always
+
+# ----------------------------------------------------------------------
+# Volumes for persistent data
+# ----------------------------------------------------------------------
+volumes:
+  # This volume will persist the MongoDB database files
+  mongo-data:
+
+# ----------------------------------------------------------------------
+# Networks for communication between services
+# ----------------------------------------------------------------------
+networks:
+  nextjs-network:
+    driver: bridge

@@ -1,49 +1,18 @@
-"use client";
+// This is a Server Component (No "use client" directive!)
 
-import AirportTransferBanner from "@/components/home/AirportTransferBanner";
-import TourHeroSection from "@/components/home/TourHeroSection";
+import { Suspense } from 'react';
 import Layout from "@/components/layout/Layout";
-import TourFilter from "@/components/tours/TourFilter";
-import TourGrid from "@/components/tours/TourGrid";
-import React, { useState } from "react";
+import ToursClientContent from "./ToursClientContent"; // Import the client logic
 
 export default function ToursPage() {
-  // All filters lifted here
-  const [filters, setFilters] = useState({
-    searchQuery: "",
-    categories: [] as string[],
-    priceRange: [0, 200],
-    rating: 0,
-    duration: "",
-    location: "",
-    sortBy: "popular",
-  });
-
   return (
     <Layout>
-      <div className="min-h-screen bg-gray-50">
-        {/* Hero Section */}
-        <TourHeroSection />
-
-        {/* Tours Content */}
-        <section className="py-12">
-          <div className="container-custom flex flex-col lg:flex-row gap-8">
-            {/* Sidebar Filter */}
-            <div className="lg:w-1/4">
-              <TourFilter filters={filters} setFilters={setFilters} />
-            </div>
-
-            {/* Tours Grid & Banner */}
-            <div className="lg:w-3/4 space-y-12">
-              {/* Tours Grid */}
-              <TourGrid filters={filters} setFilters={setFilters} />
-
-              {/* Airport Transfer Banner */}
-              <AirportTransferBanner />
-            </div>
-          </div>
-        </section>
-      </div>
+      {/* CRUCIAL FIX: The Suspense boundary allows Next.js to skip 
+         prerendering of the client component below, resolving the 
+         'useSearchParams()' error during the build. */}
+      <Suspense fallback={<div>Loading Tours and Filters...</div>}>
+        <ToursClientContent />
+      </Suspense>
     </Layout>
   );
 }
