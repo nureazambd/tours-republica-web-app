@@ -9,39 +9,41 @@ import React, { useState } from "react";
 
 // Rename function to reflect its role as client content
 export default function ToursClientContent() {
-  const [filters, setFilters] = useState({
-    searchQuery: "",
-    categories: [],
-    priceRange: [0, 200],
-    rating: 0,
-    duration: "",
-    location: "",
-    sortBy: "popular",
-  });
+    // 🟢 CRITICAL FIX: Add the 'page: 1' property to the initial state
+    const [filters, setFilters] = useState({
+        searchQuery: "",
+        categories: [],
+        priceRange: [0, 200],
+        rating: 0,
+        duration: "",
+        location: "",
+        sortBy: "popular",
+        page: 1, // <--- SOLUTION: Initialize the missing 'page' property
+    });
 
-  return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <TourHeroSection />
+    return (
+        <div className="min-h-screen bg-gray-50">
+            {/* Hero Section */}
+            <TourHeroSection />
 
-      {/* Tours Content */}
-      <section className="py-12">
-        <div className="container-custom flex flex-col lg:flex-row gap-8">
-          {/* Sidebar Filter */}
-          <div className="lg:w-1/4">
-            <TourFilter filters={filters} setFilters={setFilters} />
-          </div>
+            {/* Tours Content */}
+            <section className="py-12">
+                <div className="container-custom flex flex-col lg:flex-row gap-8">
+                    {/* Sidebar Filter */}
+                    <div className="lg:w-1/4">
+                        <TourFilter filters={filters} setFilters={setFilters} />
+                    </div>
 
-          {/* Tours Grid & Banner */}
-          <div className="lg:w-3/4 space-y-12">
-            {/* Tours Grid */}
-            <TourGrid filters={filters} setFilters={setFilters} />
+                    {/* Tours Grid & Banner */}
+                    <div className="lg:w-3/4 space-y-12">
+                        {/* Tours Grid */}
+                        <TourGrid filters={filters} setFilters={setFilters} />
 
-            {/* Airport Transfer Banner */}
-            <AirportTransferBanner />
-          </div>
+                        {/* Airport Transfer Banner */}
+                        <AirportTransferBanner />
+                    </div>
+                </div>
+            </section>
         </div>
-      </section>
-    </div>
-  );
+    );
 }

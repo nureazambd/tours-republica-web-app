@@ -7,7 +7,7 @@ import { Star, MapPin, Clock, Users, ArrowRight } from 'lucide-react';
 const FeaturedTours = () => {
   const tours = [
     {
-      id: 1,
+      id: '68e9e2e4f69da497c573b2a2',
       title: 'Aventura En Buggys',
       description: 'Experience the thrill of off-road adventure through scenic landscapes',
       price: 50,
@@ -22,7 +22,7 @@ const FeaturedTours = () => {
       featured: true
     },
     {
-      id: 2,
+      id: '68e9e2e4f69da497c573b2a5',
       title: 'Santo Domingo City Tour',
       description: 'Discover the rich history and culture of the first city in the Americas',
       price: 50,
@@ -37,7 +37,7 @@ const FeaturedTours = () => {
       featured: true
     },
     {
-      id: 3,
+      id: '68e9e2e4f69da497c573b2a7',
       title: 'Saona Island Day Trip Lunch',
       description: 'Paradise island experience with crystal clear waters and white sand beaches',
       price: 50,

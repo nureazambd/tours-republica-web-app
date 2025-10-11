@@ -1,105 +1,18 @@
-// src/components/tours/TourGrid.tsx
-
 "use client";
 
 import React, { useState, useMemo, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { Star, MapPin, Clock, Grid, List, Globe } from "lucide-react";
-
-// Define the structure of a Tour object expected from the API
-interface Tour {
-  _id: string; // Must be '_id'
-  title: string;
-  description: string;
-  price: number;
-  originalPrice: number;
-  rating: number;
-  reviewCount: number;
-  duration: string;
-  pickup: string;
-  category: string;
-  image: string;
-}
+import { Star, MapPin, Clock, Grid, List } from "lucide-react";
 
 const TourGrid = ({ filters, setFilters }: any) => {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const searchParams = useSearchParams();
 
-  // --- State for API Data and Status ---
-  const [tours, setTours] = useState<Tour[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [pagination, setPagination] = useState<any>(null); // State for pagination info
-
-  // 🔍 Get location from URL query
+  // 🔍 Get location from URL query (e.g., ?location=Punta+Cana)
   const locationFromURL = searchParams.get("location");
-  
-  // Convert filters object to URL query string
-  const buildQueryString = () => {
-    const params = new URLSearchParams();
-    
-    // Iterate over filters and append to params
-    if (filters.searchQuery) params.append('search', filters.searchQuery); // Assuming backend supports 'search'
-    if (filters.categories.length > 0) params.append('category', filters.categories[0]); // Simple filter for one category
-    
-    // Convert price range to min/max
-    params.append('minPrice', filters.priceRange[0].toString());
-    params.append('maxPrice', filters.priceRange[1].toString());
-    
-    if (filters.rating > 0) params.append('rating', filters.rating.toString());
-    
-    // Use 'location' to match the filter state name
-    if (filters.location && filters.location !== 'all') params.append('location', filters.location); 
-    
-    if (filters.duration && filters.duration !== 'all') params.append('duration', filters.duration);
 
-    params.append('sortBy', filters.sortBy);
-    params.append('page', filters.page.toString()); // Assuming 'filters' holds current page
-    
-    return params.toString();
-  };
-
-
-  // --- Data Fetching Effect (Triggers on filter change) ---
-  useEffect(() => {
-    async function fetchTours() {
-      try {
-        setLoading(true);
-        setError(null);
-
-        const queryString = buildQueryString();
-        
-        // Fetch tours using the API route with query parameters
-        const res = await fetch(`/api/tours?${queryString}`, { cache: "no-store" }); 
-
-        if (!res.ok) {
-          const data = await res.json();
-          // This line shows the error from the backend ⬇️
-          throw new Error(data.error || "Failed to load tours."); 
-        }
-
-        const data: { tours: Tour[], pagination: any } = await res.json();
-        
-        // 🟢 FIX: Set the tours from the nested 'tours' array
-        setTours(data.tours); 
-        setPagination(data.pagination);
-
-      } catch (err: any) {
-        console.error("Error fetching tours:", err);
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchTours();
-    
-  // Rerun whenever the filters object changes
-  }, [filters]); 
-
-
-  // 🧠 Set location from URL into filters (runs once on locationFromURL change)
+  // 🧠 Set location from URL into filters
   useEffect(() => {
     if (locationFromURL && filters.location !== locationFromURL) {
       setFilters((prev: any) => ({
@@ -107,47 +20,133 @@ const TourGrid = ({ filters, setFilters }: any) => {
         location: locationFromURL,
       }));
     }
-  }, [locationFromURL, setFilters]);
+  }, [locationFromURL]);
 
+  // --- Sample Data (replace with API later) ---
+  const tours = [
+    {
+      id: 1,
+      title: "Aventura En Buggys",
+      description:
+        "Explore the highlights of Punta Cana in a thrilling half-day off-road dune buggy.",
+      price: 50,
+      originalPrice: 75,
+      rating: 4.8,
+      reviewCount: 30,
+      duration: "Half Day (4-6 hours)",
+      pickup: "Punta Cana",
+      category: "adventure",
+      image: "/images/tours/Aventura-en-Buggys.png",
+    },
+    {
+      id: 2,
+      title: "Santo Domingo City Tour",
+      description:
+        "Explore the highlights of Santo Domingo in a thrilling cultural city trip.",
+      price: 120,
+      originalPrice: 150,
+      rating: 4.6,
+      reviewCount: 22,
+      duration: "Full Day (8-10 hours)",
+      pickup: "Santo Domingo",
+      category: "culture",
+      image: "/images/tours/Santo-Domingo-City-Tour-cityTour.png",
+    },
+    {
+      id: 3,
+      title: "Saona Island Day Trip",
+      description:
+        "Escape to a tropical paradise with crystal-clear waters and white sand beaches.",
+      price: 180,
+      originalPrice: 200,
+      rating: 4.9,
+      reviewCount: 45,
+      duration: "Full Day (8-10 hours)",
+      pickup: "Bayahibe",
+      category: "nature",
+      image: "/images/tours/Saona-Island-Day-Trip.png",
+    },
+    {
+      id: 4,
+      title: "Tapas Tour",
+      description: "Taste authentic local flavors with guided tapas adventure.",
+      price: 50,
+      originalPrice: 75,
+      rating: 4.8,
+      reviewCount: 30,
+      duration: "Half Day (4-6 hours)",
+      pickup: "Punta Cana",
+      category: "adventure",
+      image: "/images/tours/Tapas-Tour.png",
+    },
+    {
+      id: 5,
+      title: "From Santo Domingo...",
+      description: "Full day excursion with stunning cultural highlights.",
+      price: 120,
+      originalPrice: 150,
+      rating: 4.6,
+      reviewCount: 22,
+      duration: "Full Day (8-10 hours)",
+      pickup: "Santo Domingo",
+      category: "culture",
+      image: "/images/tours/From-Santo-Domingo.png",
+    },
+    {
+      id: 6,
+      title: "Bike Tour",
+      description: "Enjoy a scenic cycling experience with local guides.",
+      price: 180,
+      originalPrice: 200,
+      rating: 4.9,
+      reviewCount: 45,
+      duration: "Full Day (8-10 hours)",
+      pickup: "Bayahibe",
+      category: "adventure",
+      image: "/images/tours/Bike-Tour.png",
+    },
+  ];
 
-  // --- Filtering Logic (Simplified since the API does most of the work) ---
+  // --- Filtering Logic ---
   const filteredTours = useMemo(() => {
-    // We now mostly rely on the backend API to filter. 
-    // This frontend filter only performs the search query if the backend doesn't,
-    // but typically the backend should handle all filtering.
-    // For now, we'll return the tours directly as they are already filtered by the API query string.
-    
-    // We can still do client-side filtering if necessary, but this version uses the API results directly:
-    return tours;
-    
-  }, [tours]);
-
-  
-  // --- Loading/Error/No Tours UI ---
-  if (loading) {
-    return (
-      <div className="text-center py-10 text-gray-600 text-lg">
-        <Globe className="animate-spin inline-block mr-2" /> Loading amazing tours...
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="text-center py-10 text-red-600 text-lg border p-6 rounded-lg bg-red-50">
-        🚨 Error loading tours: {error}
-      </div>
-    );
-  }
-
-  if (filteredTours.length === 0) {
-    return (
-        <div className="text-center py-10 text-gray-600 text-lg">
-            No tours found matching your current filters.
-        </div>
-    );
-  }
-
+    return tours
+      .filter((t) =>
+        filters.searchQuery
+          ? t.title.toLowerCase().includes(filters.searchQuery.toLowerCase())
+          : true
+      )
+      .filter((t) =>
+        filters.categories.length > 0
+          ? filters.categories.includes(t.category.toLowerCase())
+          : true
+      )
+      .filter((t) => t.price <= filters.priceRange[1])
+      .filter((t) =>
+        filters.rating > 0 ? Math.floor(t.rating) >= filters.rating : true
+      )
+      .filter((t) =>
+        filters.location
+          ? t.pickup.toLowerCase() === filters.location.toLowerCase()
+          : true
+      )
+      .filter((t) =>
+        filters.duration
+          ? t.duration.toLowerCase().includes(filters.duration.toLowerCase())
+          : true
+      )
+      .sort((a, b) => {
+        switch (filters.sortBy) {
+          case "price-low":
+            return a.price - b.price;
+          case "price-high":
+            return b.price - a.price;
+          case "rating":
+            return b.rating - a.rating;
+          default:
+            return 0; // "popular"
+        }
+      });
+  }, [filters, tours]);
 
   return (
     <div>
@@ -155,7 +154,7 @@ const TourGrid = ({ filters, setFilters }: any) => {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
         <div>
           <h2 className="text-2xl font-bold text-gray-800">
-            Tours ({pagination?.totalCount || filteredTours.length})
+            Tours ({filteredTours.length})
           </h2>
           <p className="text-gray-600">Discover amazing experiences</p>
         </div>
@@ -191,7 +190,7 @@ const TourGrid = ({ filters, setFilters }: any) => {
         </div>
       </div>
 
-      {/* Tours Grid/List */}
+      {/* Tours */}
       <div
         className={
           viewMode === "grid"
@@ -201,7 +200,7 @@ const TourGrid = ({ filters, setFilters }: any) => {
       >
         {filteredTours.map((t) => (
           <div
-            key={t._id} 
+            key={t.id}
             className={`bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition ${
               viewMode === "list" ? "flex gap-4" : ""
             }`}
@@ -251,8 +250,7 @@ const TourGrid = ({ filters, setFilters }: any) => {
                   </p>
                 </div>
                 <Link
-                  // 🟢 FIX: Use t._id for the link
-                  href={`/tours/${t._id}`} 
+                  href={`/tours/${t.id}`}
                   className="bg-rose-500 hover:bg-rose-600 text-white font-semibold px-4 py-2 rounded-lg"
                 >
                   Book Now
@@ -262,8 +260,6 @@ const TourGrid = ({ filters, setFilters }: any) => {
           </div>
         ))}
       </div>
-      
-      {/* TODO: Add Pagination Controls using the 'pagination' state here */}
     </div>
   );
 };
