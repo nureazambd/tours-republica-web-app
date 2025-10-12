@@ -1,92 +1,22 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { connectDB } from '@/lib/mongodb';
+// src/app/api/bookings/route.ts
+import { NextResponse } from "next/server";
+import { connectDB } from "@/lib/mongodb";
+import Booking from "@/models/Booking";
 
-export async function GET(request: NextRequest) {
+export async function POST(req: Request) {
   try {
-    const { db } = await connectDB();
-    const { searchParams } = new URL(request.url);
-    
-    const userId = searchParams.get('userId');
-    const status = searchParams.get('status');
-    const page = parseInt(searchParams.get('page') || '1');
-    const limit = parseInt(searchParams.get('limit') || '10');
-    
-    // Build filter object
-    const filter: any = {};
-    
-    if (userId) {
-      filter.userId = userId;
+    await connectDB();
+    const body = await req.json();
+
+    // minimal validation
+    if (!body.carId || !body.traveler || !body.total) {
+      return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
-    
-    if (status && status !== 'all') {
-      filter.status = status;
-    }
-    
-    // Calculate skip for pagination
-    const skip = (page - 1) * limit;
-    
-    // Get bookings with pagination
-    const bookings = await db
-      .collection('bookings')
-      .find(filter)
-      .sort({ createdAt: -1 })
-      .skip(skip)
-      .limit(limit)
-      .toArray();
-    
-    // Get total count for pagination
-    const totalCount = await db.collection('bookings').countDocuments(filter);
-    const totalPages = Math.ceil(totalCount / limit);
-    
-    return NextResponse.json({
-      bookings,
-      pagination: {
-        currentPage: page,
-        totalPages,
-        totalCount,
-        hasNextPage: page < totalPages,
-        hasPrevPage: page > 1
-      }
-    });
-  } catch (error) {
-    console.error('Error fetching bookings:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch bookings' },
-      { status: 500 }
-    );
+
+    const created = await Booking.create(body);
+    return NextResponse.json({ booking: created }, { status: 201 });
+  } catch (err: any) {
+    console.error("Booking create error:", err);
+    return NextResponse.json({ error: err.message }, { status: 500 });
   }
 }
-
-export async function POST(request: NextRequest) {
-  try {
-    const { db } = await connectDB();
-    const bookingData = await request.json();
-    
-    // Generate booking reference
-    const bookingRef = 'TR' + Date.now().toString().slice(-8);
-    
-    // Add booking metadata
-    const newBooking = {
-      ...bookingData,
-      bookingReference: bookingRef,
-      status: 'pending',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    };
-    
-    const result = await db.collection('bookings').insertOne(newBooking);
-    
-    return NextResponse.json({
-      success: true,
-      bookingId: result.insertedId,
-      bookingReference: bookingRef
-    }, { status: 201 });
-  } catch (error) {
-    console.error('Error creating booking:', error);
-    return NextResponse.json(
-      { error: 'Failed to create booking' },
-      { status: 500 }
-    );
-  }
-}
-
