@@ -8,7 +8,6 @@ import Layout from "@/components/layout/Layout";
 
 interface Tour {
   id: string;
-  _id?: string;
   title: string;
   image: string;
   description: string;
@@ -41,12 +40,7 @@ export default function TourDetailsPage() {
         const res = await fetch(`/api/tours/${id}`, { cache: "no-store" });
         if (!res.ok) throw new Error("Failed to load tour");
         const data = await res.json();
-
-        // ✅ Normalize id (avoid undefined)
-        setTour({
-          ...data,
-          id: data.id || data._id,
-        });
+        setTour(data);
       } catch (err: any) {
         setError(err.message);
       } finally {
@@ -74,8 +68,8 @@ export default function TourDetailsPage() {
 
   // ✅ Handle Booking
   const handleBookNow = () => {
-    if (!tour) return;
 
+    if (!tour) return;
     localStorage.setItem(
       "selectedTour",
       JSON.stringify({
@@ -87,7 +81,6 @@ export default function TourDetailsPage() {
         total,
       })
     );
-
     router.push(`/payment/${tour.id}`);
   };
 
@@ -99,6 +92,7 @@ export default function TourDetailsPage() {
     <Layout>
       <div className="min-h-screen bg-white text-black py-12">
         <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 px-4">
+
           {/* ================= Left Section ================= */}
           <div>
             <Image
@@ -191,6 +185,7 @@ export default function TourDetailsPage() {
               You’ll review all booking details before final confirmation.
             </p>
 
+            {/* Back Link */}
             <div className="text-center mt-4">
               <Link href="/tours" className="text-rose-500 hover:underline">
                 ← Back to Tours

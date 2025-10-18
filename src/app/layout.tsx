@@ -3,6 +3,7 @@ import { Rubik } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
 import { BookingProvider } from "@/context/BookingContext";
+import { TourProvider } from "@/context/TourContext";
 
 const rubik = Rubik({
   subsets: ['latin'],
@@ -66,8 +67,10 @@ export default function RootLayout({
       <body className="font-sans" suppressHydrationWarning>
         <AuthProvider>
           <BookingProvider>
+            <TourProvider>
           {/* ✅ Header available on all pages */}
           <main className="min-h-screen">{children}</main>
+          </TourProvider>
           </BookingProvider>
         </AuthProvider>
       </body>
