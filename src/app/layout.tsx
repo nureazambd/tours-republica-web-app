@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Rubik } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
+import { BookingProvider } from "@/context/BookingContext";
 
 const rubik = Rubik({
   subsets: ['latin'],
@@ -64,8 +65,10 @@ export default function RootLayout({
       {/* 👇 suppressHydrationWarning prevents extension-injected attrs from breaking hydration */}
       <body className="font-sans" suppressHydrationWarning>
         <AuthProvider>
+          <BookingProvider>
           {/* ✅ Header available on all pages */}
           <main className="min-h-screen">{children}</main>
+          </BookingProvider>
         </AuthProvider>
       </body>
     </html>

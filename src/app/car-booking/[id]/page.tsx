@@ -105,8 +105,10 @@ export default function CarBookingPageById() {
       const data = await res.json();
 
       if (res.ok) {
-        alert("Booking successfully created!");
-        router.push(`/car-booking/${car._id}?booked=true`);
+        // alert("Booking successfully created!");
+        // router.push(`/car-booking/${car._id}?booked=true`);
+        const { total } = payload;
+  router.push(`/payment-success?amount=${total}&orderRef=OIU${Date.now().toString().slice(-6)}&method=${paymentMethod}`);
       } else {
         // Display the specific error from the server
         alert(data?.error || "An unknown error occurred while creating the booking.");
