@@ -30,7 +30,16 @@ const Footer = () => {
           {/* Phone */}
           <div className="flex items-center gap-5 w-[190px] h-14">
             <div className="bg-white/10 p-4 rounded-xl flex items-center justify-center">
-              <Phone className="w-6 h-6 text-white" />
+              {/* <Phone className="w-6 h-6 text-white" /> */}
+
+
+              <Image
+                className="w-6 h-6 text-white"
+                src="/images/footer/phone-call.png"
+                alt="Picture of the author"
+                width={50}
+                height={50}
+              />
             </div>
             <div className="flex flex-col gap-0.5">
               <span className="text-white font-medium text-base">Call us on</span>
@@ -41,7 +50,14 @@ const Footer = () => {
           {/* WhatsApp */}
           <div className="flex items-center gap-5 w-[220px] h-14">
             <div className="bg-white/10 p-4 rounded-xl flex items-center justify-center">
-              <MessageCircle className="w-6 h-6 text-white" />
+              {/* <MessageCircle className="w-6 h-6 text-white" /> */}
+              <Image
+                className="w-6 h-6 text-white"
+                src="/images/footer/whatsapp.png"
+                alt="Picture of the author"
+                width={50}
+                height={50}
+              />
             </div>
             <div className="flex flex-col gap-0.5">
               <span className="text-white font-medium text-base">Book on WhatsApp</span>
@@ -52,7 +68,14 @@ const Footer = () => {
           {/* Email */}
           <div className="flex items-center gap-5 w-[270px] h-14">
             <div className="bg-white/10 p-4 rounded-xl flex items-center justify-center">
-              <Mail className="w-6 h-6 text-white" />
+              {/* <Mail className="w-6 h-6 text-white" /> */}
+              <Image
+                className="w-6 h-6 text-white"
+                src="/images/footer/mailuson.png"
+                alt="Picture of the author"
+                width={50}
+                height={50}
+              />
             </div>
             <div className="flex flex-col gap-0.5">
               <span className="text-white font-medium text-base">Mail us on</span>
@@ -63,7 +86,14 @@ const Footer = () => {
           {/* Location */}
           <div className="flex items-center gap-5 w-[284px] h-14">
             <div className="bg-white/10 p-4 rounded-xl flex items-center justify-center">
-              <MapPin className="w-6 h-6 text-white" />
+              {/* <MapPin className="w-6 h-6 text-white" /> */}
+              <Image
+                className="w-6 h-6 text-white"
+                src="/images/footer/location.png"
+                alt="Picture of the author"
+                width={50}
+                height={50}
+              />
             </div>
             <div className="flex flex-col gap-0.5">
               <span className="text-white font-medium text-base">
@@ -81,7 +111,7 @@ const Footer = () => {
         <div>
           <Link href="/" className="inline-block mb-6">
             <Image
-              src="/images/tours-republica-logo.png"
+              src="/images/logo.png"
               alt="Tours República"
               width={180}
               height={50}
@@ -94,21 +124,42 @@ const Footer = () => {
           <div className="flex space-x-4">
             <a
               href="#"
-              className="bg-white/10 hover:bg-white/20 p-2 rounded-lg transition-colors duration-200"
+              className=" hover:bg-white/20 p-2 rounded-lg transition-colors duration-200"
             >
-              <Facebook className="w-5 h-5 text-white" />
+              {/* <Facebook className="w-5 h-5 text-white" /> */}
+              <Image
+                src="/images/footer/facebook.png"
+                alt="Tours República"
+                width={50}
+                height={50}
+                className="w-8 h-8 text-white"
+              />
             </a>
             <a
               href="#"
-              className="bg-white/10 hover:bg-white/20 p-2 rounded-lg transition-colors duration-200"
+              className=" hover:bg-white/20 p-2 rounded-lg transition-colors duration-200"
             >
-              <Instagram className="w-5 h-5 text-white" />
+              {/* <Instagram className="w-5 h-5 text-white" /> */}
+              <Image
+                src="/images/footer/instagram.png"
+                alt="Tours República"
+                width={50}
+                height={50}
+                className="w-8 h-8 text-white"
+              />
             </a>
             <a
               href="#"
-              className="bg-white/10 hover:bg-white/20 p-2 rounded-lg transition-colors duration-200"
+              className=" hover:bg-white/20 p-2 rounded-lg transition-colors duration-200"
             >
-              <Youtube className="w-5 h-5 text-white" />
+              {/* <Youtube className="w-5 h-5 text-white" /> */}
+              <Image
+                src="/images/footer/youtube.png"
+                alt="Tours República"
+                width={50}
+                height={50}
+                className="w-8 h-8 text-white"
+              />
             </a>
           </div>
         </div>

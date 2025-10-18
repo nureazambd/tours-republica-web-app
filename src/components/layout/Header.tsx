@@ -79,19 +79,61 @@ const Header = () => {
                       </Link>
                     </>
                   ) : (
+                    // <>
+                    //   <Link
+                    //     href="/profile"
+                    //     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    //     onClick={() => setIsUserMenuOpen(false)}
+                    //   >
+                    //     Profile
+                    //   </Link>
+                    //   <Link
+                    //     href="/profile/bookings"
+                    //     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    //     onClick={() => setIsUserMenuOpen(false)}
+                    //   >
+                    //     Booking History
+                    //   </Link>
+                    //   <button
+                    //     onClick={() => {
+                    //       logout();
+                    //       setIsUserMenuOpen(false);
+                    //     }}
+                    //     className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100 flex items-center gap-2"
+                    //   >
+                    //     <LogOut className="w-4 h-4" /> Logout
+                    //   </button>
+                    // </>
+
                     <>
                       <Link
                         href="/profile"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2" // <-- Add flex classes
                         onClick={() => setIsUserMenuOpen(false)}
                       >
-                        Profile
+                        {/* <User className="w-4 h-4" /> <-- Add User icon */}
+                        <Image
+                          src="/images/header/profile-settings.png"
+                          alt="profie settings"
+                          width={50}
+                          height={50}
+                          className="w-4 h-4"
+                        />
+                        Profile Settings
                       </Link>
                       <Link
                         href="/profile/bookings"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2" // <-- Add flex classes
                         onClick={() => setIsUserMenuOpen(false)}
                       >
+                        {/* <ScrollText className="w-4 h-4" /> <-- Add Booking icon */}
+                        <Image
+                          src="/images/header/booking-history.svg"
+                          alt="profie settings"
+                          width={50}
+                          height={50}
+                          className="w-4 h-4"
+                        />
                         Booking History
                       </Link>
                       <button
@@ -101,9 +143,17 @@ const Header = () => {
                         }}
                         className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100 flex items-center gap-2"
                       >
-                        <LogOut className="w-4 h-4" /> Logout
+                        <Image
+                          src="/images/header/logout.png"
+                          alt="profie settings"
+                          width={50}
+                          height={50}
+                          className="w-4 h-4"
+                        />
+                        Logout
                       </button>
                     </>
+
                   )}
                 </div>
               )}
