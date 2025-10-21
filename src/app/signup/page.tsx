@@ -1,8 +1,12 @@
+"use client";
+
 import Layout from '@/components/layout/Layout';
 import SignupForm from '@/components/auth/SignupForm';
 import { Gift, Star, Shield, Clock } from 'lucide-react';
+import { useRouter } from "next/navigation";
 
 export default function SignupPage() {
+  const router = useRouter();
   const benefits = [
     {
       icon: Gift,
@@ -48,9 +52,15 @@ export default function SignupPage() {
                   <div className="mt-8 pt-6 border-t text-center">
                     <p className="text-sm text-gray-600">
                       Already have an account?{' '}
-                      <button className="text-primary-500 hover:text-primary-600 font-medium">
+                      {/* <button className="text-primary-500 hover:text-primary-600 font-medium">
                         Sign in here
-                      </button>
+                      </button> */}
+                      <button
+      onClick={() => router.push("/login")}
+      className="text-primary-500 hover:text-primary-600 font-medium"
+    >
+       Sign in here
+    </button>
                     </p>
                   </div>
                 </div>

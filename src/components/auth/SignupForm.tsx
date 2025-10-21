@@ -349,7 +349,7 @@ const SignupForm = () => {
       </div>
 
       {/* Social Signup Buttons */}
-      <div className="grid grid-cols-2 gap-3">
+      {/* <div className="grid grid-cols-2 gap-3">
         <button
           type="button"
           onClick={() => handleSocialSignup('Google')}
@@ -373,7 +373,7 @@ const SignupForm = () => {
           </svg>
           Facebook
         </button>
-      </div>
+      </div> */}
     </form>
   );
 };

@@ -122,7 +122,7 @@ const Header = () => {
                         Profile Settings
                       </Link>
                       <Link
-                        href="/profile/bookings"
+                        href="/booking-history"
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2" // <-- Add flex classes
                         onClick={() => setIsUserMenuOpen(false)}
                       >
@@ -216,7 +216,7 @@ const Header = () => {
                   Profile
                 </Link>
                 <Link
-                  href="/profile/bookings"
+                  href="/booking-history"
                   className="text-sm text-gray-700 hover:text-primary-500"
                   onClick={() => setIsMenuOpen(false)}
                 >

@@ -1,8 +1,12 @@
+"use client";
+
 import Layout from '@/components/layout/Layout';
 import LoginForm from '@/components/auth/LoginForm';
 import { Eye, Shield, Clock, Users } from 'lucide-react';
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+  const router = useRouter();
   const benefits = [
     {
       icon: Eye,
@@ -65,7 +69,7 @@ export default function LoginPage() {
                   <p className="text-gray-600 mb-4">
                     Join thousands of travelers who have discovered the magic of the Dominican Republic with us.
                   </p>
-                  <button className="bg-primary-500 hover:bg-primary-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200">
+                  <button onClick={() => router.push("/signup")} className="bg-primary-500 hover:bg-primary-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200">
                     Create Account
                   </button>
                 </div>
@@ -87,7 +91,10 @@ export default function LoginPage() {
                   <div className="mt-8 pt-6 border-t text-center">
                     <p className="text-sm text-gray-600">
                       Don't have an account?{' '}
-                      <button className="text-primary-500 hover:text-primary-600 font-medium">
+                      <button
+                        onClick={() => router.push("/signup")}
+                        className="text-primary-500 hover:text-primary-600 font-medium"
+                      >
                         Sign up for free
                       </button>
                     </p>
