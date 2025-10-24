@@ -58,7 +58,9 @@ const PopularDestinations = () => {
           {/* Featured Destination (Santo Domingo) - Spanning 2 columns and 2 rows on large screens */}
           <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2
                       col-span-1 sm:col-span-2 row-span-2 h-[450px] sm:h-auto">
-            <Link href={`/locations/${destinations[0].name.toLowerCase().replace(' ', '-')}`}>
+            {/* <Link href={`/locations/${destinations[0].name.toLowerCase().replace(' ', '-')}`}> */}
+            <Link href={`/tours?location=${destinations[0].name.replace(' ', '+')}`}>
+
               <Image 
                 src={destinations[0].image} 
                 alt={destinations[0].name} 
@@ -87,7 +89,7 @@ const PopularDestinations = () => {
               key={destination.id} 
               className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-[200px]"
             >
-              <Link href={`/locations/${destination.name.toLowerCase().replace(' ', '-')}`}>
+              <Link href={`/tours?location=${destination.name.replace(' ', '+')}`}>
                 <Image
                   src={destination.image}
                   alt={destination.name}
