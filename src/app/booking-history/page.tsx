@@ -3,6 +3,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Layout from '@/components/layout/Layout';
 import Image from 'next/image';
 import {
   Calendar,
@@ -183,6 +184,7 @@ const BookingHistory: React.FC = () => {
   if (allBookings.length === 0) return <div className="p-10 text-center text-gray-500">You have no bookings yet.</div>;
 
   return (
+    <Layout>
     <div className="bg-white rounded-2xl shadow-lg p-8 relative">
       <h2 className="text-2xl font-bold mb-6 text-gray-800">Booking History</h2>
 
@@ -372,6 +374,7 @@ const BookingHistory: React.FC = () => {
         </div>
       </div>
     </div>
+    </Layout>
   );
 };
 

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { User, Mail, Lock, Eye, EyeOff, UserPlus, Phone, MapPin } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 const SignupForm = () => {
   const [formData, setFormData] = useState({
@@ -19,6 +20,8 @@ const SignupForm = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState<{[key: string]: string}>({});
+
+  const router = useRouter();
 
   const countries = [
     'United States', 'Canada', 'United Kingdom', 'Germany', 'France', 
@@ -100,6 +103,7 @@ const SignupForm = () => {
       alert(data.error || "Signup failed");
     } else {
       alert("Account created successfully! Please check your email.");
+      router.push("/login");
     }
   } catch (err) {
     console.error(err);
