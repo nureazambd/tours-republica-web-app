@@ -31,7 +31,7 @@ export async function POST(req: Request) {
       { expiresIn: "7d" }
     );
 
-    return NextResponse.json({ message: "Login successful", token, user: { id: user._id, email: user.email, firstName: user.firstName } });
+    return NextResponse.json({ message: "Login successful", token, user: { id: user._id, email: user.email, firstName: user.firstName, lastName: user.lastName} });
   } catch (error) {
     console.error("Login Error:", error);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });

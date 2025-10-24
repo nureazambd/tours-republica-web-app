@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Layout from '@/components/layout/Layout';
 import {
   Calendar,
   MapPin,
@@ -130,6 +131,7 @@ const BookingHistory = () => {
     booking.type === 'tour';
 
   return (
+    <Layout>
     <div className="bg-white rounded-2xl shadow-lg p-8">
       <h2 className="text-2xl font-bold mb-6 text-gray-800">
         Booking History
@@ -213,6 +215,7 @@ const BookingHistory = () => {
         ))}
       </div>
     </div>
+    </Layout>
   );
 };
 

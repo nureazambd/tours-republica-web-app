@@ -40,6 +40,15 @@ export default function BookingForm() {
     router.push(`/car-booking?${query}`);
   };
 
+  const locationOptions = [
+    "Leonardo London, Punta Cana, Dominican Republic",
+    "Amber Residence Hotel, Punta Cana, Dominican Republic",
+    "STN - London, UK, Punta Cana, Dominican Republic",
+    "Four Seasons Hotel, Punta Cana, Dominican Republic",
+    "Punta Cana Intl Airport",
+    "Hotel King",
+  ];
+
   return (
     <section className="bg-white shadow-xl rounded-xl -mt-44 max-w-5xl mx-auto px-6 py-8 relative z-20">
       {/* Trip Type Toggle */}
@@ -63,11 +72,22 @@ export default function BookingForm() {
           <p className="text-sm text-gray-500 mb-1">Pick-up location</p>
           <div className="flex items-center border px-3 py-2 rounded-md">
             <MapPin className="w-4 h-4 text-gray-400 mr-2" />
-            <input
+            {/* <input
               value={pickupLocation}
               onChange={(e) => setPickupLocation(e.target.value)}
               className="w-full outline-none text-sm"
-            />
+            /> */}
+            <select
+              value={pickupLocation}
+              onChange={(e) => setPickupLocation(e.target.value)}
+              className="w-full outline-none text-sm bg-transparent"
+            >
+              {locationOptions.map((loc, i) => (
+                <option key={i} value={loc}>
+                  {loc}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
 
@@ -79,11 +99,22 @@ export default function BookingForm() {
           <p className="text-sm text-gray-500 mb-1">Drop-off location</p>
           <div className="flex items-center border px-3 py-2 rounded-md">
             <MapPin className="w-4 h-4 text-gray-400 mr-2" />
-            <input
+            {/* <input
               value={dropoffLocation}
               onChange={(e) => setDropoffLocation(e.target.value)}
               className="w-full outline-none text-sm"
-            />
+            /> */}
+            <select
+              value={dropoffLocation}
+              onChange={(e) => setDropoffLocation(e.target.value)}
+              className="w-full outline-none text-sm bg-transparent"
+            >
+              {locationOptions.map((loc, i) => (
+                <option key={i} value={loc}>
+                  {loc}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
 

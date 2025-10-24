@@ -21,7 +21,7 @@ const TransportSection = () => {
 
             {/* Removed the features section as it's not in the design image */}
 
-            <Link href="/contact-us"> {/* Changed link to '/contact-us' to match button text */}
+            <Link href="/contact"> {/* Changed link to '/contact-us' to match button text */}
               <button className="bg-pink-600 hover:bg-pink-700 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-200 flex items-center space-x-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1"> {/* Updated button color and roundedness */}
                 <span>Contact us</span>
                 <ArrowRight className="w-5 h-5 ml-2" /> {/* Added ml-2 for spacing */}

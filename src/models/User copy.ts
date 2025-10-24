@@ -6,14 +6,6 @@ export interface IUser extends Document {
   email: string;
   phone: string;
   country: string;
-  city?: string;
-  address?: string;
-  gender?: string;
-  dateOfBirth?: string;
-  passportNumber?: string;
-  passportExpiry?: string;
-  passportCountry?: string;
-  nationality?: string;
   password: string;
   newsletter: boolean;
 }
@@ -25,14 +17,6 @@ const UserSchema: Schema<IUser> = new Schema(
     email: { type: String, required: true, unique: true, lowercase: true },
     phone: { type: String, required: true },
     country: { type: String, required: true },
-    city: { type: String },
-    address: { type: String },
-    gender: { type: String },
-    dateOfBirth: { type: String },
-    passportNumber: { type: String },
-    passportExpiry: { type: String },
-    passportCountry: { type: String },
-    nationality: { type: String },
     password: { type: String, required: true },
     newsletter: { type: Boolean, default: true },
   },
@@ -40,4 +24,5 @@ const UserSchema: Schema<IUser> = new Schema(
 );
 
 const User = models.User || mongoose.model<IUser>("User", UserSchema);
+
 export default User;
