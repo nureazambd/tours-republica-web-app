@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { Star, Quote } from 'lucide-react';
-import Image from 'next/image'
 
 const Testimonials = () => {
   const testimonials = [
@@ -49,23 +48,50 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="pb-16 lg:pb-32 bg-[#EFF2F8]">
+    <section className="py-16 lg:py-24 bg-gray-50">
       <div className="container-custom px-4">
         {/* Header */}
-        <section className="bg-[#EFF2F8]">
-          <div className=" p-6 lg:p-28 flex justify-center">
-            <div className="w-full"> {/* Controls max width */}
-              <Image
-                src="/images/home/trusted-1.png"
-                alt="Trusted by travelers"
-                width={1440}
-                height={476}
-                className="w-full h-auto rounded-lg object-contain"
-                priority
-              />
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+            Trusted by more than 100,000 travelers since 2017
+          </h2>
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            Join thousands of satisfied customers who have experienced the magic of Dominican Republic with us
+          </p>
+        </div>
+
+        {/* Stats */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-12">
+          {stats.map((stat, index) => (
+            <div key={index} className="text-center">
+              <div className="text-4xl mb-2">{stat.icon}</div>
+              <div className="text-2xl font-bold text-gray-800 mb-1">{stat.value}</div>
+              <div className="text-gray-600 text-sm">{stat.label}</div>
             </div>
-          </div>
-        </section>
+          ))}
+        </div>
+
+        {/* Logos */}
+        <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-6 mb-12">
+          {[
+            { name: 'Google', rating: '4.9/5', color: 'bg-blue-500', letter: 'G' },
+            { name: 'Facebook', rating: '4.8/5', color: 'bg-blue-600', letter: 'f' },
+            { name: 'TrustPilot', rating: '4.9/5', color: 'bg-green-500', letter: 'T' },
+          ].map((platform, idx) => (
+            <div key={idx} className="flex items-center space-x-2">
+              <div className={`w-8 h-8 rounded flex items-center justify-center ${platform.color}`}>
+                <span className="text-white font-bold text-sm">{platform.letter}</span>
+              </div>
+              <span className="font-medium text-gray-600">{platform.name}</span>
+              <div className="flex items-center space-x-1 ml-2">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                ))}
+                <span className="text-sm text-gray-600 ml-1">{platform.rating}</span>
+              </div>
+            </div>
+          ))}
+        </div>
 
         {/* Testimonials */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">

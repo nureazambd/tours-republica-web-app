@@ -31,7 +31,7 @@ const Header = () => {
               alt="Tours Republica"
               width={160}
               height={40}
-              className="h-8 lg:h-10 w-auto"
+              className="h-12 lg:h-16 w-auto"
             />
           </Link>
 
@@ -121,12 +121,12 @@ const Header = () => {
                         />
                         Profile Settings
                       </Link>
-                      <Link
+                      {/* <Link
                         href="/booking-history"
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2" // <-- Add flex classes
                         onClick={() => setIsUserMenuOpen(false)}
                       >
-                        {/* <ScrollText className="w-4 h-4" /> <-- Add Booking icon */}
+                        
                         <Image
                           src="/images/header/booking-history.svg"
                           alt="profie settings"
@@ -135,7 +135,24 @@ const Header = () => {
                           className="w-4 h-4"
                         />
                         Booking History
-                      </Link>
+                      </Link> */}
+
+                      <Link
+  href="/profile?section=booking-history"
+  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
+  onClick={() => setIsUserMenuOpen(false)}
+>
+  <Image
+    src="/images/header/booking-history.svg"
+    alt="Booking history"
+    width={50}
+    height={50}
+    className="w-4 h-4"
+  />
+  Booking History
+</Link>
+
+
                       <button
                         onClick={() => {
                           logout();

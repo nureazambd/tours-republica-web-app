@@ -8,7 +8,7 @@ import Image from 'next/image'
 const FeaturedTours = () => {
   const tours = [
     {
-      id: '68e9e2e4f69da497c573b2a2',
+      id: '68fbf5061295ef3b6673a52c',
       title: 'Aventura En Buggys',
       description: 'Explore the highlights of Punta Cana in a thrilling half-day off-road dune buggy..',
       price: 50,
@@ -16,43 +16,43 @@ const FeaturedTours = () => {
       discount: 30,
       rating: 4.8,
       reviewCount: 30,
-      duration: '4 Hours',
+      duration: 'Full Day',
       pickup: 'Punta Cana',
       image: '/images/destinations/Aventura-En-Buggys.png',
-      featureIcon: '/images/home/featured/car-man-food.png',
+      featureIcon: '/images/home/featured/Aventura-en-Buggys-food.png',
       category: 'Adventure',
       featured: true
     },
     {
-      id: '68e9e2e4f69da497c573b2a5',
+      id: '68fbf5061295ef3b6673a52f',
       title: 'Santo Domingo City Tour',
-      description: 'Explore the highlights of Punta Cana in a thrilling half-day off-road dune buggy..',
+      description: 'Discover the rich history and culture of the first city in the Americas',
       price: 50,
       originalPrice: 75,
       discount: 30,
       rating: 4.8,
       reviewCount: 15,
-      duration: '10 Hours',
+      duration: 'Full Day',
       pickup: 'Punta Cana',
       image: '/images/destinations/Santo-Domingo-City-Tour.png',
-      featureIcon: '/images/home/featured/car-man-food.png',
-      category: 'Cultural City trips',
+      featureIcon: '/images/home/featured/Aventura-en-Buggys-food.png',
+      category: 'Culture',
       featured: true
     },
     {
-      id: '68e9e2e4f69da497c573b2a7',
+      id: '68fbf5061295ef3b6673a531',
       title: 'Saona Island Day Trip Lunch',
-      description: 'Explore the highlights of Punta Cana in a thrilling half-day off-road dune buggy..',
+      description: 'Paradise island experience with crystal clear waters and white sand beaches',
       price: 50,
       originalPrice: 75,
       discount: 30,
       rating: 4.9,
       reviewCount: 32,
-      duration: '10 Hours',
+      duration: 'Full Day',
       pickup: 'Punta Cana',
       image: '/images/destinations/Saona-Island-Day-Trip-Lunch.png',
-      featureIcon: '/images/home/featured/car-man.png',
-      category: 'Nature and Boat Trip',
+      featureIcon: '/images/home/featured/Aventura-en-Buggys-food.png',
+      category: 'Nature',
       featured: true
     }
   ];
@@ -147,9 +147,9 @@ const FeaturedTours = () => {
 
                     {/* Tour Details */}
 {/* Note the changes in this line: justify-between and removed space-x-4 */}
-<div className="flex items-center justify-between border-t-2 mb-4 text-sm text-gray-500">
+<div className="flex items-center justify-between mb-4 text-sm text-gray-500">
   
-  <div className="flex items-center pt-4 space-x-1">
+  <div className="flex items-center space-x-1">
     <MapPin className="w-4 h-4" />
     <span>Pickup: {tour.pickup}</span>
   </div>
@@ -157,21 +157,20 @@ const FeaturedTours = () => {
   <div className=''> {/* No changes needed here */}
     <Image
       src={tour.featureIcon}
-      width={70}
+      width={100}
       height={50}
       alt="Picture of the author"
-      className='w-full h-5 mt-3'
     />
   </div>
 
 </div>
 
-                    <div className=" items-center  mb-8 text-sm text-gray-500">
-                      <div className="flex items-center border-t-2 pt-4 space-x-1 mb-4">
+                    <div className=" items-center  mb-6 text-sm text-gray-500">
+                      <div className="flex items-center space-x-1 mb-4">
                         <Users className="w-4 h-4" />
                         <span>Everyday (8am /11am /1pm)</span>
                       </div>
-                      <div className="flex items-center border-t-2 border-b-2 pb-4 pt-4 space-x-1">
+                      <div className="flex items-center space-x-1">
                         <Clock className="w-4 h-4" />
                         <span>{tour.duration}</span>
                       </div>
@@ -179,15 +178,15 @@ const FeaturedTours = () => {
                     </div>
 
                     {/* Price and Book Button */}
-                    <div className="flex items-center justify-between ">
+                    <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-2">
                         <span className="text-sm text-gray-500">From</span>
                         {tour.originalPrice && (
-                          <span className="text-[18px] font-[500] text-[#FAA523] line-through">
+                          <span className="text-sm text-[#FAA523] line-through">
                             {formatPrice(tour.originalPrice)}
                           </span>
                         )}
-                        <span className="text-[28px] font-[500] text-[#003459]">
+                        <span className="text-2xl font-bold text-[#003459]">
                           {formatPrice(tour.price)}
                         </span>
                       </div>

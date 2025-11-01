@@ -1,222 +1,228 @@
 import Layout from '@/components/layout/Layout';
-import ContactForm from '@/components/contact/ContactForm';
-import { MapPin, Phone, Mail, Clock, MessageCircle } from 'lucide-react';
+import { MapPin, Phone, Mail, MessageCircle } from 'lucide-react';
+import Image from 'next/image'; // Import Next.js Image component
+
+// LightContactForm component remains the same
+const LightContactForm = () => (
+    <form className="space-y-6">
+        {/* ... (First name, Email, Phone number, Message, Privacy Policy Checkbox, Send Message Button code remains the same) ... */}
+        {/* First name */}
+        <div>
+            <label htmlFor="first-name" className="block text-sm font-medium text-gray-700">
+                First name
+            </label>
+            <input
+                type="text"
+                id="first-name"
+                placeholder="First name"
+                className="mt-1 block w-full px-4 py-3 rounded-md border border-gray-300 bg-white text-gray-900 shadow-sm focus:border-red-500 focus:ring-red-500 placeholder-gray-400"
+            />
+        </div>
+
+        {/* Email */}
+        <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                Email
+            </label>
+            <input
+                type="email"
+                id="email"
+                placeholder="you@company.com"
+                className="mt-1 block w-full px-4 py-3 rounded-md border border-gray-300 bg-white text-gray-900 shadow-sm focus:border-red-500 focus:ring-red-500 placeholder-gray-400"
+            />
+        </div>
+
+        {/* Phone number */}
+        <div>
+            <label htmlFor="phone-number" className="block text-sm font-medium text-gray-700">
+                Phone number
+            </label>
+            <div className="mt-1 flex rounded-md shadow-sm">
+                <select
+                    id="country-code"
+                    className="pl-4 pr-1 py-3 border border-gray-300 bg-gray-50 text-gray-900 rounded-l-md focus:border-red-500 focus:ring-red-500"
+                >
+                    <option>US</option>
+                    <option>DR</option>
+                    {/* Add other options */}
+                </select>
+                <input
+                    type="tel"
+                    id="phone-number"
+                    placeholder="+1 (555) 000-0000"
+                    className="flex-1 block w-full px-4 py-3 rounded-none rounded-r-md border border-gray-300 bg-white text-gray-900 shadow-sm focus:border-red-500 focus:ring-red-500 placeholder-gray-400"
+                />
+            </div>
+        </div>
+
+        {/* Message */}
+        <div>
+            <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+                Message
+            </label>
+            <textarea
+                id="message"
+                className="mt-1 block w-full px-4 py-3 rounded-md border border-gray-300 bg-white text-gray-900 shadow-sm focus:border-red-500 focus:ring-red-500 placeholder-gray-400"
+            ></textarea>
+        </div>
+
+        {/* Privacy Policy Checkbox */}
+        <div className="flex items-start">
+            <div className="flex items-center h-5">
+                <input
+                    id="privacy-policy"
+                    name="privacy-policy"
+                    type="checkbox"
+                    className="h-4 w-4 text-red-600 border-gray-300 rounded bg-white focus:ring-red-500"
+                />
+            </div>
+            <div className="ml-3 text-sm">
+                <label htmlFor="privacy-policy" className="font-medium text-gray-600">
+                    You agree to our friendly{' '}
+                    <a href="#" className="text-red-600 hover:text-red-700">
+                        privacy policy.
+                    </a>
+                </label>
+            </div>
+        </div>
+
+        {/* Send Message Button */}
+        <div>
+            <button
+                type="submit"
+                className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-150"
+            >
+                Send message
+            </button>
+        </div>
+    </form>
+);
+
 
 export default function ContactPage() {
-  const contactInfo = [
-    {
-      icon: Phone,
-      title: 'Call us on',
-      details: ['+1 (829) 618 5692'],
-      description: 'Available 24/7 for emergencies'
-    },
-    {
-      icon: MessageCircle,
-      title: 'Book On Whatsapp',
-      details: ['+1 (829) 618 5692'],
-      description: 'Quick booking and instant responses'
-    },
-    {
-      icon: Mail,
-      title: 'Mail us on',
-      details: ['reservas@toursrepublica.com'],
-      description: 'We respond within 2 hours'
-    },
-    {
-      icon: MapPin,
-      title: 'Visit our office',
-      details: ['Local 14-B, Plaza Roque Bávaro', '23301, Dominican Republic'],
-      description: 'Open Monday to Sunday'
-    }
-  ];
+    const contactInfo = [
+        // ... (contactInfo array remains the same) ...
+        {
+            icon: Phone,
+            title: 'Call us on',
+            details: ['+1 (829) 618 5692'],
+            description: 'Available 24/7 for emergencies'
+        },
+        {
+            icon: MessageCircle,
+            title: 'Book On Whatsapp',
+            details: ['+1 (829) 618 5692'],
+            description: 'Quick booking and instant responses'
+        },
+        {
+            icon: Mail,
+            title: 'Mail us on',
+            details: ['reservas@toursrepublica.com'],
+            description: 'We respond within 2 hours'
+        },
+        {
+            icon: MapPin,
+            title: 'Visit our office',
+            details: ['Local 14-B, Plaza Roque Bávaro', '23301, Dominican Republic'],
+            description: 'Open Monday to Sunday'
+        }
+    ];
 
-  const officeHours = [
-    { day: 'Monday - Friday', hours: '8:00 AM - 8:00 PM' },
-    { day: 'Saturday', hours: '9:00 AM - 6:00 PM' },
-    { day: 'Sunday', hours: '10:00 AM - 4:00 PM' },
-  ];
+    const address = 'Local 14-B, Plaza Roque\nPunta Cana, Dominican Republic 23301';
+    const phone = '8296185692';
+    const email = 'info@toursrepublica.com';
 
-  const faqs = [
-    {
-      question: 'How far in advance should I book?',
-      answer: 'We recommend booking at least 24-48 hours in advance, especially during peak season (December-April). However, we often have same-day availability.'
-    },
-    {
-      question: 'What is your cancellation policy?',
-      answer: 'Free cancellation up to 24 hours before your tour. For cancellations within 24 hours, a 50% fee applies. No-shows are non-refundable.'
-    },
-    {
-      question: 'Do you provide hotel pickup?',
-      answer: 'Yes! We provide complimentary pickup from most hotels in Punta Cana, Bavaro, and surrounding areas. Pickup times are confirmed 24 hours before your tour.'
-    },
-    {
-      question: 'What should I bring on tours?',
-      answer: 'Comfortable clothes, sunscreen, hat, camera, and cash for souvenirs. Specific items vary by tour - we\'ll send you a detailed packing list after booking.'
-    },
-    {
-      question: 'Are your tours suitable for children?',
-      answer: 'Most of our tours are family-friendly! Age restrictions vary by activity. Children under 3 are usually free, and we offer discounts for kids 3-12.'
-    },
-    {
-      question: 'What payment methods do you accept?',
-      answer: 'We accept cash (USD, EUR, DOP), PayPal, and major credit cards. You can pay online when booking or in cash on the day of your tour.'
-    }
-  ];
+    return (
+        <Layout>
+            <div className=" bg-gray-50"> {/* Overall background for the page */}
+                {/* Main Contact Section - White Background */}
+                <section className="bg-white py-12 md:py-32">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        
+                        {/* Two-Column Layout for Text and Form - ADDED h-full and items-stretch to align height */}
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-stretch h-full">
+                            
+                            {/* Left Column: Get in touch & Contact Details */}
+                            <div className="space-y-10">
+                                {/* Top Illustration Area - Adjusted to be smaller and align with the top of the form */}
+                                <div className="mb-8 text-center md:text-left">
+                                    {/* Removed max-w-sm/md and used fixed w-40 h-auto for a smaller image */}
+                                    <div className="w-40 h-auto mx-auto md:mx-0"> 
+                                        {/* REMOVED layout="responsive" to better control size */}
+                                        <Image 
+                                            src="/images/home/mail-contact.png" 
+                                            alt="Get in Touch Illustration"
+                                            width={160} // Fixed width
+                                            height={160} // Fixed height
+                                        />
+                                    </div>
+                                </div>
+                                
+                                <div className="space-y-4">
+                                    <h1 className="text-[36px] lg:text-5xl font-[500] text-gray-900">
+                                        Get in touch
+                                    </h1>
+                                    <p className="text-gray-600 text-lg max-w-md">
+                                        We'd love to hear from you. Please fill out this form.
+                                    </p>
+                                </div>
 
-  return (
-    <Layout>
-      <div className="min-h-screen bg-gray-50">
-        {/* Hero Section */}
-        <section className="relative bg-gradient-to-r from-secondary-800 to-secondary-700 text-white py-16">
-          <div className="container-custom">
-            <div className="text-center">
-              <h1 className="text-4xl lg:text-5xl font-bold mb-4">
-                Get in Touch
-              </h1>
-              <p className="text-xl text-white/90 max-w-2xl mx-auto">
-                Have questions about our tours? Need help planning your Dominican Republic adventure? 
-                We're here to help make your experience unforgettable.
-              </p>
-            </div>
-          </div>
-        </section>
+                                {/* Contact Information (matching the first image's left column) */}
+                                <div className="space-y-6">
+                                    
+                                    {/* Address */}
+                                    <div className="flex items-start space-x-3">
+                                        <MapPin className="w-6 h-6 text-red-600 mt-1 flex-shrink-0" />
+                                        <address className="text-gray-700 not-italic leading-relaxed">
+                                            {address.split('\n').map((line, index) => (
+                                                <p key={index}>{line}</p>
+                                            ))}
+                                        </address>
+                                    </div>
+                                    
+                                    {/* Phone */}
+                                    <div className="flex items-center space-x-3">
+                                        <Phone className="w-6 h-6 text-red-600 flex-shrink-0" />
+                                        <p className="text-gray-700">{`+1 ${phone}`}</p>
+                                    </div>
+                                    
+                                    {/* Email */}
+                                    <div className="flex items-center space-x-3">
+                                        <Mail className="w-6 h-6 text-red-600 flex-shrink-0" />
+                                        <p className="text-gray-700">{email}</p>
+                                    </div>
 
-        {/* Contact Information */}
-        <section className="py-16 bg-white">
-          <div className="container-custom">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {contactInfo.map((info, index) => {
-                const Icon = info.icon;
-                return (
-                  <div key={index} className="text-center">
-                    <div className="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Icon className="w-8 h-8 text-primary-500" />
-                    </div>
-                    <h3 className="text-lg font-bold text-gray-800 mb-2">{info.title}</h3>
-                    <div className="space-y-1 mb-2">
-                      {info.details.map((detail, idx) => (
-                        <p key={idx} className="text-gray-800 font-medium">{detail}</p>
-                      ))}
-                    </div>
-                    <p className="text-sm text-gray-600">{info.description}</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
+                                </div>
+                            </div>
 
-        {/* Contact Form and Map */}
-        <section className="py-16">
-          <div className="container-custom">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              {/* Contact Form */}
-              <div>
-                <h2 className="text-3xl font-bold text-gray-800 mb-6">Send us a Message</h2>
-                <ContactForm />
-              </div>
+                            {/* Right Column: Contact Form - Stretches to fill height */}
+                            <div className="lg:pl-8">
+                                <h2 className="text-[16px] font-[500] text-[#6FCCDC] mb-6">Contact us</h2>
+                                <LightContactForm />
+                            </div>
 
-              {/* Map and Office Hours */}
-              <div className="space-y-8">
-                {/* Map Placeholder */}
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-800 mb-4">Find Our Office</h3>
-                  <div className="bg-gradient-to-br from-primary-100 to-secondary-100 rounded-2xl h-64 flex items-center justify-center">
-                    <div className="text-center">
-                      <MapPin className="w-12 h-12 text-primary-500 mx-auto mb-4" />
-                      <p className="text-gray-700 font-medium">Interactive Map</p>
-                      <p className="text-sm text-gray-600">Plaza Roque Bávaro, Punta Cana</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Office Hours */}
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-                    <Clock className="w-6 h-6 mr-2" />
-                    Office Hours
-                  </h3>
-                  <div className="bg-white rounded-2xl shadow-lg p-6">
-                    <div className="space-y-4">
-                      {officeHours.map((schedule, index) => (
-                        <div key={index} className="flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0">
-                          <span className="font-medium text-gray-800">{schedule.day}</span>
-                          <span className="text-primary-500 font-semibold">{schedule.hours}</span>
                         </div>
-                      ))}
                     </div>
-                    <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-                      <p className="text-sm text-green-800">
-                        <strong>Emergency Support:</strong> Available 24/7 for guests on active tours
-                      </p>
-                    </div>
-                  </div>
+                </section>
+
+                
+            </div>
+
+            {/* Google Maps Image Section (outside of the overall bg-gray-50 div, which is fine) */}
+            <section className=" bg-gray-100"> {/* Light gray background for map section */}
+                <div className=" px-0 sm:px-0 lg:px-0"> {/* Full width map */}
+                    <Image
+                        src="/images/home/Google-Maps-contact.png"
+                        alt="Google Map of contact location"
+                        width={1600}
+                        height={600}
+                        layout="responsive"
+                        objectFit="cover"
+                        className="w-full h-auto"
+                    />
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
+            </section>
 
-        {/* FAQ Section */}
-        <section className="py-16 bg-white">
-          <div className="container-custom">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">Frequently Asked Questions</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                Find quick answers to common questions about our tours and services.
-              </p>
-            </div>
-            <div className="max-w-4xl mx-auto">
-              <div className="space-y-6">
-                {faqs.map((faq, index) => (
-                  <div key={index} className="bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-colors duration-200">
-                    <h3 className="text-lg font-bold text-gray-800 mb-3">{faq.question}</h3>
-                    <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Emergency Contact */}
-        <section className="py-16 bg-red-50 border-t border-red-100">
-          <div className="container-custom">
-            <div className="text-center">
-              <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Phone className="w-8 h-8 text-red-500" />
-              </div>
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">Emergency Contact</h2>
-              <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-                If you're currently on a tour and need immediate assistance, please call our emergency hotline.
-              </p>
-              <div className="bg-white rounded-2xl shadow-lg p-6 max-w-md mx-auto">
-                <p className="text-2xl font-bold text-red-500 mb-2">+1 (829) 618 5692</p>
-                <p className="text-sm text-gray-600">Available 24/7 for tour emergencies</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Call to Action */}
-        <section className="py-16 bg-gradient-to-r from-primary-500 to-secondary-500 text-white">
-          <div className="container-custom text-center">
-            <h2 className="text-3xl font-bold mb-4">Ready to Book Your Adventure?</h2>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Don't wait! Book your Dominican Republic experience today and create memories that will last a lifetime.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-primary-500 hover:bg-gray-100 font-semibold px-8 py-3 rounded-lg transition-colors duration-200">
-                Browse Tours
-              </button>
-              <button className="border border-white text-white hover:bg-white hover:text-primary-500 font-semibold px-8 py-3 rounded-lg transition-colors duration-200">
-                WhatsApp Us
-              </button>
-            </div>
-          </div>
-        </section>
-      </div>
-    </Layout>
-  );
+        </Layout>
+    );
 }
-

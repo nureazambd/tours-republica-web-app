@@ -6,6 +6,7 @@ import TourHeroSection from "@/components/home/TourHeroSection";
 import TourFilter from "@/components/tours/TourFilter";
 import TourGrid from "@/components/tours/TourGrid";
 import React, { useState } from "react";
+import CategoryLinks from "@/components/tours/CategoryLinks";
 
 // Rename function to reflect its role as client content
 export default function ToursClientContent() {
@@ -36,6 +37,7 @@ export default function ToursClientContent() {
 
                     {/* Tours Grid & Banner */}
                     <div className="lg:w-3/4 space-y-12">
+                    <CategoryLinks />
                         {/* Tours Grid */}
                         <TourGrid filters={filters} setFilters={setFilters} />
 

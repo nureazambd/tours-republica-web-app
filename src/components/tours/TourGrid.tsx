@@ -6,6 +6,7 @@ import React, { useState, useMemo, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Star, MapPin, Clock, Grid, List, Globe } from "lucide-react";
+import Image from 'next/image'
 
 // Define the structure of a Tour object expected from the API
 interface Tour {
@@ -155,7 +156,7 @@ const TourGrid = ({ filters, setFilters }: any) => {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
         <div>
           <h2 className="text-2xl font-bold text-gray-800">
-            Tours ({pagination?.totalCount || filteredTours.length})
+            {pagination?.totalCount || filteredTours.length} tours found 
           </h2>
           <p className="text-gray-600">Discover amazing experiences</p>
         </div>
@@ -235,18 +236,44 @@ const TourGrid = ({ filters, setFilters }: any) => {
               <p className="text-gray-500 text-sm mt-1 line-clamp-2">
                 {t.description}
               </p>
-              <div className="flex items-center text-sm text-gray-600 mt-3 space-x-2">
+              {/* <div className="border-t-2 my-4">
+              <div className="flex items-center text-sm  text-gray-600 mt-3 space-x-2">
                 <MapPin className="w-4 h-4" />
                 <span>Pickup: {t.pickup}</span>
+                <div>hello</div>
               </div>
-              <div className="flex items-center text-sm text-gray-600 mt-2">
+              </div> */}
+
+              <div className="flex items-center justify-between border-t-2 my-4 text-[13px] font-[400] text-gray-500">
+                
+                <div className="flex items-center pt-4 space-x-1">
+                  <MapPin className="w-4 h-4" />
+                  <span>Pickup: {t.pickup}</span>
+                </div>
+                
+                <div className=''> {/* No changes needed here */}
+                  <Image
+                    src={'/images/home/featured/car-man-food.png'}
+                    width={70}
+                    height={50}
+                    alt="Picture of the author"
+                    className="w-full h-4 mt-4"
+                  />
+                </div>
+              
+              </div>
+
+              <div className="border-t-2 my-4">
+              <div className="flex items-center text-[13px] font-[400] text-gray-600 mt-2">
                 <Clock className="w-4 h-4 mr-2" />
                 <span>{t.duration}</span>
               </div>
-              <div className="flex justify-between items-center mt-4">
-                <div>
-                  <p className="text-gray-500 text-sm line-through">${t.originalPrice}</p>
-                  <p className="text-xl font-bold text-gray-800">
+              </div>
+              <div className="border-t-2 my-4">
+              <div className="flex justify-between items-center  mt-6">
+                <div className="">
+                  <p className="text-[#FAA523] text-[18px] font-[500] line-through">${t.originalPrice}</p>
+                  <p className="text-[28px] font-[500] text-[#003459]">
                     ${t.price} <span className="text-sm text-gray-500">pp</span>
                   </p>
                 </div>
@@ -257,6 +284,7 @@ const TourGrid = ({ filters, setFilters }: any) => {
                 >
                   Book Now
                 </Link>
+              </div>
               </div>
             </div>
           </div>

@@ -12,17 +12,17 @@ const TransportSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="order-2 lg:order-1"> {/* Reordered content to appear first on small screens, second on large */}
-            <h2 className="text-3xl lg:text-5xl font-bold text-gray-800 mb-6 leading-tight"> {/* Adjusted font size and line height */}
+            <h2 className="text-[32px] md:text-[40px] font-[500] text-[#111318] mb-6 leading-tight"> {/* Adjusted font size and line height */}
               Need transport? We handle airport transfers.
             </h2>
-            <p className="text-gray-600 text-lg mb-8 leading-relaxed max-w-lg"> {/* Added max-w-lg for text width */}
+            <p className="text-[#4E5255] text-[16px] font-[400] mb-8 leading-relaxed max-w-lg"> {/* Added max-w-lg for text width */}
               Arrive and depart in comfort with our reliable, hassle-free private airport transfers.
             </p>
 
             {/* Removed the features section as it's not in the design image */}
 
             <Link href="/contact"> {/* Changed link to '/contact-us' to match button text */}
-              <button className="bg-pink-600 hover:bg-pink-700 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-200 flex items-center space-x-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1"> {/* Updated button color and roundedness */}
+              <button className="bg-[#EE2552] hover:bg-pink-700 text-[#FFFFFF] font-[500] text-[14px] px-8 py-4 rounded-lg transition-all duration-200 flex items-center space-x-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1"> {/* Updated button color and roundedness */}
                 <span>Contact us</span>
                 <ArrowRight className="w-5 h-5 ml-2" /> {/* Added ml-2 for spacing */}
               </button>

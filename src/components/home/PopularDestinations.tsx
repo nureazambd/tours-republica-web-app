@@ -1,126 +1,158 @@
 'use client';
 
-import React from 'react';
+import Layout from '@/components/layout/Layout';
+import LocationHeroSection from '@/components/locations/LocationHeroSection';
+import { Star } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image'; // Import the Image component for Next.js
-import { ArrowRight } from 'lucide-react';
+import { useState } from 'react';
 
-const PopularDestinations = () => {
+export default function PopularDestinations() {
   const destinations = [
     {
       id: 1,
       name: 'Santo Domingo',
-      image: '/images/destinations/santo-domingo.png',
+      image: '/images/locations/Santo-Domingo.png',
+      tourCount: 10,
+      rating: 4.7,
       featured: true,
-      description: 'Historic Capital' // Added a description for clarity
     },
     {
       id: 2,
       name: 'Samaná',
-      image: '/images/destinations/samana.png',
-      featured: false
+      image: '/images/locations/Samana.png',
+      tourCount: 8,
+      rating: 4.6,
+      featured: false,
     },
     {
       id: 3,
-      name: 'Punta Cana',
-      image: '/images/destinations/punta-cana.png',
-      featured: false
+      name: 'Puerto Plata',
+      image: '/images/locations/Puerto-Plata.png',
+      tourCount: 9,
+      rating: 4.5,
+      featured: false,
     },
     {
       id: 4,
-      name: 'Puerto Plata',
-      image: '/images/destinations/puerto-plata.png',
-      featured: false
+      name: 'Punta Cana',
+      image: '/images/locations/Punta-Cana.png',
+      tourCount: 15,
+      rating: 4.9,
+      featured: true,
     },
     {
       id: 5,
       name: 'Bayahibe',
-      image: '/images/destinations/bayahibe.png',
-      featured: false
-    }
+      image: '/images/locations/Bayahibe.png',
+      tourCount: 7,
+      rating: 4.6,
+      featured: false,
+    },
+    {
+      id: 6,
+      name: '',
+      image: '/images/locations/All-Destinations.png',
+      tourCount: 0,
+    },
   ];
 
+  // ✅ Default active hover on the first card
+  const [activeCard, setActiveCard] = useState(destinations[0].id);
+
   return (
-    <section className="py-16 lg:py-24 bg-gray-50">
+    <div className="bg-gray-50">
       <div className="container-custom mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+        {/* Section Title */}
+        <div className="text-left pt-20 pl-4 mb-12">
+          <h2 className="text-[32px] lg:text-[40px] font-[500] text-[#191919]">
             Popular Destinations
           </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Discover the most beautiful places in the Dominican Republic
-          </p>
+          
         </div>
 
         {/* Destinations Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {/* Featured Destination (Santo Domingo) - Spanning 2 columns and 2 rows on large screens */}
-          <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2
-                      col-span-1 sm:col-span-2 row-span-2 h-[450px] sm:h-auto">
-            {/* <Link href={`/locations/${destinations[0].name.toLowerCase().replace(' ', '-')}`}> */}
-            <Link href={`/tours?location=${destinations[0].name.replace(' ', '+')}`}>
-
-              <Image 
-                src={destinations[0].image} 
-                alt={destinations[0].name} 
-                layout="fill" 
-                objectFit="cover" 
-                className="group-hover:scale-110 transition-transform duration-500" 
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6 text-white">
-                <h3 className="text-2xl lg:text-3xl font-bold mb-2">
-                  {destinations[0].name}
-                </h3>
-                <div className="flex items-center justify-between">
-                  <span className="text-white/90">{destinations[0].description}</span>
-                  <div className="bg-primary-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-                    Featured
-                  </div>
-                </div>
-              </div>
-            </Link>
-          </div>
-
-          {/* Other Destinations (the rest of the array) */}
-          {destinations.slice(1).map((destination) => (
-            <div 
-              key={destination.id} 
-              className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-[200px]"
+        <section className="pb-16">
+          <div className="container-custom">
+            <div
+              className="
+                grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 
+                gap-8 transition-all duration-[2000ms] ease-[cubic-bezier(0.25,1,0.3,1)]
+              "
             >
-              <Link href={`/tours?location=${destination.name.replace(' ', '+')}`}>
-                <Image
-                  src={destination.image}
-                  alt={destination.name}
-                  layout="fill"
-                  objectFit="cover"
-                  className="group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <h3 className="text-xl font-bold mb-1">
-                    {destination.name}
-                  </h3>
-                  <span className="text-white/90 text-sm">Explore Now</span>
-                </div>
-              </Link>
+              {destinations.map((destination) => {
+                const isAlwaysActive = destination.id === 6; // ✅ last card always active
+                const isHovered = activeCard === destination.id;
+
+                // ✅ Set different link for last card
+                const destinationLink = isAlwaysActive
+                  ? '/locations'
+                  : {
+                      pathname: '/tours',
+                      query: { location: destination.name },
+                    };
+
+                return (
+                  <Link
+                    key={destination.id}
+                    href={destinationLink}
+                    onMouseEnter={() =>
+                      !isAlwaysActive && setActiveCard(destination.id)
+                    }
+                    onMouseLeave={() =>
+                      !isAlwaysActive && setActiveCard(destinations[0].id)
+                    }
+                    className={`
+                      group relative rounded-2xl overflow-hidden shadow-lg
+                      transform transition-all duration-[2000ms] ease-[cubic-bezier(0.25,1,0.3,1)] will-change-transform
+                      ${
+                        isAlwaysActive || isHovered
+                          ? 'lg:col-span-2 scale-[1.03] shadow-2xl z-10'
+                          : 'lg:col-span-1 scale-[0.97] opacity-90'
+                      }
+                    `}
+                  >
+                    {/* Image Section */}
+                    <div className="relative h-64 overflow-hidden">
+                      <img
+                        src={destination.image}
+                        alt={destination.name}
+                        className={`
+                          w-full h-full object-cover will-change-transform
+                          transition-transform duration-[2000ms] ease-[cubic-bezier(0.25,1,0.3,1)]
+                          ${isAlwaysActive || isHovered ? 'scale-110' : 'scale-100'}
+                        `}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+
+                      {/* Destination Name */}
+                      <div className="absolute bottom-4 left-4 text-white text-lg font-semibold drop-shadow-md">
+                        {destination.name}
+                      </div>
+
+                      {/* Featured Badge */}
+                      {destination.featured && (
+                        <div className="absolute top-4 left-4 bg-primary-500 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-md">
+                          Featured
+                        </div>
+                      )}
+
+                      {/* Rating (⭐ Hidden for id 6) */}
+                      {!isAlwaysActive && (
+                        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-lg flex items-center space-x-1 shadow-md">
+                          <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                          <span className="text-sm font-medium text-gray-700">
+                            {destination.rating}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
-          ))}
-        </div>
-
-        {/* All Destinations Button */}
-        <div className="text-center">
-          <Link href="/locations">
-            <button className="bg-primary-500 hover:bg-primary-600 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-200 flex items-center space-x-2 mx-auto shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-              <span>All Destinations</span>
-              <ArrowRight className="w-5 h-5" />
-            </button>
-          </Link>
-        </div>
+          </div>
+        </section>
       </div>
-    </section>
+    </div>
   );
-};
-
-export default PopularDestinations;
+}

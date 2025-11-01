@@ -73,7 +73,7 @@ export default function LocationsPage() {
             <div
               className="
                 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 
-                gap-8 transition-all duration-[1800ms] ease-[cubic-bezier(0.25,1,0.3,1)]
+                gap-8 transition-all duration-500
               "
             >
               {destinations.map((destination) => (
@@ -87,10 +87,10 @@ export default function LocationsPage() {
                   onMouseLeave={() => setActiveCard(destinations[0].id)} // Reset to first on leave
                   className={`
                     group relative rounded-2xl overflow-hidden shadow-lg
-                    transform transition-all duration-[1800ms] ease-[cubic-bezier(0.25,1,0.3,1)] will-change-transform
+                    transform transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]
                     ${activeCard === destination.id
-                      ? 'lg:col-span-2 scale-[1.03] shadow-2xl z-10'
-                      : 'lg:col-span-1 scale-[0.97] opacity-90'}
+                      ? 'lg:col-span-2 scale-[1.02] shadow-2xl z-10'
+                      : 'lg:col-span-1 scale-[0.98] opacity-90'}
                   `}
                 >
                   {/* Image Section */}
@@ -99,8 +99,8 @@ export default function LocationsPage() {
                       src={destination.image}
                       alt={destination.name}
                       className={`
-                        w-full h-full object-cover will-change-transform
-                        transition-transform duration-[1800ms] ease-[cubic-bezier(0.25,1,0.3,1)]
+                        w-full h-full object-cover 
+                        transition-transform duration-1000 ease-[cubic-bezier(0.4,0,0.2,1)]
                         ${activeCard === destination.id ? 'scale-110' : 'scale-100'}
                       `}
                     />
@@ -133,7 +133,24 @@ export default function LocationsPage() {
         </section>
 
         {/* Call to Action */}
-       
+        <section className="py-16 bg-white">
+          <div className="container-custom text-center">
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">
+              Can’t find what you’re looking for?
+            </h2>
+            <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+              Our travel experts can help you plan the perfect Dominican Republic experience tailored to your preferences.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button className="bg-primary-500 hover:bg-primary-600 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg">
+                Contact Us
+              </button>
+              <button className="border border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg">
+                View All Tours
+              </button>
+            </div>
+          </div>
+        </section>
       </div>
     </Layout>
   );

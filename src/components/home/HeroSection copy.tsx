@@ -3,27 +3,15 @@
 import React, { useState } from 'react';
 import { Search, MapPin, Calendar } from 'lucide-react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 
 const HeroSection = () => {
- 
-  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedLocation, setSelectedLocation] = useState('');
 
   const handleSearch = (e: React.FormEvent) => {
-  e.preventDefault();
-
-  // Build query string manually to avoid encoding +
-  let query = '/tours?';
-
-  if (selectedLocation) query += `location=${selectedLocation}`;
-  if (searchQuery) {
-    query += (selectedLocation ? '&' : '') + `keyword=${searchQuery}`;
-  }
-
-  router.push(query);
-};
+    e.preventDefault();
+    console.log('Search:', searchQuery, selectedLocation);
+  };
 
   return (
     <section className="relative h-[720px] bg-gradient-to-br from-blue-200 via-blue-200 to-blue-200 overflow-hidden">
@@ -39,64 +27,61 @@ const HeroSection = () => {
       />
 
       {/* Content */}
-      {/* Content */}
-<div className="relative z-10 container-custom lg:h-[720px] flex items-center px-4">
-  <div className="text-left text-white max-w-4xl">
-    {/* Heading */}
-    <h1 className="text-4xl lg:text-6xl xl:text-6xl font-medium mb-6 leading-tight">
+      <div className="relative z-10 container-custom px-4 py-20 lg:py-32">
+        <div className="text-left text-white max-w-4xl">
+          {/* Heading */}
+           <h1 className="text-4xl lg:text-6xl xl:text-6xl font-medium mb-6 leading-tight">
       Explore the Heart of
       <br />
       <span className="text-accent-400">Santo Domingo</span>
     </h1>
+          
 
-    {/* Search Form */}
-    <div className="bg-white rounded-2xl p-2 lg:p-2 lg:w-[756px] shadow-2xl">
-      <form
-      onSubmit={handleSearch}
-      className="flex flex-col gap-4 md:flex-row items-center"
-    >
-      {/* Keyword Input */}
-      <div className="w-full relative">
-        <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="Enter your keyword"
-          className="w-full pl-12 pr-4 py-4 border border-gray-300 rounded-xl text-gray-800 text-lg focus:ring-2 focus:ring-primary-500 focus:outline-none"
-        />
+          {/* Search Form */}
+          <div className="bg-white rounded-2xl p-2 lg:p-2 lg:w-[756px]  shadow-2xl">
+            <form
+              onSubmit={handleSearch}
+              className="flex flex-col gap-4 md:flex-row items-center"
+            >
+              {/* Location Input */}
+              <div className="w-full relative">
+                <MapPin className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Where to?"
+                  className="w-full pl-12 pr-4 py-4 border border-gray-300 rounded-xl text-gray-800 text-lg focus:ring-2 focus:ring-primary-500 focus:outline-none"
+                />
+              </div>
+
+              {/* Date Selector */}
+              <div className="w-full  relative">
+                <Calendar className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <select
+                  value={selectedLocation}
+                  onChange={(e) => setSelectedLocation(e.target.value)}
+                  className="w-full pl-12 pr-4 py-4 border border-gray-300 rounded-xl text-gray-800 text-lg focus:ring-2 focus:ring-primary-500 focus:outline-none bg-white"
+                >
+                  <option value="">Select Date</option>
+                  <option value="today">Today</option>
+                  <option value="tomorrow">Tomorrow</option>
+                  <option value="this-week">This Week</option>
+                </select>
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                className="w-full md:w-auto bg-primary-500 hover:bg-primary-600 text-white font-semibold px-8 py-4 rounded-xl transition duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
+              >
+                <Search className="w-5 h-5" />
+                <span>Search</span>
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
-
-      {/* Location Selector */}
-      <div className="w-full relative">
-        <MapPin className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-        <select
-          value={selectedLocation}
-          onChange={(e) => setSelectedLocation(e.target.value)}
-          className="w-full pl-12 pr-4 py-4 border border-gray-300 rounded-xl text-gray-800 text-lg focus:ring-2 focus:ring-primary-500 focus:outline-none bg-white"
-        >
-          <option value="">Select destinations</option>
-          <option value="Santo+Domingo">Santo Domingo</option>
-          <option value="Punta+Cana">Punta Cana</option>
-          <option value="Samaná">Samaná</option>
-          <option value="Puerto+Plata">Puerto Plata</option>
-          <option value="Bayahibe">Bayahibe</option>
-        </select>
-      </div>
-
-      {/* Submit Button */}
-      <button
-        type="submit"
-        className="w-full md:w-auto bg-primary-500 hover:bg-primary-600 text-white font-semibold px-8 py-4 rounded-xl transition duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
-      >
-        <Search className="w-5 h-5" />
-        <span>Search</span>
-      </button>
-    </form>
-    </div>
-  </div>
-</div>
-
 
       {/* Feature Icons */}
       <div className="absolute bottom-0 left-0 w-full h-auto py-4 z-10 bg-white/10 backdrop-blur-md border-t border-white/20">

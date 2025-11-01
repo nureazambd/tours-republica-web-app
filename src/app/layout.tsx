@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Rubik } from "next/font/google";
+import Script from 'next/script';
 import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
 import { BookingProvider } from "@/context/BookingContext";
@@ -64,6 +65,27 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={rubik.variable}>
+      <head>
+        {/* Google Translate script */}
+        <Script
+          id="google-translate-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              function googleTranslateElementInit() {
+                new google.translate.TranslateElement(
+                  { pageLanguage: 'en', includedLanguages: 'en,ar,es,fr,de', autoDisplay: false },
+                  'google_translate_element'
+                );
+              }
+            `,
+          }}
+        />
+        <Script
+          src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+          strategy="afterInteractive"
+        />
+      </head>
       {/* 👇 suppressHydrationWarning prevents extension-injected attrs from breaking hydration */}
       <body className="font-sans" suppressHydrationWarning>
         <AuthProvider>
@@ -71,6 +93,7 @@ export default function RootLayout({
             <TourProvider>
           {/* ✅ Header available on all pages */}
           <main className="min-h-screen">{children}</main>
+          <div id="google_translate_element" style={{ display: 'none' }}></div>
           <Toaster position="top-right" reverseOrder={false} />
           </TourProvider>
           </BookingProvider>

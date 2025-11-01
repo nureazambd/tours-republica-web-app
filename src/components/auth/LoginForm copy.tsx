@@ -36,8 +36,8 @@ const LoginForm = () => {
 
     if (!formData.password) {
       newErrors.password = "Password is required";
-    } else if (formData.password.length < 4) {
-      newErrors.password = "Password must be at least 4 characters";
+    } else if (formData.password.length < 6) {
+      newErrors.password = "Password must be at least 6 characters";
     }
 
     setErrors(newErrors);
@@ -79,18 +79,18 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 ">
+    <form onSubmit={handleSubmit} className="space-y-6">
       {/* Email Field */}
       <div>
-        <label className="block text-[16px] font-[400] text-gray-700 mb-2">
-          {/* <Mail className="w-4 h-4 inline mr-1" /> */}
+        <label className="block text-sm font-medium text-gray-700 mb-2">
+          <Mail className="w-4 h-4 inline mr-1" />
           Email Address
         </label>
         <input
           type="email"
           value={formData.email}
           onChange={(e) => handleInputChange("email", e.target.value)}
-          className={`input ${errors.email ? "border-r focus:ring-r" : ""}`}
+          className={`input ${errors.email ? "border-red-500 focus:ring-red-500" : ""}`}
           placeholder="your.email@example.com"
         />
         {errors.email && (
@@ -100,8 +100,8 @@ const LoginForm = () => {
 
       {/* Password Field */}
       <div>
-        <label className="block text-[16px] font-[400] text-gray-700 mb-2">
-          {/* <Lock className="w-4 h-4 inline mr-1" /> */}
+        <label className="block text-sm font-medium text-gray-700 mb-2">
+          <Lock className="w-4 h-4 inline mr-1" />
           Password
         </label>
         <div className="relative">
@@ -110,7 +110,7 @@ const LoginForm = () => {
             value={formData.password}
             onChange={(e) => handleInputChange("password", e.target.value)}
             className={`input pr-12 ${
-              errors.password ? "border-r focus:ring-r" : ""
+              errors.password ? "border-red-500 focus:ring-red-500" : ""
             }`}
             placeholder="Enter your password"
           />
@@ -131,10 +131,10 @@ const LoginForm = () => {
       <button
         type="submit"
         disabled={isLoading}
-        className={`w-full flex items-center bg-[#EE2552] justify-center space-x-2 py-3 rounded-lg font-semibold transition-all duration-200 ${
+        className={`w-full flex items-center justify-center space-x-2 py-3 rounded-lg font-semibold transition-all duration-200 ${
           isLoading
             ? "bg-gray-400 cursor-not-allowed"
-            : "bg-prima hover:bg-[#EE2552] transform hover:scale-105"
+            : "bg-primary-500 hover:bg-primary-600 transform hover:scale-105"
         } text-white`}
       >
         {isLoading ? (
@@ -144,8 +144,8 @@ const LoginForm = () => {
           </>
         ) : (
           <>
-            {/* <LogIn className="w-5 h-5" /> */}
-            <span className=" font-[500] text-[16px]">Login</span>
+            <LogIn className="w-5 h-5" />
+            <span>Sign In</span>
           </>
         )}
       </button>

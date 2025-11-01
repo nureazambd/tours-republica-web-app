@@ -45,3 +45,53 @@
   }
 }
 
+
+/* Hides the "Original" / "Translate" banner at the top */
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+/* Fixes the gap left at the top of the page */
+body {
+  top: 0px !important;
+}
+/* Note: We use style={{ display: 'none' }} on the JSX element itself for the widget container */
+
+
+/* Hides the "Original" / "Translate" banner at the top */
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+/* Fixes the gap left at the top of the page */
+body {
+  top: 0px !important;
+}
+
+/* [!code focus start]
+--- NEW RULE TO HIDE THE CONTAINER ---
+Ensure the Google Translate element's container is completely invisible 
+and does not affect page layout, but is still accessible to the script.
+This overrides any default padding/margin Google might try to set.
+[!code focus end] */
+.goog-translate-hidden {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
+/* Ensures the hidden element cannot interfere with the layout */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}

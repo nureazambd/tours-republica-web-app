@@ -36,9 +36,7 @@ const TravelStyle = () => {
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
             Travel style
           </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Choose your perfect adventure style and create unforgettable memories
-          </p>
+          
         </div>
 
         {/* Travel Styles Grid */}
@@ -58,12 +56,10 @@ const TravelStyle = () => {
                   
                   {/* Content */}
                   <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-2xl font-bold text-white mb-2">
+                    <h3 className="text-2xl font-bold text-center text-white mb-2">
                       {style.title}
                     </h3>
-                    <p className="text-white/90 text-sm leading-relaxed">
-                      {style.description}
-                    </p>
+                    
                     
                     {/* Hover Arrow */}
                     <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">

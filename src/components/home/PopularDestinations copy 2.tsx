@@ -6,18 +6,18 @@ import { Star } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 
-export default function LocationsPage() {
+export default function PopularDestinations() {
   const destinations = [
+    // {
+    //   id: 1,
+    //   name: 'Dominican Republic',
+    //   image: '/images/locations/Dominican-Republic.png',
+    //   tourCount: 12,
+    //   rating: 4.8,
+    //   featured: true,
+    // },
     {
       id: 1,
-      name: 'Dominican Republic',
-      image: '/images/locations/Dominican-Republic.png',
-      tourCount: 12,
-      rating: 4.8,
-      featured: true,
-    },
-    {
-      id: 2,
       name: 'Santo Domingo',
       image: '/images/locations/Santo-Domingo.png',
       tourCount: 10,
@@ -25,7 +25,7 @@ export default function LocationsPage() {
       featured: true,
     },
     {
-      id: 3,
+      id: 2,
       name: 'Samaná',
       image: '/images/locations/Samana.png',
       tourCount: 8,
@@ -33,7 +33,7 @@ export default function LocationsPage() {
       featured: false,
     },
     {
-      id: 4,
+      id: 3,
       name: 'Puerto Plata',
       image: '/images/locations/Puerto-Plata.png',
       tourCount: 9,
@@ -41,7 +41,7 @@ export default function LocationsPage() {
       featured: false,
     },
     {
-      id: 5,
+      id: 4,
       name: 'Punta Cana',
       image: '/images/locations/Punta-Cana.png',
       tourCount: 15,
@@ -49,9 +49,18 @@ export default function LocationsPage() {
       featured: true,
     },
     {
-      id: 6,
+      id: 5,
       name: 'Bayahibe',
       image: '/images/locations/Bayahibe.png',
+      tourCount: 7,
+      rating: 4.6,
+      featured: false,
+    },
+    // All-Destinations.png
+    {
+      id: 6,
+      name: '',
+      image: '/images/locations/All-Destinations.png',
       tourCount: 7,
       rating: 4.6,
       featured: false,
@@ -60,12 +69,20 @@ export default function LocationsPage() {
 
   // ✅ Default active hover on the first card
   const [activeCard, setActiveCard] = useState(destinations[0].id);
+  const [activeCardLast, setActiveCardLast] = useState(destinations[5].id);
 
   return (
-    <Layout>
-      <div className="min-h-screen bg-gray-50">
-        {/* Hero Section */}
-        <LocationHeroSection />
+
+    <div className=" bg-gray-50">
+      <div className="container-custom mx-auto px-4">
+        <div className="text-left pt-20 pl-4">
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 ">
+            Popular Destinations
+          </h2>
+          <p className="text-gray-600 text-lg text-left  mx-auto">
+            Discover the most beautiful places in the Dominican Republic
+          </p>
+        </div>
 
         {/* Destinations Grid */}
         <section className="py-16">
@@ -88,7 +105,7 @@ export default function LocationsPage() {
                   className={`
                     group relative rounded-2xl overflow-hidden shadow-lg
                     transform transition-all duration-[1800ms] ease-[cubic-bezier(0.25,1,0.3,1)] will-change-transform
-                    ${activeCard === destination.id
+                    ${activeCard === destination.id 
                       ? 'lg:col-span-2 scale-[1.03] shadow-2xl z-10'
                       : 'lg:col-span-1 scale-[0.97] opacity-90'}
                   `}
@@ -131,10 +148,10 @@ export default function LocationsPage() {
             </div>
           </div>
         </section>
-
-        {/* Call to Action */}
-       
       </div>
-    </Layout>
+
+
+    </div>
+
   );
 }

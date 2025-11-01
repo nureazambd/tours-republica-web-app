@@ -10,10 +10,10 @@ export default function AirportTransferBanner() {
         <div className="bg-white rounded-2xl shadow-md flex flex-col lg:flex-row items-center justify-between gap-8 p-8">
           {/* --- Left Text Section --- */}
           <div className="flex-1">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-[32px] md:text-[40px] font-[500] text-[#111318] mb-4">
               Need transport? We handle airport transfers.
             </h2>
-            <p className="text-gray-600 text-lg mb-6 max-w-xl">
+            <p className="text-[#4E5255] text-[16px] font-[400] mb-6 max-w-xl">
               Arrive and depart in comfort with our reliable, hassle-free private
               airport transfers.
             </p>
