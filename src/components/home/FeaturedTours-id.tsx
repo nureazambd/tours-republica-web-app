@@ -8,7 +8,7 @@ import Image from 'next/image'
 const FeaturedTours = () => {
   const tours = [
     {
-      id: '68e9e2e4f69da497c573b2a2',
+      id: '6907b35cfaf60167825d5a1e',
       title: 'Aventura En Buggys',
       description: 'Explore the highlights of Punta Cana in a thrilling half-day off-road dune buggy..',
       price: 50,
@@ -24,7 +24,7 @@ const FeaturedTours = () => {
       featured: true
     },
     {
-      id: '68e9e2e4f69da497c573b2a5',
+      id: '6907b35cfaf60167825d5a21',
       title: 'Santo Domingo City Tour',
       description: 'Explore the highlights of Punta Cana in a thrilling half-day off-road dune buggy..',
       price: 50,
@@ -40,7 +40,7 @@ const FeaturedTours = () => {
       featured: true
     },
     {
-      id: '68e9e2e4f69da497c573b2a7',
+      id: '6907b35cfaf60167825d5a23',
       title: 'Saona Island Day Trip Lunch',
       description: 'Explore the highlights of Punta Cana in a thrilling half-day off-road dune buggy..',
       price: 50,
