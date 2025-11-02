@@ -24,7 +24,7 @@ import {
   Book, Accessibility, Leaf, ChevronDown,
   Quote, Check, DollarSign, X, Shield
 } from 'lucide-react';
-import FeaturedTours from '@/components/home/FeaturedTours-id';
+import FeaturedTours from '@/components/home/FeaturedTours';
 
 // --- Type Definitions ---
 
@@ -1208,10 +1208,176 @@ export default function TourDetailsPage() {
                   Discover Additional Options
                 </h2>
 
-                <div className="grid  gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
 
                     
-                 <FeaturedTours/>
+                  {/* Tour Card 1: Aventura En Buggys */}
+                  <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    {/* Image Area */}
+                    <div className="relative">
+                      <img src="https://oaqvxfczgmjzupugrrzz.supabase.co/storage/v1/object/public/images/buggy-tour.jpg" alt="Aventura En Buggys" className="w-full h-56 object-cover" />
+                      {/* Sale Badge */}
+                      <span className="absolute top-3 left-3 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full">
+                        30% OFF
+                      </span>
+                      {/* Category Label */}
+                      <span className="absolute bottom-3 right-3 bg-black bg-opacity-50 text-white text-xs font-medium px-2 py-1 rounded-full">
+                        Adventure
+                      </span>
+                    </div>
+
+                    {/* Content Area */}
+                    <div className="p-4">
+                      <div className="flex items-center text-sm text-gray-600 mb-2">
+                        <Star className="w-4 h-4 fill-yellow-500 mr-1" />
+                        <span className="font-semibold text-gray-900 mr-1">4.4</span>
+                        <span className="text-gray-500">(50 Reviews)</span>
+                      </div>
+
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">Aventura En Buggys</h3>
+
+                      <p className="text-gray-600 text-sm mb-3 line-clamp-2">
+                        The local guides were incredible! they showed us hidden gems we would never found on our own.
+                      </p>
+
+                      <hr className="my-3 border-gray-100" />
+
+                      {/* Details and Price */}
+                      <div className="flex justify-between items-center text-sm mb-4">
+                        <div className="flex items-center text-gray-600">
+                          <MapPin className="w-4 h-4 mr-1 text-gray-500" />
+                          <span className="text-xs">Pickup: Punta Cana</span>
+                        </div>
+                        <div className="flex items-center text-gray-600">
+                          <Clock className="w-4 h-4 mr-1 text-gray-500" />
+                          <span className="text-xs">Everyday (9am / 11am / 3pm)</span>
+                        </div>
+                      </div>
+
+                      <div className="flex justify-between items-center">
+                        <div>
+                          <span className="text-xs text-gray-500 mr-2">From</span>
+                          <span className="text-2xl font-bold text-gray-900 mr-2">$50</span>
+                          <span className="text-base line-through text-red-500">$75</span>
+                        </div>
+                        <button className="bg-pink-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-pink-700 transition duration-150">
+                          Book Now
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Tour Card 2: Santo Domingo City Tour */}
+                  <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    {/* Image Area */}
+                    <div className="relative">
+                      <img src="https://oaqvxfczgmjzupugrrzz.supabase.co/storage/v1/object/public/images/colonial-tour.jpg" alt="Santo Domingo City Tour" className="w-full h-56 object-cover" />
+                      {/* Sale Badge */}
+                      <span className="absolute top-3 left-3 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full">
+                        30% OFF
+                      </span>
+                      {/* Category Label */}
+                      <span className="absolute bottom-3 right-3 bg-black bg-opacity-50 text-white text-xs font-medium px-2 py-1 rounded-full">
+                        Outdoor Activities
+                      </span>
+                    </div>
+
+                    {/* Content Area */}
+                    <div className="p-4">
+                      <div className="flex items-center text-sm text-gray-600 mb-2">
+                        <Star className="w-4 h-4 fill-yellow-500 mr-1" />
+                        <span className="font-semibold text-gray-900 mr-1">4.4</span>
+                        <span className="text-gray-500">(50 Reviews)</span>
+                      </div>
+
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">Santo Domingo City Tour</h3>
+
+                      <p className="text-gray-600 text-sm mb-3 line-clamp-2">
+                        The local guides were incredible! they showed us hidden gems we would never found on our own.
+                      </p>
+
+                      <hr className="my-3 border-gray-100" />
+
+                      {/* Details and Price */}
+                      <div className="flex justify-between items-center text-sm mb-4">
+                        <div className="flex items-center text-gray-600">
+                          <MapPin className="w-4 h-4 mr-1 text-gray-500" />
+                          <span className="text-xs">Pickup: Punta Cana</span>
+                        </div>
+                        <div className="flex items-center text-gray-600">
+                          <Clock className="w-4 h-4 mr-1 text-gray-500" />
+                          <span className="text-xs">Everyday (8am / 11am / 3pm)</span>
+                        </div>
+                      </div>
+
+                      <div className="flex justify-between items-center">
+                        <div>
+                          <span className="text-xs text-gray-500 mr-2">From</span>
+                          <span className="text-2xl font-bold text-gray-900 mr-2">$50</span>
+                          <span className="text-base line-through text-red-500">$75</span>
+                        </div>
+                        <button className="bg-pink-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-pink-700 transition duration-150">
+                          Book Now
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Tour Card 3: Saona Island Day Trip Lunch... */}
+                  <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    {/* Image Area */}
+                    <div className="relative">
+                      <img src="https://oaqvxfczgmjzupugrrzz.supabase.co/storage/v1/object/public/images/saona-island.jpg" alt="Saona Island" className="w-full h-56 object-cover" />
+                      {/* Sale Badge */}
+                      <span className="absolute top-3 left-3 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full">
+                        30% OFF
+                      </span>
+                      {/* Category Label */}
+                      <span className="absolute bottom-3 right-3 bg-black bg-opacity-50 text-white text-xs font-medium px-2 py-1 rounded-full">
+                        Nature and Boat Trip
+                      </span>
+                    </div>
+
+                    {/* Content Area */}
+                    <div className="p-4">
+                      <div className="flex items-center text-sm text-gray-600 mb-2">
+                        <Star className="w-4 h-4 fill-yellow-500 mr-1" />
+                        <span className="font-semibold text-gray-900 mr-1">4.4</span>
+                        <span className="text-gray-500">(50 Reviews)</span>
+                      </div>
+
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">Saona Island Day Trip Lunch...</h3>
+
+                      <p className="text-gray-600 text-sm mb-3 line-clamp-2">
+                        The local guides were incredible! they showed us hidden gems we would never found on our own.
+                      </p>
+
+                      <hr className="my-3 border-gray-100" />
+
+                      {/* Details and Price */}
+                      <div className="flex justify-between items-center text-sm mb-4">
+                        <div className="flex items-center text-gray-600">
+                          <MapPin className="w-4 h-4 mr-1 text-gray-500" />
+                          <span className="text-xs">Pickup: Punta Cana</span>
+                        </div>
+                        <div className="flex items-center text-gray-600">
+                          <Clock className="w-4 h-4 mr-1 text-gray-500" />
+                          <span className="text-xs">Everyday (9am / 1pm / 5pm)</span>
+                        </div>
+                      </div>
+
+                      <div className="flex justify-between items-center">
+                        <div>
+                          <span className="text-xs text-gray-500 mr-2">From</span>
+                          <span className="text-2xl font-bold text-gray-900 mr-2">$50</span>
+                          <span className="text-base line-through text-red-500">$75</span>
+                        </div>
+                        <button className="bg-pink-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-pink-700 transition duration-150">
+                          Book Now
+                        </button>
+                      </div>
+                    </div>
+                  </div>
 
                 </div>
               </div>
@@ -1221,12 +1387,12 @@ export default function TourDetailsPage() {
           </div>
 
           {/* Why Choose Us / Guarantees */}
-          <div className=" pt-10 mb-28 ">
+          <div className=" py-10 ">
             {/* Section 3: Why Choose Us */}
 
             <section className="py-10 ">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4">
-                <h2 className="text-[48px] font-[500] text-[#191919] mb-12 text-center">
+                <h2 className="text-4xl font-semibold text-gray-900 mb-12 text-center">
                   Why Choose Us
                 </h2>
 
@@ -1234,68 +1400,44 @@ export default function TourDetailsPage() {
 
                   {/* Feature 1: Instant Confirmation */}
                   <div className="flex flex-col items-center">
-                    <div className="w-16 h-16 flex items-center justify-center mb-4">
-                      <Image
-                      src="/images/tours-id/Instant-Confirmation.png"
-                      width={50}
-                      height={50}
-                      alt="Secure Payment Methods"
-                      className="w-16 h-16 text-orange-500 stroke-2"
-                    />
+                    <div className="w-16 h-16 bg-orange-100 rounded-xl flex items-center justify-center mb-4">
+                      <Check className="w-4 h-4 text-orange-500 stroke-2" />
                     </div>
-                    <h4 className="font-[500] text-[20px] text-[#191919] mb-2">Instant Confirmation</h4>
-                    <p className="text-[#4B5563] text-[14px] font-[400] px-2">
+                    <h4 className="font-bold text-lg text-gray-900 mb-2">Instant Confirmation</h4>
+                    <p className="text-gray-600 text-sm px-2">
                       Our prices are final - no unexpected fees after you checkout.
                     </p>
                   </div>
 
                   {/* Feature 2: No Hidden Fees */}
                   <div className="flex flex-col items-center">
-                    <div className="w-16 h-16 flex items-center justify-center mb-4">
-                      <Image
-                      src="/images/tours-id/No-Hidden-Fees.png"
-                      width={50}
-                      height={50}
-                      alt="Secure Payment Methods"
-                      className="w-16 h-16 text-orange-500 stroke-2"
-                    />
+                    <div className="w-16 h-16 bg-yellow-100 rounded-xl flex items-center justify-center mb-4">
+                      <DollarSign className="w-4 h-4 text-yellow-500 stroke-2" />
                     </div>
-                    <h4 className="font-[500] text-[20px] text-[#191919] mb-2">No Hidden Fees</h4>
-                    <p className="text-[#4B5563] text-[14px] font-[400] px-2">
+                    <h4 className="font-bold text-lg text-gray-900 mb-2">No Hidden Fees</h4>
+                    <p className="text-gray-600 text-sm px-2">
                       What you see is what you pay - no surprises!
                     </p>
                   </div>
 
                   {/* Feature 3: Free Cancellation */}
                   <div className="flex flex-col items-center">
-                    <div className="w-16 h-16 flex items-center justify-center mb-4">
-                      <Image
-                      src="/images/tours-id/Free-Cancellation.png"
-                      width={50}
-                      height={50}
-                      alt="Secure Payment Methods"
-                      className="w-16 h-16 text-orange-500 stroke-2"
-                    />
+                    <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+                      <X className="w-4 h-4 text-blue-500 stroke-2" />
                     </div>
-                    <h4 className="font-[500] text-[20px] text-[#191919] mb-2">Free Cancellation</h4>
-                    <p className="text-[#4B5563] text-[14px] font-[400] px-2">
+                    <h4 className="font-bold text-lg text-gray-900 mb-2">Free Cancellation</h4>
+                    <p className="text-gray-600 text-sm px-2">
                       Cancel or modify up to 24 hours before travel.
                     </p>
                   </div>
 
                   {/* Feature 4: Secured Payment */}
                   <div className="flex flex-col items-center">
-                    <div className="w-16 h-16 flex items-center justify-center mb-4">
-                      <Image
-                      src="/images/tours-id/Secured-Payment.png"
-                      width={50}
-                      height={50}
-                      alt="Secure Payment Methods"
-                      className="w-16 h-16 text-orange-500 stroke-2"
-                    />
+                    <div className="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+                      <Shield className="w-4 h-4 text-purple-500 stroke-2" />
                     </div>
-                    <h4 className="font-[500] text-[20px] text-[#191919] mb-2">Secured Payment</h4>
-                    <p className="text-[#4B5563] text-[14px] font-[400] px-2">
+                    <h4 className="font-bold text-lg text-gray-900 mb-2">Secured Payment</h4>
+                    <p className="text-gray-600 text-sm px-2">
                       Your payment details are encrypted for security.
                     </p>
                   </div>
