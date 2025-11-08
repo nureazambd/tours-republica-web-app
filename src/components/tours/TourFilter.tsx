@@ -2,6 +2,11 @@
 
 import React, { useState } from "react";
 import { Search, Star, MapPin, Clock, Filter } from "lucide-react";
+import AvailabilityFilter from "./AvailabilityFilter";
+import TravelCategoryFilter from "./TravelCategoryFilter";
+import PriceFilter from "./PriceFilter";
+import UserReviewsFilter from "./UserReviewsFilter";
+import TourMapFilter from "./TourMapFilter";
 
 const defaultFilters = {
   searchQuery: "",
@@ -32,7 +37,7 @@ const TourFilter = ({ filters = defaultFilters, setFilters = () => {} }: any) =>
   ];
 
   const durations = [
-    "Half Day (4-6 hours)",
+    "Half Day (400-6 hours)",
     "Full Day (8-10 hours)",
     "Multi-day (2+ days)",
   ];
@@ -59,8 +64,8 @@ const TourFilter = ({ filters = defaultFilters, setFilters = () => {} }: any) =>
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-24">
-      <div className="relative mb-6">
+    <div className=" rounded-2xl  sticky top-24">
+      {/* <div className="relative mb-6">
         {showMap && (
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48276.54692309174!2d-69.9312115!3d18.4860575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ea56208e1467d11%3A0x7d8d4d4b6ef62b!2sSanto%20Domingo!5e0!3m2!1sen!2sdo!4v1701234567890!5m2!1sen!2sdo"
@@ -77,128 +82,26 @@ const TourFilter = ({ filters = defaultFilters, setFilters = () => {} }: any) =>
         >
           {showMap ? "Hide Map" : "Show Map"}
         </button>
-      </div>
+      </div> */}
 
-      {/* Header */}
-      <div className="flex items-center justify-between mb-6">
-        <h3 className="text-xl font-bold text-gray-800 flex items-center">
-          <Filter className="w-5 h-5 mr-2" />
-          Filters
-        </h3>
-        <button
-          onClick={clearFilters}
-          className="text-primary-500 hover:text-primary-600 text-sm font-medium"
-        >
-          Clear All
-        </button>
-      </div>
+      <TourMapFilter/>
 
-      {/* Search */}
-      <div className="mb-6 relative">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
-        <input
-          type="text"
-          value={filters.searchQuery}
-          onChange={(e) =>
-            setFilters({ ...filters, searchQuery: e.target.value })
-          }
-          placeholder="Search by name or keyword..."
-          className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none"
-        />
-      </div>
+      
 
-      {/* Categories */}
-      <div className="mb-6">
-        <p className="text-sm font-medium text-gray-700 mb-3">Categories</p>
-        {categories.map((c) => (
-          <label key={c.id} className="flex items-center cursor-pointer mb-2">
-            <input
-              type="checkbox"
-              checked={filters.categories.includes(c.id)}
-              onChange={() => handleCategoryChange(c.id)}
-              className="w-4 h-4 text-primary-500 border-gray-300 rounded focus:ring-primary-500"
-            />
-            <span className="ml-3 text-gray-700 flex-1">{c.name}</span>
-            <span className="text-gray-400 text-sm">({c.count})</span>
-          </label>
-        ))}
-      </div>
+      {/* Date Filter Section */}
+      <div className="mt-[20px]"><AvailabilityFilter/></div>
+      <div className="mt-[20px]"><TravelCategoryFilter/></div>
+      <div className="mt-[20px]"><PriceFilter prices={[50,100,200,250,400, 500, 1000, 1500, 2000, 2500, 3000, 4000, 6000, 8000, 10000, 15000, 20000 ]} /></div>
+      <div className="mt-[20px]"><UserReviewsFilter filters={filters} setFilters={setFilters} /></div>
 
-      {/* Price Range */}
-      <div className="mb-6">
-        <p className="text-sm font-medium text-gray-700 mb-3">Price Range</p>
-        <input
-          type="range"
-          min="0"
-          max="200"
-          value={filters.priceRange[1]}
-          onChange={(e) =>
-            setFilters({ ...filters, priceRange: [0, +e.target.value] })
-          }
-          className="w-full"
-        />
-        <div className="flex justify-between text-sm text-gray-600 mt-2">
-          <span>$0</span>
-          <span>${filters.priceRange[1]}</span>
-        </div>
-      </div>
+        
+        
+        
 
-      {/* Rating */}
-      <div className="mb-6">
-        <p className="text-sm font-medium text-gray-700 mb-3">User Reviews</p>
-        {[5, 4, 3, 2, 1].map((rating) => (
-          <label key={rating} className="flex items-center cursor-pointer mb-2">
-            <input
-              type="radio"
-              name="rating"
-              checked={filters.rating === rating}
-              onChange={() => setFilters({ ...filters, rating })}
-              className="w-4 h-4 text-primary-500 border-gray-300"
-            />
-            <div className="ml-3 flex items-center">
-              {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  className={`w-4 h-4 ${
-                    i < rating ? "text-yellow-400 fill-current" : "text-gray-300"
-                  }`}
-                />
-              ))}
-              <span className="ml-2 text-gray-700 text-sm">& up</span>
-            </div>
-          </label>
-        ))}
-      </div>
 
-      {/* Location */}
-      <div className="mb-6">
-        <p className="text-sm font-medium text-gray-700 mb-2">Location</p>
-        <select
-          value={filters.location}
-          onChange={(e) => setFilters({ ...filters, location: e.target.value })}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg"
-        >
-          <option value="">All Locations</option>
-          {locations.map((l) => (
-            <option key={l}>{l}</option>
-          ))}
-        </select>
-      </div>
+    
 
-      {/* Duration */}
-      <div className="mb-6">
-        <p className="text-sm font-medium text-gray-700 mb-2">Duration</p>
-        <select
-          value={filters.duration}
-          onChange={(e) => setFilters({ ...filters, duration: e.target.value })}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg"
-        >
-          <option value="">Any Duration</option>
-          {durations.map((d) => (
-            <option key={d}>{d}</option>
-          ))}
-        </select>
-      </div>
+      
     </div>
   );
 };

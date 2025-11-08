@@ -1,10 +1,8 @@
 'use client';
 
-import Layout from '@/components/layout/Layout';
-import LocationHeroSection from '@/components/locations/LocationHeroSection';
-import { Star } from 'lucide-react';
-import Link from 'next/link';
 import { useState } from 'react';
+import { ChevronRight } from 'lucide-react';
+import Link from 'next/link';
 
 export default function PopularDestinations() {
   const destinations = [
@@ -56,102 +54,143 @@ export default function PopularDestinations() {
     },
   ];
 
-  // ✅ Default active hover on the first card
   const [activeCard, setActiveCard] = useState(destinations[0].id);
 
   return (
-    <div className="bg-gray-50">
-      <div className="container-custom mx-auto px-4">
-        {/* Section Title */}
-        <div className="text-left pt-20 pl-4 mb-12">
-          <h2 className="text-[32px] lg:text-[40px] font-[500] text-[#191919]">
+    <div className="bg-[#EFF2F8]">
+      <div className="container-custom mx-auto px-4 py-14 md:py-20">
+        {/* Title */}
+        <div className="text-left mb-8 md:mb-12">
+          <h2 className="text-[28px] md:text-[40px] font-medium text-[#111318]">
             Popular Destinations
           </h2>
-          
         </div>
 
-        {/* Destinations Grid */}
-        <section className="pb-16">
-          <div className="container-custom">
-            <div
-              className="
-                grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 
-                gap-8 transition-all duration-[2000ms] ease-[cubic-bezier(0.25,1,0.3,1)]
-              "
-            >
-              {destinations.map((destination) => {
-                const isAlwaysActive = destination.id === 6; // ✅ last card always active
-                const isHovered = activeCard === destination.id;
+        {/* Mobile Layout */}
+        <div className="flex flex-col gap-6 md:hidden">
+          {destinations.map((destination) =>
+            destination.id !== 6 ? (
+              <Link
+                key={destination.id}
+                href={{
+                  pathname: '/tours',
+                  query: { location: destination.name },
+                }}
+                className="relative w-full h-[240px] rounded-[16px] overflow-hidden"
+              >
+                <img
+                  src={destination.image}
+                  alt={destination.name}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[rgba(0,52,89,0.5)] rounded-[16px]" />
+                <div className="absolute left-[24px] bottom-[28px] text-white">
+                  <div className="font-rubik font-medium text-[20px] leading-[24px]">
+                    {destination.name}
+                  </div>
+                  <div className="font-rubik text-[14px] leading-[24px]">
+                    {destination.tourCount} tours
+                  </div>
+                </div>
+              </Link>
+            ) : (
+              <Link
+                key={destination.id}
+                href="/locations"
+                className="flex flex-col justify-center items-center gap-2 bg-white border border-[#E9305B14] bg-[rgba(233,48,91,0.08)] py-6 rounded-[16px]"
+              >
+                <div className="flex items-center gap-4">
+                  <span className="text-[#191919] text-[18px]">
+                    All Destinations
+                  </span>
+                  <div className="flex items-center justify-center bg-[#EE2552] rounded-full px-[12px] py-[4px]">
+                    <ChevronRight className="text-white w-4 h-4" />
+                  </div>
+                </div>
+              </Link>
+            )
+          )}
+        </div>
 
-                // ✅ Set different link for last card
-                const destinationLink = isAlwaysActive
-                  ? '/locations'
-                  : {
-                      pathname: '/tours',
-                      query: { location: destination.name },
-                    };
+        {/* Desktop Layout */}
+        <div className="hidden md:flex flex-wrap gap-8 justify-start pb-8">
+          {destinations.map((destination) => {
+            const isAlwaysActive = destination.id === 6;
+            const isHovered = activeCard === destination.id;
 
-                return (
-                  <Link
-                    key={destination.id}
-                    href={destinationLink}
-                    onMouseEnter={() =>
-                      !isAlwaysActive && setActiveCard(destination.id)
-                    }
-                    onMouseLeave={() =>
-                      !isAlwaysActive && setActiveCard(destinations[0].id)
-                    }
-                    className={`
-                      group relative rounded-2xl overflow-hidden shadow-lg
-                      transform transition-all duration-[2000ms] ease-[cubic-bezier(0.25,1,0.3,1)] will-change-transform
-                      ${
-                        isAlwaysActive || isHovered
-                          ? 'lg:col-span-2 scale-[1.03] shadow-2xl z-10'
-                          : 'lg:col-span-1 scale-[0.97] opacity-90'
-                      }
-                    `}
-                  >
-                    {/* Image Section */}
-                    <div className="relative h-64 overflow-hidden">
-                      <img
-                        src={destination.image}
-                        alt={destination.name}
-                        className={`
-                          w-full h-full object-cover will-change-transform
-                          transition-transform duration-[2000ms] ease-[cubic-bezier(0.25,1,0.3,1)]
-                          ${isAlwaysActive || isHovered ? 'scale-110' : 'scale-100'}
-                        `}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+            const destinationLink = isAlwaysActive
+              ? '/locations'
+              : {
+                  pathname: '/tours',
+                  query: { location: destination.name },
+                };
 
-                      {/* Destination Name */}
-                      <div className="absolute bottom-4 left-4 text-white text-lg font-semibold drop-shadow-md">
-                        {destination.name}
+            return (
+              <Link
+                key={destination.id}
+                href={destinationLink}
+                onMouseEnter={() =>
+                  !isAlwaysActive && setActiveCard(destination.id)
+                }
+                onMouseLeave={() =>
+                  !isAlwaysActive && setActiveCard(destinations[0].id)
+                }
+                className={`
+                  group relative rounded-2xl overflow-hidden shadow-lg
+                  transition-all duration-[3000ms] ease-out
+                  ${
+                    isHovered || isAlwaysActive
+                      ? 'w-[48%] shadow-2xl z-10'
+                      : 'w-[23%] opacity-90'
+                  }
+                `}
+              >
+                <div className="relative h-[277px] overflow-hidden rounded-[16px] isolate">
+                  <img
+                    src={destination.image}
+                    alt={destination.name}
+                    className="w-full h-full object-cover"
+                  />
+                  <div
+                    className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                      isHovered
+                        ? 'opacity-100 bg-gradient-to-b from-transparent to-[rgba(0,52,89,0.5)]'
+                        : 'opacity-0'
+                    }`}
+                  ></div>
+
+                  {/* Info on Hover */}
+                  {isHovered ? (
+                    <div
+                      className="absolute left-[24px] top-[177px] w-[530px] h-[76px] bg-white/75 backdrop-blur-sm 
+                        rounded-[12px] flex items-center justify-between px-[20px] py-[14px]
+                        shadow-[0_9px_19px_rgba(103,70,77,0.1)] transition-all duration-700"
+                    >
+                      <div className="flex flex-col text-[#191919]">
+                        <span className="font-rubik font-medium text-[20px] leading-[28px] tracking-[-0.48px]">
+                          {destination.name}
+                        </span>
+                        {destination.tourCount > 0 && (
+                          <span className="font-rubik text-[16px] leading-[20px]">
+                            {destination.tourCount} tours
+                          </span>
+                        )}
                       </div>
 
-                      {/* Featured Badge */}
-                      {destination.featured && (
-                        <div className="absolute top-4 left-4 bg-primary-500 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-md">
-                          Featured
-                        </div>
-                      )}
-
-                      {/* Rating (⭐ Hidden for id 6) */}
-                      {!isAlwaysActive && (
-                        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-lg flex items-center space-x-1 shadow-md">
-                          <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                          <span className="text-sm font-medium text-gray-700">
-                            {destination.rating}
-                          </span>
-                        </div>
-                      )}
+                      <button className="flex items-center justify-center bg-[#EE2552] text-white rounded-[8px] px-[24px] py-[10px] hover:bg-[#d82047] transition-all duration-300">
+                        <ChevronRight className="w-5 h-5 text-white" />
+                      </button>
                     </div>
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-        </section>
+                  ) : (
+                    <div className="absolute left-[24px] bottom-[28px] text-white font-medium text-[22px] leading-[32px]">
+                      {destination.name}
+                    </div>
+                  )}
+                </div>
+              </Link>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

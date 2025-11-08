@@ -33,7 +33,7 @@ const TransportSection = () => {
           <div className="order-1 lg:order-2 flex gap-4 relative justify-center lg:justify-end"> {/* Reordered for responsiveness, added flex and gap */}
             {/* Left Stacked Images */}
             <div className="flex flex-col gap-4">
-              <div className="relative w-[230px] h-[200px] rounded-xl overflow-hidden shadow-lg"> {/* Specific dimensions matching your visual */}
+              <div className="relative w-[268px] h-[178px] rounded-xl overflow-hidden shadow-lg"> {/* Specific dimensions matching your visual */}
                 <Image
                   src="/images/destinations/transport-2.png" // **UPDATE THIS PATH TO YOUR IMAGE**
                   alt="People with airport transfer car"
@@ -42,7 +42,7 @@ const TransportSection = () => {
                   className="hover:scale-105 transition-transform duration-300"
                 />
               </div>
-              <div className="relative w-[230px] h-[200px] rounded-xl overflow-hidden shadow-lg"> {/* Specific dimensions matching your visual */}
+              <div className="relative w-[268px] h-[178px] rounded-xl overflow-hidden shadow-lg"> {/* Specific dimensions matching your visual */}
                 <Image
                   src="/images/destinations/transport-3.png" // **UPDATE THIS PATH TO YOUR IMAGE**
                   alt="Couple with airport transfer car"
@@ -54,7 +54,7 @@ const TransportSection = () => {
             </div>
 
             {/* Right Large Image */}
-            <div className="relative w-[280px] h-[420px] rounded-xl overflow-hidden shadow-lg"> {/* Specific dimensions matching your visual */}
+            <div className="relative w-[356px] h-[380px] rounded-xl overflow-hidden shadow-lg"> {/* Specific dimensions matching your visual */}
               <Image
                 src="/images/destinations/transport-1.png" // **UPDATE THIS PATH TO YOUR IMAGE**
                 alt="Luxury SUV for airport transfers"

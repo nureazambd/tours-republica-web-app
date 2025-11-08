@@ -74,7 +74,7 @@ const HeroSection = () => {
       </div>
 
       {/* 🌟 Content */}
-      <div className="relative z-10 mt-[80px] lg:mt-0 lg:container-custom lg:h-[720px] flex items-center px-4">
+      <div className="relative z-10 container-custom lg:h-[720px] flex items-center px-4">
         <div className="text-left text-white max-w-4xl">
           {/* Animated Heading (syncs with image fade) */}
           {slides.map((slide, index) => (
@@ -109,7 +109,7 @@ const HeroSection = () => {
   // Main Container: 
   // Mobile (Default): mt-[60px], flex-col, w-full, h-auto, p-4, gap-4, bg-white (explicitly solid)
   // Desktop (lg:): mt-[180px], flex-row, w-[756px], h-[80px], p-[12_12_12_32], gap-[88px]
-  className="mt-[120px] lg:mt-[180px] z-20 flex lg:flex-col lg:flex-row items-center bg-white rounded-[16px] w-[358px] lg:w-[756px] h-[244px] lg:h-[80px] p-4 lg:p-[12px_12px_12px_32px] gap-4 lg:gap-[88px] shadow-xl lg:mx-auto"
+  className="mt-[120px] lg:mt-[180px] z-20 flex lg:flex-col lg:flex-row items-center bg-white rounded-[16px] w-full lg:w-[756px] h-auto lg:h-[80px] p-4 lg:p-[12px_12px_12px_32px] gap-4 lg:gap-[88px] shadow-xl lg:mx-auto"
 >
   <form
     onSubmit={handleSearch}
