@@ -1,53 +1,47 @@
-import React from 'react';
-import Link from 'next/link';
+"use client";
 
-// 1. Define your category data
+import React from "react";
+import Link from "next/link";
+
 const categoryData = [
   {
-    name: 'Nature & Marine',
-    // IMPORTANT: You must replace this with your actual image path
-    imageUrl: '/images/categories/Nature-and-boat-trip.png', 
-    href: '/tours?category=nature' // Link to filter
+    name: "Nature and boat trip",
+    imageUrl: "/images/categories/Nature-and-boat-trip-1.jpg",
+    href: "/tours?category=nature",
   },
   {
-    name: 'Adventure',
-    // IMPORTANT: You must replace this with your actual image path
-    imageUrl: '/images/categories/Adventures.png',
-    href: '/tours?category=adventure' // Link to filter
+    name: "Adventures",
+    imageUrl: "/images/categories/Adventures-2.jpg",
+    href: "/tours?category=adventure",
   },
   {
-    name: 'Culture & History',
-    // IMPORTANT: You must replace this with your actual image path
-    imageUrl: '/images/categories/Cultures.png',
-    href: '/tours?category=culture' // Link to filter
-  }
+    name: "Cultures",
+    imageUrl: "/images/categories/Cultures-3.jpg",
+    href: "/tours?category=culture",
+  },
 ];
 
 const CategoryLinks = () => {
   return (
-    // 2. This grid creates the 3-column layout
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="flex justify-center items-center gap-[21px] flex-wrap md:flex-nowrap w-full max-w-[876px] mx-auto">
       {categoryData.map((category) => (
-        <Link href={category.href} key={category.name}>
-          <div className="relative h-20 rounded-xl overflow-hidden group cursor-pointer shadow-lg">
-            
-            {/* Background Image - uses style attribute for dynamic URL */}
-            <div
-              className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-110"
-              style={{ backgroundImage: `url('${category.imageUrl}')` }}
-            />
-            
-            {/* Dark Overlay - makes text readable */}
-            <div className="absolute inset-0 bg-black/0" />
-            
-            {/* Centered Text */}
-            <div className="relative z-10 h-full flex items-center justify-center p-4">
-              <h3 className="text-white text-2xl font-bold text-center">
-                {/* {category.name} */}
-              </h3>
-            </div>
-            
-          </div>
+        <Link
+          href={category.href}
+          key={category.name}
+          className="relative w-[278px] h-[72px] rounded-[12px] overflow-hidden group flex justify-center items-center"
+        >
+          {/* Background Image + Gradient Overlay */}
+          <div
+            className="absolute inset-0 bg-center bg-cover transition-transform duration-500 group-hover:scale-110"
+            style={{
+              backgroundImage: `linear-gradient(180deg, rgba(0,52,89,0.25) 0%, rgba(0,52,89,0.5) 81.25%), url(${category.imageUrl})`,
+            }}
+          />
+
+          {/* Category Name */}
+          <span className="relative z-10 text-white font-rubik font-medium text-[16px] leading-[24px] text-center">
+            {category.name}
+          </span>
         </Link>
       ))}
     </div>

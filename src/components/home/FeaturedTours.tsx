@@ -182,12 +182,22 @@ const FeaturedTours = () => {
               className=""
             >
               {/* <ArrowRight className="w-5 h-5 rotate-180" /> */}
-              <svg width="64" height="48" viewBox="0 0 64 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="64" height="48" rx="24" fill="white"/>
-<path d="M31 29L26 24L31 19M38 29L33 24L38 19" stroke="#003459" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-              
+              <svg
+  width="64"
+  height="48"
+  viewBox="0 0 64 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <rect width="64" height="48" rx="24" fill="white" />
+  <path
+    d="M31 29L26 24L31 19M38 29L33 24L38 19"
+    stroke="#003459"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  />
+</svg>           
             </button>
 
             {/* Next Button - Always active */}
@@ -196,10 +206,23 @@ const FeaturedTours = () => {
               className=""
             >
               {/* <ArrowRight className="w-5 h-5" /> */}
-              <svg width="64" height="48" viewBox="0 0 64 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="64" height="48" rx="24" fill="#6FCCDC"/>
-<path d="M26 29L31 24L26 19M33 29L38 24L33 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+             <svg
+  width="64"
+  height="48"
+  viewBox="0 0 64 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <rect width="64" height="48" rx="24" fill="#6FCCDC" />
+  <path
+    d="M26 29L31 24L26 19M33 29L38 24L33 19"
+    stroke="white"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  />
 </svg>
+
 
             </button>
 
@@ -370,7 +393,7 @@ const FeaturedTours = () => {
         {/* View All Tours Button */}
         <div className="text-center pt-2">
           <Link href="/tours">
-            <button className=" hover:bg-primary-600 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-200 flex items-center space-x-2 mx-auto shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+            <button className=" hover:bg-[#EE2552] bg-[#EE2552] text-white font-semibold px-8 py-4 rounded-xl transition-all duration-200 flex items-center space-x-2 mx-auto shadow-lg hover:shadow-xl transform hover:-translate-y-1">
               <span>All Tours</span>
             </button>
           </Link>

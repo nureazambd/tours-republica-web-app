@@ -3,12 +3,14 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown, LogOut } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const pathname = usePathname();
   const { user, logout } = useAuth();
 
   const navigation = [
@@ -21,176 +23,123 @@ const Header = () => {
   ];
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
-      <div className="container-custom">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
-          <Link href="/" className="flex-shrink-0">
-            <Image
-              src="/images/logo.png"
-              alt="Tours Republica"
-              width={160}
-              height={40}
-              className="h-12 lg:h-16 w-auto"
-            />
-          </Link>
+    <header className="bg-white border-b border-gray-100 flex flex-col items-start px-[130px] py-[12px] gap-[8px] w-full max-w-[1440px] mx-auto h-[96px]">
+      <div className="flex flex-row justify-between items-center w-[1180px] h-[72px] mx-auto gap-[408px]">
+        {/* Logo */}
+        <Link href="/" className="flex-shrink-0">
+          <Image
+            src="/images/logo.png"
+            alt="Tours Republica"
+            width={127}
+            height={72}
+            className="object-contain w-[127px] h-[72px]"
+          />
+        </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-gray-700 hover:text-primary-500 font-medium text-sm transition-colors duration-200"
-              >
-                {item.name}
-              </Link>
-            ))}
+        {/* Desktop Navigation */}
+        <div className="hidden lg:flex items-center gap-[24px]">
+          {/* Menu List */}
+          <nav className="flex flex-row items-center gap-0 h-[44px]">
+            {navigation.map((item) => {
+              const isActive = pathname === item.href;
+
+              return (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`flex flex-col items-center justify-start px-4 ${
+                    isActive
+                      ? "text-[#191919]"
+                      : "text-[#4B5563] hover:text-[#191919]"
+                  }`}
+                >
+                  <span className="font-rubik font-medium text-[13px] leading-[20px] uppercase flex items-center h-[20px] whitespace-nowrap">
+  {item.name}
+</span>
+
+
+                  {/* Active underline */}
+                  {isActive && (
+                    <span className="w-[38px] border-b-[2px] border-[#FAA523] mt-[2px]"></span>
+                  )}
+                </Link>
+              );
+            })}
           </nav>
 
-          {/* Desktop Auth */}
-          <div className="hidden lg:flex items-center space-x-4">
-            <div className="relative">
-              <button
-                onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                className="btn-primary flex items-center space-x-2"
-              >
-                <span>{user ? user.firstName : "Sign In"}</span>
-                <ChevronDown className="w-4 h-4" />
-              </button>
-
-              {isUserMenuOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
-                  {!user ? (
-                    <>
-                      <Link
-                        href="/login"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        onClick={() => setIsUserMenuOpen(false)}
-                      >
-                        Sign In
-                      </Link>
-                      <Link
-                        href="/signup"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        onClick={() => setIsUserMenuOpen(false)}
-                      >
-                        Create Account
-                      </Link>
-                    </>
-                  ) : (
-                    // <>
-                    //   <Link
-                    //     href="/profile"
-                    //     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    //     onClick={() => setIsUserMenuOpen(false)}
-                    //   >
-                    //     Profile
-                    //   </Link>
-                    //   <Link
-                    //     href="/profile/bookings"
-                    //     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    //     onClick={() => setIsUserMenuOpen(false)}
-                    //   >
-                    //     Booking History
-                    //   </Link>
-                    //   <button
-                    //     onClick={() => {
-                    //       logout();
-                    //       setIsUserMenuOpen(false);
-                    //     }}
-                    //     className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100 flex items-center gap-2"
-                    //   >
-                    //     <LogOut className="w-4 h-4" /> Logout
-                    //   </button>
-                    // </>
-
-                    <>
-                      <Link
-                        href="/profile"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2" // <-- Add flex classes
-                        onClick={() => setIsUserMenuOpen(false)}
-                      >
-                        {/* <User className="w-4 h-4" /> <-- Add User icon */}
-                        <Image
-                          src="/images/header/profile-settings.png"
-                          alt="profie settings"
-                          width={50}
-                          height={50}
-                          className="w-4 h-4"
-                        />
-                        Profile Settings
-                      </Link>
-                      {/* <Link
-                        href="/booking-history"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2" // <-- Add flex classes
-                        onClick={() => setIsUserMenuOpen(false)}
-                      >
-                        
-                        <Image
-                          src="/images/header/booking-history.svg"
-                          alt="profie settings"
-                          width={50}
-                          height={50}
-                          className="w-4 h-4"
-                        />
-                        Booking History
-                      </Link> */}
-
-                      <Link
-  href="/profile?section=booking-history"
-  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
-  onClick={() => setIsUserMenuOpen(false)}
+          {/* Auth Buttons */}
+          <div className="flex flex-row items-center gap-[16px]">
+            {!user ? (
+              <>
+                <Link
+  href="/login"
+  className="flex flex-row items-center justify-center px-[24px] py-[12px] gap-[16px] w-[100px] h-[44px] bg-[#EE2552] border border-[#EE2552] rounded-[12px] box-border text-white font-rubik font-normal text-[14px] leading-[20px] text-center hover:bg-[#d91f46] transition-colors"
 >
-  <Image
-    src="/images/header/booking-history.svg"
-    alt="Booking history"
-    width={50}
-    height={50}
-    className="w-4 h-4"
-  />
-  Booking History
+  Sign in
 </Link>
 
+                {/* <Link
+                  href="/signup"
+                  className="hidden lg:flex items-center justify-center px-[24px] py-[12px] border border-[#EE2552] rounded-[12px] text-[#EE2552] text-[14px] font-rubik font-normal w-[103px] h-[44px]"
+                >
+                  Sign up
+                </Link> */}
+              </>
+            ) : (
+              <div className="relative">
+                <button
+                  onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                  className="flex items-center gap-2 px-[24px] py-[12px] bg-[#EE2552] text-white text-[14px] font-rubik rounded-[12px] border border-[#EE2552]"
+                >
+                  {user.firstName}
+                  <ChevronDown className="w-4 h-4" />
+                </button>
 
-                      <button
-                        onClick={() => {
-                          logout();
-                          setIsUserMenuOpen(false);
-                          window.location.href = '/login';
-                        }}
-                        className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100 flex items-center gap-2"
-                      >
-                        <Image
-                          src="/images/header/logout.png"
-                          alt="profie settings"
-                          width={50}
-                          height={50}
-                          className="w-4 h-4"
-                        />
-                        Logout
-                      </button>
-                    </>
-
-                  )}
-                </div>
-              )}
-            </div>
+                {isUserMenuOpen && (
+                  <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-md py-2 z-50">
+                    <Link
+                      href="/profile"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      onClick={() => setIsUserMenuOpen(false)}
+                    >
+                      Profile Settings
+                    </Link>
+                    <Link
+                      href="/profile?section=booking-history"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      onClick={() => setIsUserMenuOpen(false)}
+                    >
+                      Booking History
+                    </Link>
+                    <button
+                      onClick={() => {
+                        logout();
+                        setIsUserMenuOpen(false);
+                        window.location.href = "/login";
+                      }}
+                      className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100 flex items-center gap-2"
+                    >
+                      <LogOut className="w-4 h-4" /> Logout
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
+        </div>
 
-          {/* Mobile Menu Button */}
-          <div className="lg:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-700 hover:text-primary-500 p-2"
-            >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
+        {/* Mobile Menu Button */}
+        <div className="lg:hidden">
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="text-gray-700 p-2"
+          >
+            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
       </div>
 
-      {/* ✅ Mobile Menu Content */}
+      {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="lg:hidden bg-white border-t border-gray-200 shadow-sm">
           <nav className="flex flex-col space-y-2 px-4 py-4">
@@ -198,8 +147,12 @@ const Header = () => {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-gray-700 hover:text-primary-500 font-medium text-sm"
-                onClick={() => setIsMenuOpen(false)} // Close menu on click
+                className={`text-sm font-medium uppercase ${
+                  pathname === item.href
+                    ? "text-[#EE2552]"
+                    : "text-gray-700 hover:text-[#EE2552]"
+                }`}
+                onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
               </Link>
@@ -211,14 +164,14 @@ const Header = () => {
               <div className="flex flex-col space-y-2">
                 <Link
                   href="/login"
-                  className="text-sm text-gray-700 hover:text-primary-500"
+                  className="text-sm text-[#EE2552] hover:underline"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Sign In
                 </Link>
                 <Link
                   href="/signup"
-                  className="text-sm text-gray-700 hover:text-primary-500"
+                  className="text-sm text-[#EE2552] hover:underline"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Create Account
@@ -228,14 +181,14 @@ const Header = () => {
               <div className="flex flex-col space-y-2">
                 <Link
                   href="/profile"
-                  className="text-sm text-gray-700 hover:text-primary-500"
+                  className="text-sm text-gray-700 hover:text-[#EE2552]"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Profile
                 </Link>
                 <Link
-                  href="/booking-history"
-                  className="text-sm text-gray-700 hover:text-primary-500"
+                  href="/profile?section=booking-history"
+                  className="text-sm text-gray-700 hover:text-[#EE2552]"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Booking History
