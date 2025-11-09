@@ -40,7 +40,7 @@ export default function LoginPage() {
               <div className="text-center mb-8">
                 
                 <h2 className="text-[24px] font-[500] text-gray-800 mb-1">Login</h2>
-                <p className="text-gray-600 text-[14px] font-[400]">Access your Tours Republica account</p>
+                <p className="text-gray-600 text-[14px] font-[400]">Welcome back to Tours Republica</p>
               </div>
 
               {/* Login Form */}

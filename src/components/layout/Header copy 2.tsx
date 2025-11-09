@@ -23,8 +23,8 @@ const Header = () => {
   ];
 
   return (
-    <header className="bg-white border-b border-gray-100 w-full">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-20 flex items-center justify-between h-[96px]">
+    <header className="bg-white border-b border-gray-100 flex flex-col items-start px-[130px] py-[12px] gap-[8px] w-full max-w-[1440px] mx-auto h-[96px]">
+      <div className="flex flex-row justify-between items-center w-[1180px] h-[72px] mx-auto gap-[408px]">
         {/* Logo */}
         <Link href="/" className="flex-shrink-0">
           <Image
@@ -32,53 +32,69 @@ const Header = () => {
             alt="Tours Republica"
             width={127}
             height={72}
-            className="object-contain"
+            className="object-contain w-[127px] h-[72px]"
           />
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-6">
-          <nav className="flex gap-4 h-[44px]">
+        <div className="hidden lg:flex items-center gap-[24px]">
+          {/* Menu List */}
+          <nav className="flex flex-row items-center gap-0 h-[44px]">
             {navigation.map((item) => {
               const isActive = pathname === item.href;
+
               return (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`flex flex-col items-center justify-center px-3 ${
+                  className={`flex flex-col items-center justify-start px-4 ${
                     isActive
                       ? "text-[#191919]"
-                      : "text-gray-600 hover:text-[#191919]"
+                      : "text-[#4B5563] hover:text-[#191919]"
                   }`}
                 >
-                  <span className="font-rubik font-medium text-[13px] uppercase">
-                    {item.name}
-                  </span>
+                  <span className="font-rubik font-medium text-[13px] leading-[20px] uppercase flex items-center h-[20px] whitespace-nowrap">
+  {item.name}
+</span>
+
+
+                  {/* Active underline */}
                   {isActive && (
-                    <span className="w-full border-b-2 border-[#FAA523] mt-1"></span>
+                    <span className="w-[38px] border-b-[2px] border-[#FAA523] mt-[2px]"></span>
                   )}
                 </Link>
               );
             })}
           </nav>
 
-          {/* Auth / User Menu */}
-          <div className="flex items-center gap-4">
+          {/* Auth Buttons */}
+          <div className="flex flex-row items-center gap-[16px]">
             {!user ? (
-              <Link
-                href="/login"
-                className="px-4 py-2 bg-[#EE2552] text-white rounded-lg font-rubik text-[14px] hover:bg-[#d91f46] transition-colors"
-              >
-                Sign In
-              </Link>
+              <>
+                <Link
+  href="/login"
+  className="flex flex-row items-center justify-center px-[24px] py-[12px] gap-[16px] w-[100px] h-[44px] bg-[#EE2552] border border-[#EE2552] rounded-[12px] box-border text-white font-rubik font-normal text-[14px] leading-[20px] text-center hover:bg-[#d91f46] transition-colors"
+>
+  Sign in
+</Link>
+
+                {/* <Link
+                  href="/signup"
+                  className="hidden lg:flex items-center justify-center px-[24px] py-[12px] border border-[#EE2552] rounded-[12px] text-[#EE2552] text-[14px] font-rubik font-normal w-[103px] h-[44px]"
+                >
+                  Sign up
+                </Link> */}
+              </>
             ) : (
               <div className="relative">
                 <button
                   onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                  className="flex items-center gap-2 px-4 py-2 bg-[#EE2552] text-white rounded-lg font-rubik"
+                  className="flex items-center gap-2 px-[24px] py-[12px] bg-[#EE2552] text-white text-[14px] font-rubik rounded-[12px] border border-[#EE2552]"
                 >
-                  {user.firstName} <ChevronDown className="w-4 h-4" />
+                  {user.firstName}
+                  <ChevronDown className="w-4 h-4" />
                 </button>
+
                 {isUserMenuOpen && (
                   <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-md py-2 z-50">
                     <Link
@@ -125,7 +141,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-gray-200 shadow-md">
+        <div className="lg:hidden bg-white border-t border-gray-200 shadow-sm">
           <nav className="flex flex-col space-y-2 px-4 py-4">
             {navigation.map((item) => (
               <Link

@@ -35,9 +35,9 @@ export default function SignupPage() {
       <div className="min-h-screen bg-gray-50 py-32">
         <div className="container-custom lg:w-[480px] h-[468px">
           <div className="max-w-md w-full mx-auto">
-            <div className="text-center mb-8">
+            <div className="text-center ml-8 w-[342px] mb-8">
               <h2 className="text-[24px] font-[500] text-gray-800 mb-1">Create Account</h2>
-              <p className="text-gray-600 text-[14px] font-[400]">Join Tours Republica and start your adventure</p>
+              <p className="text-gray-600 text-[14px] font-[400]">Enter your new password twice below to reset a new password</p>
             </div>
             <SignupForm />
             <div className="mt-8 text-center">

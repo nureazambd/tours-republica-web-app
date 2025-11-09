@@ -8,116 +8,6 @@ import {
   Briefcase,
 } from 'lucide-react';
 
-
-const BriefcaseIcon: React.FC = () => (
-  <svg
-    width="32"
-    height="36"
-    viewBox="0 0 32 36"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <g clipPath="url(#clip0_829_2792)">
-      <path
-        d="M11.5 3H20.5M13 3V12M19 3V12M10.75 30.75V33H11.5V30.75M21.25 30.75V33H20.5V30.75M13 16.5V26.25M19 16.5V26.25M22 12H10C9.20435 12 8.44129 12.3161 7.87868 12.8787C7.31607 13.4413 7 14.2044 7 15V27.75C7 28.5457 7.31607 29.3087 7.87868 29.8713C8.44129 30.4339 9.20435 30.75 10 30.75H22C22.7957 30.75 23.5587 30.4339 24.1213 29.8713C24.6839 29.3087 25 28.5457 25 27.75V15C25 14.2044 24.6839 13.4413 24.1213 12.8787C23.5587 12.3161 22.7957 12 22 12Z"
-        stroke="#003459"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </g>
-    <defs>
-      <clipPath id="clip0_829_2792">
-        <rect width="32" height="32" fill="white" transform="translate(0 2)" />
-      </clipPath>
-    </defs>
-  </svg>
-);
-
-const CalendarIcon: React.FC = () => (
-  <svg
-    width="32"
-    height="36"
-    viewBox="0 0 32 36"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M4.12354 14.5386H27.8888"
-      stroke="#003459"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M21.9229 19.7457H21.9353"
-      stroke="#003459"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M16.006 19.7457H16.0183"
-      stroke="#003459"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M10.0772 19.7457H10.0896"
-      stroke="#003459"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M21.9229 24.9292H21.9353"
-      stroke="#003459"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M16.006 24.9292H16.0183"
-      stroke="#003459"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M10.0772 24.9292H10.0896"
-      stroke="#003459"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M21.3915 4.66602V9.05372"
-      stroke="#003459"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M10.6205 4.66602V9.05372"
-      stroke="#003459"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M21.651 6.77148H10.3613C6.4457 6.77148 4 8.95273 4 12.9622V25.0284C4 29.1009 6.4457 31.3326 10.3613 31.3326H21.6387C25.5666 31.3326 28 29.1387 28 25.1292V12.9622C28.0123 8.95273 25.579 6.77148 21.651 6.77148Z"
-      stroke="#003459"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-
 // --- Type Definitions ---
 interface BookingState {
   tripType: 'Oneway' | 'Round';
@@ -213,7 +103,7 @@ const AirportTransportationForm: React.FC = () => {
   const renderCountInput = (label: string, value: string, iconType: 'user' | 'suitcase') => (
     <div className="flex items-center bg-[#F4F7F9] rounded-xl p-4 gap-3 w-[220px] h-[68px]">
       <div className="w-8 h-8 flex items-center justify-center text-blue-900">
-        {iconType === 'user' ? <Users size={32} /> : <BriefcaseIcon />}
+        {iconType === 'user' ? <Users size={32} /> : <Briefcase size={32} />}
       </div>
       <div className="flex flex-col">
         <span className="text-[13px] text-[#878D97] leading-4">{label}</span>
@@ -228,9 +118,7 @@ const AirportTransportationForm: React.FC = () => {
     return (
       <div className="flex items-center bg-[#F4F7F9] rounded-xl p-4 gap-3 w-[236px] h-[68px]">
         <div className="w-8 h-8 flex items-center justify-center text-blue-900">
-          {/* <Calendar size={32} /> */}
-          <CalendarIcon />
-          
+          <Calendar size={32} />
         </div>
         <div className="flex flex-col">
           <span className="text-[13px] text-[#878D97] leading-4">{label}</span>
@@ -260,7 +148,7 @@ const AirportTransportationForm: React.FC = () => {
       </div>
       
       {/* Form Card */}
-      <form onSubmit={handleSubmit} className="bg-white rounded-[24px] p-8 w-[1116px] max-w-[1116px] shadow">
+      <form onSubmit={handleSubmit} className="bg-white rounded-[24px] p-8 w-[1116px] max-w-[1116px] shadow-2xl">
         <div className="flex flex-col gap-6 w-full">
           
           {/* Trip Type Selection */}

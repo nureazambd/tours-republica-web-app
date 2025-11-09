@@ -2,28 +2,42 @@
 import Layout from '@/components/layout/Layout';
 import { Star } from 'lucide-react';
 import BookingForm from './BookingForm';
+import TravelerTestimonials from './Testimonials';
+import BookingFeaturesSection from './BookingFeaturesSection';
 export default function BookCarPage() {
   return (
     <Layout>
     <div className="font-rubik bg-gray-50 text-gray-800">
       
       {/* HERO SECTION */}
-      <section className="relative text-white text-center h-[544px] pt-32 px-4 bg-blue-900">
+      <section className="relative text-white text-center h-[544px]  pt-[56px] px-4 bg-[#003459]">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-70"
           style={{ backgroundImage: "url('/images/bookacar/full-shot-adults-traveling-with-kid.png')" }}
         />
-        <div className="relative z-10 max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+        
+        {/* <div className="relative z-10 w-[991.32px] mx-auto">
+          <h1 className="text-4xl font-[Rubik]
+    font-medium
+    text-[40px] md:text-[64px]
+    leading-[44px] md:leading-[68px]
+    tracking-[0]
+    text-center
+    align-middle
+    mb-4">
             Reliable Airport Transportation You Can Trust
           </h1>
-          <p className="text-lg opacity-90">
+          <p className="text-[20px] font-[400] opacity-90">
             Enjoy a smooth, private ride to and from the airport without any hassle.
           </p>
+        </div> */}
+
+         <div className="relative z-10 lg:w-[991.32px] mx-auto">
+          <BookingForm/>
         </div>
       </section>
 
-     <BookingForm/>
+     {/* <BookingForm/> */}
 
       {/* WHY BOOK WITH US */}
       {/* <section className="py-16 text-center">
@@ -42,7 +56,7 @@ export default function BookCarPage() {
             { icon: '🚗', title: 'Modern, Comfortable Vehicles', describe: 'Choose from a fleet of clean, well-maintained, and up-to-date cars.' },
             { icon: '📞', title: '24/7 Customer Support', describe: 'We’re here to help anytime, day or night, for a hassle-free experience.' },
           ].map((item, idx) => (
-            <div key={idx} className="bg-gray-100 h-[256px] px-[24px] py-[32px] text-left w-[280px] rounded-lg shadow hover:shadow-md transition">
+            <div key={idx} className="bg-gray-100 h-[256px] px-[24px] py-[32px] text-left w-[75 rounded-lg shadow hover:shadow-md transition">
               <div className='w-[232px] h-[192px]'>
                 <div className="text-[48px] pb-[32px] ">{item.icon}</div>
               <h3 className="font-medium text-[20px]">{item.title}</h3>
@@ -53,132 +67,194 @@ export default function BookCarPage() {
         </div>
       </section> */}
 
-      <section className="py-16 text-center">
-  <div className="relative z-10 max-w-4xl mx-auto mb-14 mt-28 px-4">
-    <h2 className="text-4xl md:text-[48px] font-medium text-[24px] mb-2">
-      Book now! It's Quick and Simple
+     <BookingFeaturesSection/>
+
+
+
+      {/* VEHICLE CATEGORIES */}
+      <section className="flex flex-col items-center px-[130px] pt-[104px] pb-[128px] gap-[56px] w-full bg-[rgba(239,242,248,0.5)]">
+  {/* Header */}
+  <div className="flex flex-col items-center gap-[8px] w-[1170px] text-center">
+    <h2 className="font-rubik font-medium text-[48px] leading-[56px] text-[#191919] w-[732px]">
+      We cover all your transportation needs
     </h2>
-    <p className="text-[16px] opacity-90">
-      Secure your booking easily with our trusted, hassle-free process.
+    <p className="font-rubik font-normal text-[16px] leading-[26px] text-[#878D97] w-[1170px]">
+      Whether you’re traveling as a couple or with a small family, we’ve got you covered.
     </p>
   </div>
 
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+  {/* Vehicles Cards */}
+  <div className="flex flex-wrap justify-center gap-[20px] w-[1180px]">
     {[
       {
-        icon: '🚖',
-        title: 'Airport Welcome Service',
-        describe: 'Friendly representatives greet you on arrival to ensure a smooth start.',
+        img: '/images/bookacar/vehicles/For-Couples-and-Small-Families.png',
+        label: 'For Couples and Small Families',
       },
       {
-        icon: '💰',
-        title: 'Best Price Rate Guaranteed',
-        describe: 'Competitive rates with no hidden fees — get the best value.',
+        img: '/images/bookacar/vehicles/For-Groups-and-Large-Families.png',
+        label: 'For Groups and Large Families',
       },
       {
-        icon: '🚗',
-        title: 'Modern, Comfortable Vehicles',
-        describe: 'Choose from a fleet of clean, well-maintained, and up-to-date cars.',
+        img: '/images/bookacar/vehicles/Luxury-Executive-Cars.png',
+        label: 'Luxury & Executive Cars',
       },
-      {
-        icon: '📞',
-        title: '24/7 Customer Support',
-        describe: 'We’re here to help anytime, day or night, for a hassle-free experience.',
-      },
-    ].map((item, idx) => (
+    ].map((vehicle, idx) => (
+      <div key={idx}>
       <div
         key={idx}
-        className="bg-gray-100 p-6  text-left rounded-lg shadow hover:shadow-md transition duration-300 w-[280px] h-[256px] mx-auto flex flex-col items-start"
+        className="flex flex-col items-center gap-[24px] p-[16px] w-[380px] h-[232px] bg-[#EFF2F8] border border-[#BECCE8] rounded-[24px] hover:shadow-lg transition-shadow"
       >
-        <div className="text-[40px] mb-6">{item.icon}</div>
-        <h3 className="font-medium text-[20px] mb-2">{item.title}</h3>
-        <p className="font-regular text-[14px] text-gray-700">{item.describe}</p>
+        {/* Image */}
+        <div className="w-[316px] h-[200px] relative ">
+          <img
+            src={vehicle.img}
+            alt={vehicle.label}
+            className="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-full object-contain"
+          />
+        </div>
+
+        
+      </div>
+      
+        <div className="font-rubik font-medium mt-[24px] text-[20px] leading-[24px] text-[#191919] text-center w-full">
+          {vehicle.label}
+        </div>
       </div>
     ))}
   </div>
 </section>
 
 
-      {/* VEHICLE CATEGORIES */}
-      <section className="py-16 bg-gray-100 text-center">
-        {/* <h2 className="text-3xl font-bold mb-4">We cover all your transportation needs</h2>
-        <p className="text-gray-600 mb-10">Whether you’re traveling as a couple or with a small family, we’ve got you covered.</p> */}
-
-        <div className="relative z-10 max-w-4xl mx-auto mb-[56px] mt-[112px] px-4">
-          <h2 className="text-4xl md:text-[48px] font-medium text-[24px] mb-2">
-            We cover all your transportation needs
-          </h2>
-          <p className="text-[16px] opacity-90">
-            Whether you’re traveling as a couple or with a small family, we’ve got you covered.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 bg-gray-100 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {[
-            { img: '/images/bookacar/vehicles/For-Couples-and-Small-Families.png', label: 'Small - For Couples & Small Families' },
-            { img: '/images/bookacar/vehicles/For-Groups-and-Large-Families.png', label: 'Large - For Groups & Big Families' },
-            { img: '/images/bookacar/vehicles/Luxury-Executive-Cars.png', label: 'Executive - Luxury Vehicles' },
-          ].map((vehicle, idx) => (
-            <div key={idx} className="bg-gray-100 rounded-xl overflow-hidden shadow hover:shadow-lg transition w-[380px] h-[280px]">
-              <img src={vehicle.img} className="w-full h-40 object-contain bg-gray-100 p-4" />
-              <div className="p-4 font-medium text-[20px] text-gray-700">{vehicle.label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* BOOKING STEPS */}
-      <section className="py-16 text-center bg-white">
-        <div className="relative z-10 max-w-4xl mx-auto mb-[56px] mt-[112px] px-4">
-          <h2 className="text-4xl md:text-[48px] font-medium text-[24px] mb-2">
-           Book now ! It's Quick and Simple
-          </h2>
-          <p className="text-[16px] opacity-90">
-            Secure your ride in just a few easy steps — fast, hassle-free, and ready when you are.
+      <section className="flex flex-col items-center py-[112px] px-[130px] gap-[56px] bg-white text-center">
+  {/* Header */}
+  <div className="flex flex-col items-center gap-[8px] w-[1170px]">
+    <h2 className="w-[1170px] text-[48px] leading-[56px] font-medium font-rubik text-[#191919]">
+      Book now ! It's Quick and Simple
+    </h2>
+    <p className="w-[1170px] text-[16px] leading-[26px] font-normal font-rubik text-[#878D97]">
+      Secure your ride in just a few easy steps — fast, hassle-free, and ready when you are.
+    </p>
+  </div>
+
+  {/* Steps */}
+  <div className="flex flex-row flex-wrap justify-between gap-[24px] w-[1180px]">
+    {[
+      {
+        title: 'Choose Route',
+        description:
+          'Select your route and preferred vehicle to confirm and prepare your smooth journey ahead.',
+      },
+      {
+        title: 'Provide Your Details',
+        description:
+          'Share your personal and contact information to confirm and secure your booking smoothly.',
+      },
+      {
+        title: 'Payment Details',
+        description:
+          'Complete your secure and easy payment online to confirm and finalize your booking today.',
+      },
+      {
+        title: 'Meet Your Driver',
+        description:
+          'Meet your professional and friendly driver on time to begin and enjoy your booked ride.',
+      },
+    ].map((step, i) => (
+      <div
+        key={i}
+        className="flex flex-col items-start p-[32px_24px] gap-[32px] w-[277px] h-[287px] mx-auto bg-[#F9FAFB] border border-[#BECCE8] rounded-[24px] box-border"
+      >
+        {/* Step Number */}
+        <div className="w-[232px] h-[96px] text-[96px] leading-[96px] font-bold font-rubik text-[#6FCCDC] flex items-center">
+          0{i + 1}
+        </div>
+
+        {/* Title and Description */}
+        <div className="flex flex-col text-left items-start gap-[16px] w-[232px]">
+          <h3 className="w-[232px] h-[28px] text-[24px] leading-[28px] font-medium font-rubik text-[#191919]">
+            {step.title}
+          </h3>
+          <p className="w-[232px] h-[75px] text-[14px] leading-[25px] font-normal font-rubik text-[#878D97]">
+            {step.description}
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-          {[
-          {title:'Choose Route', description:'Select your route and preferred vehicle to confirm and prepare your smooth journey ahead.'},
-          {title:'Provide Your Details', description:'Share your personal and contact information to confirm and secure your booking smoothly.'},
-          {title:'Payment Details', description:'Complete your secure and easy payment online to confirm and finalize your booking today.'},
-          {title:'Meet Your Driver', description:'Meet your professional and friendly driver on time to begin and enjoy your booked ride.'}, 
-          // '', 
-          // 'Confirm Booking', 
-          // 'Meet Driver'
-        ].map((step, i) => (
-            <div key={i} className="p-4 text-left border rounded-lg shadow bg-gray-50 w-[280px] h-[287px] mx-auto">
-              <div className="text-[96px] font-bold text-[#6FCCDC]">0{i + 1}</div>
-              <h3 className="font-medium text-[24px]">{step.title}</h3>
-              <p className="text-[14px] mt-2 text-gray-600">{step.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      </div>
+    ))}
+  </div>
+</section>
+
 
       {/* HAPPY CUSTOMERS */}
-      <section className="py-16 bg-gray-100 text-center">
-        {/* <h2 className="text-3xl font-bold mb-6">Happy Customers</h2> */}
-        <div className="relative z-10 max-w-4xl mx-auto mb-[56px] mt-[112px] px-4">
-          <h2 className="text-4xl md:text-[48px] font-medium text-[24px] mb-2">
-           Some of our happy customer
-          </h2>
-        </div>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-6xl mx-auto">
-          {[1, 2, 3, 4, 5, 6, 7, 8].map(i => (
-            <img
-              key={i}
-              src={`/images/bookacar/customer/${i}.png`}
-              alt={`Customer ${i}`}
-              className="rounded-lg object-cover w-full h-32 sm:h-40"
-            />
-          ))}
-        </div>
-      </section>
+      <section className="relative py-[144px] bg-[rgba(239,242,248,0.5)] overflow-hidden">
+  {/* Title */}
+  <div className="relative z-10 max-w-6xl mx-auto mb-[72px] px-4 text-center">
+    <h2 className="text-[48px] font-medium font-rubik text-[#191919] leading-[56px]">
+      Some of our happy customer
+    </h2>
+  </div>
+
+  {/* Auto-scrolling images */}
+  <div className="w-full overflow-hidden">
+    {/* First row */}
+    <div className="w-full overflow-hidden">
+  <div className="flex justify-center items-end gap-[12px] animate-marquee whitespace-nowrap">
+    {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+      <img
+        key={`row1-${i}`}
+        src={`/images/bookacar/customer/${i}.png`}
+        alt={`Customer ${i}`}
+        className={`rounded-[8px] object-cover inline-block w-[318px] ${
+          i % 2 === 0 ? 'h-[220px]' : 'h-[252px]'
+        }`}
+      />
+    ))}
+    {/* Duplicate images for seamless loop */}
+    {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+      <img
+        key={`row1-dup-${i}`}
+        src={`/images/bookacar/customer/${i}.png`}
+        alt={`Customer ${i}`}
+        className={`rounded-[8px] object-cover inline-block w-[318px] ${
+          i % 2 === 0 ? 'h-[220px]' : 'h-[252px]'
+        }`}
+      />
+    ))}
+  </div>
+</div>
+
+
+    {/* Second row */}
+    <div className="flex gap-[12px] mt-[12px] animate-marquee-reverse whitespace-nowrap">
+      {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+        <img
+          key={`row2-${i}`}
+          src={`/images/bookacar/customer/${i}.png`}
+          alt={`Customer ${i}`}
+          className={`rounded-lg object-cover inline-block ${
+            i % 2 === 0 ? 'h-[252px]' : 'h-[220px]'
+          } w-[318px]`}
+        />
+      ))}
+      {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+        <img
+          key={`row2-dup-${i}`}
+          src={`/images/bookacar/customer/${i}.png`}
+          alt={`Customer ${i}`}
+          className={`rounded-lg object-cover inline-block ${
+            i % 2 === 0 ? 'h-[252px]' : 'h-[220px]'
+          } w-[318px]`}
+        />
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* TESTIMONIALS */}
 
 
-      <section className="py-16 bg-white text-center">
+      {/* <section className="py-16 bg-white text-center">
   <div className="relative z-10 max-w-4xl mx-auto mb-14 mt-28 px-4">
     <h2 className="text-4xl md:text-[48px] font-medium text-[24px] mb-2">
       What Our Travelers Say
@@ -241,7 +317,8 @@ export default function BookCarPage() {
       </div>
     ))}
   </div>
-</section>
+</section> */}
+<TravelerTestimonials/>
 
 
     </div>
