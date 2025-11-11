@@ -25,6 +25,13 @@ import {
   Quote, Check, DollarSign, X, Shield
 } from 'lucide-react';
 import FeaturedTours from '@/components/home/FeaturedTours-id';
+import TourGallerySection from './TourGallerySection';
+import TourHeader from './TourHeader';
+import TourHighlights from './TourHighlights';
+import MoreInformationSection from './MoreInformationSection';
+import TravelersSay from './TravelersSay';
+import TourGrid from './TourGrid';
+import SecurePaymentSection from './SecurePaymentSection';
 
 // --- Type Definitions ---
 
@@ -124,6 +131,7 @@ interface ReviewCardProps {
   rating: number;
   review: string;
 }
+
 
 const ReviewCard: React.FC<ReviewCardProps> = ({ name, rating, review }) => (
   <div className="bg-white p-4 rounded-xl shadow-md border border-gray-100 min-w-[300px] max-w-sm">
@@ -301,185 +309,29 @@ export default function TourDetailsPage() {
   return (
     <Layout>
       <div className="min-h-screen bg-gray-50 text-black">
-        <div className="container mx-auto px-4 lg:px-4 pt-4">
+        <div className="max-w-[1180px] mx-auto px-4 lg:px-0 pt-4">
 
           {/* Top Section: Header and Gallery */}
-          <div className="mb-4">
-            <div className="flex justify-between items-center mb-6">
-              {/* <h1 className="text-3xl lg:text-4xl font-extrabold text-gray-900 leading-tight">{chosenTour.title}</h1> */}
-              {/* <div className="flex items-center gap-2 text-gray-600">
-                <MapPin className="w-5 h-5 text-gray-400" />
-                <span className="text-base lg:text-lg font-medium text-gray-700">{chosenTour.location}</span>
-              </div> */}
-            </div>
-
-            {/* Gallery Section */}
-            <div className="rounded-xl overflow-hidden  border-gray-100">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-                {/* Left Large Image */}
-                <div className="col-span-2 relative h-[400px] md:h-[500px]">
-                  <Image
-                    src={mainImageSrc}
-                    alt={`${chosenTour.title} main image`}
-                    fill
-                    className="object-cover transition-opacity rounded-xl duration-300"
-                    priority
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 700px"
-                  />
-                  {/* Rating/Review Badge */}
-                  <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg flex items-center gap-2 text-sm font-semibold">
-                    <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                    <span>{chosenTour.rating?.toFixed(1)}</span>
-                    <span className="text-gray-500 font-normal">({chosenTour.reviewCount} Reviews)</span>
-                  </div>
-                  {/* Discount Badge */}
-                  {chosenTour.discount && (
-                    <div className="absolute top-4 left-4 bg-rose-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg tracking-wider">
-                      SAVE {chosenTour.discount}%
-                    </div>
-                  )}
-                </div>
-
-                {/* Right Vertical Thumbnails */}
-                <div className="flex flex-col gap-2 p-2">
-
-                  {/* 1. Main Image Thumbnail (activeIdx = -1) */}
-                  <button
-                    key="main-image-thumb"
-                    onClick={() => { setActiveIdx(-1); }}
-                    className={`relative w-full h-[160px] md:h-[244px] overflow-hidden rounded-lg border-2 transition-all duration-200 ${activeIdx === -1 ? 'border-rose-500 shadow-lg ring-2 ring-rose-500' : 'border-gray-200 hover:border-gray-300'}`}
-                  >
-                    <Image
-                      src={chosenTour.image}
-                      alt={`${chosenTour.title} thumb 1`}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                  </button>
-
-                  {/* 2 & 3. Gallery Thumbnails (activeIdx = 0, 1) */}
-                  {galleryThumbs.map((g, i) => (
-                    <button
-                      key={g + i}
-                      onClick={() => { setActiveIdx(i); }} // activeIdx 0 and 1
-                      className={`relative w-full h-[160px] md:h-[244px] overflow-hidden rounded-lg border-2 transition-all duration-200 ${activeIdx === i ? 'border-rose-500 shadow-lg ring-2 ring-rose-500' : 'border-gray-200 hover:border-gray-300'}`}
-                    >
-                      <Image
-                        src={g}
-                        alt={`${chosenTour.title} thumb ${i + 2}`}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                      />
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
+          <TourGallerySection chosenTour={{
+            title: '',
+            image: '',
+            rating: undefined,
+            reviewCount: undefined,
+            discount: undefined
+          }} galleryThumbs={[mainImageSrc]}/>
 
           {/* Main Content Grid */}
-          <div className="grid lg:grid-cols-3 gap-4">
+          <div className="grid lg:grid-cols-3 mx-auto gap-4">
 
             {/* Left / Main Content Column */}
-            <div className="lg:col-span-2 space-y-4">
+            <div className="lg:col-span-2  space-y-4">
               {/* <div>Home>Tour>Dominican Repubic>Santo Domingo>Santo Domingo City Tour</div> */}
 
-              <div className=" text-gray-900 px-6 pb-6">
-
-                {/* 1. Breadcrumb Navigation: Home > Tour > ... */}
-                <div className="text-[13px] font-[400] text-[#A9B1B7] mb-3">
-                  <span className="hover:text-blue-600 cursor-pointer">Home</span>
-                  <span className="mx-1">&gt;</span>
-                  <span className="hover:text-blue-600 cursor-pointer">Tour</span>
-                  <span className="mx-1">&gt;</span>
-                  <span className="hover:text-blue-600 cursor-pointer">Dominican Republic</span>
-                  {/* <span className="mx-1">&gt;</span>
-                  <span className="hover:text-blue-600 cursor-pointer">Santo Domingo</span> */}
-                  <span className="mx-1">&gt;</span>
-                  <span className="text-gray-900 font-normal">{chosenTour.title}</span>
-                </div>
-
-                {/* 2. Main Title */}
-                <h1 className="text-[32px] lg:text-[40px] font-[500] text-[#191919] leading-tight">
-                  {chosenTour.title}
-                </h1>
-
-                {/* 3. Rating Section: 4.5 (25 Reviews) */}
-                <div className="flex items-center text-sm mt-2 mb-4">
-                  {/* Using a generic Star component for rating */}
-                  <Star className="w-4 text-[#FAA523] h-4 fill-[#FAA523]" />
-                  <Star className="w-4 h-4 text-[#FAA523] fill-[#FAA523]" />
-                  <Star className="w-4 h-4 text-[#FAA523] fill-[#FAA523]" />
-                  <Star className="w-4 h-4 text-[#FAA523] fill-[#FAA523]" />
-                  <Star className="w-4 h-4 text-[#FAA523] fill-[#FAA523] mr-2" />
-
-                  {/* <span className="text-gray-900 font-semibold mr-1">4.5</span>
-                  <span className="text-[#003459] hover:text-blue-700 cursor-pointer text-sm font-normal">
-                    (25 Reviews)
-                  </span> */}
-                  <span className='text-[14px] font-[300]'>{chosenTour.rating?.toFixed(1)} </span>
-                  <span className="text-gray-500 text-[14px] font-[300] ml-1"> ({chosenTour.reviewCount} Reviews)</span>
-                </div>
-
-                {/* 4. Information Cards (Grid Layout) */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-4 -mb-16 relative z-10">
-
-                  {/* Card 1: Duration - uses lucide-react 'Clock' */}
-                  <div className="flex flex-col items-center justify-center p-6 bg-[#EFF2F880] rounded-xl text-center shadow">
-                    {/* <Clock className="w-4 h-4 text-blue-900 opacity-80 mb-3" /> */}
-                    <Image
-                      src="/images/tours-id/duration-icon.png"
-                      width={50}
-                      height={50}
-                      alt="Picture of the author"
-                      className="w-[32px] h-[32px] text-blue-900 opacity-80 mb-3"
-                    />
-                    <span className=" text-[#191919] font-[500] text-[15px]">Duration</span>
-                    <span className="text-[#878D97] font-[400] text-[13px] mt-1">10 Hours</span>
-                  </div>
-
-                  {/* Card 2: Pickup - uses lucide-react 'MapPin' */}
-                  <div className="flex flex-col items-center justify-center p-6 bg-[#EFF2F880] rounded-xl text-center shadow">
-                    <Image
-                      src="/images/tours-id/Pickup.png"
-                      width={50}
-                      height={50}
-                      alt="Picture of the author"
-                      className="w-[32px] h-[32px] text-blue-900 opacity-80 mb-3"
-                    />
-                    <span className="text-[#191919] font-[500] text-[15px]">Pickup</span>
-                    <span className="text-[#878D97] font-[400] text-[13px] mt-1">At your hotel lobby</span>
-                  </div>
-
-                  {/* Card 3: Availability - uses lucide-react 'Calendar' */}
-                  <div className="flex flex-col items-center justify-center p-6 bg-[#EFF2F880] rounded-xl text-center shadow">
-                    <Image
-                      src="/images/tours-id/Availablilty.png"
-                      width={50}
-                      height={50}
-                      alt="Picture of the author"
-                      className="w-[32px] h-[32px] text-blue-900 opacity-80 mb-3"
-                    />
-                    <span className="text-[#191919] font-[500] text-[15px]">Availability</span>
-                    <span className="text-[#878D97] font-[400] text-[13px] mt-1">Everyday</span>
-                  </div>
-
-                  {/* Card 4: Guide Language - uses lucide-react 'MessageSquare' for the chat bubble icon */}
-                  <div className="flex flex-col items-center justify-center p-6 bg-[#EFF2F880] rounded-xl text-center shadow">
-                    <Image
-                      src="/images/tours-id/Guide-Language.png"
-                      width={50}
-                      height={50}
-                      alt="Picture of the author"
-                      className="w-[32px] h-[32px] text-blue-900 opacity-80 mb-3"
-                    />
-                    <span className="text-[#191919] font-[500] text-[15px]">Guide Language</span>
-                    <span className="text-[#878D97] font-[400] text-[13px] mt-1">Your preferred language</span>
-                  </div>
-                </div>
-              </div>
+              <TourHeader chosenTour={{
+                title: chosenTour.title,
+                rating: chosenTour.rating,
+                reviewCount: chosenTour.reviewCount
+              }}/>
 
               {/* Remaining Content */}
               <div className="">
@@ -492,7 +344,7 @@ export default function TourDetailsPage() {
               {/* Main container for the entire content area, immediately following the header/cards.
     Using a light gray background for the overall page content. */}
               <div className="bg-gray-50 py-16">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4">
+                <div className=" mx-auto px-4 sm:px-6 lg:px-0">
 
                   {/* Overview Section */}
                   <section className="mb-12">
@@ -508,71 +360,10 @@ export default function TourDetailsPage() {
                     </button>
                   </section>
                   {/* Tour Highlights Section */}
-                  <section className="mb-12 bg-[#EFF2F880] py-[40px] px-[32px] rounded-2xl">
-                    <h2 className="text-[28px] font-[500] text-[#191919] mb-6 text-center">Tour Highlights</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-                      {/* Highlight Card 1: 3 Eyes National Park */}
-                      <div className="bg-white rounded-xl shadow-md overflow-hidden">
-                        <Image
-                          src="/images/tours-id/3-Eyes-National-Park.png"
-                          width={50}
-                          height={50}
-                          alt="Picture of the author"
-                          className="w-full h-48 object-cover"
-                        />
-
-                        <div className="p-4">
-                          <h3 className="font-[500] text-[16px] text-[#191919] mb-2">3 Eyes National Park</h3>
-                          <p className="text-[#878D97] text-[13px] font-[400] mb-3">Explore the stunning underground caves and lagoons.</p>
-                          <button className="text-[#EE2552] text-[13px] border p-2 rounded-lg bg-[#EE25520D] hover:underline font-[400]">
-                            View map
-                          </button>
-                        </div>
-                      </div>
-
-                      {/* Highlight Card 2: Columbus Lighthouse */}
-                      <div className="bg-white rounded-xl shadow-md overflow-hidden">
-                        <Image
-                          src="/images/tours-id/Columbus-Lighthouse.png"
-                          width={50}
-                          height={50}
-                          alt="Picture of the author"
-                          className="w-full h-48 object-cover"
-                        />
-
-                        <div className="p-4">
-                          <h3 className="font-[500] text-[16px] text-[#191919] mb-2">Columbus Lighthouse</h3>
-                          <p className="text-[#878D97] text-[13px] font-[400] mb-3">A monumental cross-shaped structure dedicated to Christopher Columbus.</p>
-                           <button className="text-[#EE2552] text-[13px] border p-2 rounded-lg bg-[#EE25520D] hover:underline font-[400]">
-                            View map
-                          </button>
-                        </div>
-                      </div>
-
-                      {/* Highlight Card 3: Alcázar de Colón */}
-                      <div className="bg-white rounded-xl shadow-md overflow-hidden">
-                        <Image
-                          src="/images/tours-id/Alcázar-de-Colón.png"
-                          width={50}
-                          height={50}
-                          alt="Picture of the author"
-                          className="w-full h-48 object-cover"
-                        />
-                        <div className="p-4">
-                          <h3 className="font-[500] text-[16px] text-[#191919] mb-2">Alcázar de Colón</h3>
-                          <p className="text-[#878D97] text-[13px] font-[400] mb-3">The first fortified palace built in the Americas, once home to Diego Columbus.</p>
-                           <button className="text-[#EE2552] text-[13px] border p-2 rounded-lg bg-[#EE25520D] hover:underline font-[400]">
-                            View map
-                          </button>
-                        </div>
-                      </div>
-
-                    </div>
-                  </section>
+                  <TourHighlights/>
 
                   {/* What's Included / Not Included Section */}
-                  <section className="mb-12">
+                  <section className="mb-12 mt-[56px]">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                       {/* What's Included */}
@@ -580,43 +371,61 @@ export default function TourDetailsPage() {
                         <h3 className="text-[20px] font-[500] text-[#28A745] mb-4">What's Included</h3>
                         <ul className="space-y-3">
                           <li className="flex items-center text-[#4B5563] text-[14px] font-[400]">
-                            <Image
+                            {/* <Image
                           src="/images/tours-id/mdi_ticket.png"
                           width={50}
                           height={50}
                           alt="Hotel pickup and drop-off"
                           className="w-5 h-5 text-green-500 mr-2 flex-shrink-0"
-                        />
+                        /> */}
+                        <svg width="20" height="20" className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_916_11875)">
+<path d="M2 3C2 2.44687 2.44687 2 3 2H17C17.5531 2 18 2.44687 18 3C18 3.55313 17.5531 4 17 4V16C17.5531 16 18 16.4469 18 17C18 17.5531 17.5531 18 17 18H11.5V16.5C11.5 15.6719 10.8281 15 10 15C9.17188 15 8.5 15.6719 8.5 16.5V18H3C2.44687 18 2 17.5531 2 17C2 16.4469 2.44687 16 3 16V4C2.44687 4 2 3.55313 2 3ZM5 5.5V6.5C5 6.775 5.225 7 5.5 7H6.5C6.775 7 7 6.775 7 6.5V5.5C7 5.225 6.775 5 6.5 5H5.5C5.225 5 5 5.225 5 5.5ZM9.5 5C9.225 5 9 5.225 9 5.5V6.5C9 6.775 9.225 7 9.5 7H10.5C10.775 7 11 6.775 11 6.5V5.5C11 5.225 10.775 5 10.5 5H9.5ZM13 5.5V6.5C13 6.775 13.225 7 13.5 7H14.5C14.775 7 15 6.775 15 6.5V5.5C15 5.225 14.775 5 14.5 5H13.5C13.225 5 13 5.225 13 5.5ZM5.5 8C5.225 8 5 8.225 5 8.5V9.5C5 9.775 5.225 10 5.5 10H6.5C6.775 10 7 9.775 7 9.5V8.5C7 8.225 6.775 8 6.5 8H5.5ZM9 8.5V9.5C9 9.775 9.225 10 9.5 10H10.5C10.775 10 11 9.775 11 9.5V8.5C11 8.225 10.775 8 10.5 8H9.5C9.225 8 9 8.225 9 8.5ZM13.5 8C13.225 8 13 8.225 13 8.5V9.5C13 9.775 13.225 10 13.5 10H14.5C14.775 10 15 9.775 15 9.5V8.5C15 8.225 14.775 8 14.5 8H13.5ZM12.25 14C12.6656 14 13.0094 13.6594 12.9062 13.2563C12.575 11.9594 11.4 11 10 11C8.6 11 7.42188 11.9594 7.09375 13.2563C6.99063 13.6563 7.3375 14 7.75 14H12.25Z" fill="#28A745"/>
+</g>
+<defs>
+<clipPath id="clip0_916_11875">
+<rect width="16" height="16" fill="white" transform="translate(2 2)"/>
+</clipPath>
+</defs>
+</svg>
+
                             <span>Convenient hotel pick-up</span>
                           </li>
                           <li className="flex items-center text-[#4B5563] text-[14px] font-[400]">
-                            <Image
-                          src="/images/tours-id/man-icon.png"
-                          width={50}
-                          height={50}
-                          alt="Hotel pickup and drop-off"
-                          className="w-4 h-4 text-green-500 mr-2 flex-shrink-0"
-                        />
+                            
+                        <svg width="20" height="20" className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_916_11880)">
+<path d="M10 8C11.0609 8 12.0783 7.57857 12.8284 6.82843C13.5786 6.07828 14 5.06087 14 4C14 2.93913 13.5786 1.92172 12.8284 1.17157C12.0783 0.421427 11.0609 0 10 0C8.93913 0 7.92172 0.421427 7.17157 1.17157C6.42143 1.92172 6 2.93913 6 4C6 5.06087 6.42143 6.07828 7.17157 6.82843C7.92172 7.57857 8.93913 8 10 8ZM8.57188 9.5C5.49375 9.5 3 11.9937 3 15.0719C3 15.5844 3.41563 16 3.92813 16H16.0719C16.5844 16 17 15.5844 17 15.0719C17 11.9937 14.5063 9.5 11.4281 9.5H8.57188Z" fill="#28A745"/>
+</g>
+<defs>
+<clipPath id="clip0_916_11880">
+<rect width="14" height="16" fill="white" transform="translate(3)"/>
+</clipPath>
+</defs>
+</svg>
+
                             <span>Professional certified guide</span>
                           </li>
                           <li className="flex items-center text-[#4B5563] text-[14px] font-[400]">
-                           <Image
-                          src="/images/tours-id/Buffet.png"
-                          width={50}
-                          height={50}
-                          alt="Hotel pickup and drop-off"
-                          className="w-4 h-4 text-green-500 mr-2 flex-shrink-0"
-                        />
+                           <svg width="20" height="20" className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_916_11885)">
+<path d="M16 2C15.5 2 12 3 12 7.5V11C12 12.1031 12.8969 13 14 13H15V17C15 17.5531 15.4469 18 16 18C16.5531 18 17 17.5531 17 17V13V9.5V3C17 2.44687 16.5531 2 16 2ZM5 2.5C5 2.24375 4.80938 2.03125 4.55313 2.00313C4.29688 1.975 4.06875 2.14375 4.0125 2.39062L3.06562 6.65C3.02187 6.84688 3 7.04688 3 7.24687C3 8.68125 4.09687 9.85938 5.5 9.9875V17C5.5 17.5531 5.94688 18 6.5 18C7.05312 18 7.5 17.5531 7.5 17V9.9875C8.90312 9.85938 10 8.68125 10 7.24687C10 7.04688 9.97812 6.84688 9.93437 6.65L8.9875 2.39062C8.93125 2.14062 8.69688 1.975 8.44375 2.00313C8.19062 2.03125 8 2.24375 8 2.5V6.69375C8 6.8625 7.8625 7 7.69375 7C7.53437 7 7.40312 6.87813 7.3875 6.71875L6.99688 2.45625C6.975 2.19688 6.75938 2 6.5 2C6.24062 2 6.025 2.19688 6.00312 2.45625L5.61562 6.71875C5.6 6.87813 5.46875 7 5.30938 7C5.14062 7 5.00312 6.8625 5.00312 6.69375V2.5H5ZM6.50938 7.25H6.5H6.49062L6.5 7.22813L6.50938 7.25Z" fill="#28A745"/>
+</g>
+<defs>
+<clipPath id="clip0_916_11885">
+<rect width="14" height="16" fill="white" transform="translate(3 2)"/>
+</clipPath>
+</defs>
+</svg>
+
                             <span>Delicious local lunch</span>
                           </li>
                           <li className="flex items-center text-[#4B5563] text-[14px] font-[400]">
-                            <Image
-                          src="/images/tours-id/entrance.png"
-                          width={50}
-                          height={50}
-                          alt="Hotel pickup and drop-off"
-                          className="w-5 h-5 text-green-500 mr-2 flex-shrink-0"
-                        />
+                            
+                        <svg width="20" height="20" className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.9827 14.0002L9.99935 12.0835L7.01602 14.0002L7.91602 10.5668L5.17435 8.3335L8.71602 8.11683L9.99935 4.8335L11.2827 8.11683L14.8243 8.3335L12.0827 10.5668M16.666 10.0002C16.666 9.55814 16.8416 9.13421 17.1542 8.82165C17.4667 8.50909 17.8907 8.3335 18.3327 8.3335V5.00016C18.3327 4.55814 18.1571 4.13421 17.8445 3.82165C17.532 3.50909 17.108 3.3335 16.666 3.3335H3.33268C2.89065 3.3335 2.46673 3.50909 2.15417 3.82165C1.84161 4.13421 1.66602 4.55814 1.66602 5.00016V8.3335C2.10804 8.3335 2.53197 8.50909 2.84453 8.82165C3.15709 9.13421 3.33268 9.55814 3.33268 10.0002C3.33268 10.4422 3.15709 10.8661 2.84453 11.1787C2.53197 11.4912 2.10804 11.6668 1.66602 11.6668V15.0002C1.66602 15.4422 1.84161 15.8661 2.15417 16.1787C2.46673 16.4912 2.89065 16.6668 3.33268 16.6668H16.666C17.108 16.6668 17.532 16.4912 17.8445 16.1787C18.1571 15.8661 18.3327 15.4422 18.3327 15.0002V11.6668C17.8907 11.6668 17.4667 11.4912 17.1542 11.1787C16.8416 10.8661 16.666 10.4422 16.666 10.0002Z" fill="#28A745"/>
+</svg>
+
                             <span>All entrance fees</span>
                           </li>
                         </ul>
@@ -681,11 +490,11 @@ export default function TourDetailsPage() {
 
                     <div className="relative space-y-6">
                       {/* Timeline Connector Line */}
-                      <div className="absolute left-3 top-0 bottom-0 w-0.5 bg-[#FAA523]"></div>
+                      <div className="absolute left-3 top-2 bottom-20 w-0.5 bg-[#FAA523]"></div>
 
                       {/* Itinerary Item 1 */}
                       <div className="flex items-start relative bg-[#EFF2F880] p-5 rounded-xl shadow-sm border border-gray-100 ml-10">
-                        <div className="absolute -left-10 top-1/2 -translate-y-1/2 w-6 h-6 bg-[#FAA523] rounded-full flex items-center justify-center text-white font-bold text-sm z-10">
+                        <div className="absolute -left-12 top-4 -translate-y-1/2 w-[40px] h-[32px]  bg-[#FAA523] rounded-full flex items-center justify-center text-white font-bold text-sm z-10">
                           1
                         </div>
                         <div>
@@ -696,7 +505,7 @@ export default function TourDetailsPage() {
 
                       {/* Itinerary Item 2 */}
                       <div className="flex items-start relative bg-[#EFF2F880] p-5 rounded-xl shadow-sm border border-gray-100 ml-10">
-                        <div className="absolute -left-10 top-1/2 -translate-y-1/2 w-6 h-6 bg-[#FAA523] rounded-full flex items-center justify-center text-white font-bold text-sm z-10">
+                        <div className="absolute -left-12 top-4 -translate-y-1/2 w-[40px] h-[32px] bg-[#FAA523] rounded-full flex items-center justify-center text-white font-bold text-sm z-10">
                           2
                         </div>
                         <div>
@@ -707,7 +516,7 @@ export default function TourDetailsPage() {
 
                       {/* Itinerary Item 3 */}
                       <div className="flex items-start relative bg-[#EFF2F880] p-5 rounded-xl shadow-sm border border-gray-100 ml-10">
-                        <div className="absolute -left-10 top-1/2 -translate-y-1/2 w-6 h-6 bg-[#FAA523] rounded-full flex items-center justify-center text-white font-bold text-sm z-10">
+                        <div className="absolute -left-12 top-4 -translate-y-1/2 w-[40px] h-[32px] bg-[#FAA523] rounded-full flex items-center justify-center text-white font-bold text-sm z-10">
                           3
                         </div>
                         <div>
@@ -718,7 +527,7 @@ export default function TourDetailsPage() {
 
                       {/* Itinerary Item 4 */}
                       <div className="flex items-start relative bg-[#EFF2F880] p-5 rounded-xl shadow-sm border border-gray-100 ml-10">
-                        <div className="absolute -left-10 top-1/2 -translate-y-1/2 w-6 h-6 bg-[#FAA523] rounded-full flex items-center justify-center text-white font-bold text-sm z-10">
+                        <div className="absolute -left-12 top-4 -translate-y-1/2 w-[40px] h-[32px] bg-[#FAA523] rounded-full flex items-center justify-center text-white font-bold text-sm z-10">
                           4
                         </div>
                         <div>
@@ -730,226 +539,7 @@ export default function TourDetailsPage() {
                     </div>
                   </section>
 
-                  {/* More Information Header (Accordion-like) */}
-                  <section className="mb-4 mt-20">
-                    <div className="bg-[#003459] p-5 rounded-xl flex items-center justify-between cursor-pointer">
-                      <h2 className="text-[28px] font-[500] text-white">More Information</h2>
-                      {/* Placeholder for an arrow icon, e.g., <ChevronDown className="w-6 h-6 text-white"/> */}
-                    </div>
-                    {/* The content for "More Information" would go here, revealed by clicking the header */}
-                  </section>
-
-                  {/* Important Information Section */}
-                  <section className=" p-6">
-                    <h3 className="text-[20px] font-[500] text-[#191919]">Important Information</h3>
-                    <div className="py-3 rounded-xl ">
-                      <ul className="space-y-4">
-                        <li className="flex items-center">
-                          
-                          <Image
-                          src="/images/tours-id/When-to-Book.png"
-                          width={50}
-                          height={50}
-                          alt="Hotel pickup and drop-off"
-                          className="w-4 h-4 text-blue-600 mr-3 flex-shrink-0"
-                        />
-                          <div>
-                            <span className="font-[400] text-[16px] text-[#191919]">When to Book</span>
-                            <p className="text-[#878D97] text-[14px] font-[400]">It's recommended to book up to 24 hours before the activity.</p>
-                          </div>
-                        </li>
-                        <li className="flex items-center">
-                          <Image
-                          src="/images/tours-id/Accessibility.png"
-                          width={50}
-                          height={50}
-                          alt="Hotel pickup and drop-off"
-                          className="w-5 h-5 text-blue-600 mr-3 flex-shrink-0"
-                        />
-                          <div>
-                            <span className="font-[400] text-[16px] text-[#191919]">Accessibility</span>
-                            <p className="text-[#878D97] text-[14px] font-[400]">This tour is accessible with a participating person.</p>
-                          </div>
-                        </li>
-                        <li className="flex items-center">
-                          <Image
-                          src="/images/tours-id/Sustainability.png"
-                          width={50}
-                          height={50}
-                          alt="Hotel pickup and drop-off"
-                          className="w-5 h-5 text-blue-600 mr-3 flex-shrink-0"
-                        />
-                          <div>
-                            <span className="font-[400] text-[16px] text-[#191919]">Sustainability</span>
-                            <p className="text-[#878D97] text-[14px] font-[400]">We adhere to responsible tourism guidelines.</p>
-                          </div>
-                        </li>
-                        <li className="flex items-center">
-                          <Image
-                          src="/images/tours-id/Provider.png"
-                          width={50}
-                          height={50}
-                          alt="Hotel pickup and drop-off"
-                          className="w-5 h-5 text-blue-600 mr-3 flex-shrink-0"
-                        />
-                          <div>
-                            <span className="font-[400] text-[16px] text-[#191919]">Provider</span>
-                            <p className="text-[#878D97] text-[14px] font-[400]">Dominicana Tour | Our certified guides.</p>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </section>
-
-                  <hr className="border-gray-200" />
-
-                  {/* Cancellation Policy Section */}
-                  <section className=" p-6">
-                    <h3 className="text-[20px] font-[500] text-[#191919] mb-6">Cancellation Policy</h3>
-                    <div className="rounded-xl">
-                      <ul className="space-y-3">
-                        <li className="flex items-start text-gray-700">
-                          
-                          <Image
-                          src="/images/tours-id/ok-icon.png"
-                          width={50}
-                          height={50}
-                          alt="Hotel pickup and drop-off"
-                          className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-1"
-                        />
-                          <div>
-                            <span className="font-[400] text-[14px] text-[#878D97]">Free cancelation up to 24 hours before tour starts</span>
-                            {/* <p className="font-[400] text-[14px] text-[#878D97]">You can cancel free of charge up to 24 hours before the activity is scheduled. If you cancel within 24 hours, or if you don't show up, no refund will be issued.</p> */}
-                          </div>
-                        </li>
-                        <li className="flex items-start text-gray-700">
-                          <Image
-                          src="/images/tours-id/ok-icon.png"
-                          width={50}
-                          height={50}
-                          alt="Hotel pickup and drop-off"
-                          className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-1"
-                        />
-                          <div>
-                            <span className="font-[400] text-[14px] text-[#878D97]">For Last-Minute Free Cancellation Policy</span>
-                            {/* <p className="font-[400] text-[14px] text-[#878D97]">Proof of emergency is required. Please contact our support team to arrange.</p> */}
-                          </div>
-                        </li>
-                        <li className="flex items-start text-gray-700">
-                          <Image
-                          src="/images/tours-id/ok-icon.png"
-                          width={50}
-                          height={50}
-                          alt="Hotel pickup and drop-off"
-                          className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-1"
-                        />
-                          <div>
-                            <span className="font-[400] text-[14px] text-[#878D97]">We offer free last-minute cancellation in the event of a medical emergency or flight cancellation.</span>
-                            <p className="font-[400] text-[14px] text-[#878D97]"> A valid medical certificate must be provided in case of a medical emergency.</p>
-                            <p className="font-[400] text-[14px] text-[#878D97]">  A flight cancellation receipt is required in case of a flight disruption.</p>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </section>
-
-                  <hr className="border-gray-200 mb-10 mt-4" />
-                  
-                  {/* Frequently Asked Questions Section */}
-                  <section className="mb-12 px-6">
-                    <h3 className="text-[20px] font-[500] text-[#191919] mb-6">Frequently Asked Questions</h3>
-                    <div className="bg-[#EFF2F880] rounded-xl border border-gray-100 divide-y divide-gray-100">
-
-                      {/* FAQ Item 1 */}
-                      <div className="p-5">
-                        <button className="flex justify-between items-center w-full text-left text-[14px] font-[400] text-[#191919]">
-                          Where will I be picked up?
-                          <ChevronDown className="w-5 h-5 text-gray-500" />
-                        </button>
-                        {/* Answer content (initially hidden) */}
-                        <p className="text-gray-600 text-sm mt-3 hidden">
-                          We offer convenient pickup from most hotels and designated meeting points in Santo Domingo. During the booking process, you'll be able to select your preferred pickup location. Please ensure you provide accurate hotel information. If your accommodation is not a central location in the designated pickup zones, alternative arrangements will be communicated to you.
-                        </p>
-                      </div>
-
-                      {/* FAQ Item 2 */}
-                      <div className="p-5">
-                        <button className="flex justify-between items-center w-full text-left text-[14px] font-[400] text-[#191919]">
-                          What time will I go back?
-                          <ChevronDown className="w-5 h-5 text-gray-500" />
-                        </button>
-                        {/* Answer content (initially hidden) */}
-                        <p className="text-gray-600 text-sm mt-3 hidden">
-                          The tour typically concludes around 4:30 PM, after which you will be transferred back to your hotel. Exact return times can vary slightly depending on traffic and drop-off locations.
-                        </p>
-                      </div>
-
-                      {/* FAQ Item 3 */}
-                      <div className="p-5">
-                        <button className="flex justify-between items-center w-full text-left text-[14px] font-[400] text-[#191919]">
-                          What is the lunch and drinks menu?
-                          <ChevronDown className="w-5 h-5 text-gray-500" />
-                        </button>
-                        {/* Answer content (initially hidden) */}
-                        <p className="text-gray-600 text-sm mt-3 hidden">
-                          Lunch includes traditional Dominican cuisine at a local restaurant. This typically features rice, beans, a meat dish (chicken or pork), and a salad. Drinks usually include water and a soft drink. Alcoholic beverages are not included but can often be purchased separately.
-                        </p>
-                      </div>
-
-                      {/* FAQ Item 4 */}
-                      <div className="p-5">
-                        <button className="flex justify-between items-center w-full text-left text-[14px] font-[400] text-[#191919]">
-                          Is there an extra charge?
-                          <ChevronDown className="w-5 h-5 text-gray-500" />
-                        </button>
-                        {/* Answer content (initially hidden) */}
-                        <p className="text-gray-600 text-sm mt-3 hidden">
-                          All entrance fees and lunch are included in the tour price. Personal expenses, souvenirs, and alcoholic beverages are not included and would be an extra charge if desired.
-                        </p>
-                      </div>
-
-                      {/* FAQ Item 5 */}
-                      <div className="p-5">
-                        <button className="flex justify-between items-center w-full text-left text-[14px] font-[400] text-[#191919]">
-                          What should I pack?
-                          <ChevronDown className="w-5 h-5 text-gray-500" />
-                        </button>
-                        {/* Answer content (initially hidden) */}
-                        <p className="text-gray-600 text-sm mt-3 hidden">
-                          We recommend comfortable walking shoes, light clothing suitable for warm weather, sunglasses, sunscreen, a hat, and a camera. You might also want to bring a small backpack for personal items.
-                        </p>
-                      </div>
-
-                      {/* FAQ Item 6 */}
-                      <div className="p-5">
-                        <button className="flex justify-between items-center w-full text-left text-[14px] font-[400] text-[#191919]">
-                          What should I bring?
-                          <ChevronDown className="w-5 h-5 text-gray-500" />
-                        </button>
-                        {/* Answer content (initially hidden) */}
-                        <p className="text-gray-600 text-sm mt-3 hidden">
-                          Besides the essentials listed above, you may wish to bring some local currency (Dominican Pesos) for any personal purchases or gratuities.
-                        </p>
-                      </div>
-
-                      {/* FAQ Item 7 */}
-                      <div className="p-5">
-                        <button className="flex justify-between items-center w-full text-left text-[14px] font-[400] text-[#191919]">
-                          What accessibility options do you offer?
-                          <ChevronDown className="w-5 h-5 text-gray-500" />
-                        </button>
-                        {/* Answer content (initially hidden) */}
-                        <p className="text-gray-600 text-sm mt-3 hidden">
-                          Our tour is generally accessible, but specific needs should be communicated in advance. Some historical sites may have limited accessibility. Please contact our support team for detailed information on accessibility for your specific requirements.
-                        </p>
-                      </div>
-                    </div>
-                    {/* The contact support text */}
-                    <p className="text-gray-600 text-sm mt-6 text-left">
-                      For more questions, <span className="text-[#EE2552] hover:underline cursor-pointer font-semibold">contact</span> our support team.
-                    </p>
-                  </section>
-
+                  <MoreInformationSection/>
                 </div> {/* End max-w-7xl container */}
               </div> {/* End bg-gray-50 main container */}
 
@@ -1076,134 +666,16 @@ export default function TourDetailsPage() {
           </div>
 
           {/* What Our Travelers Say (Reviews) */}
-          <div className="mt-20 text-center">
-            {/* Section 1: What Our Travelers Say */}
-            <section className="py-[32px]">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4">
-                <h2 className="text-[48px] font-[500] text-[#191919] mb-12 text-center">
-                  What Our Travelers Say
-                </h2>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-
-                  {/* Review Card 1 */}
-                  <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
-                    <div className="flex justify-between items-start mb-3">
-                      <Quote className="w-4 h-4 text-yellow-500 fill-yellow-100 flex-shrink-0" />
-                      <div className="flex text-yellow-500">
-                        <Star className="w-4 h-4 fill-yellow-500" />
-                        <Star className="w-4 h-4 fill-yellow-500" />
-                        <Star className="w-4 h-4 fill-yellow-500" />
-                        <Star className="w-4 h-4 fill-yellow-500" />
-                        <Star className="w-4 h-4 fill-yellow-500" />
-                      </div>
-                    </div>
-
-                    <p className="text-[#4B5563] leading-relaxed mb-4 text-[14px] font-[400] text-left">
-                      "The local guides were incredible! They showed us hidden gems we would have never found on our own. Such an authentic experience."
-                    </p>
-
-                    <div className="flex items-center">
-                      {/* Placeholder for Profile Picture */}
-                      <div className="w-10 h-10 bg-gray-300 rounded-full mr-3 border border-gray-400">
-                        <Image
-                      src="/images/tours-id/Marcus-R.png"
-                      width={50}
-                      height={50}
-                      alt="Secure Payment Methods"
-                      className='w-10 h-10'
-                    />
-                      </div>
-                      <div className='text-left'>
-                        <p className="font-[500] text-[#191919] text-[16px]">Marcus R.</p>
-                        <p className="text-[#878D97] text-[14px] font-[400]">Canada</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Review Card 2 */}
-                  <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
-                    <div className="flex justify-between items-start mb-3">
-                      <Quote className="w-4 h-4 text-yellow-500 fill-yellow-100 flex-shrink-0" />
-                      <div className="flex text-yellow-500">
-                        <Star className="w-4 h-4 fill-yellow-500" />
-                        <Star className="w-4 h-4 fill-yellow-500" />
-                        <Star className="w-4 h-4 fill-yellow-500" />
-                        <Star className="w-4 h-4 fill-yellow-500" />
-                        <Star className="w-4 h-4 fill-yellow-500" />
-                      </div>
-                    </div>
-
-                    <p className="text-[#4B5563] leading-relaxed mb-4 text-[14px] font-[400] text-left">
-                      "The local guides were incredible! They showed us hidden gems we would have never found on our own. Such an authentic experience."
-                    </p>
-
-                    <div className="flex items-center">
-                      {/* Placeholder for Profile Picture */}
-                      <div className="w-10 h-10 bg-gray-300 rounded-full mr-3 border border-gray-400">
-                        <Image
-                      src="/images/tours-id/Elena-K.png"
-                      width={50}
-                      height={50}
-                      alt="Secure Payment Methods"
-                      className='w-10 h-10'
-                    />
-                      </div>
-                      <div className='text-left'>
-                        <p className="font-[500] text-[#191919] text-[16px]">Elena K.</p>
-                        <p className="text-[#878D97] text-[14px] font-[400]">UK</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Review Card 3 */}
-                  <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
-                    <div className="flex justify-between items-start mb-3">
-                      <Quote className="w-4 h-4 text-yellow-500 fill-yellow-100 flex-shrink-0" />
-                      <div className="flex text-yellow-500">
-                        <Star className="w-4 h-4 fill-yellow-500" />
-                        <Star className="w-4 h-4 fill-yellow-500" />
-                        <Star className="w-4 h-4 fill-yellow-500" />
-                        <Star className="w-4 h-4 fill-yellow-500" />
-                        <Star className="w-4 h-4 fill-yellow-500" />
-                      </div>
-                    </div>
-
-                    <p className="text-[#4B5563] leading-relaxed mb-4 text-[14px] font-[400] text-left">
-                      "The local guides were incredible! They showed us hidden gems we would have never found on our own. Such an authentic experience."
-                    </p>
-
-                    <div className="flex items-center">
-                      {/* Placeholder for Profile Picture */}
-                      <div className="w-10 h-10 bg-gray-300 rounded-full mr-3 border border-gray-400">
-                        <Image
-                      src="/images/tours-id/Sophia-M.png"
-                      width={50}
-                      height={50}
-                      alt="Secure Payment Methods"
-                      className='w-10 h-10'
-                    />
-                      </div>
-                      <div className='text-left'>
-                        <p className="font-[500] text-[#191919] text-[16px]">Sophia M.</p>
-                        <p className="text-[#878D97] text-[14px] font-[400]">USA</p>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </section>
-          </div>
+          <TravelersSay/>
 
           {/* Discover Additional Options - Placeholder for similar tours */}
-          <div className="mt-20 text-center">
+          <div className=" text-center">
             {/* Horizontal Rule to separate sections */}
-            <hr className="border-gray-200" />
+            {/* <hr className="border-gray-200" /> */}
 
             {/* Section 2: Discover Additional Options */}
             <section className="py-20 ">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4">
+              <div className=" ">
                 <h2 className="text-[48px] font-[500] text-[#191919] mb-12 text-center">
                   Discover Additional Options
                 </h2>
@@ -1211,8 +683,9 @@ export default function TourDetailsPage() {
                 <div className="grid  gap-4">
 
                     
-                 <FeaturedTours/>
-
+                 {/* <FeaturedTours/> */}
+                    <TourGrid/>
+                    
                 </div>
               </div>
             </section>
@@ -1307,25 +780,7 @@ export default function TourDetailsPage() {
         </div>
 
         {/* Section: Secure Payment Methods Image */}
-        <section className="bg-[#EFF2F8] py-12">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4">
-            {/* Container to center the content */}
-            <div className="flex justify-center">
-              {/* NOTE: The Image component uses Next.js-style props (width, height, src, alt).
-              The image itself will be centered because of the 'flex justify-center' on the parent div. 
-            */}
-              <div className="w-full max-w-lg">
-                <Image
-                  src="/images/tours-id/Secure-Payment-Methods.png"
-                  width={720}
-                  height={600}
-                  alt="Secure Payment Methods"
-                // Optional: Add 'className="h-auto w-full"' if the image needs to be fully responsive
-                />
-              </div>
-            </div>
-          </div>
-        </section>
+        <SecurePaymentSection/>
 
       </div>
     </Layout>

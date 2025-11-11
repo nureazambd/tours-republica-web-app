@@ -24,7 +24,7 @@ const Header = () => {
 
   return (
     <header className="bg-white border-b border-gray-100 w-full">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-20 flex items-center justify-between h-[96px]">
+      <div className="max-w-[1180px] mx-auto  p-4 md:p-0  flex items-center justify-between h-[96px]">
         {/* Logo */}
         <Link href="/" className="flex-shrink-0">
           <Image
@@ -67,7 +67,7 @@ const Header = () => {
             {!user ? (
               <Link
                 href="/login"
-                className="px-4 py-2 bg-[#EE2552] text-white rounded-lg font-rubik text-[14px] hover:bg-[#d91f46] transition-colors"
+                className="px-[16px] py-2 bg-[#EE2552] text-white rounded-lg font-rubik text-[14px] hover:bg-[#d91f46] transition-colors"
               >
                 Sign In
               </Link>
@@ -75,7 +75,7 @@ const Header = () => {
               <div className="relative">
                 <button
                   onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                  className="flex items-center gap-2 px-4 py-2 bg-[#EE2552] text-white rounded-lg font-rubik"
+                  className="flex items-center gap-2 px-[16px] py-2 bg-[#EE2552] text-white rounded-lg font-rubik"
                 >
                   {user.firstName} <ChevronDown className="w-4 h-4" />
                 </button>
@@ -83,14 +83,14 @@ const Header = () => {
                   <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-md py-2 z-50">
                     <Link
                       href="/profile"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      className="block px-[16px] py-2 text-sm text-gray-700 hover:bg-gray-100"
                       onClick={() => setIsUserMenuOpen(false)}
                     >
                       Profile Settings
                     </Link>
                     <Link
                       href="/profile?section=booking-history"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      className="block px-[16px] py-2 text-sm text-gray-700 hover:bg-gray-100"
                       onClick={() => setIsUserMenuOpen(false)}
                     >
                       Booking History
@@ -101,7 +101,7 @@ const Header = () => {
                         setIsUserMenuOpen(false);
                         window.location.href = "/login";
                       }}
-                      className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100 flex items-center gap-2"
+                      className="w-full text-left px-[16px] py-2 text-sm text-red-600 hover:bg-gray-100 flex items-center gap-2"
                     >
                       <LogOut className="w-4 h-4" /> Logout
                     </button>
@@ -126,7 +126,7 @@ const Header = () => {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="lg:hidden bg-white border-t border-gray-200 shadow-md">
-          <nav className="flex flex-col space-y-2 px-4 py-4">
+          <nav className="flex flex-col space-y-2 px-[16px] py-4">
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -143,7 +143,7 @@ const Header = () => {
             ))}
           </nav>
 
-          <div className="border-t border-gray-200 px-4 py-4">
+          <div className="border-t border-gray-200 px-[16px] py-4">
             {!user ? (
               <div className="flex flex-col space-y-2">
                 <Link
