@@ -85,7 +85,7 @@ export default function TourGallerySection({ chosenTour, galleryThumbs }: Props)
         {/* Bottom Image */}
         <div className="absolute left-0 right-0 top-[234px] h-[214px] overflow-hidden rounded-2xl border-2 border-gray-200">
           <Image
-            src={safeImage(galleryThumbs[1])}
+            src={safeImage(galleryThumbs[0])}
             alt={`${chosenTour.title || 'Tour'} thumbnail 2`}
             fill
             className="object-cover rounded-2xl"

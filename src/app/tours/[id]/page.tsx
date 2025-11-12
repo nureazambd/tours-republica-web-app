@@ -32,6 +32,7 @@ import MoreInformationSection from './MoreInformationSection';
 import TravelersSay from './TravelersSay';
 import TourGrid from './TourGrid';
 import SecurePaymentSection from './SecurePaymentSection';
+import BookYourTourAside from './BookYourTourAside ';
 
 // --- Type Definitions ---
 
@@ -379,7 +380,7 @@ export default function TourDetailsPage() {
                           className="w-5 h-5 text-green-500 mr-2 flex-shrink-0"
                         /> */}
                         <svg width="20" height="20" className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_916_11875)">
+<g clipPath="url(#clip0_916_11875)">
 <path d="M2 3C2 2.44687 2.44687 2 3 2H17C17.5531 2 18 2.44687 18 3C18 3.55313 17.5531 4 17 4V16C17.5531 16 18 16.4469 18 17C18 17.5531 17.5531 18 17 18H11.5V16.5C11.5 15.6719 10.8281 15 10 15C9.17188 15 8.5 15.6719 8.5 16.5V18H3C2.44687 18 2 17.5531 2 17C2 16.4469 2.44687 16 3 16V4C2.44687 4 2 3.55313 2 3ZM5 5.5V6.5C5 6.775 5.225 7 5.5 7H6.5C6.775 7 7 6.775 7 6.5V5.5C7 5.225 6.775 5 6.5 5H5.5C5.225 5 5 5.225 5 5.5ZM9.5 5C9.225 5 9 5.225 9 5.5V6.5C9 6.775 9.225 7 9.5 7H10.5C10.775 7 11 6.775 11 6.5V5.5C11 5.225 10.775 5 10.5 5H9.5ZM13 5.5V6.5C13 6.775 13.225 7 13.5 7H14.5C14.775 7 15 6.775 15 6.5V5.5C15 5.225 14.775 5 14.5 5H13.5C13.225 5 13 5.225 13 5.5ZM5.5 8C5.225 8 5 8.225 5 8.5V9.5C5 9.775 5.225 10 5.5 10H6.5C6.775 10 7 9.775 7 9.5V8.5C7 8.225 6.775 8 6.5 8H5.5ZM9 8.5V9.5C9 9.775 9.225 10 9.5 10H10.5C10.775 10 11 9.775 11 9.5V8.5C11 8.225 10.775 8 10.5 8H9.5C9.225 8 9 8.225 9 8.5ZM13.5 8C13.225 8 13 8.225 13 8.5V9.5C13 9.775 13.225 10 13.5 10H14.5C14.775 10 15 9.775 15 9.5V8.5C15 8.225 14.775 8 14.5 8H13.5ZM12.25 14C12.6656 14 13.0094 13.6594 12.9062 13.2563C12.575 11.9594 11.4 11 10 11C8.6 11 7.42188 11.9594 7.09375 13.2563C6.99063 13.6563 7.3375 14 7.75 14H12.25Z" fill="#28A745"/>
 </g>
 <defs>
@@ -549,120 +550,7 @@ export default function TourDetailsPage() {
             </div>
 
             {/* Right / Sticky booking sidebar */}
-            <aside className="lg:col-span-1">
-              <div className="sticky top-6 lg:top-24 bg-[#EFF2F8] rounded-xl p-6 shadow-2xl border border-gray-100">
-
-                {/* Price Header */}
-                <div className="flex justify-between items-center pb-4 border-b border-gray-100">
-                  <div>
-                    {/* <span className="text-sm text-gray-500">From</span> */}
-                    <div className="text-[24px] font-[500] text-[#191919]">
-                      {/* ${chosenTour.price.toFixed(2)} */}
-                      Book Your Tour
-                      {/* <span className="text-sm text-gray-500 font-normal ml-1">pp</span> */}
-                    </div>
-                    {/* {chosenTour.originalPrice > chosenTour.price && (
-                      <div className="text-xs text-gray-400 line-through">${chosenTour.originalPrice.toFixed(2)}</div>
-                    )} */}
-                  </div>
-                  {/* <div className="text-right">
-                    <div className="flex items-center text-sm font-semibold text-yellow-500">
-                      <Star className="w-4 h-4 fill-yellow-500 mr-1" />
-                      {chosenTour.rating?.toFixed(1)}
-                    </div>
-                    <div className="text-xs text-gray-500">({chosenTour.reviewCount} reviews)</div>
-                  </div> */}
-                </div>
-
-                {/* Date Selection */}
-                <div className="mb-4">
-                  <label htmlFor="tour-date" className="block text-gray-700 font-[400] text-[14px] mb-2">Select Date</label>
-                  <input
-                    id="tour-date"
-                    type="date"
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
-                    min={todayIso}
-                    className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-gray-700 text-base focus:ring-rose-500 focus:border-rose-500 transition duration-150 shadow-sm"
-                  />
-                </div>
-
-                {/* Guest Selection */}
-                <div className="space-y-4 mb-6">
-                  {/* Adult Selector */}
-                  <div className="flex justify-between items-center text-sm py-2">
-                    <div>
-                      <div className="font-[400] text-[#191919] text-[14px]">Adults <samp className='w-[400] text-[13px]'>(12-99 years old)</samp></div>
-                      <div className="text-xs text-gray-500">(${chosenTour.price.toFixed(2)} per person)</div>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <button onClick={() => setAdults(Math.max(1, adults - 1))} className="w-4 h-4 rounded-full border border-gray-300 text-gray-700 text-lg flex items-center justify-center hover:bg-gray-100 transition disabled:opacity-50 disabled:cursor-not-allowed" disabled={adults <= 1}>-</button>
-                      <div className="w-6 text-center font-semibold text-base">{adults}</div>
-                      <button onClick={() => setAdults(adults + 1)} className="w-4 h-4 rounded-full border border-rose-500 bg-rose-500 text-white text-lg flex items-center justify-center hover:bg-rose-600 transition">+</button>
-                    </div>
-                  </div>
-
-                  {/* Children Selector */}
-                  <div className="flex justify-between items-center text-sm py-2">
-                    <div>
-                      <div className="font-[400] text-[#191919] text-[14px]">Children <samp className='w-[400] text-[13px]'>(3-11 years old)</samp></div>
-                      <div className="text-xs text-gray-500">(${(chosenTour.price * 0.5).toFixed(2)} per person)</div>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <button onClick={() => setChildren(Math.max(0, children - 1))} className="w-4 h-4 rounded-full border border-gray-300 text-gray-700 text-lg flex items-center justify-center hover:bg-gray-100 transition disabled:opacity-50 disabled:cursor-not-allowed" disabled={children <= 0}>-</button>
-                      <div className="w-6 text-center font-semibold text-base">{children}</div>
-                      <button onClick={() => setChildren(children + 1)} className="w-4 h-4 rounded-full border border-rose-500 bg-rose-500 text-white text-lg flex items-center justify-center hover:bg-rose-600 transition">+</button>
-                    </div>
-                  </div>
-
-                  {/* Infants Selector */}
-                  <div className="flex justify-between items-center text-sm py-2">
-                    <div>
-                      <div className="font-[400] text-[#191919] text-[14px]">Infants <samp className='w-[400] text-[13px]'>(0-2 years old)</samp></div>
-                      <div className="text-xs text-gray-500">(Free)</div>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <button onClick={() => setInfants(Math.max(0, infants - 1))} className="w-4 h-4 rounded-full border border-gray-300 text-gray-700 text-lg flex items-center justify-center hover:bg-gray-100 transition disabled:opacity-50 disabled:cursor-not-allowed" disabled={infants <= 0}>-</button>
-                      <div className="w-6 text-center font-semibold text-base">{infants}</div>
-                      <button onClick={() => setInfants(infants + 1)} className="w-4 h-4 rounded-full border border-rose-500 bg-rose-500 text-white text-lg flex items-center justify-center hover:bg-rose-600 transition">+</button>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Price Breakdown */}
-                <div className="mt-4 border-t border-gray-100 pt-5 text-[16px] font-[400] text-[#191919] space-y-3">
-                  <div className="flex justify-between"><span>Subtotal</span><span className="font-medium">${subtotal.toFixed(2)}</span></div>
-                  <div className="flex justify-between text-gray-500"><span>Tax (10%)</span><span className="font-medium">${tax.toFixed(2)}</span></div>
-                  <div className="flex justify-between font-[400] text-[16px] border-t border-gray-100 pt-3 text-[#191919]">
-                    <span>Total</span><span>${total.toFixed(2)}</span>
-                  </div>
-                </div>
-
-                {/* Booking Button */}
-                <button
-                  onClick={handleBookNow}
-                  disabled={adults + children + infants === 0}
-                  className="w-full mt-7 bg-rose-500 text-white py-3.5 rounded-lg font-[500] text-[16px] hover:bg-rose-600 transition shadow-lg shadow-rose-300/50 disabled:bg-gray-400 disabled:shadow-none"
-                >
-                  Book →
-                </button>
-
-                {/* Payment Icons */}
-
-
-                <div className='mt-4'>
-                  <div className="w-full max-w-lg">
-                    <Image
-                      src="/images/tours-id/Book-Your-Tour-footer.png"
-                      width={500}
-                      height={500}
-                      alt="Secure Payment Methods"
-                    // Optional: Add 'className="h-auto w-full"' if the image needs to be fully responsive
-                    />
-                  </div>
-                </div>
-              </div>
-            </aside>
+            <BookYourTourAside/>
           </div>
 
           {/* What Our Travelers Say (Reviews) */}

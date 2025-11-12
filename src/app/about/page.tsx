@@ -12,7 +12,6 @@ export default function page() {
     <div>
       <Layout>
       <AboutSection />
-      <StatsSection />
       <ActivitiesSection />
       <WhySection />
       <GuidesSection />

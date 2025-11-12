@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, Play } from "lucide-react";
 
 const activities = [
   {
@@ -11,8 +11,6 @@ const activities = [
       "Glide above it all. Feel the wind in your face as you speed across treetops, valleys, and rivers, suspended high in the air. Soar like a bird and see the world from a breathtaking new perspective.",
     content2:
       "Expert staff and clear safety instructions. Strong, secure cables and harness systems. Exciting lines of varying heights and lengths. Incredible views of forests, mountains, and skies.",
-    image: "/images/about/activities.png",
-    icon: "/images/about/activitiesIcon.png",
   },
   {
     title: "Bungee Jumping",
@@ -20,8 +18,6 @@ const activities = [
       "Experience the ultimate adrenaline rush as you leap from great heights with only a bungee cord to catch you.",
     content2:
       "Professionally maintained gear, breathtaking drop points, and certified instructors to ensure your safety.",
-    image: "/images/about/BungeeJumping.png",
-    icon: "/images/about/activitiesIcon.png",
   },
   {
     title: "Rafting",
@@ -29,24 +25,11 @@ const activities = [
       "Ride the rapids and embrace the thrill of conquering rushing waters with your team.",
     content2:
       "High-quality safety gear, expert guides, and scenic river routes for every skill level.",
-    image: "/images/about/Rafting.png",
-    icon: "/images/about/activitiesIcon.png",
   },
 ];
 
 export default function ActivitiesSection() {
   const [openIndex, setOpenIndex] = useState(0);
-
-  const handleAccordionClick = (i: number) => {
-    setOpenIndex(i === openIndex ? -1 : i);
-  };
-
-  const handleCheckAvailability = (activity: any) => {
-    alert(`Check availability for ${activity.title}`);
-    // Here you can open a modal, redirect, or show more info for that activity
-  };
-
-  const selectedActivity = activities[openIndex] || activities[0];
 
   return (
     <section className="flex flex-col items-start px-[130px] py-[104px] gap-[120px] bg-[#EFF2F8]/50">
@@ -69,7 +52,7 @@ export default function ActivitiesSection() {
               <div key={i} className="w-full">
                 {/* Accordion Header */}
                 <button
-                  onClick={() => handleAccordionClick(i)}
+                  onClick={() => setOpenIndex(i === openIndex ? -1 : i)}
                   className="flex items-center justify-between w-full gap-[16px] pb-[12px]"
                 >
                   <span className="text-[#0A0322] text-[20px] font-rubik font-medium leading-[28px]">
@@ -93,10 +76,7 @@ export default function ActivitiesSection() {
                     </p>
                     {/* Button */}
                     <div className="flex items-center gap-[24px] mt-[12px]">
-                      <button
-                        onClick={() => handleCheckAvailability(activity)}
-                        className="border border-[#E9305B] text-[#EE2552] text-[14px] font-rubik rounded-[12px] py-[14px] px-[24px] flex items-center justify-center gap-[8px] hover:bg-[#EE2552]/10 transition"
-                      >
+                      <button className="border border-[#E9305B] text-[#EE2552] text-[14px] font-rubik rounded-[12px] py-[14px] px-[24px] flex items-center justify-center gap-[8px] hover:bg-[#EE2552]/10 transition">
                         Check Availability
                       </button>
                     </div>
@@ -116,8 +96,8 @@ export default function ActivitiesSection() {
           <div className="relative w-full h-full rounded-[64px] overflow-hidden">
             <div className="absolute inset-0 from-transparent to-[rgba(0,52,89,0.5)] z-10 rounded-[64px]" />
             <Image
-              src={selectedActivity.image}
-              alt={selectedActivity.title}
+              src="/images/about/activities.png"
+              alt="Activities"
               fill
               className="object-cover rounded-[64px]"
             />
@@ -125,31 +105,21 @@ export default function ActivitiesSection() {
 
           {/* Floating Play Card */}
           <div
-            className="absolute left-[-56px] top-[376px] w-[200px] h-[200px] rounded-[32px] border-[4px] border-white overflow-hidden isolate flex items-center justify-center z-10"
-            style={{
-              backgroundImage: `url('${selectedActivity.icon}')`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          >
-            <div className="flex items-center justify-center w-[64px] h-[64px] rounded-full absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-              <svg
-                width="64"
-                height="64"
-                viewBox="0 0 64 64"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M16 15.3267C16 12.162 19.501 10.2506 22.163 11.9619L48.0993 28.6353C50.5486 30.2098 50.5486 33.7902 48.0993 35.3647L22.163 52.0381C19.501 53.7494 16 51.838 16 48.6733V15.3267Z"
-                  stroke="white"
-                  strokeWidth="4"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-          </div>
+      className="absolute left-[-56px] top-[376px] w-[200px] h-[200px] rounded-[32px] border-[4px] border-white overflow-hidden isolate flex items-center justify-center z-10"
+      style={{
+        backgroundImage:
+          "url('/images/about/activitiesIcon.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="flex items-center justify-center w-[64px] h-[64px] rounded-full  absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M16 15.3267C16 12.162 19.501 10.2506 22.163 11.9619L48.0993 28.6353C50.5486 30.2098 50.5486 33.7902 48.0993 35.3647L22.163 52.0381C19.501 53.7494 16 51.838 16 48.6733V15.3267Z" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+      </div>
+    </div>
         </div>
       </div>
     </section>
