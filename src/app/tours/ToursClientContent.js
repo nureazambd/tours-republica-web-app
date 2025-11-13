@@ -29,7 +29,7 @@ export default function ToursClientContent() {
 
             {/* Tours Content */}
             <section className="py-12">
-                <div className="container-custom flex flex-col lg:flex-row gap-8">
+                <div className="max-w-[1180px] mx-auto flex flex-col lg:flex-row gap-8">
                     {/* Sidebar Filter */}
                     <div className="lg:w-1/4">
                         <TourFilter filters={filters} setFilters={setFilters} />

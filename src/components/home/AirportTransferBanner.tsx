@@ -10,10 +10,18 @@ export default function AirportTransferBanner() {
         <div className="bg-white rounded-2xl shadow-md flex flex-col lg:flex-row items-center justify-between gap-8 p-8">
           {/* --- Left Text Section --- */}
           <div className="flex-1">
-            <h2 className="text-[32px] md:text-[40px] font-[500] text-[#111318] mb-4">
+            {/* <h2 className="text-[32px] md:text-[40px] font-[500] text-[#111318] mb-4">
               Need transport? We handle airport transfers.
-            </h2>
-            <p className="text-[#4E5255] text-[16px] font-[400] mb-6 max-w-xl">
+            </h2> */}
+            <h2
+  className="flex items-center font-rubik font-medium text-[#111318]
+             text-[32px] md:text-[32px] leading-[40px] tracking-[-1px] 
+             w-full max-w-[360px] mb-4"
+>
+  Need transport? We handle airport transfers.
+</h2>
+
+            <p className="text-[#4E5255] text-[15px] font-[400] mb-6 max-w-[337px]">
               Arrive and depart in comfort with our reliable, hassle-free private
               airport transfers.
             </p>
@@ -32,7 +40,7 @@ export default function AirportTransferBanner() {
               alt="Airport Transfer"
               width={500}
               height={300}
-              className="rounded-xl object-cover w-full"
+              className="rounded-xl object-cover w-full hover:scale-105 transition-transform duration-300"
             />
           </div>
         </div>

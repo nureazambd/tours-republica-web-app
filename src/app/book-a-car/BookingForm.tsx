@@ -213,7 +213,22 @@ const AirportTransportationForm: React.FC = () => {
   const renderCountInput = (label: string, value: string, iconType: 'user' | 'suitcase') => (
     <div className="flex items-center bg-[#F4F7F9] rounded-xl p-4 gap-3 w-[220px] h-[68px]">
       <div className="w-8 h-8 flex items-center justify-center text-blue-900">
-        {iconType === 'user' ? <Users size={32} /> : <BriefcaseIcon />}
+        {iconType === 'user' ? <svg
+          width="32"
+          height="36"
+          viewBox="0 0 32 36"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M21.3674 29.4278L21.3678 25.1428C21.368 22.7758 19.4493 20.857 17.0824 20.857H7.48608C5.11951 20.857 3.20094 22.7753 3.20068 25.1419L3.2002 29.4278M28.7998 29.428L28.8002 25.143C28.8004 22.7761 26.8817 20.8572 24.5148 20.8572M20.542 7.41414C21.5944 8.19499 22.2764 9.4468 22.2764 10.8579C22.2764 12.269 21.5944 13.5208 20.542 14.3017M16.6586 10.8577C16.6586 13.2244 14.74 15.1431 12.3732 15.1431C10.0064 15.1431 8.08778 13.2244 8.08778 10.8577C8.08778 8.49091 10.0064 6.57227 12.3732 6.57227C14.74 6.57227 16.6586 8.49091 16.6586 10.8577Z"
+            stroke="#003459"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+          : <BriefcaseIcon />}
       </div>
       <div className="flex flex-col">
         <span className="text-[13px] text-[#878D97] leading-4">{label}</span>
@@ -230,7 +245,7 @@ const AirportTransportationForm: React.FC = () => {
         <div className="w-8 h-8 flex items-center justify-center text-blue-900">
           {/* <Calendar size={32} /> */}
           <CalendarIcon />
-          
+
         </div>
         <div className="flex flex-col">
           <span className="text-[13px] text-[#878D97] leading-4">{label}</span>
@@ -258,11 +273,11 @@ const AirportTransportationForm: React.FC = () => {
           Enjoy a smooth, private ride to and from the airport without any hassle.
         </p>
       </div>
-      
+
       {/* Form Card */}
       <form onSubmit={handleSubmit} className="bg-white rounded-[24px] p-8 w-[1116px] max-w-[1116px] shadow">
         <div className="flex flex-col gap-6 w-full">
-          
+
           {/* Trip Type Selection */}
           <div className="flex p-1 bg-[#EDF2F9] rounded-full w-[232px]">
             {['Oneway', 'Round'].map(type => (
@@ -282,7 +297,7 @@ const AirportTransportationForm: React.FC = () => {
           </div>
 
           {/* Row 1: Locations and Passengers (separated by a horizontal rule) */}
-          <div className="flex items-start justify-between">
+          <div className="flex items-start text-left justify-between">
             {/* Locations Group */}
             <div className="flex items-center gap-14">
               {renderLocationInput(
@@ -316,12 +331,12 @@ const AirportTransportationForm: React.FC = () => {
               'user'
             )}
           </div>
-          
+
           <div className="border-t border-[#DADFE6] w-full" />
 
           {/* Row 2: Dates, Suitcases, and Search Button */}
-          <div className="flex items-center gap-7">
-            
+          <div className="flex items-center text-left gap-7">
+
             {/* Pickup Date/Time */}
             {renderDateTimeInput(
               "Pickup date",
@@ -337,7 +352,7 @@ const AirportTransportationForm: React.FC = () => {
                 bookingData.dropoffTime
               )
             )}
-            
+
             {/* Suitcase Quantity */}
             {renderCountInput(
               "Suitcase qty",
@@ -346,13 +361,47 @@ const AirportTransportationForm: React.FC = () => {
             )}
 
             {/* Find Cars Button */}
-            <button
+            {/* <button
               type="submit"
               className="flex items-center justify-center bg-[#EE2552] text-white rounded-xl px-14 py-5 font-medium text-lg leading-6 whitespace-nowrap h-[68px] w-[220px] hover:bg-red-600 transition-colors"
             >
               Find cars
-              <ArrowRight size={24} className="ml-5" />
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+            </button> */}
+            <button
+              type="submit"
+              className="
+    flex items-center justify-center 
+    bg-[#EE2552] text-white 
+    rounded-[16px] 
+    px-[6px] py-[12px]
+    gap-[20px]
+    w-[220px] h-[68px]
+    font-rubik font-medium text-[18px] leading-[24px]
+    transition-colors hover:bg-[#d82047]
+  "
+            >
+              Find cars
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5 12H19M19 12L12 5M19 12L12 19"
+                  stroke="white"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </button>
+
           </div>
         </div>
       </form>

@@ -8,7 +8,7 @@ import { ArrowRight } from 'lucide-react';
 const TransportSection = () => {
   return (
     <section className="py-16 lg:py-24 bg-gray-100"> {/* Changed background to gray-100 to match image */}
-      <div className="container-custom mx-auto px-4"> {/* Added mx-auto px-4 for better container handling */}
+      <div className="max-w-[1180px] mx-auto px-4 lg:px-0"> {/* Added mx-auto px-4 for better container handling */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="order-2 lg:order-1"> {/* Reordered content to appear first on small screens, second on large */}

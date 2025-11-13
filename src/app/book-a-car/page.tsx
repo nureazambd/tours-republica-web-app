@@ -37,39 +37,7 @@ export default function BookCarPage() {
         </div>
       </section>
 
-     {/* <BookingForm/> */}
-
-      {/* WHY BOOK WITH US */}
-      {/* <section className="py-16 text-center">
-          <div className="relative z-10 max-w-4xl mx-auto mb-[56px] mt-[112px] px-4">
-          <h2 className="text-4xl md:text-[48px] font-medium text-[24px] mb-2">
-            Book now ! It's Quick and Simple
-          </h2>
-          <p className="text-[16px] opacity-90">
-            Secure your booking easily with our trusted, hassle-free process.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-          {[
-            { icon: '🚖', title: 'Airport Welcome Service', describe: 'Friendly representatives greet you on arrival to ensure a smooth start.' },
-            { icon: '💰', title: 'Best Price Rate Guaranteed', describe: 'Competitive rates with no hidden fees — get the best value.' },
-            { icon: '🚗', title: 'Modern, Comfortable Vehicles', describe: 'Choose from a fleet of clean, well-maintained, and up-to-date cars.' },
-            { icon: '📞', title: '24/7 Customer Support', describe: 'We’re here to help anytime, day or night, for a hassle-free experience.' },
-          ].map((item, idx) => (
-            <div key={idx} className="bg-gray-100 h-[256px] px-[24px] py-[32px] text-left w-[75 rounded-lg shadow hover:shadow-md transition">
-              <div className='w-[232px] h-[192px]'>
-                <div className="text-[48px] pb-[32px] ">{item.icon}</div>
-              <h3 className="font-medium text-[20px]">{item.title}</h3>
-              <p className="font-regular text-[14px] my-[16px]">{item.describe}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section> */}
-
      <BookingFeaturesSection/>
-
-
 
       {/* VEHICLE CATEGORIES */}
       <section className="flex flex-col items-center px-[130px] pt-[104px] pb-[128px] gap-[56px] w-full bg-[rgba(239,242,248,0.5)]">
@@ -163,7 +131,7 @@ export default function BookCarPage() {
     ].map((step, i) => (
       <div
         key={i}
-        className="flex flex-col items-start p-[32px_24px] gap-[32px] w-[277px] h-[287px] mx-auto bg-[#F9FAFB] border border-[#BECCE8] rounded-[24px] box-border"
+        className="flex flex-col items-start p-[32px_24px] gap-[8px] w-[277px] h-[287px] mx-auto bg-[#F9FAFB] border border-[#BECCE8] rounded-[24px] box-border"
       >
         {/* Step Number */}
         <div className="w-[232px] h-[96px] text-[96px] leading-[96px] font-bold font-rubik text-[#6FCCDC] flex items-center">
