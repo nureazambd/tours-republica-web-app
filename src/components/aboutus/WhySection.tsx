@@ -92,9 +92,9 @@ export default function WhySection() {
         <div className="flex items-center justify-center w-[60px] h-[60px] rounded-full ">
           {/* <Play className="text-white w-[34px] h-[34px]" strokeWidth={2.5} /> */}
           <svg width="35" height="38" viewBox="0 0 35 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_755_41208)">
-<g clip-path="url(#clip1_755_41208)">
-<g clip-path="url(#clip2_755_41208)">
+<g clipPath="url(#clip0_755_41208)">
+<g clipPath="url(#clip1_755_41208)">
+<g clipPath="url(#clip2_755_41208)">
 <path d="M34.5548 20.899C33.673 24.2478 29.5072 26.6147 21.1763 31.3476C13.1223 35.9234 9.095 38.2109 5.8499 37.2909C4.50587 36.9094 3.2831 36.1874 2.29998 35.1947C-0.0849609 32.7882 -0.0849609 28.122 -0.0849609 18.789C-0.0849609 9.4566 -0.0849609 4.78973 2.29998 2.38321C3.28283 1.3904 4.50535 0.668154 5.8492 0.286389C9.095 -0.632929 13.1216 1.65458 21.1763 6.23029C29.5072 10.9633 33.673 13.3301 34.5548 16.6796C34.9185 18.0623 34.9185 19.5156 34.5548 20.8983V20.899Z" fill="white"/>
 </g>
 </g>

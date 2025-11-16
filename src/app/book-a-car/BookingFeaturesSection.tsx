@@ -124,7 +124,7 @@ const BookingFeaturesSection: React.FC = () => {
                         // Card Styling: padding: 32px 24px; gap: 32px; width: 280px; height: 256px; background: rgba(239, 242, 248, 0.5); border-radius: 20px;
                         // Responsive: Full width on small screens, fixed dimensions on desktop (lg:)
                         className="flex flex-col items-start p-8 lg:px-6 lg:py-8 gap-8 w-full lg:w-[280px] h-[256px] 
-                                   bg-[rgba(239,242,248,0.5)] rounded-[20px] hover:shadow-xl transition-shadow"
+                                   bg-[rgba(239,242,248,0.5)] rounded-[20px] "
                     >
                         {/* Icon: 48px */}
                         <div className="text-[48px] leading-none">{item.icon}</div>

@@ -4,7 +4,6 @@ import { Star } from 'lucide-react';
 import BookingForm from './BookingForm';
 import TravelerTestimonials from './Testimonials';
 import BookingFeaturesSection from './BookingFeaturesSection';
-import VehiclesSection from './VehiclesSection';
 export default function BookCarPage() {
   return (
     <Layout>
@@ -41,7 +40,57 @@ export default function BookCarPage() {
      <BookingFeaturesSection/>
 
       {/* VEHICLE CATEGORIES */}
-      <VehiclesSection/>
+      <section className="flex flex-col items-center px-[130px] pt-[104px] pb-[128px] gap-[56px] w-full bg-[rgba(239,242,248,0.5)]">
+  {/* Header */}
+  <div className="flex flex-col items-center gap-[8px] w-[1170px] text-center">
+    <h2 className="font-rubik font-medium text-[48px] leading-[56px] text-[#191919] w-[732px]">
+      We cover all your transportation needs
+    </h2>
+    <p className="font-rubik font-normal text-[16px] leading-[26px] text-[#878D97] w-[1170px]">
+      Whether you’re traveling as a couple or with a small family, we’ve got you covered.
+    </p>
+  </div>
+
+  {/* Vehicles Cards */}
+  <div className="flex flex-wrap justify-center gap-[20px] w-[1180px]">
+    {[
+      {
+        img: '/images/bookacar/vehicles/For-Couples-and-Small-Families.png',
+        label: 'For Couples and Small Families',
+      },
+      {
+        img: '/images/bookacar/vehicles/For-Groups-and-Large-Families.png',
+        label: 'For Groups and Large Families',
+      },
+      {
+        img: '/images/bookacar/vehicles/Luxury-Executive-Cars.png',
+        label: 'Luxury & Executive Cars',
+      },
+    ].map((vehicle, idx) => (
+      <div key={idx}>
+      <div
+        key={idx}
+        className="flex flex-col items-center gap-[24px] p-[16px] w-[380px] h-[232px] bg-[#EFF2F8] border border-[#BECCE8] rounded-[24px]"
+      >
+        {/* Image */}
+        <div className="w-[316px] h-[200px] relative ">
+          <img
+            src={vehicle.img}
+            alt={vehicle.label}
+            className="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-full object-contain"
+          />
+        </div>
+
+        
+      </div>
+      
+        <div className="font-rubik font-medium mt-[24px] text-[20px] leading-[24px] text-[#191919] text-center w-full">
+          {vehicle.label}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
 
 
       {/* BOOKING STEPS */}

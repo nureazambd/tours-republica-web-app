@@ -125,7 +125,7 @@ export default function ActivitiesSection() {
 
           {/* Floating Play Card */}
           <div
-            className="absolute left-[-56px] top-[376px] w-[200px] h-[200px] rounded-[32px] border-[4px] border-white overflow-hidden isolate flex items-center justify-center z-10"
+            className="absolute left-[-56px] top-[376px] w-[200px] h-[200px] overflow-hidden isolate flex items-center justify-center z-10"
             style={{
               backgroundImage: `url('${selectedActivity.icon}')`,
               backgroundSize: "cover",

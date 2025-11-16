@@ -17,7 +17,7 @@ const Footer = () => {
     <footer className="bg-[#003459] text-white font-['Rubik'] py-10">
       {/* --- Top Contact Section --- */}
       <div className="border-b border-white/10">
-        <div className="max-w-[1180px] mx-auto flex flex-wrap justify-center lg:justify-between items-center gap-6 sm:1 md:gap-10 py-8 px-4 lg:px-0">
+        <div className="max-w-[1180px] mx-auto flex flex-wrap justify-center lg:justify-between items-center gap-6 sm:1 md:gap-10 pb-12 pt-8 px-4 lg:px-0">
           {/* Phone */}
           <div className="flex items-center gap-4 sm:gap-5 h-14 w-full sm:w-auto justify-start sm:justify-center">
             <div className="bg-white/10 p-3 sm:p-4 rounded-xl flex items-center justify-center">

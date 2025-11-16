@@ -1,27 +1,14 @@
-'use client';
-
 import Image from "next/image";
 import { FaTwitter, FaInstagram, FaYoutube, FaLinkedin } from "react-icons/fa";
-import { useState } from "react";
 
-const allGuides = [
+const guides = [
   { name: "Damien Frederick", img: "/images/about/guide1.png" },
   { name: "Drew J. Bridges", img: "/images/about/guide2.png" },
   { name: "Vasili Ilmaz", img: "/images/about/guide3.png" },
   { name: "Liam Patterson", img: "/images/about/guide3.png" },
-  { name: "Sophia Lee", img: "/images/about/guide1.png" },
-  { name: "Ethan Brown", img: "/images/about/guide2.png" },
-  { name: "Olivia White", img: "/images/about/guide3.png" },
-  { name: "Noah Smith", img: "/images/about/guide3.png" },
 ];
 
 export default function GuidesSection() {
-  const [visibleGuides, setVisibleGuides] = useState(allGuides.slice(0, 4)); // show first 4 initially
-
-  const handleLoadMore = () => {
-    setVisibleGuides(allGuides); // show all guides on click
-  };
-
   return (
     <section className="relative flex flex-col items-center justify-center py-[120px] px-[130px] gap-[96px] bg-[#F9FAFB] overflow-hidden">
       {/* Background Image */}
@@ -43,7 +30,7 @@ export default function GuidesSection() {
 
         {/* Guides Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[20px] justify-items-center">
-          {visibleGuides.map((guide, i) => (
+          {guides.map((guide, i) => (
             <div
               key={i}
               className="flex flex-col items-center gap-[32px] w-[280px] h-[386px]"
@@ -87,15 +74,10 @@ export default function GuidesSection() {
           ))}
         </div>
 
-        {/* Load More Button */}
-        {visibleGuides.length < allGuides.length && (
-          <button
-            onClick={handleLoadMore}
-            className="flex flex-row items-center justify-center gap-[8px] px-[32px] py-[14px] bg-[#EE2552] rounded-[12px] font-[Rubik] font-semibold text-[14px] leading-[20px] text-white"
-          >
-            Load More
-          </button>
-        )}
+        {/* Load More Button — Frame 1000004953 */}
+        <button className="flex flex-row items-center justify-center gap-[8px] px-[32px] py-[14px] bg-[#EE2552] rounded-[12px] font-[Rubik] font-semibold text-[14px] leading-[20px] text-white">
+          Load More
+        </button>
       </div>
     </section>
   );

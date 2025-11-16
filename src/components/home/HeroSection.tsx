@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef  } from 'react';
 import { Search, MapPin } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -32,6 +32,8 @@ const HeroSection = () => {
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
   // ⏱️ Auto change every 6 seconds
   useEffect(() => {
     const interval = setInterval(() => {
@@ -39,6 +41,20 @@ const HeroSection = () => {
     }, 6000);
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+  function handleClickOutside(event: MouseEvent) {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      setIsDropdownOpen(false);
+    }
+  }
+
+  document.addEventListener('mousedown', handleClickOutside);
+  return () => {
+    document.removeEventListener('mousedown', handleClickOutside);
+  };
+}, [dropdownRef]);
+
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -172,7 +188,7 @@ const HeroSection = () => {
               <div className="flex flex-row items-center gap-4 w-full lg:w-[204px] h-[38px] border-b border-gray-100 lg:border-b-0 pb-3 lg:pb-0 relative">
                 <MapPin className="w-[28px] h-[28px] text-gray-600 shrink-0" />
 
-                <div className="flex flex-col items-start w-full relative">
+                <div ref={dropdownRef} className="flex flex-col items-start w-full relative">
                   <div className="flex flex-row items-center gap-6">
                     <span className="text-[#191919] text-[16px] font-medium leading-[20px]">
                       Destination
