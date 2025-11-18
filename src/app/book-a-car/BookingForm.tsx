@@ -1,25 +1,30 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, forwardRef } from "react";
 import { MapPin, ArrowDownUp } from "lucide-react";
 import { useRouter } from "next/navigation";
+import TravelerSelector from "./TravelerSelector";
+
+import Datetime from "react-datetime";
+import "react-datetime/css/react-datetime.css";
+
 
 /* --- Small icons kept inline for consistency --- */
 const BriefcaseIcon: React.FC = () => (
   <svg width="32" height="36" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g clipPath="url(#clip0)">
-      <path d="M11.5 3H20.5M13 3V12M19 3V12M10.75 30.75V33H11.5V30.75M21.25 30.75V33H20.5V30.75M13 16.5V26.25M19 16.5V26.25M22 12H10C9.20435 12 8.44129 12.3161 7.87868 12.8787C7.31607 13.4413 7 14.2044 7 15V27.75C7 28.5457 7.31607 29.3087 7.87868 29.8713C8.44129 30.4339 9.20435 30.75 10 30.75H22C22.7957 30.75 23.5587 30.4339 24.1213 29.8713C24.6839 29.3087 25 28.5457 25 27.75V15C25 14.2044 24.6839 13.4413 24.1213 12.8787C23.5587 12.3161 22.7957 12 22 12Z" stroke="#003459" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M11.5 3H20.5M13 3V12M19 3V12M10.75 30.75V33H11.5V30.75M21.25 30.75V33H20.5V30.75M13 16.5V26.25M19 16.5V26.25M22 12H10C9.20435 12 8.44129 12.3161 7.87868 12.8787C7.31607 13.4413 7 14.2044 7 15V27.75C7 28.5457 7.31607 29.3087 7.87868 29.8713C8.44129 30.4339 9.20435 30.75 10 30.75H22C22.7957 30.75 23.5587 30.4339 24.1213 29.8713C24.6839 29.3087 25 28.5457 25 27.75V15C25 14.2044 24.6839 13.4413 24.1213 12.8787C23.5587 12.3161 22.7957 12 22 12Z" stroke="#003459" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </g>
     <defs>
-      <clipPath id="clip0"><rect width="32" height="32" fill="white" transform="translate(0 2)"/></clipPath>
+      <clipPath id="clip0"><rect width="32" height="32" fill="white" transform="translate(0 2)" /></clipPath>
     </defs>
   </svg>
 );
 
 const CalendarIcon: React.FC = () => (
   <svg width="32" height="36" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M4.12 14.54H27.89" stroke="#003459" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M21.39 4.66V9.05" stroke="#003459" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M10.62 4.66V9.05" stroke="#003459" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path fillRule="evenodd" clipRule="evenodd" d="M21.65 6.77H10.36C6.45 6.77 4 8.95 4 12.96V25.03C4 29.10 6.45 31.33 10.36 31.33H21.64C25.57 31.33 28 29.14 28 25.13V12.96C28.01 8.95 25.58 6.77 21.65 6.77Z" stroke="#003459" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M4.12 14.54H27.89" stroke="#003459" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M21.39 4.66V9.05" stroke="#003459" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M10.62 4.66V9.05" stroke="#003459" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <path fillRule="evenodd" clipRule="evenodd" d="M21.65 6.77H10.36C6.45 6.77 4 8.95 4 12.96V25.03C4 29.10 6.45 31.33 10.36 31.33H21.64C25.57 31.33 28 29.14 28 25.13V12.96C28.01 8.95 25.58 6.77 21.65 6.77Z" stroke="#003459" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
@@ -110,7 +115,7 @@ const AirportTransportationForm: React.FC = () => {
   const [dropoffTime, setDropoffTime] = useState<string>("12:00");
 
   // Suitcase qty (A: inline counter)
-  const [suitcases, setSuitcases] = useState<number>(2);
+  // const [suitcases, setSuitcases] = useState<number>(2);
 
   /* --- Helpers --- */
   const filteredPickup = SAMPLE_LOCATIONS.filter((l) =>
@@ -198,26 +203,26 @@ const AirportTransportationForm: React.FC = () => {
           placeholder={selected.label}
         />
 
-         {/* Location list dropdown */}
-      {showList && (
-        <div className="absolute top-[64px] left-0 w-full max-h-[256px] overflow-y-auto bg-white shadow-2xl rounded-lg z-30">
-          {list.length === 0 ? (
-            <div className="p-3 text-sm text-gray-500">No locations</div>
-          ) : (
-            list.map((loc) => (
-              <button
-                key={loc.id}
-                type="button"
-                onClick={() => onSelect(loc)}
-                className="w-full text-left p-3 hover:bg-gray-100 flex flex-col gap-1"
-              >
-                <span className="font-normal text-[16px] text-[#191919]">{loc.label}</span>
-                <span className="text-xs text-[#878D97]">{loc.city}</span>
-              </button>
-            ))
-          )}
-        </div>
-      )}
+        {/* Location list dropdown */}
+        {showList && (
+          <div className="absolute top-[64px] left-0 w-full max-h-[256px] overflow-y-auto bg-white shadow-2xl rounded-lg z-30">
+            {list.length === 0 ? (
+              <div className="p-3 text-sm text-gray-500">No locations</div>
+            ) : (
+              list.map((loc) => (
+                <button
+                  key={loc.id}
+                  type="button"
+                  onClick={() => onSelect(loc)}
+                  className="w-full text-left p-3 hover:bg-gray-100 flex flex-col gap-1"
+                >
+                  <span className="font-normal text-[16px] text-[#191919]">{loc.label}</span>
+                  <span className="text-xs text-[#878D97]">{loc.city}</span>
+                </button>
+              ))
+            )}
+          </div>
+        )}
       </div>
 
       <div className="text-xs text-gray-500 mb-1">{selected.city}</div>
@@ -231,7 +236,7 @@ const AirportTransportationForm: React.FC = () => {
         <div className="w-8 h-8 flex items-center justify-center text-blue-900">
           {iconType === "user" ? (
             <svg width="32" height="36" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M21.36 29.43L21.368 25.14C21.368 22.77 19.45 20.857 17.082 20.857H7.486C5.119 20.857 3.201 22.775 3.201 25.142L3.2 29.428" stroke="#003459" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M21.36 29.43L21.368 25.14C21.368 22.77 19.45 20.857 17.082 20.857H7.486C5.119 20.857 3.201 22.775 3.201 25.142L3.2 29.428" stroke="#003459" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           ) : (
             <BriefcaseIcon />
@@ -249,6 +254,12 @@ const AirportTransportationForm: React.FC = () => {
   //   throw new Error("Function not implemented.");
   // }
   const [infant, setInfant] = useState<number>(0);
+
+  const [suitcases, setSuitcases] = useState(0);
+  const [carryOn, setCarryOn] = useState(0);
+
+  const [showTraveler, setShowTraveler] = useState(false);
+
 
 
   return (
@@ -339,10 +350,10 @@ const AirportTransportationForm: React.FC = () => {
             {/* Passenger summary + trigger */}
             <div ref={passengersRef} className="relative">
 
-  {/* CLICKABLE PASSENGER BOX */}
-  <div
-    onClick={() => setShowPassengers((s) => !s)}
-    className="
+              {/* CLICKABLE PASSENGER BOX */}
+              <div
+                onClick={() => setShowPassengers((s) => !s)}
+                className="
       cursor-pointer 
       flex items-start gap-[8px]
       w-[220px] h-[68px]
@@ -350,180 +361,180 @@ const AirportTransportationForm: React.FC = () => {
       rounded-[16px]
       px-[20px] py-[16px]
     "
-  >
-    {/* LEFT: ICON BOX */}
-    <div className="relative flex items-center justify-center w-[32px] h-[36px]">
-      <div className="w-[32px] h-[32px] rounded-md relative">
-        <svg width="32" height="36" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path
-    d="M21.3674 29.4278L21.3678 25.1428C21.368 22.7758 19.4493 20.857 17.0824 20.857H7.48608C5.11951 20.857 3.20094 22.7753 3.20068 25.1419L3.2002 29.4278M28.7998 29.428L28.8002 25.143C28.8004 22.7761 26.8817 20.8572 24.5148 20.8572M20.542 7.41414C21.5944 8.19499 22.2764 9.4468 22.2764 10.8579C22.2764 12.269 21.5944 13.5208 20.542 14.3017M16.6586 10.8577C16.6586 13.2244 14.74 15.1431 12.3732 15.1431C10.0064 15.1431 8.08778 13.2244 8.08778 10.8577C8.08778 8.49091 10.0064 6.57227 12.3732 6.57227C14.74 6.57227 16.6586 8.49091 16.6586 10.8577Z"
-    stroke="#003459"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  />
-</svg>
+              >
+                {/* LEFT: ICON BOX */}
+                <div className="relative flex items-center justify-center w-[32px] h-[36px]">
+                  <div className="w-[32px] h-[32px] rounded-md relative">
+                    <svg width="32" height="36" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M21.3674 29.4278L21.3678 25.1428C21.368 22.7758 19.4493 20.857 17.0824 20.857H7.48608C5.11951 20.857 3.20094 22.7753 3.20068 25.1419L3.2002 29.4278M28.7998 29.428L28.8002 25.143C28.8004 22.7761 26.8817 20.8572 24.5148 20.8572M20.542 7.41414C21.5944 8.19499 22.2764 9.4468 22.2764 10.8579C22.2764 12.269 21.5944 13.5208 20.542 14.3017M16.6586 10.8577C16.6586 13.2244 14.74 15.1431 12.3732 15.1431C10.0064 15.1431 8.08778 13.2244 8.08778 10.8577C8.08778 8.49091 10.0064 6.57227 12.3732 6.57227C14.74 6.57227 16.6586 8.49091 16.6586 10.8577Z"
+                        stroke="#003459"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
 
 
-      </div>
-    </div>
+                  </div>
+                </div>
 
-    {/* RIGHT: LABEL + VALUE */}
-    <div className="flex flex-col w-[136px] h-[36px]">
-      <div className="text-[13px] leading-[16px] font-rubik text-[#878D97]">
-        Passenger
-      </div>
-      <div className="text-[14px] leading-[20px] font-rubik text-[#191919] truncate">
-        {adults} Adults, {kids} Kids
-      </div>
-    </div>
-  </div>
+                {/* RIGHT: LABEL + VALUE */}
+                <div className="flex flex-col w-[136px] h-[36px]">
+                  <div className="text-[13px] leading-[16px] font-rubik text-[#878D97]">
+                    Passenger
+                  </div>
+                  <div className="text-[14px] leading-[20px] font-rubik text-[#191919] truncate">
+                    {adults} Adults, {kids} Kids
+                  </div>
+                </div>
+              </div>
 
-  {/* DROPDOWN MENU */}
-  {showPassengers && (
-  <div
-    className="
+              {/* DROPDOWN MENU */}
+              {showPassengers && (
+                <div
+                  className="
       absolute z-40 bg-white rounded-[16px] shadow-[0px_24px_48px_-12px_rgba(16,24,40,0.18)]
       w-[444px] h-[280px] p-8 flex flex-col gap-[18px]
     "
-    style={{ top: "100%", right: 0 }}
-  >
-    {/* Title */}
-    <div className="flex flex-col gap-[18px] w-[380px] mx-auto">
-      <div className="flex flex-col gap-6 w-full">
-
-        {/* Traveler Header */}
-        <div className="flex flex-col gap-2 w-full">
-          <div className="flex items-center justify-between pb-2">
-            <p className="text-[16px] font-medium text-[#191919] font-rubik">
-              Traveler
-            </p>
-          </div>
-
-          {/* COUNTER LIST */}
-          <div className="flex flex-col gap-5 w-full">
-
-            {/* ADULT */}
-            <div className="flex items-center justify-between w-full">
-              {/* Label */}
-              <div className="flex items-center gap-1">
-                <p className="text-[14px] text-[#191919] font-rubik">Adult</p>
-                <p className="text-[13px] text-[#878D97] font-rubik">(12–99 years old)</p>
-              </div>
-
-              {/* Counter */}
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={() => setAdults((a) => Math.max(1, a - 1))}
-                  className="w-6 h-6 flex items-center justify-center rounded-full border border-[#878D97] text-[#878D97]"
+                  style={{ top: "100%", right: 0 }}
                 >
-                  –
-                </button>
+                  {/* Title */}
+                  <div className="flex flex-col gap-[18px] w-[380px] mx-auto">
+                    <div className="flex flex-col gap-6 w-full">
 
-                <div className="w-6 text-center text-[16px] text-[#191919]">{adults}</div>
+                      {/* Traveler Header */}
+                      <div className="flex flex-col gap-2 w-full">
+                        <div className="flex items-center justify-between pb-2">
+                          <p className="text-[16px] font-medium text-[#191919] font-rubik">
+                            Traveler
+                          </p>
+                        </div>
 
-                <button
-                  type="button"
-                  onClick={() => setAdults((a) => a + 1)}
-                  className="w-6 h-6 flex items-center justify-center rounded-full border border-[#EE2552] text-[#EE2552]"
-                >
-                  +
-                </button>
-              </div>
-            </div>
+                        {/* COUNTER LIST */}
+                        <div className="flex flex-col gap-5 w-full">
 
-            {/* CHILD */}
-            <div className="flex items-center justify-between w-full">
-              <div className="flex items-center gap-1">
-                <p className="text-[14px] text-[#191919] font-rubik">Child</p>
-                <p className="text-[13px] text-[#878D97] font-rubik">(3–11 years old)</p>
-              </div>
+                          {/* ADULT */}
+                          <div className="flex items-center justify-between w-full">
+                            {/* Label */}
+                            <div className="flex items-center gap-1">
+                              <p className="text-[14px] text-[#191919] font-rubik">Adult</p>
+                              <p className="text-[13px] text-[#878D97] font-rubik">(12–99 years old)</p>
+                            </div>
 
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={() => setKids((k) => Math.max(0, k - 1))}
-                  className="w-6 h-6 flex items-center justify-center rounded-full border border-[#878D97] text-[#878D97]"
-                >
-                  –
-                </button>
+                            {/* Counter */}
+                            <div className="flex items-center gap-2">
+                              <button
+                                type="button"
+                                onClick={() => setAdults((a) => Math.max(1, a - 1))}
+                                className="w-6 h-6 flex items-center justify-center rounded-full border border-[#878D97] text-[#878D97]"
+                              >
+                                –
+                              </button>
 
-                <div className="w-6 text-center text-[16px] text-[#191919]">{kids}</div>
+                              <div className="w-6 text-center text-[16px] text-[#191919]">{adults}</div>
 
-                <button
-                  type="button"
-                  onClick={() => setKids((k) => k + 1)}
-                  className="w-6 h-6 flex items-center justify-center rounded-full border border-[#EE2552] text-[#EE2552]"
-                >
-                  +
-                </button>
-              </div>
-            </div>
+                              <button
+                                type="button"
+                                onClick={() => setAdults((a) => a + 1)}
+                                className="w-6 h-6 flex items-center justify-center rounded-full border border-[#EE2552] text-[#EE2552]"
+                              >
+                                +
+                              </button>
+                            </div>
+                          </div>
 
-            {/* INFANT */}
-            <div className="flex items-center justify-between w-full">
-              <div className="flex items-center gap-1">
-                <p className="text-[14px] text-[#191919] font-rubik">Infant</p>
-                <p className="text-[13px] text-[#878D97] font-rubik">(0–2 years old)</p>
-              </div>
+                          {/* CHILD */}
+                          <div className="flex items-center justify-between w-full">
+                            <div className="flex items-center gap-1">
+                              <p className="text-[14px] text-[#191919] font-rubik">Child</p>
+                              <p className="text-[13px] text-[#878D97] font-rubik">(3–11 years old)</p>
+                            </div>
 
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={() => setInfant((i) => Math.max(0, i - 1))}
-                  className="w-6 h-6 flex items-center justify-center rounded-full border border-[#878D97] text-[#878D97]"
-                >
-                  –
-                </button>
+                            <div className="flex items-center gap-2">
+                              <button
+                                type="button"
+                                onClick={() => setKids((k) => Math.max(0, k - 1))}
+                                className="w-6 h-6 flex items-center justify-center rounded-full border border-[#878D97] text-[#878D97]"
+                              >
+                                –
+                              </button>
 
-                <div className="w-6 text-center text-[16px] text-[#191919]">{infant}</div>
+                              <div className="w-6 text-center text-[16px] text-[#191919]">{kids}</div>
 
-                <button
-                  type="button"
-                  onClick={() => setInfant((i) => i + 1)}
-                  className="w-6 h-6 flex items-center justify-center rounded-full border border-[#EE2552] text-[#EE2552]"
-                >
-                  +
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+                              <button
+                                type="button"
+                                onClick={() => setKids((k) => k + 1)}
+                                className="w-6 h-6 flex items-center justify-center rounded-full border border-[#EE2552] text-[#EE2552]"
+                              >
+                                +
+                              </button>
+                            </div>
+                          </div>
 
-        {/* APPLY BUTTON */}
-        <button
-          onClick={() => setShowPassengers(false)}
-          className="
+                          {/* INFANT */}
+                          <div className="flex items-center justify-between w-full">
+                            <div className="flex items-center gap-1">
+                              <p className="text-[14px] text-[#191919] font-rubik">Infant</p>
+                              <p className="text-[13px] text-[#878D97] font-rubik">(0–2 years old)</p>
+                            </div>
+
+                            <div className="flex items-center gap-2">
+                              <button
+                                type="button"
+                                onClick={() => setInfant((i) => Math.max(0, i - 1))}
+                                className="w-6 h-6 flex items-center justify-center rounded-full border border-[#878D97] text-[#878D97]"
+                              >
+                                –
+                              </button>
+
+                              <div className="w-6 text-center text-[16px] text-[#191919]">{infant}</div>
+
+                              <button
+                                type="button"
+                                onClick={() => setInfant((i) => i + 1)}
+                                className="w-6 h-6 flex items-center justify-center rounded-full border border-[#EE2552] text-[#EE2552]"
+                              >
+                                +
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* APPLY BUTTON */}
+                      <button
+                        onClick={() => setShowPassengers(false)}
+                        className="
             w-[380px] h-[40px] bg-[#EE2552] text-white rounded-[8px] 
             text-[14px] font-medium font-rubik flex items-center justify-center
           "
-        >
-          Apply
-        </button>
-      </div>
-    </div>
-  </div>
-)}
+                      >
+                        Apply
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
 
 
-</div>
+            </div>
 
           </div>
 
           <div className="border-t border-[#DADFE6] w-full" />
 
           {/* Row 2: Dates, Suitcases, Search */}
-          <div className="flex items-center text-left gap-7">
+          <div className="flex items-center text-left gap-[16px]">
             {/* Pickup date/time */}
             <div className="relative" ref={pickupCalRef}>
-              <div className="flex items-center bg-[#F4F7F9] rounded-xl p-4 gap-3 w-[236px] h-[68px] cursor-pointer" onClick={() => setShowPickupCalendar(true)}>
+              <div className="flex items-center bg-[#F4F7F9] rounded-xl p-4 gap-3 w-[246px] h-[68px] cursor-pointer" onClick={() => setShowPickupCalendar(true)}>
                 <div className="w-8 h-8 flex items-center justify-center">
                   <CalendarIcon />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-[13px] text-[#878D97] leading-4">Pickup date</span>
-                  <span className="text-sm font-medium text-[#191919] leading-5">{formatDisplayDate(pickupDate, pickupTime)}</span>
+                  <span className="text-[14px] font-medium text-[#191919] leading-5">{formatDisplayDate(pickupDate, pickupTime)}</span>
                 </div>
               </div>
 
@@ -541,35 +552,86 @@ const AirportTransportationForm: React.FC = () => {
                           setDropoffDate(e.target.value);
                         }
                       }}
-                      className="w-full p-2 border rounded"
+                      className="w-full p-2 border rounded text-gray-800"
                     />
                     <label className="text-xs text-gray-600">Time</label>
                     <input
                       type="time"
                       value={pickupTime}
                       onChange={(e) => setPickupTime(e.target.value)}
-                      className="w-full p-2 border rounded"
+                      className="w-full p-2 border rounded text-gray-800"
                     />
 
                     <div className="flex justify-end gap-2 mt-2">
-                      <button type="button" onClick={() => setShowPickupCalendar(false)} className="px-3 py-1 rounded border">Close</button>
+                      <button type="button" onClick={() => setShowPickupCalendar(false)} className="px-3 py-1 rounded border bg-gray-400">Close</button>
                       <button type="button" onClick={() => setShowPickupCalendar(false)} className="px-3 py-1 rounded bg-[#EE2552] text-white">Save</button>
                     </div>
                   </div>
                 </div>
               )}
+
+  {/* {showPickupCalendar && (
+  <div className="absolute z-40 mt-2 bg-white border rounded-lg p-3 shadow-md w-[300px]">
+    <div className="flex flex-col gap-3">
+      <label className="text-xs text-gray-600">Pickup Date & Time</label>
+      <Datetime
+  value={
+    pickupDate && pickupTime
+      ? new Date(`${pickupDate} ${pickupTime}`)
+      : undefined
+  }
+  onChange={(value: any) => {
+    const date = value.toDate ? value.toDate() : new Date(value);
+    setPickupDate(date.toISOString().slice(0, 10));
+    setPickupTime(date.toTimeString().slice(0, 5));
+
+    if (tripType === "Round" && !dropoffDate) {
+      setDropoffDate(date.toISOString().slice(0, 10));
+    }
+  }}
+  inputProps={{
+    className:
+      "w-full p-2 border rounded text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#EE2552]",
+    placeholder: "Select date & time",
+  }}
+/>
+
+
+
+      <div className="flex justify-end gap-2 mt-3">
+        <button
+          type="button"
+          onClick={() => setShowPickupCalendar(false)}
+          className="px-3 py-1 rounded border"
+        >
+          Close
+        </button>
+        <button
+          type="button"
+          onClick={() => setShowPickupCalendar(false)}
+          className="px-3 py-1 rounded bg-[#EE2552] text-white"
+        >
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+)} */}
+
+
+
             </div>
 
             {/* Drop-off date/time (conditional) */}
             {tripType === "Round" && (
               <div className="relative" ref={dropoffCalRef}>
-                <div className="flex items-center bg-[#F4F7F9] rounded-xl p-4 gap-3 w-[236px] h-[68px] cursor-pointer" onClick={() => setShowDropoffCalendar(true)}>
+                <div className="flex items-center bg-[#F4F7F9] rounded-xl p-4 gap-3 w-[246px] h-[68px] cursor-pointer" onClick={() => setShowDropoffCalendar(true)}>
                   <div className="w-8 h-8 flex items-center justify-center">
                     <CalendarIcon />
                   </div>
                   <div className="flex flex-col">
                     <span className="text-[13px] text-[#878D97] leading-4">Drop of date</span>
-                    <span className="text-sm font-medium text-[#191919] leading-5">{formatDisplayDate(dropoffDate, dropoffTime)}</span>
+                    <span className="text-[14px] font-medium text-[#191919] leading-5">{formatDisplayDate(dropoffDate, dropoffTime)}</span>
                   </div>
                 </div>
 
@@ -581,7 +643,7 @@ const AirportTransportationForm: React.FC = () => {
                         type="date"
                         value={dropoffDate}
                         onChange={(e) => setDropoffDate(e.target.value)}
-                        className="w-full p-2 border rounded"
+                        className="w-full p-2 border rounded text-gray-800"
                         min={pickupDate} // ensure dropoff not before pickup
                       />
                       <label className="text-xs text-gray-600">Time</label>
@@ -589,11 +651,11 @@ const AirportTransportationForm: React.FC = () => {
                         type="time"
                         value={dropoffTime}
                         onChange={(e) => setDropoffTime(e.target.value)}
-                        className="w-full p-2 border rounded"
+                        className="w-full p-2 border rounded text-gray-800"
                       />
 
                       <div className="flex justify-end gap-2 mt-2">
-                        <button type="button" onClick={() => setShowDropoffCalendar(false)} className="px-3 py-1 rounded border">Close</button>
+                        <button type="button" onClick={() => setShowDropoffCalendar(false)} className="px-3 py-1 rounded border bg-gray-400">Close</button>
                         <button type="button" onClick={() => setShowDropoffCalendar(false)} className="px-3 py-1 rounded bg-[#EE2552] text-white">Save</button>
                       </div>
                     </div>
@@ -603,7 +665,7 @@ const AirportTransportationForm: React.FC = () => {
             )}
 
             {/* Suitcase qty inline counter */}
-            <div className="flex items-center bg-[#F4F7F9] rounded-xl p-4 gap-3 w-[220px] h-[68px]">
+            {/* <div className="flex items-center bg-[#F4F7F9] rounded-xl p-4 gap-3 w-[246px] h-[68px]">
               <div className="w-8 h-8 flex items-center justify-center">
                 <BriefcaseIcon />
               </div>
@@ -615,7 +677,31 @@ const AirportTransportationForm: React.FC = () => {
                   <button type="button" onClick={() => setSuitcases((s) => s + 1)} className="w-8 h-8 rounded-md border">+</button>
                 </div>
               </div>
+            </div> */}
+
+            <div
+              className="flex items-center bg-[#F4F7F9] rounded-xl p-4 gap-3 w-[246px] h-[68px] cursor-pointer"
+              onClick={() => setShowTraveler((prev) => !prev)}
+            >
+              <div className="w-8 h-8 flex items-center justify-center">
+                <BriefcaseIcon />
+              </div>
+
+              <div className="flex-1">
+                <div className="text-[13px] text-[#878D97]">Suitcase qty</div>
+                <div className="text-[14px] text-[#191919]">{suitcases} pcs</div>
+              </div>
             </div>
+
+            {showTraveler && (
+              <TravelerSelector
+                suitcases={suitcases}
+                setSuitcases={setSuitcases}
+                carryOn={carryOn}
+                setCarryOn={setCarryOn}
+                onClose={() => setShowTraveler(false)}
+              />
+            )}
 
             {/* Find Cars Button */}
             <button

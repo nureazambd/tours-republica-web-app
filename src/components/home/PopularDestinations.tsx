@@ -100,6 +100,12 @@ export default function PopularDestinations() {
                           {destination.name}
                         </div>
                       )}
+
+                      {isActive && destination.id === 1 && hoveredCardRow1 !== 1 && (
+  <div className="absolute left-[24px] bottom-[28px] text-white font-rubik font-medium text-[22px]">
+    {destination.name}
+  </div>
+)}
                     </>
                   )}
                 </Link>

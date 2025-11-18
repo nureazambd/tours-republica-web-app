@@ -154,6 +154,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ name, rating, review }) => (
 // --- Main Component ---
 
 export default function TourDetailsPage() {
+  const [showMore, setShowMore] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
   // derive id from path: /tours/[id]
@@ -307,6 +308,8 @@ export default function TourDetailsPage() {
     ? chosenTour.image
     : chosenTour.gallery[activeIdx];
 
+  
+
   return (
     <Layout>
       <div className="min-h-screen bg-gray-50 text-black">
@@ -348,7 +351,7 @@ export default function TourDetailsPage() {
                 <div className=" mx-auto px-4 sm:px-6 lg:px-0">
 
                   {/* Overview Section */}
-                  <section className="mb-12">
+                  {/* <section className="mb-12">
                     <h2 className="text-[28px] font-[500] text-[#191919] mb-4">Overview</h2>
                     <p className="text-gray-700 leading-relaxed mb-4 text-[14px] font-[400]">
                       Santo Domingo, the capital city of the Dominican Republic, is the economic, political and cultural center of the country and the Caribbean's most populous city. Located on the Caribbean Sea at the mouth of the Ozama River, the city was founded by Bartholomew Columbus in 1496, making it the first permanent European settlement in the Americas. It is also, incredibly, the first city in the Americas to host a university, hospital, cathedral, and customs house.
@@ -359,7 +362,29 @@ export default function TourDetailsPage() {
                     <button className="text-[#EE2552] text-[16px] font-[500] hover:underline font-semibold">
                       See more
                     </button>
-                  </section>
+                  </section> */}
+
+                  <section className="mb-12">
+      <h2 className="text-[28px] font-[500] text-[#191919] mb-4">Overview</h2>
+
+      <p className="text-gray-700 leading-relaxed mb-4 text-[14px] font-[400]">
+        Santo Domingo, the capital city of the Dominican Republic, is the economic, political and cultural center of the country and the Caribbean's most populous city. Located on the Caribbean Sea at the mouth of the Ozama River, the city was founded by Bartholomew Columbus in 1496, making it the first permanent European settlement in the Americas. It is also, incredibly, the first city in the Americas to host a university, hospital, cathedral, and customs house.
+      </p>
+
+      {showMore && (
+        <p className="text-gray-700 leading-relaxed mb-4 text-[14px] font-[400]">
+          The city is home to the first cathedral, hospital, customs house and university in the Americas. It is a UNESCO World Heritage Site.
+        </p>
+      )}
+
+      <button
+        onClick={() => setShowMore(!showMore)}
+        className="text-[#EE2552] text-[16px] font-[500] hover:underline font-semibold"
+      >
+        {showMore ? 'See less' : 'See more'}
+      </button>
+    </section>
+
                   {/* Tour Highlights Section */}
                   <TourHighlights />
 
@@ -394,9 +419,19 @@ export default function TourDetailsPage() {
                           </li>
                           <li className="flex items-center text-[#4B5563] text-[14px] font-[400]">
 
-                            <svg width="20" height="20" className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <g clip-path="url(#clip0_916_11880)">
-                                <path d="M10 8C11.0609 8 12.0783 7.57857 12.8284 6.82843C13.5786 6.07828 14 5.06087 14 4C14 2.93913 13.5786 1.92172 12.8284 1.17157C12.0783 0.421427 11.0609 0 10 0C8.93913 0 7.92172 0.421427 7.17157 1.17157C6.42143 1.92172 6 2.93913 6 4C6 5.06087 6.42143 6.07828 7.17157 6.82843C7.92172 7.57857 8.93913 8 10 8ZM8.57188 9.5C5.49375 9.5 3 11.9937 3 15.0719C3 15.5844 3.41563 16 3.92813 16H16.0719C16.5844 16 17 15.5844 17 15.0719C17 11.9937 14.5063 9.5 11.4281 9.5H8.57188Z" fill="#28A745" />
+                            <svg
+                              width="20"
+                              height="20"
+                              className="w-5 h-5 text-green-500 mr-2 flex-shrink-0"
+                              viewBox="0 0 20 20"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <g clipPath="url(#clip0_916_11880)">
+                                <path
+                                  d="M10 8C11.0609 8 12.0783 7.57857 12.8284 6.82843C13.5786 6.07828 14 5.06087 14 4C14 2.93913 13.5786 1.92172 12.8284 1.17157C12.0783 0.421427 11.0609 0 10 0C8.93913 0 7.92172 0.421427 7.17157 1.17157C6.42143 1.92172 6 2.93913 6 4C6 5.06087 6.42143 6.07828 7.17157 6.82843C7.92172 7.57857 8.93913 8 10 8ZM8.57188 9.5C5.49375 9.5 3 11.9937 3 15.0719C3 15.5844 3.41563 16 3.92813 16H16.0719C16.5844 16 17 15.5844 17 15.0719C17 11.9937 14.5063 9.5 11.4281 9.5H8.57188Z"
+                                  fill="#28A745"
+                                />
                               </g>
                               <defs>
                                 <clipPath id="clip0_916_11880">
@@ -405,12 +440,23 @@ export default function TourDetailsPage() {
                               </defs>
                             </svg>
 
+
                             <span>Professional certified guide</span>
                           </li>
                           <li className="flex items-center text-[#4B5563] text-[14px] font-[400]">
-                            <svg width="20" height="20" className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <g clip-path="url(#clip0_916_11885)">
-                                <path d="M16 2C15.5 2 12 3 12 7.5V11C12 12.1031 12.8969 13 14 13H15V17C15 17.5531 15.4469 18 16 18C16.5531 18 17 17.5531 17 17V13V9.5V3C17 2.44687 16.5531 2 16 2ZM5 2.5C5 2.24375 4.80938 2.03125 4.55313 2.00313C4.29688 1.975 4.06875 2.14375 4.0125 2.39062L3.06562 6.65C3.02187 6.84688 3 7.04688 3 7.24687C3 8.68125 4.09687 9.85938 5.5 9.9875V17C5.5 17.5531 5.94688 18 6.5 18C7.05312 18 7.5 17.5531 7.5 17V9.9875C8.90312 9.85938 10 8.68125 10 7.24687C10 7.04688 9.97812 6.84688 9.93437 6.65L8.9875 2.39062C8.93125 2.14062 8.69688 1.975 8.44375 2.00313C8.19062 2.03125 8 2.24375 8 2.5V6.69375C8 6.8625 7.8625 7 7.69375 7C7.53437 7 7.40312 6.87813 7.3875 6.71875L6.99688 2.45625C6.975 2.19688 6.75938 2 6.5 2C6.24062 2 6.025 2.19688 6.00312 2.45625L5.61562 6.71875C5.6 6.87813 5.46875 7 5.30938 7C5.14062 7 5.00312 6.8625 5.00312 6.69375V2.5H5ZM6.50938 7.25H6.5H6.49062L6.5 7.22813L6.50938 7.25Z" fill="#28A745" />
+                            <svg
+                              width="20"
+                              height="20"
+                              className="w-5 h-5 text-green-500 mr-2 flex-shrink-0"
+                              viewBox="0 0 20 20"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <g clipPath="url(#clip0_916_11885)">
+                                <path
+                                  d="M16 2C15.5 2 12 3 12 7.5V11C12 12.1031 12.8969 13 14 13H15V17C15 17.5531 15.4469 18 16 18C16.5531 18 17 17.5531 17 17V13V9.5V3C17 2.44687 16.5531 2 16 2ZM5 2.5C5 2.24375 4.80938 2.03125 4.55313 2.00313C4.29688 1.975 4.06875 2.14375 4.0125 2.39062L3.06562 6.65C3.02187 6.84688 3 7.04688 3 7.24687C3 8.68125 4.09687 9.85938 5.5 9.9875V17C5.5 17.5531 5.94688 18 6.5 18C7.05312 18 7.5 17.5531 7.5 17V9.9875C8.90312 9.85938 10 8.68125 10 7.24687C10 7.04688 9.97812 6.84688 9.93437 6.65L8.9875 2.39062C8.93125 2.14062 8.69688 1.975 8.44375 2.00313C8.19062 2.03125 8 2.24375 8 2.5V6.69375C8 6.8625 7.8625 7 7.69375 7C7.53437 7 7.40312 6.87813 7.3875 6.71875L6.99688 2.45625C6.975 2.19688 6.75938 2 6.5 2C6.24062 2 6.025 2.19688 6.00312 2.45625L5.61562 6.71875C5.6 6.87813 5.46875 7 5.30938 7C5.14062 7 5.00312 6.8625 5.00312 6.69375V2.5H5ZM6.50938 7.25H6.5H6.49062L6.5 7.22813L6.50938 7.25Z"
+                                  fill="#28A745"
+                                />
                               </g>
                               <defs>
                                 <clipPath id="clip0_916_11885">
@@ -418,6 +464,7 @@ export default function TourDetailsPage() {
                                 </clipPath>
                               </defs>
                             </svg>
+
 
                             <span>Delicious local lunch</span>
                           </li>
@@ -548,7 +595,6 @@ export default function TourDetailsPage() {
               {/* ---------------------------------+------------------------------------+--------------------------------- */}
 
             </div>
-
             {/* Right / Sticky booking sidebar */}
             <BookYourTourAside />
           </div>

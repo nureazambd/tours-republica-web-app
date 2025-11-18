@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import CarList from "@/components/car/CarList";
+import CarFilters from "@/components/car/CarFilters";
 
 export default function CarBookingContent() {
   const [cars, setCars] = useState<any[]>([]);
@@ -34,10 +35,18 @@ export default function CarBookingContent() {
   }, [searchParams]);
 
   return (
-    <div className="container-custom py-12">
-      <div className="mt-6">
-        {loading ? <div className="p-6">Loading car list...</div> : <CarList cars={cars} />}
-      </div>
-    </div>
+    // <div className="container-custom py-12">
+    //   <div className="mt-6">
+    //     {loading ? <div className="p-6">Loading car list...</div> : <CarList cars={cars} />}
+    //   </div>
+    // </div>
+    <div className=" py-12 flex gap-6 max-w-[1180px] mx-auto">
+  <CarFilters />   {/* LEFT SIDEBAR */}
+  
+  <div className="flex-1">
+    {loading ? <div className="p-6">Loading car list...</div> : <CarList cars={cars} />}
+  </div>
+</div>
+
   );
 }

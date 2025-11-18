@@ -57,7 +57,7 @@ const Footer = () => {
               <Image src="/images/footer/location.png" alt="Location" width={30} height={30} />
             </div>
             <div className="flex flex-col">
-              <span className="text-white text-xs sm:text-sm">
+              <span className="text-[#AFC0CD] text-xs sm:text-sm">
                 Local M-4, Plaza Rique Bávaro
               </span>
               <span className="text-[#AFC0CD] text-xs sm:text-sm">
