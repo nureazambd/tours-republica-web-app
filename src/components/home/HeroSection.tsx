@@ -214,7 +214,8 @@ const HeroSection = () => {
                   </div>
 
                   {/* Controlled Dropdown */}
-                  <CustomDropdown isOpen={isDropdownOpen} setIsOpen={setIsDropdownOpen} />
+                  <div onClick={() => setIsDropdownOpen(!isDropdownOpen)}><CustomDropdown isOpen={isDropdownOpen} setIsOpen={setIsDropdownOpen} /></div>
+                  
                 </div>
               </div>
 

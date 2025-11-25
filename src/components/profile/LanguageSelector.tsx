@@ -37,7 +37,7 @@ const LanguageSelector = () => {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-6 w-full max-w-sm">
+    <div className="bg-[#EFF2F880] p-6 w-full max-w-sm">
       <h2 className="text-2xl font-semibold text-gray-800 mb-4">🌍 Language</h2>
       <select
         className="border border-gray-300 rounded-lg p-3 w-full focus:ring-2 focus:ring-blue-500 outline-none"

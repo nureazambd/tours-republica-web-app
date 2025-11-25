@@ -225,7 +225,7 @@ const AirportTransportationForm: React.FC = () => {
         )}
       </div>
 
-      <div className="text-xs text-gray-500 mb-1">{selected.city}</div>
+      <div className="text-xs text-gray-500 -mt-4 mb-1">{selected.city}</div>
     </div>
   );
 
@@ -539,35 +539,110 @@ const AirportTransportationForm: React.FC = () => {
               </div>
 
               {showPickupCalendar && (
-                <div className="absolute z-40 mt-2 bg-white border rounded-lg p-3 shadow-md w-[300px]">
-                  <div className="flex flex-col gap-2">
-                    <label className="text-xs text-gray-600">Date</label>
-                    <input
-                      type="date"
-                      value={pickupDate}
-                      onChange={(e) => {
-                        setPickupDate(e.target.value);
-                        // if dropoff is empty, keep it same when in Round mode
-                        if (tripType === "Round" && !dropoffDate) {
-                          setDropoffDate(e.target.value);
-                        }
-                      }}
-                      className="w-full p-2 border rounded text-gray-800"
-                    />
-                    <label className="text-xs text-gray-600">Time</label>
-                    <input
-                      type="time"
-                      value={pickupTime}
-                      onChange={(e) => setPickupTime(e.target.value)}
-                      className="w-full p-2 border rounded text-gray-800"
-                    />
+                // <div className="absolute z-40 mt-2 bg-white border rounded-lg p-3 shadow-md w-[300px]">
+        //         <div className="
+        //          absolute left-[0px] top-[103px]
+        // w-[444px] h-[236px]
+        // bg-white rounded-[16px]
+        // shadow-[0px_24px_48px_-12px_rgba(16,24,40,0.18)]
+        // flex flex-col items-center p-8 gap-[18px] z-50">
 
-                    <div className="flex justify-end gap-2 mt-2">
-                      <button type="button" onClick={() => setShowPickupCalendar(false)} className="px-3 py-1 rounded border bg-gray-400">Close</button>
-                      <button type="button" onClick={() => setShowPickupCalendar(false)} className="px-3 py-1 rounded bg-[#EE2552] text-white">Save</button>
-                    </div>
-                  </div>
-                </div>
+        //           <div className="flex flex-col gap-2">
+        //             <label className="text-xs text-gray-600">Date</label>
+        //             <input
+        //               type="date"
+        //               value={pickupDate}
+        //               onChange={(e) => {
+        //                 setPickupDate(e.target.value);
+        //                 // if dropoff is empty, keep it same when in Round mode
+        //                 if (tripType === "Round" && !dropoffDate) {
+        //                   setDropoffDate(e.target.value);
+        //                 }
+        //               }}
+        //               className="w-full p-2 border rounded text-gray-800"
+        //             />
+        //             <label className="text-xs text-gray-600">Time</label>
+        //             <input
+        //               type="time"
+        //               value={pickupTime}
+        //               onChange={(e) => setPickupTime(e.target.value)}
+        //               className="w-full p-2 border rounded text-gray-800"
+        //             />
+
+        //             <div className="flex justify-end gap-2 mt-2">
+        //               <button type="button" onClick={() => setShowPickupCalendar(false)} className="px-3 py-1 rounded border bg-gray-400">Close</button>
+        //               <button type="button" onClick={() => setShowPickupCalendar(false)} className="px-3 py-1 rounded bg-[#EE2552] text-white">Save</button>
+        //             </div>
+        //           </div>
+        //         </div>
+        <div
+  className="
+    absolute left-0 top-[103px]
+    w-[444px] 
+    bg-white rounded-[16px]
+    shadow-[0px_24px_48px_-12px_rgba(16,24,40,0.18)]
+    p-6 z-50
+    flex flex-col gap-4
+  "
+>
+  <div className="flex flex-col gap-4 w-full">
+    {/* Date */}
+    <div className="flex flex-col gap-1 w-full">
+      <label className="text-xs text-gray-600">Date</label>
+      <input
+        type="date"
+        value={pickupDate}
+        onChange={(e) => {
+          setPickupDate(e.target.value);
+          if (tripType === "Round" && !dropoffDate) {
+            setDropoffDate(e.target.value);
+          }
+        }}
+        className="w-full p-3 border rounded-lg text-gray-800"
+      />
+    </div>
+
+    {/* Time */}
+    <div className="flex flex-col gap-1 w-full">
+      <label className="text-xs text-gray-600">Time</label>
+      <input
+        type="time"
+        value={pickupTime}
+        onChange={(e) => setPickupTime(e.target.value)}
+        className="w-full p-3 border rounded-lg text-gray-800"
+      />
+    </div>
+
+    {/* Buttons */}
+    {/* <div className="flex justify-end gap-3 w-full mt-2">
+      <button
+        type="button"
+        onClick={() => setShowPickupCalendar(false)}
+        className="px-4 py-2 rounded-lg bg-[#EE2552] text-white w-[100px]"
+      >
+        Save
+      </button>
+    </div> */}
+    <div className="flex justify-center w-full mt-2">
+  <button
+    type="button"
+    onClick={() => setShowPickupCalendar(false)}
+    className="
+      flex items-center justify-center
+      px-8 py-2 gap-2
+      w-[372px] h-10
+      bg-[#EE2552] text-white
+      rounded-lg
+      text-[14px] font-normal leading-[24px] font-[Rubik]
+    "
+  >
+    Apply
+  </button>
+</div>
+
+  </div>
+</div>
+
               )}
 
   {/* {showPickupCalendar && (
@@ -636,30 +711,59 @@ const AirportTransportationForm: React.FC = () => {
                 </div>
 
                 {showDropoffCalendar && (
-                  <div className="absolute z-40 mt-2 bg-white border rounded-lg p-3 shadow-md w-[300px]">
-                    <div className="flex flex-col gap-2">
-                      <label className="text-xs text-gray-600">Date</label>
-                      <input
-                        type="date"
-                        value={dropoffDate}
-                        onChange={(e) => setDropoffDate(e.target.value)}
-                        className="w-full p-2 border rounded text-gray-800"
-                        min={pickupDate} // ensure dropoff not before pickup
-                      />
-                      <label className="text-xs text-gray-600">Time</label>
-                      <input
-                        type="time"
-                        value={dropoffTime}
-                        onChange={(e) => setDropoffTime(e.target.value)}
-                        className="w-full p-2 border rounded text-gray-800"
-                      />
+                  <div
+  className="
+    absolute left-0 top-[103px]
+    w-[444px]
+    bg-white rounded-[16px]
+    shadow-[0px_24px_48px_-12px_rgba(16,24,40,0.18)]
+    p-6 z-50
+    flex flex-col gap-4
+  "
+>
+  <div className="flex flex-col gap-4 w-full">
+    {/* DATE */}
+    <div className="flex flex-col gap-1 w-full">
+      <label className="text-xs text-gray-600">Date</label>
+      <input
+        type="date"
+        value={dropoffDate}
+        onChange={(e) => setDropoffDate(e.target.value)}
+        min={pickupDate}
+        className="w-full p-3 border rounded-lg text-gray-800"
+      />
+    </div>
 
-                      <div className="flex justify-end gap-2 mt-2">
-                        <button type="button" onClick={() => setShowDropoffCalendar(false)} className="px-3 py-1 rounded border bg-gray-400">Close</button>
-                        <button type="button" onClick={() => setShowDropoffCalendar(false)} className="px-3 py-1 rounded bg-[#EE2552] text-white">Save</button>
-                      </div>
-                    </div>
-                  </div>
+    {/* TIME */}
+    <div className="flex flex-col gap-1 w-full">
+      <label className="text-xs text-gray-600">Time</label>
+      <input
+        type="time"
+        value={dropoffTime}
+        onChange={(e) => setDropoffTime(e.target.value)}
+        className="w-full p-3 border rounded-lg text-gray-800"
+      />
+    </div>
+
+    {/* SAVE BUTTON — Figma Style */}
+    <div className="w-full flex justify-center mt-2">
+      <button
+        type="button"
+        onClick={() => setShowDropoffCalendar(false)}
+        className="
+          w-full max-w-[372px] h-[40px]
+          flex items-center justify-center
+          px-8 py-2 gap-2
+          bg-[#EE2552] text-white
+          rounded-lg text-[14px] leading-[24px] font-normal
+        "
+      >
+        Apply
+      </button>
+    </div>
+  </div>
+</div>
+
                 )}
               </div>
             )}

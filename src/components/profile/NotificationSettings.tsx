@@ -60,7 +60,7 @@ const NotificationSettings: FC = () => {
 
   return (
     // Container for layout
-    <div className="bg-gray-100 flex items-center justify-center">
+    <div className="bg-[#EFF2F880] flex items-center justify-center">
       
       {/* Main card matching the image */}
       <div className="w-full  p-8">

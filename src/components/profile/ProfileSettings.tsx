@@ -88,7 +88,7 @@ const ProfileSettings = () => {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-8">
+    <div className="bg-[#EFF2F880] rounded-2xl shadow p-8">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-2xl font-bold text-gray-800">Account Settings</h2>
         <button

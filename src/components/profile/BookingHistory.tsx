@@ -183,7 +183,7 @@ const BookingHistory: React.FC = () => {
   if (allBookings.length === 0) return <div className="p-10 text-center text-gray-500">You have no bookings yet.</div>;
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-8 relative">
+    <div className="bg-[#EFF2F880] rounded-2xl shadow p-8 relative">
       <h2 className="text-2xl font-bold mb-6 text-gray-800">Booking History</h2>
 
       <div className="space-y-6">
