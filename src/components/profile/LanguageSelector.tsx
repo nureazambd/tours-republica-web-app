@@ -1,7 +1,14 @@
-// src/components/profile/LanguageSelector.tsx
 'use client';
 
 import React, { useState, useCallback } from 'react';
+
+const languages = [
+  { code: 'en', label: 'English' },
+  { code: 'ar', label: 'Arabic' },
+  { code: 'es', label: 'Spanish' },
+  { code: 'fr', label: 'French' },
+  { code: 'de', label: 'German' },
+];
 
 const LanguageSelector = () => {
   const [selectedLang, setSelectedLang] = useState('en');
@@ -16,40 +23,76 @@ const LanguageSelector = () => {
     return false;
   }, []);
 
-  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newLang = e.target.value;
-    setSelectedLang(newLang);
+  const handleLanguageChange = (lang: string) => {
+    setSelectedLang(lang);
 
-    // Try immediately
-    if (triggerGoogleTranslation(newLang)) return;
+    if (triggerGoogleTranslation(lang)) return;
 
-    // Retry until Google Translate is ready
     let attempts = 0;
     const maxAttempts = 20;
     const interval = setInterval(() => {
       attempts++;
-      if (triggerGoogleTranslation(newLang) || attempts >= maxAttempts) {
+      if (triggerGoogleTranslation(lang) || attempts >= maxAttempts) {
         clearInterval(interval);
-        if (attempts >= maxAttempts)
-          console.warn('Google Translate element not found after several attempts.');
       }
     }, 200);
   };
 
   return (
-    <div className="bg-[#EFF2F880] p-6 w-full max-w-sm">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-4">🌍 Language</h2>
-      <select
-        className="border border-gray-300 rounded-lg p-3 w-full focus:ring-2 focus:ring-blue-500 outline-none"
-        value={selectedLang}
-        onChange={handleLanguageChange}
+    <div className="w-[876px] h-[488px] bg-[#EFF2F880] shadow-sm rounded-2xl p-[32px_44px_48px] flex flex-col justify-between">
+      
+      {/* Inner container */}
+      <div className="w-[788px] mx-auto flex flex-col gap-8">
+
+        {/* Title */}
+        <div className="flex justify-between items-center w-full h-[30px]">
+          <h2 className="text-[24px] font-medium text-[#191919]">Language Preference</h2>
+        </div>
+
+        {/* Radio Group */}
+        <div className="flex flex-col gap-4 w-full">
+          {languages.map((lang) => (
+            <div key={lang.code} className="flex items-center gap-3 h-6">
+
+              {/* Custom Radio */}
+              <div
+                className="w-6 h-6 relative cursor-pointer"
+                onClick={() => handleLanguageChange(lang.code)}
+              >
+                {/* Outer circle */}
+                <div
+                  className={`absolute inset-0 rounded-full 
+                    ${selectedLang === lang.code 
+                      ? 'border-[1.5px] border-[#FAA523]' 
+                      : 'border-[1.5px] border-[#C4CAD4]'
+                    }
+                  `}
+                />
+                {/* Inner circle */}
+                {selectedLang === lang.code && (
+                  <div className="absolute inset-[25%] rounded-full bg-[#FAA523]" />
+                )}
+              </div>
+
+              {/* Label */}
+              <span
+                className={`text-[16px] font-${selectedLang === lang.code ? 'medium' : 'normal'} 
+                  ${selectedLang === lang.code ? 'text-[#191919]' : 'text-[#747D8F]'}
+                `}
+              >
+                {lang.label}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Save Button */}
+      <button
+        className="w-[788px] mx-auto flex justify-center items-center bg-[#EE2552] text-white text-[14px] py-3 rounded-lg"
       >
-        <option value="en">English (Default)</option>
-        <option value="ar">Arabic</option>
-        <option value="es">Spanish</option>
-        <option value="fr">French</option>
-        <option value="de">German</option>
-      </select>
+        Save changes
+      </button>
     </div>
   );
 };

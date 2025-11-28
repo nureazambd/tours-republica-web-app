@@ -183,7 +183,7 @@ const BookingHistory: React.FC = () => {
   if (allBookings.length === 0) return <div className="p-10 text-center text-gray-500">You have no bookings yet.</div>;
 
   return (
-    <div className="bg-[#EFF2F880] rounded-2xl shadow p-8 relative">
+    <div className="bg-[#EFF2F880] rounded-2xl shadow px-[44px] py-8 relative">
       <h2 className="text-2xl font-bold mb-6 text-gray-800">Booking History</h2>
 
       <div className="space-y-6">
@@ -192,7 +192,7 @@ const BookingHistory: React.FC = () => {
           const traveler = isCarBooking(booking) ? (booking.traveler ?? {}) : { firstName: booking.firstName, lastName: booking.lastName, email: booking.email, phone: booking.phone };
 
           return (
-            <div key={booking._id} className="border border-gray-200 rounded-xl p-6 hover:shadow-md transition-all duration-200">
+            <div key={booking._id} className="border border-gray-200 rounded-xl p-6 hover:shadow transition-all duration-200">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between cursor-pointer" onClick={() => toggleExpand(booking._id)}>
                 <div className="flex items-center gap-4">
                   <div className="w-16 h-16 rounded-lg bg-gray-100 flex items-center justify-center">

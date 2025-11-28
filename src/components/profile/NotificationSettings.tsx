@@ -63,7 +63,7 @@ const NotificationSettings: FC = () => {
     <div className="bg-[#EFF2F880] flex items-center justify-center">
       
       {/* Main card matching the image */}
-      <div className="w-full  p-8">
+      <div className="w-full px-[44px] py-8">
         
         {/* Header */}
         <h1 className="text-2xl font-bold text-gray-900 mb-8">
@@ -135,8 +135,8 @@ const NotificationSettings: FC = () => {
         <div className="mt-10">
           <button
             onClick={handleSave}
-            className="w-full bg-pink-600 text-white font-semibold py-3 rounded-lg 
-                       hover:bg-pink-700 transition-colors duration-200
+            className="w-full bg-[#EE2552] text-white font-semibold py-3 rounded-lg 
+                       hover:bg-[#EE2552] transition-colors duration-200
                        focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-opacity-75"
           >
             Save changes

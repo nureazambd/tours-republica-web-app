@@ -90,26 +90,6 @@ const ProfileSettings = () => {
   const [profileImage, setProfileImage] = useState("/images/Avatar.png");
 const fileInputRef = useRef<HTMLInputElement>(null);
 
-useEffect(() => {
-  const fetchUser = async () => {
-    const token = localStorage.getItem("token");
-    if (!token) return;
-
-    const res = await fetch("/api/user/me", {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-
-    const data = await res.json();
-
-    if (res.ok && data.user) {
-      setFormData(data.user);
-      setProfileImage(data.user.profileImage || "/images/Avatar.png");
-    }
-  };
-
-  fetchUser();
-}, []);
-
 
  return (
   <div className="flex flex-col w-[876px] bg-[#EFF2F880] shadow-sm rounded-2xl px-[44px] pt-[32px] pb-[48px] gap-[48px]">
@@ -137,79 +117,22 @@ useEffect(() => {
     <div className="flex flex-row gap-[52px] w-full">
 
       {/* Avatar Section */}
-      {/* Avatar Section */}
-{/* Avatar Section */}
-<div className="flex flex-col items-center gap-4 w-[128px] relative">
+      <div className="flex flex-col items-center gap-4 w-[128px] relative">
+        <div className="relative">
+          <img
+            src="/images/Avatar.png"
+            className="w-[112px] h-[112px] rounded-full object-cover"
+          />
+          <span className="absolute bottom-[10px] right-[9px] w-[18px] h-[18px] bg-[#12B76A] border-4 border-white rounded-full"></span>
+        </div>
 
-  <div className="relative">
-    <img
-      src={profileImage || "/images/Avatar.png"}
-      alt="Profile"
-      className="w-[112px] h-[112px] rounded-full object-cover"
-    />
-    <span className="absolute bottom-[10px] right-[9px] w-[18px] h-[18px] bg-[#12B76A] border-4 border-white rounded-full"></span>
-  </div>
-
-  {/* Hidden file input */}
-  <input
-    type="file"
-    accept="image/*"
-    ref={fileInputRef}
-    className="hidden"
-    onChange={async (e) => {
-      const file = e.target.files?.[0];
-      if (!file) return;
-
-      // Instant preview
-      const preview = URL.createObjectURL(file);
-      setProfileImage(preview);
-
-      const token = localStorage.getItem("token");
-      if (!token) {
-        toast.error("You are not logged in");
-        return;
-      }
-
-      try {
-        const formDataImg = new FormData();
-        formDataImg.append("profileImage", file);
-
-        const res = await fetch("/api/user/upload-profile-photo", {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          body: formDataImg,
-        });
-
-        const data = await res.json();
-
-        if (res.ok) {
-          // Server saved image correctly
-          setProfileImage(data.imageUrl);
-          toast.success("Profile photo updated!");
-        } else {
-          toast.error(data.error || "Upload failed");
-        }
-      } catch (error) {
-        toast.error("Something went wrong while uploading");
-        console.log("UPLOAD ERROR:", error);
-      }
-    }}
-  />
-
-  {/* Change photo button */}
-  {isEditing && (
-    <button
-      onClick={() => fileInputRef.current?.click()}
-      className="text-[#EE2552] text-[16px] font-medium"
-    >
-      Change Photo
-    </button>
-  )}
-</div>
-
-
+        {/* Change photo */}
+        {isEditing && (
+          <button className="relative text-[#EE2552] text-[16px] font-medium">
+            Change Photo
+          </button>
+        )}
+      </div>
 
       {/* Form Section */}
       <div className="flex flex-col gap-[56px] w-[608px]">
