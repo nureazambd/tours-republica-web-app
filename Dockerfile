@@ -1,32 +1,47 @@
-# ----------------- Builder Stage -----------------
+# ----------------------------------------------------------------------
+# 1. Build Stage (Builder)
+# Creates a production build of the Next.js application
+# ----------------------------------------------------------------------
 FROM node:20-alpine AS builder
+
+# Set working directory inside the container
 WORKDIR /app
 
+# Copy package.json to install dependencies
 COPY package.json ./
+
+# Install dependencies (including devDependencies for build)
 RUN npm install
+
+# Copy all source files (including src/, next.config.js, etc.)
 COPY . .
+
+# Run the Next.js production build
+# This creates the optimized build files in the .next directory
 RUN npm run build
 
-# ----------------- Runner Stage -----------------
+# ----------------------------------------------------------------------
+# 2. Production Runtime Stage (Runner)
+# A minimal image containing only the necessary files to run the app
+# ----------------------------------------------------------------------
 FROM node:20-alpine AS runner
+
+# Set working directory
 WORKDIR /app
 
-# Copy only production dependencies
+# Install only production dependencies
 COPY package.json ./
 RUN npm install --only=production
 
-# Copy built app from builder
+# Copy necessary build artifacts from the builder stage
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/next.config.js ./
 
-# Copy wait-for-it script
-COPY wait-for-it.sh /wait-for-it.sh
-RUN chmod +x /wait-for-it.sh
-
+# Expose the port Next.js runs on
 EXPOSE 3000
 
-# Wait for MongoDB to be ready before starting
-CMD ["./wait-for-it.sh", "mongodb:27017", "--timeout=30", "--strict", "--", "npm", "start"]
+# Set the command to start the application (uses the 'start' script from package.json)
+CMD ["npm", "start"]
