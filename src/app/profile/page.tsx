@@ -286,7 +286,7 @@ function ProfilePageContent() {
               {/* === SIDEBAR === */}
               <div className="lg:col-span-1">
                 <div className="bg-[#EFF2F8] rounded-2xl shadow p-6 sticky top-24">
-                  <div className="text-center mb-6">
+                  {/* <div className="text-center mb-6">
                     <div className="bg-gradient-to-br from-primary-500 to-secondary-500 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
                       <User className="w-10 h-10 text-white" />
                     </div>
@@ -294,7 +294,7 @@ function ProfilePageContent() {
                       {user ? `${user.firstName} ${user.lastName}` : "Guest User"}
                     </h3>
                     <p className="text-gray-600">{user?.email || "No email available"}</p>
-                  </div>
+                  </div> */}
 
                   {/* <nav className="space-y-2">
                     {menuItems.map((item, index) => {

@@ -1,4 +1,3 @@
-// models/User.ts
 import mongoose, { Schema, Document, models } from "mongoose";
 
 export interface IUser extends Document {
@@ -17,8 +16,6 @@ export interface IUser extends Document {
   nationality?: string;
   password: string;
   newsletter: boolean;
-  resetToken?: string | null;
-  resetTokenExpire?: Date | null;
 }
 
 const UserSchema: Schema<IUser> = new Schema(
@@ -38,9 +35,6 @@ const UserSchema: Schema<IUser> = new Schema(
     nationality: { type: String },
     password: { type: String, required: true },
     newsletter: { type: Boolean, default: true },
-    // password reset fields:
-    resetToken: { type: String },
-    resetTokenExpire: { type: Date },
   },
   { timestamps: true }
 );
