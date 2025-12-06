@@ -5,6 +5,7 @@ import { Search, MapPin } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import CustomDropdown from './CustomDropdown';
+import ManageBookingModal from '../ManageBookingModal';
 
 const slides = [
   {
@@ -71,6 +72,8 @@ const HeroSection = () => {
   return (
     <section className="relative h-[720px] overflow-hidden bg-gray-100">
       {/* 🌄 Background Images with Crossfade */}
+
+      <ManageBookingModal/>
       <div className="absolute inset-0 z-0">
         {slides.map((slide, index) => (
           <div

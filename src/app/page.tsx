@@ -5,11 +5,13 @@ import FeaturedTours from '@/components/home/FeaturedTours';
 import TransportSection from '@/components/home/TransportSection';
 import TravelStyle from '@/components/home/TravelStyle';
 import Testimonials from '@/components/home/Testimonials';
+import SuccessModal from "@/components/SuccessModal";
 
 export default function HomePage() {
   return (
     <Layout>
       <HeroSection />
+      <SuccessModal />
       <PopularDestinations />
       <FeaturedTours />
       <TransportSection />

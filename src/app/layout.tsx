@@ -5,6 +5,7 @@ import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
 import { BookingProvider } from "@/context/BookingContext";
 import { TourProvider } from "@/context/TourContext";
+import { ModalProvider } from "@/context/ModalContext";
 import { Toaster } from 'react-hot-toast'
 
 const rubik = Rubik({
@@ -90,12 +91,14 @@ export default function RootLayout({
       <body className="font-sans" suppressHydrationWarning>
         <AuthProvider>
           <BookingProvider>
+            <ModalProvider>
             <TourProvider>
           {/* ✅ Header available on all pages */}
           <main className="min-h-screen">{children}</main>
           <div id="google_translate_element" style={{ display: 'none' }}></div>
           <Toaster position="top-right" reverseOrder={false} />
           </TourProvider>
+          </ModalProvider>
           </BookingProvider>
         </AuthProvider>
       </body>

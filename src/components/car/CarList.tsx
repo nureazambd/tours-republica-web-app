@@ -105,7 +105,7 @@ export default function CarList({ cars }: { cars: any[] }) {
             </div>
 
             <button
-              onClick={() => router.push(`/car-booking/${car._id}`)}
+              onClick={() => router.push(`/car-booking/${car._id}/${car.slug || car.name}`)}
               className="bg-[#EE2552] text-white px-5 py-2 rounded-lg flex items-center gap-2 text-[16px]"
             >
               Book

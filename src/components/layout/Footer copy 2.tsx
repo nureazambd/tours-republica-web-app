@@ -4,8 +4,6 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { useModal } from "@/context/ModalContext";
-
 const Footer = () => {
   const [email, setEmail] = useState('');
 
@@ -14,8 +12,6 @@ const Footer = () => {
     console.log('Subscribe:', email);
     setEmail('');
   };
-
-  const { openManageBooking } = useModal();
 
   return (
     <footer className="bg-[#003459] text-white font-['Rubik'] py-10">
@@ -184,7 +180,7 @@ const Footer = () => {
         </div>
 
         {/* Important Links */}
-        {/* <div>
+        <div>
           <h3 className="text-lg font-semibold mb-4">Important links</h3>
           <ul className="space-y-3">
             {[
@@ -204,42 +200,7 @@ const Footer = () => {
               </li>
             ))}
           </ul>
-        </div> */}
-
-        <div>
-  <h3 className="text-lg font-semibold mb-4">Important links</h3>
-
-  <ul className="space-y-3">
-    {[
-      { href: '/manage-booking', label: 'Manage booking' },
-      { href: '/contact', label: 'Support' },
-      { href: '/privacy-policy', label: 'Privacy Policy' },
-      { href: '/cancellations-policy', label: 'Cancellations Policy' },
-      { href: '/terms-and-conditions', label: 'General Terms and Conditions' },
-    ].map((item, i) => (
-      <li key={i}>
-        {item.label === "Manage booking" ? (
-          // 🔥 BUTTON ONLY FOR MANAGE BOOKING
-          <button
-            onClick={openManageBooking}
-            className="text-[#AFC0CD] hover:text-white text-sm transition-colors"
-          >
-            {item.label}
-          </button>
-        ) : (
-          // 🔗 KEEP OTHER ITEMS AS LINKS
-          <Link
-            href={item.href}
-            className="text-[#AFC0CD] hover:text-white text-sm transition-colors"
-          >
-            {item.label}
-          </Link>
-        )}
-      </li>
-    ))}
-  </ul>
-</div>
-
+        </div>
 
         {/* Work with us */}
         <div>
