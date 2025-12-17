@@ -3,67 +3,87 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
-interface PriceGraphProps {
-  prices: number[];
-  maxPrice?: number;
+interface PriceFilterProps {
+  prices?: number[];
   minPrice?: number;
+  maxPrice?: number;
 }
 
-const PriceFilter: React.FC<PriceGraphProps> = ({
-  prices,
-  maxPrice = 20000,
-  minPrice = 0,
+const PriceFilter: React.FC<PriceFilterProps> = ({
+  prices = [350, 1800, 2400, 9000, 4500, 12000, 16000, 19544],
+  minPrice = 50,
+  maxPrice = 1400,
 }) => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [open, setOpen] = useState(true);
 
-  const normalizedPrices = prices.map(
-    (price) => ((price - minPrice) / (maxPrice - minPrice)) * 100
+  const normalized = prices.map(
+    (p) => ((p - minPrice) / (maxPrice - minPrice)) * 100
   );
 
   return (
-    <div className="w-72 bg-[#F9FAFB] border border-[#BECCE8] rounded-lg p-5 flex flex-col gap-2">
-      {/* Header with toggle */}
+    <div
+      className="
+        w-[280px] bg-[#F9FAFB]
+        border border-[#BECCE8] rounded-[12px]
+        px-[24px] pt-[20px] pb-[24px]
+        flex flex-col gap-2
+      "
+    >
+      {/* HEADER */}
       <div
-        className="flex justify-between items-center cursor-pointer"
-        onClick={() => setIsCollapsed(!isCollapsed)}
+        className="flex items-center justify-between cursor-pointer w-full"
+        onClick={() => setOpen(!open)}
       >
-        <span className="text-[#1A202C] font-medium text-lg">Price Filter</span>
-        {isCollapsed ? (
-          <ChevronDown size={20} className="text-gray-500" />
+        <p className="text-[18px] font-medium text-[#1A202C] font-rubik">
+          Price Filter
+        </p>
+
+        {open ? (
+          <ChevronUp size={20} className="text-[#747D8F]" />
         ) : (
-          <ChevronUp size={20} className="text-gray-500" />
+          <ChevronDown size={20} className="text-[#747D8F]" />
         )}
       </div>
 
-      {/* Collapsible content */}
-      {!isCollapsed && (
-        <>
-          {/* Graph bars */}
-          <div className="relative w-full h-40 bg-[#BECCE8] bg-opacity-50 flex items-end gap-2 p-1 rounded">
-            {normalizedPrices.map((price, index) => (
-              <div
-                key={index}
-                className="bg-[#22228B] rounded-sm"
-                style={{
-                  width: `${100 / prices.length - 4}%`,
-                  height: `${price}%`,
-                }}
-              ></div>
-            ))}
-          </div>
-
-          {/* Min-Max Labels */}
-          <div className="flex justify-between text-sm text-[#878D97] mt-2">
+      {/* CONTENT */}
+      {open && (
+        <div className="flex flex-col w-full mt-2">
+          {/* PRICE LABELS */}
+          <div className="flex justify-between text-[12px] text-[#878D97] font-rubik">
             <span>${minPrice.toLocaleString()}</span>
             <span>${maxPrice.toLocaleString()}</span>
           </div>
 
-          {/* Dots / Range Indicators */}
-          <div className="flex justify-between items-center mt-3 w-full">
-            <div className="w-4 h-4 rounded-full border-2 border-[#6FCCDC] bg-[#F3F6FB]"></div>
-            <div className="w-4 h-4 rounded-full border-2 border-[#6FCCDC] bg-[#F3F6FB]"></div>
+          {/* GRAPH */}
+          <div className="relative w-full h-[88px]  rounded-[6px] flex items-end gap-[0px] px-1">
+            {normalized.map((value, i) => (
+              <div
+                key={i}
+                // className={`
+                //   w-full rounded-[2px]
+                //   ${i % 3 === 0 ? 'bg-[#22228B]' : 'bg-[#E6E6E9]'}
+                // `}
+                className={`
+                  w-full rounded-[2px]
+                  ${i % 3 === 0 ? 'bg-[#BECCE8]' : 'bg-[#BECCE8]'}
+                `}
+                style={{ height: `${value}%` }}
+              />
+            ))}
           </div>
-        </>
+
+          {/* RANGE SLIDER */}
+          <div className="relative w-full h-4 flex items-center justify-center -mt-2">
+            {/* Line */}
+            <div className="absolute w-[111px] h-[3px] bg-[#6FCCDC] rounded" />
+
+            {/* Dots */}
+            <div className="flex justify-between w-[128px] z-10">
+              <div className="w-4 h-4 rounded-full bg-[#F3F6FB] border-[3px] border-[#6FCCDC]" />
+              <div className="w-4 h-4 rounded-full bg-[#F3F6FB] border-[3px] border-[#6FCCDC]" />
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

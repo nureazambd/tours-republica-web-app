@@ -34,17 +34,17 @@ export default function ManageBookingModal() {
 
         {/* Description */}
         <p className="text-[#878D97] text-[14px] leading-[20px]">
-          To view, print, amend, and cancel your reservation, please fill the following fields:
+          To view, print, amend, and cancel your reservation, please make sure to fill the following fields with your reservation details:
         </p>
 
         {/* Inputs */}
         <div className="flex flex-col gap-6 w-full">
 
           <div className="flex flex-col gap-2">
-            <label className="text-[16px] text-[#191919]">Given name</label>
+            <label className="text-[16px] text-[#191919]">Booking reference ID</label>
             <input
               type="text"
-              placeholder="Your given name"
+              placeholder="Enter your booking reference ID"
               className="border border-[#D9D4D4CC] rounded px-5 py-3 text-[14px] w-full"
             />
           </div>

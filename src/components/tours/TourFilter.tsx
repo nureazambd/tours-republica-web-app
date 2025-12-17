@@ -62,6 +62,7 @@ const TourFilter = ({ filters = defaultFilters, setFilters = () => {} }: any) =>
       sortBy: "popular",
     });
   };
+  
 
   return (
     <div className=" rounded-2xl  sticky top-24">
@@ -88,7 +89,8 @@ const TourFilter = ({ filters = defaultFilters, setFilters = () => {} }: any) =>
       {/* Date Filter Section */}
       <div className="mt-[20px]"><AvailabilityFilter/></div>
       <div className="mt-[20px]"><TravelCategoryFilter/></div>
-      {/* <div className="mt-[20px]"><PriceFilter prices={[50,100,200,250,400, 500, 1000, 1500, 2000, 2500, 3000, 4000, 6000, 8000, 10000, 15000, 20000 ]} /></div> */}
+      <div className="mt-[20px]"><PriceFilter prices={[300, 600, 800, 700, 400, 250, 600, 750, 750, 900,
+    1050, 860, 750, 600, 900, 800, 10, 300, 100, 250, 250, 400, 400, 500, 650, 300, 300, 1400 ]} /></div>
       <div className="mt-[20px]"><UserReviewsFilter filters={filters} setFilters={setFilters} /></div>
       
     </div>
