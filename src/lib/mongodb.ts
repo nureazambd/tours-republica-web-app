@@ -18,6 +18,7 @@ if (!cached) {
 export async function connectDB() {
   if (cached.conn) {
     // If connection is cached, return the native Db instance
+    
     return { db: cached.conn.connection.db }; 
   }
 

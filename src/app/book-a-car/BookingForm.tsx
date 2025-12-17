@@ -395,12 +395,12 @@ const AirportTransportationForm: React.FC = () => {
                 <div
                   className="
       absolute z-40 bg-white rounded-[16px] shadow-[0px_24px_48px_-12px_rgba(16,24,40,0.18)]
-      w-[444px] h-[280px] p-8 flex flex-col gap-[18px]
+      w-[444px] h-[280px] py-8 px-3 flex flex-col gap-[18px]
     "
                   style={{ top: "100%", right: 0 }}
                 >
                   {/* Title */}
-                  <div className="flex flex-col gap-[18px] w-[380px] mx-auto">
+                  <div className="flex flex-col gap-[18px] w-full">
                     <div className="flex flex-col gap-6 w-full">
 
                       {/* Traveler Header */}
@@ -506,7 +506,7 @@ const AirportTransportationForm: React.FC = () => {
                       <button
                         onClick={() => setShowPassengers(false)}
                         className="
-            w-[380px] h-[40px] bg-[#EE2552] text-white rounded-[8px] 
+            w-full h-[40px] bg-[#EE2552] text-white rounded-[8px] 
             text-[14px] font-medium font-rubik flex items-center justify-center
           "
                       >
@@ -581,7 +581,7 @@ const AirportTransportationForm: React.FC = () => {
     w-[444px] 
     bg-white rounded-[16px]
     shadow-[0px_24px_48px_-12px_rgba(16,24,40,0.18)]
-    p-6 z-50
+    p-3 z-50
     flex flex-col gap-4
   "
 >
@@ -629,8 +629,8 @@ const AirportTransportationForm: React.FC = () => {
     onClick={() => setShowPickupCalendar(false)}
     className="
       flex items-center justify-center
-      px-8 py-2 gap-2
-      w-[372px] h-10
+      px-3 py-2 gap-2
+      w-full h-10
       bg-[#EE2552] text-white
       rounded-lg
       text-[14px] font-normal leading-[24px] font-[Rubik]
@@ -717,7 +717,7 @@ const AirportTransportationForm: React.FC = () => {
     w-[444px]
     bg-white rounded-[16px]
     shadow-[0px_24px_48px_-12px_rgba(16,24,40,0.18)]
-    p-6 z-50
+    p-3 z-50
     flex flex-col gap-4
   "
 >
@@ -751,9 +751,9 @@ const AirportTransportationForm: React.FC = () => {
         type="button"
         onClick={() => setShowDropoffCalendar(false)}
         className="
-          w-full max-w-[372px] h-[40px]
+          w-full max-w-full h-[40px]
           flex items-center justify-center
-          px-8 py-2 gap-2
+          px-3 py-2 gap-2
           bg-[#EE2552] text-white
           rounded-lg text-[14px] leading-[24px] font-normal
         "
