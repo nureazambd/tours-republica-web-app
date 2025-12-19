@@ -263,11 +263,11 @@ const RescheduleRideForm: React.FC = () => {
 
 
     return (
-        <div className="flex flex-col items-center p-0  ">
+        <div className="flex flex-col items-center p-0  mx-4">
 
 
             {/* <form onSubmit={handleSubmit} className="bg-white rounded-[24px] p-8 w-[1116px] max-w-[1116px] shadow"> */}
-            <form onSubmit={handleSubmit} className="bg-white rounded-[24px] w-[1116px] max-w-[1116px]  p-8 ">
+            <form onSubmit={handleSubmit} className="bg-white rounded-[24px] w-full lg:w-[1116px] lg:max-w-[1116px]  p-8 ">
 
                 <div className="flex flex-col gap-6 w-full">
                     {/* Trip Type Toggle */}
@@ -296,8 +296,8 @@ const RescheduleRideForm: React.FC = () => {
                     </div>
 
                     {/* Row 1 */}
-                    <div className="flex items-start text-left justify-between">
-                        <div className="flex items-center gap-14">
+                    <div className="lg:flex items-start text-left justify-between">
+                        <div className="lg:flex items-center gap-14">
                             {/* Pickup */}
                             {renderLocationInputBlock(
                                 "Pick-up location",
@@ -343,7 +343,7 @@ const RescheduleRideForm: React.FC = () => {
                         </div>
 
                         {/* Passenger summary + trigger */}
-                        <div ref={passengersRef} className="relative">
+                        <div ref={passengersRef} className="relative mt-6 lg:mt-0">
 
                             {/* CLICKABLE PASSENGER BOX */}
                             <div
@@ -375,7 +375,7 @@ const RescheduleRideForm: React.FC = () => {
                                 </div>
 
                                 {/* RIGHT: LABEL + VALUE */}
-                                <div className="flex flex-col w-[136px] h-[36px]">
+                                <div className="flex flex-col w-[136px] h-[36px] ">
                                     <div className="text-[13px] leading-[16px] font-rubik text-[#878D97]">
                                         Passenger
                                     </div>
@@ -520,9 +520,9 @@ const RescheduleRideForm: React.FC = () => {
                     <div className="border-t border-[#DADFE6] w-full" />
 
                     {/* Row 2: Dates, Suitcases, Search */}
-                    <div className="flex items-center text-left gap-[16px]">
+                    <div className="lg:flex items-center text-left gap-[16px]">
                         {/* Pickup date/time */}
-                        <div className="relative" ref={pickupCalRef}>
+                        <div className="relative my-4 lg:my-0" ref={pickupCalRef}>
                             <div className="flex items-center bg-[#F4F7F9] rounded-xl p-4 gap-3 w-[246px] h-[68px] cursor-pointer" onClick={() => setShowPickupCalendar(true)}>
                                 <div className="w-8 h-8 flex items-center justify-center">
                                     <CalendarIcon />
@@ -604,7 +604,7 @@ const RescheduleRideForm: React.FC = () => {
 
                         {/* Drop-off date/time (conditional) */}
                         {tripType === "Round" && (
-                            <div className="relative" ref={dropoffCalRef}>
+                            <div className="relative my-4 lg:my-0" ref={dropoffCalRef}>
                                 <div className="flex items-center bg-[#F4F7F9] rounded-xl p-4 gap-3 w-[246px] h-[68px] cursor-pointer" onClick={() => setShowDropoffCalendar(true)}>
                                     <div className="w-8 h-8 flex items-center justify-center">
                                         <CalendarIcon />

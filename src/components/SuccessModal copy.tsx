@@ -22,7 +22,7 @@ export default function SuccessModal() {
             <div className=" bg-white rounded-2xl shadow-[0_1px_2px_rgba(0,0,0,0.1)] p-4 overflow-auto flex flex-col gap-6 mx-4">
 
                 {/* ---------------- HEADER ---------------- */}
-                <div className="flex flex-col gap-3 w-full lg:w-[648px]">
+                <div className="flex flex-col gap-3 w-[648px]">
                     <div className="flex justify-between items-center w-full">
                         <h2 className="text-[24px] font-medium text-[#33A853] leading-[30px]">
                             Success! ID #114555 located
@@ -38,7 +38,7 @@ export default function SuccessModal() {
                 </div>
 
                 {/* ---------------- TOP INFO ROW ---------------- */}
-                <div className="w-full lg:w-[648px] flex flex-col gap-5">
+                <div className="w-[648px] flex flex-col gap-5">
                     <div className="flex justify-between items-center w-full">
                         <p className="text-[13px] text-[#4B5563]">Booking info</p>
                         <p className="text-[13px] text-[#4B5563]">Status</p>
@@ -48,11 +48,11 @@ export default function SuccessModal() {
                 </div>
 
                 {/* ---------------- BOOKING CARD ---------------- */}
-                <div className="w-full lg:w-[648px] flex flex-col gap-7">
-                    <div className="lg:flex justify-between items-center gap-4 w-full h-[56px]">
+                <div className="w-[648px] flex flex-col gap-7">
+                    <div className="flex justify-between items-center gap-4 w-full h-[56px]">
 
                         {/* Car icon box */}
-                        <div className="flex items-center gap-4 w-full lg:w-[472px] h-[56px]">
+                        <div className="flex items-center gap-4 w-[472px] h-[56px]">
                             <div className="w-14 h-14 bg-[#6FCCDC26] border border-[#6FCCDC] rounded-lg flex items-center justify-center">
                                 {/* Replace this with your car SVG */}
                                 <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -64,9 +64,9 @@ export default function SuccessModal() {
                             </div>
 
                             {/* Travel summary */}
-                            <div className="flex flex-col lg:w-[400px] gap-1">
+                            <div className="flex flex-col w-[400px] gap-1">
                                 <div className="flex items-center justify-between w-full">
-                                    <div className="flex flex-col gap-1 lg:w-[164px]">
+                                    <div className="flex flex-col gap-1 w-[164px]">
                                         <p className="text-[12px] text-[#4B5563]">Jan 24, 23:35</p>
                                         <p className="text-[14px] text-[#191919]">
                                             Hotel king, Punta cana
@@ -82,7 +82,7 @@ export default function SuccessModal() {
 
                                     </div>
 
-                                    <div className="flex flex-col gap-1 lg:w-[164px] text-right">
+                                    <div className="flex flex-col gap-1 w-[164px] text-right">
                                         <p className="text-[12px] text-[#4B5563]">Jan 25, 05:15</p>
                                         <p className="text-[14px] text-[#191919]">
                                             Royal Hotel, Punta cana
@@ -97,7 +97,7 @@ export default function SuccessModal() {
                         </div>
 
                         {/* Upcoming status */}
-                        <div className="flex items-center gap-2 mt-12 lg:mt-0 w-[100px]">
+                        <div className="flex items-center gap-2 w-[100px]">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z" fill="#33A853" />
                                 <path d="M7.75 12L10.58 14.83L16.25 9.17004" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -108,10 +108,10 @@ export default function SuccessModal() {
                     </div>
 
                     {/* ---------------- INFO BOX ---------------- */}
-                    <div className="w-full lg:w-[648px] bg-[#EFF2F880] border border-[#EDF2F9] rounded-xl p-6 flex flex-col gap-12">
+                    <div className="w-[648px] bg-[#EFF2F880] border border-[#EDF2F9] rounded-xl p-6 flex flex-col gap-12">
 
                         {/* Travel details */}
-                        <div className="flex mt-10 lg:mt-0 flex-col gap-3 w-full lg:w-[596px]">
+                        <div className="flex flex-col gap-3 w-[596px]">
                             <div className="flex items-center gap-4">
                                 <h3 className="text-[16px] font-medium text-[#191919]">
                                     Travel details
@@ -152,11 +152,14 @@ export default function SuccessModal() {
                             </div>
                         </div>
 
+
                         {/* ---------------- ACTION BUTTONS ---------------- */}
-                        <div className="lg:flex gap-5 w-full lg:w-[600px]">
+                        <div className="flex gap-5 w-[600px]">
+
+
 
                             {/* Cancel Ride */}
-                            <button className="my-4 lg:my-0 flex-1 w-full flex justify-center items-center gap-2 px-4 py-3 h-12 bg-[#FFEFF3] border border-[#EE255280] rounded-lg text-[#EE2552] text-[14px]"
+                            <button className="flex-1 flex justify-center items-center gap-2 px-4 py-3 h-12 bg-[#FFEFF3] border border-[#EE255280] rounded-lg text-[#EE2552] text-[14px]"
                                 onClick={() => setIsCancelOpen(true)}
                             >
                                 {/* <div className="w-6 h-6 border-2 border-[#EE2552]" /> */}
@@ -168,7 +171,7 @@ export default function SuccessModal() {
                             </button>
 
                             {/* Download Ticket */}
-                            <button className="my-4 lg:my-0 flex-1 w-full flex justify-center items-center gap-2 px-4 py-3 h-12 bg-[#FFEFF3] border border-[#EE255280] rounded-lg text-[#EE2552] text-[14px]" onClick={() => setIsDownloadOpen(true)}>
+                            <button className="flex-1 flex justify-center items-center gap-2 px-4 py-3 h-12 bg-[#FFEFF3] border border-[#EE255280] rounded-lg text-[#EE2552] text-[14px]" onClick={() => setIsDownloadOpen(true)}>
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M3.99936 14.899C3.2564 14.1399 2.69593 13.2217 2.3604 12.2139C2.02486 11.2062 1.92307 10.1352 2.06272 9.0823C2.20238 4.02935 2.57982 7.022 3.16646 6.13653C3.7531 5.25107 4.53355 4.51071 5.44869 3.97155C6.36384 3.43238 7.38969 3.10855 4.44853 3.02458C9.50737 2.9406 10.5714 3.09868 11.5601 3.48686C12.5488 3.87503 13.4362 4.48311 14.1551 5.26503C14.874 6.04696 15.4055 6.98223 15.7094 8H17.4994C18.4649 7.99989 19.4048 4.31032 20.1804 4.88544C20.9559 9.46056 21.5259 10.2699 21.8061 11.1938C22.0864 12.1177 22.062 13.1073 21.7367 14.0164C21.4113 14.9254 20.8022 15.7057 19.9994 16.242" stroke="#EE2552" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                     <path d="M12 12V21" stroke="#EE2552" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -179,7 +182,7 @@ export default function SuccessModal() {
                             </button>
                             {/* setIsRescheduleRideOpen */}
                             {/* Reschedule Ride */}
-                            <button className="my-4 lg:my-0 flex-1 w-full flex justify-center items-center gap-2 px-4 py-3 h-12 bg-[#FFEFF3] border border-[#EE255280] rounded-lg text-[#EE2552] text-[14px]" onClick={() => setIsRescheduleRideOpen(true)}>
+                            <button className="flex-1 flex justify-center items-center gap-2 px-4 py-3 h-12 bg-[#FFEFF3] border border-[#EE255280] rounded-lg text-[#EE2552] text-[14px]" onClick={() => setIsRescheduleRideOpen(true)}>
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M11.1 3H9.3C4.4 3 3 4.4 3 9.3V14.7C3 19.2 4.4 21 9.3 21H14.7C19.2 21 21 19.2 21 14.7V12.9" stroke="#EE2552" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                     <path d="M15.6886 4.08723L8.9501 10.8266C8.69356 11.0832 4.43702 11.5878 4.38571 11.9556L8.018 14.5299C7.88118 15.4621 4.53963 16.1121 9.47173 15.9839L12.0457 15.6161C12.4048 15.5648 12.9094 15.3082 13.1745 15.0516L19.9129 4.3122C21.0759 7.14905 21.6232 5.79774 19.9129 4.08723C18.2027 2.37671 16.8515 2.92408 15.6886 4.08723Z" stroke="#EE2552" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
@@ -201,8 +204,8 @@ export default function SuccessModal() {
 
                 {/* ---------------- CANCEL CONFIRMATION MODAL ---------------- */}
                 {isCancelOpen && (
-                    <div className="fixed inset-0 z-60 mx-4 flex items-center justify-center bg-black/40">
-                        <div className="absolute w-full lg:w-[580px] h-[298px] bg-white rounded-2xl p-4 flex flex-col gap-4">
+                    <div className="fixed inset-0 z-60 flex items-center justify-center bg-black/40">
+                        <div className="absolute w-[580px] h-[298px] bg-white rounded-2xl p-4 flex flex-col gap-4">
 
                             {/* Header */}
                             <div className="flex justify-between items-center">
@@ -239,7 +242,7 @@ export default function SuccessModal() {
 
                 {/* ---------------- DOWNLOAD TICKET MODAL ---------------- */}
                 {isDownloadOpen && (
-                    <div className="fixed inset-0 z-50 mx-4 flex items-center justify-center bg-black/40">
+                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
                         <div className="relative bg-white w-[648px] h-[806px] rounded-2xl shadow-lg overflow-hidden">
                             {/* Close Button */}
                             <button
@@ -331,7 +334,7 @@ export default function SuccessModal() {
 
                 {/* ---------------- Reschedule Ride MODAL ---------------- */}
                 {isRescheduleRideOpen && (
-  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 mx-4">
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
     <div className="bg-white rounded-[24px] p-4 w-[1116px] max-w-full shadow relative">
       {/* Close Button */}
       <div className="flex flex-col items-start gap-3 ">
@@ -361,7 +364,7 @@ export default function SuccessModal() {
     </div>
   </div>
 
-)} 
+)}
 
 
 

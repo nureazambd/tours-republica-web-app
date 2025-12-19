@@ -164,8 +164,8 @@ const FeaturedTours = () => {
   const visibleTours = tours.slice(currentIndex, currentIndex + CARDS_PER_PAGE);
 
   return (
-    <section className="py-16 lg:py-24 bg-white">
-      <div className="max-w-[1180px] mx-auto">
+    <section className="py-16 lg:py-24 bg-white ">
+      <div className="max-w-[1180px] mx-auto px-4">
         {/* Section Header */}
         <div className="flex items-center justify-between mb-12">
           <div>

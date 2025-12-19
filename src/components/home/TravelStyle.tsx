@@ -30,7 +30,7 @@ const TravelStyle = () => {
 
   return (
     <section className="py-16 lg:py-24 bg-white">
-      <div className="max-w-[1180px] mx-auto">
+      <div className="max-w-[1180px] mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">

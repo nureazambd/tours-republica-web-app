@@ -18,7 +18,7 @@ export default function ManageBookingModal() {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center">
+    <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center mx-4">
       <div className="bg-white rounded-3xl w-[576px] p-8 flex flex-col gap-8 animate-fadeIn">
 
         {/* Header */}
