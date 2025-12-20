@@ -151,7 +151,7 @@ const Footer = () => {
       </div>
 
       {/* --- Main Footer --- */}
-      <div className="max-w-[1180px] mx-auto py-12 px-4 lg:px-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1">
+      <div className="w-full lg:max-w-[1180px] mx-auto py-12 px-4 lg:px-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1">
         {/* Company Info */}
         <div className='pr-4'>
           <Link href="/" className="inline-block mb-6">

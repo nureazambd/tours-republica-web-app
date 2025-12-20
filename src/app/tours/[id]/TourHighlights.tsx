@@ -58,14 +58,14 @@ export default function TourHighlights() {
   };
 
   return (
-    <section className="relative flex flex-col items-start p-[40px_32px] gap-2 w-[760px] bg-[rgba(239,242,248,0.5)] rounded-[24px]">
+    <section className="relative flex flex-col items-start p-[40px_32px] gap-2 w-full lg:w-[760px] bg-[rgba(239,242,248,0.5)] rounded-[24px]">
       {/* Section Title */}
       <h2 className="text-[28px] font-[500] leading-[40px] text-[#191919] text-center w-full">
         Tour Highlights
       </h2>
 
       {/* Highlights Row */}
-      <div className="relative flex justify-between items-center gap-5 w-[696px] mx-auto">
+      <div className="relative lg:flex justify-between items-center gap-5 w-full lg:w-[696px] mx-auto">
         {visible.map((h) => (
           <div
             key={h.id}

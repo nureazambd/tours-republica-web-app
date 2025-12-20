@@ -11,10 +11,10 @@ interface TourHeaderProps {
 
 export default function TourHeader({ chosenTour }: TourHeaderProps) {
   return (
-    <div className="flex flex-col items-start gap-6  max-w-[1180px] mx-auto  pb-6 text-gray-900 font-[Rubik]">
+    <div className="flex flex-col items-start gap-6 w-full  lg:max-w-[1180px] mx-auto  pb-6 text-gray-900 font-[Rubik]">
       {/* 1️⃣ Breadcrumb + View on Map */}
       <div className="flex flex-col w-full  gap-4">
-        <div className="flex justify-between items-center w-full">
+        <div className="lg:flex justify-between items-center w-full">
           {/* Breadcrumb */}
           <div className="flex items-center  text-[13px] text-[#A9B1B7]">
             <span className="hover:text-blue-600 cursor-pointer">Home</span>
@@ -74,9 +74,9 @@ export default function TourHeader({ chosenTour }: TourHeaderProps) {
       </div>
 
       {/* 3️⃣ Info Cards */}
-      <div className="flex items-center gap-5 w-[760px]">
+      <div className="w-full lg:flex items-center gap-5 lg:w-[760px]">
         {/* Card 1 */}
-        <div className="flex flex-col items-center justify-center p-[20px] pt-[24px] gap-4 w-[175px] h-[130px] bg-[rgba(239,242,248,0.5)] border border-[#BECCE8]/80 rounded-xl">
+        <div className="flex flex-col items-center justify-center p-[20px] pt-[24px] gap-4 my-4 lg:my-0 w-full lg:w-[175px] h-[130px] bg-[rgba(239,242,248,0.5)] border border-[#BECCE8]/80 rounded-xl">
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M15.3333 7.3335C14.9797 7.33351 14.6406 7.474 14.3905 7.72405C14.1405 7.97411 14 8.31325 14 8.66687V16.6669C14 17.0205 14.1405 17.3596 14.3905 17.6096C14.6406 17.8597 14.9797 18.0002 15.3333 18.0002H21.3333C21.5092 18.0014 21.6835 17.9678 21.8464 17.9013C22.0092 17.8349 22.1573 17.7368 22.282 17.6129C22.4068 17.489 22.5059 17.3416 22.5734 17.1792C22.641 17.0168 22.6758 16.8427 22.6758 16.6668C22.6758 16.491 22.641 16.3168 22.5734 16.1545C22.5059 15.9921 22.4068 15.8447 22.282 15.7208C22.1573 15.5968 22.0092 15.4988 21.8464 15.4324C21.6835 15.3659 21.5092 15.3323 21.3333 15.3335H16.6667V8.66687C16.6667 8.31324 16.5262 7.9741 16.2761 7.72405C16.0261 7.474 15.6869 7.33351 15.3333 7.3335Z" fill="#003459"/>
 <path d="M26.3712 5.62939C20.6524 -0.0893555 11.3477 -0.0893555 5.6289 5.62939C5.37989 5.87963 5.2403 6.21841 5.24073 6.57143C5.24117 6.92445 5.3816 7.26289 5.63123 7.51251C5.88086 7.76213 6.2193 7.90255 6.57232 7.90297C6.92534 7.9034 7.26412 7.76379 7.51434 7.51477C12.1927 2.83577 19.806 2.83577 24.4857 7.51477C29.1641 12.1935 29.1641 19.8068 24.4857 24.4855C20.3592 28.6111 13.9125 29.084 9.22666 25.8876L10.4167 25.491C10.7522 25.3791 11.0295 25.1385 11.1876 24.8221C11.3457 24.5058 11.3717 24.1396 11.2598 23.8041C11.1479 23.4686 10.9073 23.1913 10.591 23.0332C10.2747 22.8751 9.90846 22.8491 9.57297 22.961L6.11672 24.1133C5.81269 24.2148 5.55535 24.4223 5.3918 24.6979C5.22825 24.9736 5.16943 25.2989 5.22609 25.6143L5.93753 29.5695C5.99296 29.877 6.15457 30.1553 6.39419 30.3559C6.6338 30.5565 6.93622 30.6667 7.24872 30.6671C7.32836 30.667 7.40784 30.6598 7.48622 30.6456C7.83424 30.583 8.14314 30.3848 8.34499 30.0944C8.54683 29.8041 8.62508 29.4455 8.56253 29.0975L8.46666 28.5645C11.2697 30.2429 14.5526 30.9385 17.7955 30.5412C21.0384 30.1438 24.0562 28.6762 26.3712 26.3707C32.0892 20.6525 32.0892 11.3478 26.3712 5.62939Z" fill="#003459"/>
@@ -94,7 +94,7 @@ export default function TourHeader({ chosenTour }: TourHeaderProps) {
         </div>
 
         {/* Card 2 */}
-        <div className="flex flex-col items-center justify-center p-[20px] pt-[24px] gap-4 w-[175px] h-[130px] bg-[rgba(239,242,248,0.5)] border border-[#BECCE8]/80 rounded-xl">
+        <div className="flex flex-col items-center justify-center p-[20px] pt-[24px] gap-4 my-4 lg:my-0 w-full lg:w-[175px] h-[130px] bg-[rgba(239,242,248,0.5)] border border-[#BECCE8]/80 rounded-xl">
           <svg
   width="32"
   height="32"
@@ -147,7 +147,7 @@ export default function TourHeader({ chosenTour }: TourHeaderProps) {
         </div>
 
         {/* Card 3 */}
-        <div className="flex flex-col items-center justify-center p-[20px] pt-[24px] gap-4 w-[175px] h-[130px] bg-[rgba(239,242,248,0.5)] border border-[#BECCE8]/80 rounded-xl">
+        <div className="flex flex-col items-center justify-center p-[20px] pt-[24px] gap-4 my-4 lg:my-0 w-full lg:w-[175px] h-[130px] bg-[rgba(239,242,248,0.5)] border border-[#BECCE8]/80 rounded-xl">
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M10.6541 2C10.3889 2 10.1346 2.10536 9.94702 2.29289C9.75948 2.48043 9.65413 2.73478 9.65413 3V3.907H8.08813C6.72682 3.90832 5.42163 4.44962 4.45895 5.41211C3.49626 6.37461 2.95471 7.67969 2.95312 9.041V24.865C2.95445 26.2265 3.49588 27.5318 4.45859 28.4945C5.42131 29.4572 6.72664 29.9987 8.08813 30H23.9121C25.2736 29.9987 26.5789 29.4572 27.5417 28.4945C28.5044 27.5318 29.0458 26.2265 29.0471 24.865V9.041C29.0455 7.67969 28.504 6.37461 27.5413 5.41211C26.5786 4.44962 25.2734 3.90832 23.9121 3.907H22.3461V3C22.3461 2.73478 22.2408 2.48043 22.0532 2.29289C21.8657 2.10536 21.6113 2 21.3461 2C21.0809 2 20.8266 2.10536 20.639 2.29289C20.4515 2.48043 20.3461 2.73478 20.3461 3V3.907H11.6541V3C11.6541 2.73478 11.5488 2.48043 11.3612 2.29289C11.1737 2.10536 10.9193 2 10.6541 2ZM20.3461 5.907V6.813C20.3461 7.07822 20.4515 7.33257 20.639 7.52011C20.8266 7.70764 21.0809 7.813 21.3461 7.813C21.6113 7.813 21.8657 7.70764 22.0532 7.52011C22.2408 7.33257 22.3461 7.07822 22.3461 6.813V5.907H23.9121C24.743 5.90832 25.5395 6.2389 26.1271 6.82633C26.7147 7.41375 27.0455 8.21013 27.0471 9.041V24.865C27.0458 25.696 26.7151 26.4927 26.1274 27.0803C25.5398 27.668 24.7432 27.9987 23.9121 28H8.08813C7.25708 27.9987 6.46045 27.668 5.87281 27.0803C5.28517 26.4927 4.95445 25.696 4.95312 24.865V9.041C4.95471 8.21013 5.28555 7.41375 5.87316 6.82633C6.46077 6.2389 7.25725 5.90832 8.08813 5.907H9.65413V6.813C9.65413 7.07822 9.75948 7.33257 9.94702 7.52011C10.1346 7.70764 10.3889 7.813 10.6541 7.813C10.9193 7.813 11.1737 7.70764 11.3612 7.52011C11.5488 7.33257 11.6541 7.07822 11.6541 6.813V5.907H20.3461Z" fill="#003459"/>
 <path d="M8.5 16.9531C8.5 21.0891 11.864 24.4531 16 24.4531C20.136 24.4531 23.5 21.0891 23.5 16.9531C23.5 12.8171 20.136 9.45312 16 9.45312C11.864 9.45312 8.5 12.8171 8.5 16.9531ZM16 11.4531C19.032 11.4531 21.5 13.9211 21.5 16.9531C21.5 19.9851 19.032 22.4531 16 22.4531C12.968 22.4531 10.5 19.9851 10.5 16.9531C10.5 13.9211 12.968 11.4531 16 11.4531Z" fill="#003459"/>
@@ -165,7 +165,7 @@ export default function TourHeader({ chosenTour }: TourHeaderProps) {
         </div>
 
         {/* Card 4 */}
-        <div className="flex flex-col items-center justify-center p-[10px] pt-[18px] gap-3 w-[175px] h-[130px] bg-[rgba(239,242,248,0.5)] border border-[#BECCE8]/80 rounded-xl">
+        <div className="flex flex-col items-center justify-center p-[10px] pt-[18px] gap-3 my-4 lg:my-0 w-full lg:w-[175px] h-[130px] bg-[rgba(239,242,248,0.5)] border border-[#BECCE8]/80 rounded-xl">
           <svg width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
   <g clipPath="url(#clip0_916_11822)">
     <path

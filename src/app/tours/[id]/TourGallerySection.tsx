@@ -114,7 +114,7 @@ export default function TourGallerySection({ chosenTour, galleryThumbs }: Props)
       {/* Gallery Modal */}
       {showGallery && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
-          <div className="relative flex flex-row items-center gap-8 w-[960px] h-[600px]">
+          <div className="relative flex flex-row items-center gap-8 w-full lg:w-[960px] h-[600px]">
             {/* Left Arrow */}
             <button
               onClick={handlePrev}
@@ -124,7 +124,7 @@ export default function TourGallerySection({ chosenTour, galleryThumbs }: Props)
             </button>
 
             {/* Image */}
-            <div className="relative w-[800px] h-[600px] rounded-lg overflow-hidden bg-[#C4CAD4]">
+            <div className="relative w-full lg:w-[800px] h-full lg:h-[600px] rounded-lg overflow-hidden bg-[#C4CAD4]">
               <Image
                 src={safeImage(galleryThumbs[modalImageIdx])}
                 alt="Gallery Image"

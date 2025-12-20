@@ -367,9 +367,9 @@ export default function TourDetailsPage() {
                   <section className="mb-12">
       <h2 className="text-[28px] font-[500] text-[#191919] mb-4">Overview</h2>
 
-      <p className="text-gray-700 leading-relaxed mb-4 text-[14px] font-[400]">
+      {/* <p className="text-gray-700 leading-relaxed mb-4 text-[14px] font-[400]">
         Santo Domingo, the capital city of the Dominican Republic, is the economic, political and cultural center of the country and the Caribbean's most populous city. Located on the Caribbean Sea at the mouth of the Ozama River, the city was founded by Bartholomew Columbus in 1496, making it the first permanent European settlement in the Americas. It is also, incredibly, the first city in the Americas to host a university, hospital, cathedral, and customs house.
-      </p>
+      </p> */}
 
       {showMore && (
         <p className="text-gray-700 leading-relaxed mb-4 text-[14px] font-[400]">
