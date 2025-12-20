@@ -17,7 +17,7 @@ export default function AvailabilityFilter() {
   };
 
   return (
-    <div className="w-72 bg-[#F9FAFB] border border-[#BECCE8]/50 rounded-xl p-5 flex flex-col gap-2">
+    <div className="w-full lg:w-72 bg-[#F9FAFB] border border-[#BECCE8]/50 rounded-xl p-5 flex flex-col gap-2">
       {/* Header */}
       <div className="flex justify-between items-center w-full cursor-pointer" onClick={() => setCollapsed(!collapsed)}>
         <p className="text-[18px] font-medium text-[#1A202C]">Availability</p>

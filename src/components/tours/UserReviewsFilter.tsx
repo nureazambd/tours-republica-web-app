@@ -14,7 +14,7 @@ const UserReviewsFilter: React.FC<UserReviewsProps> = ({ filters, setFilters }) 
   const [open, setOpen] = useState(true);
 
   return (
-    <div className="bg-[#F9FAFB] border border-[#BECCE8] rounded-lg p-5 w-72">
+    <div className="bg-[#F9FAFB] border border-[#BECCE8] rounded-lg p-5 w-full lg:w-72">
       {/* Header with toggle */}
       <div
         className="flex justify-between items-center cursor-pointer mb-4"

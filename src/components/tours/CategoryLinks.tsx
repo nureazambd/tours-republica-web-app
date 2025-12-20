@@ -51,7 +51,7 @@ const CategoryLinks = () => {
     <Link
       href={category.href}
       key={category.name}
-      className="relative w-[278px] h-[72px] rounded-[12px] overflow-hidden group flex justify-center items-center"
+      className="relative w-full mx-4 lg:mx-4 lg:w-[278px] h-[72px] rounded-[12px] overflow-hidden group flex justify-center items-center"
     >
       {/* ✅ Background Image + Default Gradient */}
       <div

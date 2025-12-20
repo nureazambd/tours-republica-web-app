@@ -29,7 +29,7 @@ export default function CollapsibleFilter() {
   };
 
   return (
-    <div className="w-72 bg-[#F9FAFB] border border-[#BECCE8] rounded-lg flex flex-col">
+    <div className="w-full lg:w-72 bg-[#F9FAFB] border border-[#BECCE8] rounded-lg flex flex-col">
       {/* Header */}
       <div
         className="flex items-center justify-between p-5 cursor-pointer"

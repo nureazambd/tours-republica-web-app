@@ -264,7 +264,7 @@ const AirportTransportationForm: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center p-0 gap-14 min-h-screen">
-      <div className="flex flex-col items-center gap-3 w-full lg:w-[991px] text-center">
+      <div className="flex flex-col items-center gap-3 w-[991px] text-center">
         <h1 className="text-4xl font-[Rubik] font-medium text-[40px] md:text-[64px] leading-[44px] md:leading-[68px] text-center mb-4">
           Reliable Airport Transportation <br /> You Can Trust
         </h1>
@@ -273,8 +273,8 @@ const AirportTransportationForm: React.FC = () => {
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="bg-white rounded-[24px] p-8 w-full lg:w-[1116px] lg:max-w-[1116px] shadow">
-        <div className="lg:flex flex-col gap-6 w-full">
+      <form onSubmit={handleSubmit} className="bg-white rounded-[24px] p-8 w-[1116px] max-w-[1116px] shadow">
+        <div className="flex flex-col gap-6 w-full">
           {/* Trip Type Toggle */}
           <div className="flex p-1 bg-[#EDF2F9] rounded-full w-[232px]">
             {(["Oneway", "Round"] as TripType[]).map((type) => (
@@ -301,8 +301,8 @@ const AirportTransportationForm: React.FC = () => {
           </div>
 
           {/* Row 1 */}
-          <div className="lg:flex items-start text-left justify-between mt-4">
-            <div className="lg:flex items-center gap-14">
+          <div className="flex items-start text-left justify-between">
+            <div className="flex items-center gap-14">
               {/* Pickup */}
               {renderLocationInputBlock(
                 "Pick-up location",
@@ -328,7 +328,7 @@ const AirportTransportationForm: React.FC = () => {
                     return dropoffLoc;
                   });
                 }}
-                className="bg-[#FAA523] p-[10px] rounded-full w-10 my-4 h-10 flex items-center justify-center cursor-pointer hover:opacity-90 transition-opacity mt-4"
+                className="bg-[#FAA523] p-[10px] rounded-full w-10 h-10 flex items-center justify-center cursor-pointer hover:opacity-90 transition-opacity mt-4"
               >
                 <ArrowDownUp size={20} className="text-white rotate-90" />
               </button>
@@ -356,10 +356,10 @@ const AirportTransportationForm: React.FC = () => {
                 className="
       cursor-pointer 
       flex items-start gap-[8px]
-      w-full lg:w-[220px] h-[68px]
+      w-[220px] h-[68px]
       bg-[#F4F7F9]
       rounded-[16px]
-     px-[20px] py-[16px] my-4
+      px-[20px] py-[16px]
     "
               >
                 {/* LEFT: ICON BOX */}
@@ -395,7 +395,7 @@ const AirportTransportationForm: React.FC = () => {
                 <div
                   className="
       absolute z-40 bg-white rounded-[16px] shadow-[0px_24px_48px_-12px_rgba(16,24,40,0.18)]
-      w-full lg:w-[444px] h-[280px] py-8 px-3 flex flex-col gap-[18px]
+      w-[444px] h-[280px] py-8 px-3 flex flex-col gap-[18px]
     "
                   style={{ top: "100%", right: 0 }}
                 >
@@ -525,10 +525,10 @@ const AirportTransportationForm: React.FC = () => {
           <div className="border-t border-[#DADFE6] w-full" />
 
           {/* Row 2: Dates, Suitcases, Search */}
-          <div className="lg:flex items-center text-left gap-[16px]">
+          <div className="flex items-center text-left gap-[16px]">
             {/* Pickup date/time */}
-            <div className="relative my-4" ref={pickupCalRef}>
-              <div className="flex items-center bg-[#F4F7F9] rounded-xl p-4 gap-3 w-full lg:w-[246px] h-[68px] cursor-pointer" onClick={() => setShowPickupCalendar(true)}>
+            <div className="relative" ref={pickupCalRef}>
+              <div className="flex items-center bg-[#F4F7F9] rounded-xl p-4 gap-3 w-[246px] h-[68px] cursor-pointer" onClick={() => setShowPickupCalendar(true)}>
                 <div className="w-8 h-8 flex items-center justify-center">
                   <CalendarIcon />
                 </div>
@@ -578,7 +578,7 @@ const AirportTransportationForm: React.FC = () => {
         <div
   className="
     absolute left-0 top-[103px]
-    w-full lg:w-[444px] 
+    w-[444px] 
     bg-white rounded-[16px]
     shadow-[0px_24px_48px_-12px_rgba(16,24,40,0.18)]
     p-3 z-50
@@ -699,8 +699,8 @@ const AirportTransportationForm: React.FC = () => {
 
             {/* Drop-off date/time (conditional) */}
             {tripType === "Round" && (
-              <div className="relative my-4" ref={dropoffCalRef}>
-                <div className="flex items-center bg-[#F4F7F9] rounded-xl p-4 gap-3 w-full lg:w-[246px] h-[68px] cursor-pointer" onClick={() => setShowDropoffCalendar(true)}>
+              <div className="relative" ref={dropoffCalRef}>
+                <div className="flex items-center bg-[#F4F7F9] rounded-xl p-4 gap-3 w-[246px] h-[68px] cursor-pointer" onClick={() => setShowDropoffCalendar(true)}>
                   <div className="w-8 h-8 flex items-center justify-center">
                     <CalendarIcon />
                   </div>
@@ -714,7 +714,7 @@ const AirportTransportationForm: React.FC = () => {
                   <div
   className="
     absolute left-0 top-[103px]
-    w-full lg:w-[444px]
+    w-[444px]
     bg-white rounded-[16px]
     shadow-[0px_24px_48px_-12px_rgba(16,24,40,0.18)]
     p-3 z-50
@@ -784,7 +784,7 @@ const AirportTransportationForm: React.FC = () => {
             </div> */}
 
             <div
-              className="flex items-center bg-[#F4F7F9] rounded-xl p-4 my-4 gap-3 w-full lg:w-[246px] h-[68px] cursor-pointer"
+              className="flex items-center bg-[#F4F7F9] rounded-xl p-4 gap-3 w-[246px] h-[68px] cursor-pointer"
               onClick={() => setShowTraveler((prev) => !prev)}
             >
               <div className="w-8 h-8 flex items-center justify-center">
@@ -811,7 +811,7 @@ const AirportTransportationForm: React.FC = () => {
             <button
               onClick={handleSubmit}
               type="button"
-              className="ml-auto flex items-center justify-center bg-[#EE2552] text-white rounded-[16px] px-[6px] py-[12px] gap-[20px] w-full lg:w-[220px] h-[68px] font-rubik font-medium text-[18px] leading-[24px] transition-colors hover:bg-[#d82047]"
+              className="ml-auto flex items-center justify-center bg-[#EE2552] text-white rounded-[16px] px-[6px] py-[12px] gap-[20px] w-[220px] h-[68px] font-rubik font-medium text-[18px] leading-[24px] transition-colors hover:bg-[#d82047]"
             >
               Find cars
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

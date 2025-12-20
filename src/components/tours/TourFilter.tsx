@@ -87,11 +87,11 @@ const TourFilter = ({ filters = defaultFilters, setFilters = () => {} }: any) =>
 
       <TourMapFilter/>
       {/* Date Filter Section */}
-      <div className="mt-[20px]"><AvailabilityFilter/></div>
-      <div className="mt-[20px]"><TravelCategoryFilter/></div>
-      <div className="mt-[20px]"><PriceFilter prices={[300, 600, 800, 700, 400, 250, 600, 750, 750, 900,
+      <div className="mt-[20px] mx-4 lg:mx-4"><AvailabilityFilter/></div>
+      <div className="mt-[20px] mx-4 lg:mx-4"><TravelCategoryFilter/></div>
+      <div className="mt-[20px] mx-4 lg:mx-4"><PriceFilter prices={[300, 600, 800, 700, 400, 250, 600, 750, 750, 900,
     1050, 860, 750, 600, 900, 800, 10, 300, 100, 250, 250, 400, 400, 500, 650, 300, 300, 1400 ]} /></div>
-      <div className="mt-[20px]"><UserReviewsFilter filters={filters} setFilters={setFilters} /></div>
+      <div className="mt-[20px] mx-4 lg:mx-4"><UserReviewsFilter filters={filters} setFilters={setFilters} /></div>
       
     </div>
   );

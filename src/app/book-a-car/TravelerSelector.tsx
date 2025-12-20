@@ -18,14 +18,14 @@ export default function TravelerSelector({
   return (
     <div
       className="
-        absolute left-[490px] top-[590px]
-        w-[444px] h-[236px]
+        lg:absolute lg:left-[490px] lg:top-[590px]
+        w-full lg:w-[444px] h-[236px]
         bg-white rounded-[16px]
         shadow-[0px_24px_48px_-12px_rgba(16,24,40,0.18)]
         flex flex-col items-center p-8 gap-[18px] z-50
       "
     >
-      <div className="flex flex-col items-center w-[420px] gap-[18px]">
+      <div className="flex flex-col items-center w-full lg:w-[420px] gap-[18px]">
         {/* Suitcase Section */}
         <div className="flex flex-col items-start w-full gap-2">
           <p className="text-[#191919] font-rubik font-medium text-[16px]">
@@ -106,7 +106,7 @@ export default function TravelerSelector({
         <button
           type="button"
           className="
-            w-[420px] h-[40px]
+            w-full lg:w-[420px] h-[40px]
             bg-[#EE2552]
             text-white font-rubik font-medium text-[14px]
             rounded-[8px] flex items-center justify-center

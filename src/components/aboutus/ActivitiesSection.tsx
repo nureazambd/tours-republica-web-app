@@ -49,7 +49,7 @@ export default function ActivitiesSection() {
   const selectedActivity = activities[openIndex] || activities[0];
 
   return (
-    <section className="flex flex-col items-start px-[130px] py-[104px] gap-[120px] bg-[#EFF2F8]/50">
+    <section className="flex flex-col items-start px-4 lg:px-[130px] py-[104px] gap-[120px] bg-[#EFF2F8]/50">
       <div className="flex flex-col md:flex-row items-start gap-[120px] w-full max-w-[1180px] mx-auto">
         {/* Left Column (Accordion) */}
         <div className="flex flex-col items-start gap-[40px] w-full md:w-[580px]">

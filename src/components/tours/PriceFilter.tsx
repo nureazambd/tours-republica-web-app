@@ -23,7 +23,7 @@ const PriceFilter: React.FC<PriceFilterProps> = ({
   return (
     <div
       className="
-        w-[280px] bg-[#F9FAFB]
+        w-full lg:w-[280px] bg-[#F9FAFB]
         border border-[#BECCE8] rounded-[12px]
         px-[24px] pt-[20px] pb-[24px]
         flex flex-col gap-2

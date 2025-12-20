@@ -33,7 +33,7 @@ export default function BookCarPage() {
           </p>
         </div> */}
 
-         <div className="relative z-10 w-full lg:w-[991.32px] mx-auto">
+         <div className="relative z-10 lg:w-[991.32px] mx-auto">
           <BookingForm/>
         </div>
       </section>
@@ -82,7 +82,7 @@ export default function BookCarPage() {
     ].map((step, i) => (
       <div
         key={i}
-        className="flex flex-col items-start p-[32px_24px] gap-[8px] w-full my-4 lg:my-0 lg:w-[277px] h-[287px] mx-auto bg-[#F9FAFB] border border-[#BECCE8] rounded-[24px] box-border"
+        className="flex flex-col items-start p-[32px_24px] gap-[8px] w-[277px] h-[287px] mx-auto bg-[#F9FAFB] border border-[#BECCE8] rounded-[24px] box-border"
       >
         {/* Step Number */}
         <div className="w-[232px] h-[96px] text-[96px] leading-[96px] font-bold font-rubik text-[#6FCCDC] flex items-center">

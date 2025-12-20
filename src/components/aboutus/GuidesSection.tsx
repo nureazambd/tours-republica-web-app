@@ -23,7 +23,7 @@ export default function GuidesSection() {
   };
 
   return (
-    <section className="relative flex flex-col items-center justify-center py-[120px] px-[130px] gap-[96px] bg-[#F9FAFB] overflow-hidden">
+    <section className="relative flex flex-col items-center justify-center py-[120px] px-4 lg:px-[130px] gap-[96px] bg-[#F9FAFB] overflow-hidden">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-[url('/images/about/guides-bg.png')] bg-cover bg-center opacity-10"

@@ -195,10 +195,10 @@ const TourGrid = ({ filters, setFilters }: any) => {
 
 
   return (
-    <div>
+    <div className="mx-4">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
-        <div>
+      <div className="flex mx-4 lg:mx-0 flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+        <div className="">
           <h2 className="text-2xl font-bold text-gray-800">
             {pagination?.totalCount || filteredTours.length} tours found
           </h2>
@@ -249,7 +249,7 @@ const TourGrid = ({ filters, setFilters }: any) => {
               <div
                 className={`${viewMode === "list"
                     ? "flex flex-col md:flex-row w-full"
-                    : "w-[278px] h-[517px] flex flex-col"
+                    : "w-full lg:w-[278px] h-[517px] flex flex-col"
                   } items-start p-0 bg-[#EFF2F880] rounded-2xl border border-opacity-25 border-[#BECCE8]
           transition-all duration-300 overflow-hidden hover:shadow-md hover:-translate-y-1`}
                 style={{

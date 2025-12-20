@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function AirportTransferBanner() {
   return (
-    <section className="bg-gray-50 py-20">
+    <section className="bg-gray-50 py-20 mx-4">
       <div className="">
         <div className="bg-white rounded-2xl shadow-md flex flex-col lg:flex-row items-center justify-between gap-8 p-8">
           {/* --- Left Text Section --- */}
@@ -16,12 +16,12 @@ export default function AirportTransferBanner() {
             <h2
   className="flex items-center font-rubik font-medium text-[#111318]
              text-[32px] md:text-[32px] leading-[40px] tracking-[-1px] 
-             w-full max-w-[360px] mb-4"
+             w-full lg:max-w-[360px] mb-4"
 >
   Need transport? We handle airport transfers.
 </h2>
 
-            <p className="text-[#4E5255] text-[15px] font-[400] mb-6 max-w-[337px]">
+            <p className="text-[#4E5255] text-[15px] font-[400] mb-6 lg:max-w-[337px]">
               Arrive and depart in comfort with our reliable, hassle-free private
               airport transfers.
             </p>

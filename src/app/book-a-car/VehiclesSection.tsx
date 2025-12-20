@@ -41,24 +41,24 @@ export default function VehiclesSection() {
   const visibleVehicles = getVisibleVehicles();
 
   return (
-    <section className="flex flex-col items-center px-[130px] pt-[104px] pb-[128px] gap-[56px] w-full bg-[rgba(239,242,248,0.5)]">
+    <section className="flex flex-col items-center px-4 lg:px-[130px] pt-[104px] pb-[128px] gap-[56px] w-full bg-[rgba(239,242,248,0.5)]">
       
       {/* Header */}
-      <div className="flex flex-col items-center gap-[8px] w-[1170px] text-center">
-        <h2 className="font-rubik font-medium text-[48px] leading-[56px] text-[#191919] w-[732px]">
+      <div className="flex flex-col items-center gap-[8px] w-full lg:w-[1170px] text-center">
+        <h2 className="font-rubik font-medium text-[48px] leading-[56px] text-[#191919] w-full lg:w-[732px]">
           We cover all your transportation needs
         </h2>
-        <p className="font-rubik font-normal text-[16px] leading-[26px] text-[#878D97] w-[1170px]">
+        <p className="font-rubik font-normal text-[16px] leading-[26px] text-[#878D97] w-full lg:w-[1170px]">
           Whether you’re traveling as a couple or with a small family, we’ve got you covered.
         </p>
       </div>
 
       {/* Vehicle Cards */}
-      <div className="relative w-[1180px] flex justify-center">
-        <div className="flex gap-[20px]">
+      <div className="relative w-full lg:w-[1180px] lg:flex justify-center">
+        <div className="lg:flex gap-[20px] mx-4 lg:mx-0">
           {visibleVehicles.map((vehicle, idx) => (
-            <div key={idx} className="flex flex-col items-center w-[380px]">
-              <div className="flex flex-col items-center gap-[24px] p-[16px] w-[380px] h-[232px] bg-[#EFF2F8] border border-[#BECCE8] rounded-[24px]">
+            <div key={idx} className="flex flex-col items-center w-full lg:w-[380px]">
+              <div className="flex flex-col items-center gap-[24px] p-[16px] w-full lg:w-[380px] h-[232px] bg-[#EFF2F8] border border-[#BECCE8] rounded-[24px]">
                 <div className="w-[316px] h-[200px] relative">
                   <img
                     src={vehicle.img}
@@ -68,7 +68,7 @@ export default function VehiclesSection() {
                 </div>
               </div>
 
-              <div className="font-rubik font-medium mt-[24px] text-[20px] leading-[24px] text-[#191919] text-center w-full">
+              <div className="font-rubik font-medium mt-[24px] mb-[24px] lg:mb-0 text-[20px] leading-[24px] text-[#191919] text-center w-full">
                 {vehicle.label}
               </div>
             </div>

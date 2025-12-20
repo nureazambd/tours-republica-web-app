@@ -3,51 +3,33 @@ import { FaCheckCircle, FaUserTie, FaStar, FaClock } from "react-icons/fa";
 
 export default function AboutSection() {
   return (
-    <section className="flex flex-col items-start px-4 lg:px-[130px] py-[88px] gap-[140px] bg-white">
+    <section className="flex flex-col items-start px-[130px] py-[88px] gap-[140px] bg-white">
       {/* Top Section */}
       <div className="flex flex-col md:flex-row items-center gap-[128px] w-full max-w-[1180px] mx-auto">
         {/* Image Section */}
-        <div className="relative isolate flex-shrink-0 w-full max-w-[480px] mx-auto">
-  {/* Main Image */}
-  <div className="
-    relative 
-    w-full 
-    aspect-[480/560]
-    rounded-[40px] sm:rounded-[56px] lg:rounded-[73px]
-    overflow-hidden 
-    shadow-lg
-  ">
-    <Image
-      src="/images/about/about-main.png"
-      alt="Main"
-      fill
-      className="object-cover"
-    />
-  </div>
-
-  {/* Overlay Image */}
-  <div className="
-    absolute 
-    bottom-[-20%] right-[-8%]
-    w-[55%] sm:w-[50%]
-    aspect-[280/360]
-    rounded-[32px] sm:rounded-[48px] lg:rounded-[64px]
-    overflow-hidden 
-    z-10
-    shadow-xl
-  ">
-    <Image
-      src="/images/about/about-overlay.png"
-      alt="Overlay"
-      fill
-      className="object-cover"
-    />
-  </div>
-</div>
-
+        <div className="relative isolate flex-shrink-0 w-full lg:w-[480px] lg:h-[560px]">
+          {/* Main Image */}
+          <div className="w-[480px] h-[560px] rounded-[73px] overflow-hidden shadow-lg">
+            <Image
+              src="/images/about/about-main.png"
+              alt="Main"
+              fill
+              className="object-cover rounded-[73px]"
+            />
+          </div>
+          {/* Overlay Image */}
+          <div className="absolute left-[264px] top-[264px] w-[280px] h-[360px] rounded-[64px]  border-white overflow-hidden z-10">
+            <Image
+              src="/images/about/about-overlay.png"
+              alt="Overlay"
+              fill
+              className="object-cover rounded-[64px]"
+            />
+          </div>
+        </div>
 
         {/* Text Section */}
-        <div className="flex flex-col justify-center items-start gap-[48px] w-full lg:w-[572px]">
+        <div className="flex flex-col justify-center items-start gap-[48px] w-[572px]">
           {/* Heading */}
           <div className="flex flex-col gap-[9px]">
             <p className="text-[#6FCCDC] font-rubik text-[18px] font-medium leading-[23px]">
@@ -134,7 +116,7 @@ export default function AboutSection() {
         ].map(({ iconBg, value, label, icon }, i) => (
           <div
             key={i}
-            className="flex items-center gap-[20px] border border-[#BECCE8]/50 bg-[#EFF2F8]/50 rounded-[16px] px-[20px] py-[24px] w-full lg:w-[280px] h-[106px]"
+            className="flex items-center gap-[20px] border border-[#BECCE8]/50 bg-[#EFF2F8]/50 rounded-[16px] px-[20px] py-[24px] w-[280px] h-[106px]"
           >
             <div
               className="flex items-center justify-center w-[56px] h-[56px] rounded-[12px]"
