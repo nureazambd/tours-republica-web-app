@@ -15,7 +15,7 @@ export default function CarList({ cars }: { cars: any[] }) {
   }
 
   return (
-    <div className="space-y-6 pb-20">
+    <div className="space-y-6 pb-20 mx-4 lg:mx-0">
       
       {/* ---------------- TOP SECTION ---------------- */}
       <div className="flex justify-between items-center w-full">
@@ -43,7 +43,7 @@ export default function CarList({ cars }: { cars: any[] }) {
       {cars.map((car) => (
         <div
           key={car._id}
-          className="w-full flex justify-between items-center p-6 gap-[74px] bg-[#EFF2F8]/50 border border-[#BECCE8]/50 rounded-2xl"
+          className="w-full lg:flex justify-between items-center p-6 gap-[74px] bg-[#EFF2F8]/50 border border-[#BECCE8]/50 rounded-2xl"
         >
           {/* LEFT SECTION */}
           <div className="flex items-center gap-4">

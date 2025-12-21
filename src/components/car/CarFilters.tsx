@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import PriceFilter from "../tours/PriceFilter";
 const StarIcon = () => (
   <svg
     width="20"
@@ -34,11 +35,11 @@ export default function CarFilters() {
   ];
 
   return (
-    <div className="w-[280px] flex flex-col gap-4">
+    <div className="w-full lg:w-[280px] flex flex-col gap-4 mb-6 lg:mb-0">
       {/* ----------- FILTER: STOPS ----------- */}
-      <div className="bg-[#EFF2F8]/50 border border-[#BECCE833] rounded-xl p-6 flex flex-col gap-4">
+      <div className="bg-[#EFF2F8]/50 mx-4 lg:mx-0  border border-[#BECCE833] rounded-xl p-6 flex flex-col gap-4">
         <div className="flex justify-between items-center">
-          <h3 className="text-[18px] font-medium text-[#191919]">Stops BOM - DXB</h3>
+          <h3 className="text-[18px] font-medium text-[#191919]">Passengers</h3>
           <button onClick={() => setOpenStops(!openStops)}>
             <ChevronDown
               className={`w-5 h-5 text-[#878D97] transition-transform ${
@@ -72,9 +73,9 @@ export default function CarFilters() {
       </div>
 
       {/* ----------- FILTER: TRANSMISSION ----------- */}
-      <div className="bg-[#EFF2F8]/50 border border-[#BECCE833] rounded-xl p-6 flex flex-col gap-4">
+      <div className="bg-[#EFF2F8]/50 mx-4 lg:mx-0  border border-[#BECCE833] rounded-xl p-6 flex flex-col gap-4">
         <div className="flex justify-between items-center">
-          <h3 className="text-[18px] font-medium text-[#191919]">Transmission</h3>
+          <h3 className="text-[18px] font-medium text-[#191919]">Transition</h3>
           <button onClick={() => setOpenTransmission(!openTransmission)}>
             <ChevronDown
               className={`w-5 h-5 text-[#878D97] transition-transform ${
@@ -100,7 +101,7 @@ export default function CarFilters() {
       </div>
 
       {/* ----------- FILTER: PRICE RANGE ----------- */}
-      <div className="bg-[#EFF2F8]/50 border border-[#BECCE833] rounded-xl p-6 flex flex-col gap-4">
+      {/* <div className="bg-[#EFF2F8]/50 border border-[#BECCE833] rounded-xl p-6 flex flex-col gap-4">
         <div className="flex justify-between items-center">
           <h3 className="text-[18px] font-medium text-[#191919]">Price Range</h3>
           <button onClick={() => setOpenPrice(!openPrice)}>
@@ -119,9 +120,9 @@ export default function CarFilters() {
               <span>$19,544</span>
             </div>
 
-            {/* PRICE BAR */}
+            
             <div className="relative w-full h-4 bg-[#BECCE8]/50 rounded overflow-hidden">
-              {/* Example bars (Figma-style stacked bars) */}
+              
               <div className="absolute left-[5%] w-[10%] h-full bg-[#22228B]" />
               <div className="absolute left-[25%] w-[10%] h-full bg-[#22228B]" />
               <div className="absolute left-[40%] w-[10%] h-full bg-[#22228B]" />
@@ -131,14 +132,17 @@ export default function CarFilters() {
             </div>
           </div>
         )}
-      </div>
+      </div> */}
+
+      <div className=" mx-4 lg:mx-0 "><PriceFilter prices={[300, 600, 800, 700, 400, 250, 600, 750, 750, 900,
+    1050, 860, 750, 600, 900, 800, 10, 300, 100, 250, 250, 400, 400, 500, 650, 300, 300, 1400 ]} /></div>
 
       {/* ----------- FILTER: RATING ----------- */}
-<div className="bg-[#EFF2F8]/50 border border-[#BECCE833] rounded-xl p-6 flex flex-col gap-4 w-[280px]">
-
+<div className="bg-[#EFF2F8]/50  border border-[#BECCE833] rounded-xl p-6 flex flex-col gap-4 w-full lg:w-[280px]">
+    
       {/* Header */}
       <div className="flex justify-between items-center w-full">
-        <h3 className="text-[18px] font-medium text-[#191919]">Rating</h3>
+        <h3 className="text-[18px] font-medium text-[#191919]">User Reviews</h3>
 
         <button onClick={() => setOpenRating(!openRating)}>
           <ChevronDown
@@ -174,6 +178,8 @@ export default function CarFilters() {
 
         </div>
       )}
+      
+
     </div>
 
     </div>

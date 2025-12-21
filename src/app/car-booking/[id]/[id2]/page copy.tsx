@@ -78,35 +78,29 @@ export default function CarBookingPage() {
   // ------------------------------------------------------------
   return (
     <Layout>
-      <div className="flex justify-center py-10 mx-4 lg:mx-0">
-        <div className="w-full lg:max-w-[1180px]">
+      <div className="flex justify-center py-10">
+        <div className="w-full max-w-[1180px]">
 
           {/* Main Car Section */}
-          <div className="bg-[#EFF2F8] border border-[#EEF4FB] rounded-[16px] p-4 sm:p-6 lg:p-8 flex flex-col gap-6 lg:gap-12">
+          <div className="bg-[#EFF2F8] border border-[#EEF4FB] rounded-[16px] p-8 flex flex-col gap-12">
 
-  {/* Car Header Section */}
-  <div className="flex flex-col lg:flex-row gap-6 lg:gap-10">
+            {/* Car Header Section */}
+            <div className="lg:flex gap-10 h-[300px]">
 
-    {/* Image Box */}
-    <div className="w-full lg:w-[440px] h-[220px] sm:h-[260px] lg:h-[300px] 
-                    bg-white border border-[#E8E8E8] rounded-[12px] relative">
-      <Image
-        src={car.image}
-        alt={car.name}
-        fill
-        className="object-contain"
-        sizes="(max-width: 1024px) 100vw, 440px"
-      />
-    </div>
+              {/* Image Box */}
+              <div className="w-[440px] h-full bg-white border border-[#E8E8E8] rounded-[12px] relative">
+                <Image
+                  src={car.image}
+                  alt={car.name}
+                  fill
+                  className="object-contain"
+                />
+              </div>
 
-    {/* Car Details */}
-    <div className="flex-1">
-      <CarDetails car={car} />
-    </div>
-
-  </div>
-</div>
-
+              {/* Car Details */}
+              <CarDetails car={car}/>
+            </div>
+          </div>
 
           {/* Vehicle + Driver Info */}
           <VehicleDriverInfo car={car} />
@@ -165,7 +159,7 @@ const VehicleDriverInfo = ({ car }: any) => (
       </div>
 
       {/* Driver Info */}
-      <div className="flex flex-col gap-4 w-full lg:w-[434px]">
+      <div className="flex flex-col gap-4 w-[434px]">
         {/* <div className="flex gap-10">
           <DriverStat title="Total Ratings" value={car.rating} sub="(260)" />
           <DriverStat title="Total Rides" value="669" />

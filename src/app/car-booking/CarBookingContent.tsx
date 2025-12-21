@@ -40,7 +40,7 @@ export default function CarBookingContent() {
     //     {loading ? <div className="p-6">Loading car list...</div> : <CarList cars={cars} />}
     //   </div>
     // </div>
-    <div className=" py-12 flex gap-6 max-w-[1180px] mx-auto">
+    <div className=" py-12 lg:flex gap-6 lg:max-w-[1180px] mx-auto">
   <CarFilters />   {/* LEFT SIDEBAR */}
   
   <div className="flex-1">
