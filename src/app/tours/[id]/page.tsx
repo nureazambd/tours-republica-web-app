@@ -316,13 +316,16 @@ export default function TourDetailsPage() {
         <div className="max-w-[1180px] mx-auto px-4 lg:px-0 pt-4">
 
           {/* Top Section: Header and Gallery */}
-          <TourGallerySection chosenTour={{
+          {/* <TourGallerySection chosenTour={{
             title: '',
             image: '',
             rating: undefined,
             reviewCount: undefined,
             discount: undefined
-          }} galleryThumbs={[mainImageSrc]} />
+          }} galleryThumbs={[mainImageSrc]} /> */}
+
+          <TourGallerySection chosenTour={tour} />
+
 
           {/* Main Content Grid */}
           <div className="grid lg:grid-cols-3 mx-auto gap-4">
@@ -373,7 +376,9 @@ export default function TourDetailsPage() {
 
       {showMore && (
         <p className="text-gray-700 leading-relaxed mb-4 text-[14px] font-[400]">
-          The city is home to the first cathedral, hospital, customs house and university in the Americas. It is a UNESCO World Heritage Site.
+          Saona Island, a paradise in the center of the Caribbean, its turquoise blue waters and fine white sands confirm why it is the most popular excursion in Punta Cana. <br /> <br />
+
+Located on the Caribbean coast of the Dominican Republic, this virgin island is visited by more than 1 million people every year. Enjoy the combination of speedboat and catamaran sailboat that will take you along beautiful coasts surrounded by coconut trees. In addition to an all-inclusive program with drinks, a Dominican buffet lunch and the company of a staff of professionals who will make your day a unique and unforgettable full day experience.
         </p>
       )}
 
@@ -385,8 +390,33 @@ export default function TourDetailsPage() {
       </button>
     </section>
 
+
+         <section className="mt-8">
+  <h2 className="text-2xl font-semibold mb-4">
+    Highlight Activities
+  </h2>
+
+  <ul className="list-disc pl-6 space-y-2 text-gray-700">
+    <li>
+      Head to the hidden Saona Island from Bayahibe aboard a thrilling speedboat or a sail catamaran
+    </li>
+    <li>
+      Take a 30-minute dip in the natural pool, a sandbank with crystal-clear waters, with the possibility of taking photos with the starfishes
+    </li>
+    <li>Indulge in a traditional Dominican buffet lunch</li>
+    <li>Enjoy more than 3 hours on Saona Island</li>
+    <li>
+      Return on a huge sailing catamaran with open bar and entertainment on board (approx. 2 hours)
+    </li>
+  </ul>
+</section>
+
+
                   {/* Tour Highlights Section */}
                   <TourHighlights />
+
+             
+
 
                   {/* What's Included / Not Included Section */}
                   <section className="mb-12 mt-[56px]">
@@ -397,13 +427,7 @@ export default function TourDetailsPage() {
                         <h3 className="text-[20px] font-[500] text-[#28A745] mb-4">What's Included</h3>
                         <ul className="space-y-3">
                           <li className="flex items-center text-[#4B5563] text-[14px] font-[400]">
-                            {/* <Image
-                          src="/images/tours-id/mdi_ticket.png"
-                          width={50}
-                          height={50}
-                          alt="Hotel pickup and drop-off"
-                          className="w-5 h-5 text-green-500 mr-2 flex-shrink-0"
-                        /> */}
+                            
                             <svg width="20" height="20" className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <g clipPath="url(#clip0_916_11875)">
                                 <path d="M2 3C2 2.44687 2.44687 2 3 2H17C17.5531 2 18 2.44687 18 3C18 3.55313 17.5531 4 17 4V16C17.5531 16 18 16.4469 18 17C18 17.5531 17.5531 18 17 18H11.5V16.5C11.5 15.6719 10.8281 15 10 15C9.17188 15 8.5 15.6719 8.5 16.5V18H3C2.44687 18 2 17.5531 2 17C2 16.4469 2.44687 16 3 16V4C2.44687 4 2 3.55313 2 3ZM5 5.5V6.5C5 6.775 5.225 7 5.5 7H6.5C6.775 7 7 6.775 7 6.5V5.5C7 5.225 6.775 5 6.5 5H5.5C5.225 5 5 5.225 5 5.5ZM9.5 5C9.225 5 9 5.225 9 5.5V6.5C9 6.775 9.225 7 9.5 7H10.5C10.775 7 11 6.775 11 6.5V5.5C11 5.225 10.775 5 10.5 5H9.5ZM13 5.5V6.5C13 6.775 13.225 7 13.5 7H14.5C14.775 7 15 6.775 15 6.5V5.5C15 5.225 14.775 5 14.5 5H13.5C13.225 5 13 5.225 13 5.5ZM5.5 8C5.225 8 5 8.225 5 8.5V9.5C5 9.775 5.225 10 5.5 10H6.5C6.775 10 7 9.775 7 9.5V8.5C7 8.225 6.775 8 6.5 8H5.5ZM9 8.5V9.5C9 9.775 9.225 10 9.5 10H10.5C10.775 10 11 9.775 11 9.5V8.5C11 8.225 10.775 8 10.5 8H9.5C9.225 8 9 8.225 9 8.5ZM13.5 8C13.225 8 13 8.225 13 8.5V9.5C13 9.775 13.225 10 13.5 10H14.5C14.775 10 15 9.775 15 9.5V8.5C15 8.225 14.775 8 14.5 8H13.5ZM12.25 14C12.6656 14 13.0094 13.6594 12.9062 13.2563C12.575 11.9594 11.4 11 10 11C8.6 11 7.42188 11.9594 7.09375 13.2563C6.99063 13.6563 7.3375 14 7.75 14H12.25Z" fill="#28A745" />
@@ -415,7 +439,7 @@ export default function TourDetailsPage() {
                               </defs>
                             </svg>
 
-                            <span>Convenient hotel pick-up</span>
+                            <span>Certified Tour Guide (In preferred language)</span>
                           </li>
                           <li className="flex items-center text-[#4B5563] text-[14px] font-[400]">
 
@@ -441,7 +465,7 @@ export default function TourDetailsPage() {
                             </svg>
 
 
-                            <span>Professional certified guide</span>
+                            <span>Dominican Bufet Lunch</span>
                           </li>
                           <li className="flex items-center text-[#4B5563] text-[14px] font-[400]">
                             <svg
@@ -466,7 +490,7 @@ export default function TourDetailsPage() {
                             </svg>
 
 
-                            <span>Delicious local lunch</span>
+                            <span>National Open Bar</span>
                           </li>
                           <li className="flex items-center text-[#4B5563] text-[14px] font-[400]">
 
@@ -474,7 +498,16 @@ export default function TourDetailsPage() {
                               <path d="M12.9827 14.0002L9.99935 12.0835L7.01602 14.0002L7.91602 10.5668L5.17435 8.3335L8.71602 8.11683L9.99935 4.8335L11.2827 8.11683L14.8243 8.3335L12.0827 10.5668M16.666 10.0002C16.666 9.55814 16.8416 9.13421 17.1542 8.82165C17.4667 8.50909 17.8907 8.3335 18.3327 8.3335V5.00016C18.3327 4.55814 18.1571 4.13421 17.8445 3.82165C17.532 3.50909 17.108 3.3335 16.666 3.3335H3.33268C2.89065 3.3335 2.46673 3.50909 2.15417 3.82165C1.84161 4.13421 1.66602 4.55814 1.66602 5.00016V8.3335C2.10804 8.3335 2.53197 8.50909 2.84453 8.82165C3.15709 9.13421 3.33268 9.55814 3.33268 10.0002C3.33268 10.4422 3.15709 10.8661 2.84453 11.1787C2.53197 11.4912 2.10804 11.6668 1.66602 11.6668V15.0002C1.66602 15.4422 1.84161 15.8661 2.15417 16.1787C2.46673 16.4912 2.89065 16.6668 3.33268 16.6668H16.666C17.108 16.6668 17.532 16.4912 17.8445 16.1787C18.1571 15.8661 18.3327 15.4422 18.3327 15.0002V11.6668C17.8907 11.6668 17.4667 11.4912 17.1542 11.1787C16.8416 10.8661 16.666 10.4422 16.666 10.0002Z" fill="#28A745" />
                             </svg>
 
-                            <span>All entrance fees</span>
+                            <span>Entry tickets To the National Park</span>
+                          </li>
+
+                          <li className="flex items-center text-[#4B5563] text-[14px] font-[400]">
+
+                            <svg width="20" height="20" className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M12.9827 14.0002L9.99935 12.0835L7.01602 14.0002L7.91602 10.5668L5.17435 8.3335L8.71602 8.11683L9.99935 4.8335L11.2827 8.11683L14.8243 8.3335L12.0827 10.5668M16.666 10.0002C16.666 9.55814 16.8416 9.13421 17.1542 8.82165C17.4667 8.50909 17.8907 8.3335 18.3327 8.3335V5.00016C18.3327 4.55814 18.1571 4.13421 17.8445 3.82165C17.532 3.50909 17.108 3.3335 16.666 3.3335H3.33268C2.89065 3.3335 2.46673 3.50909 2.15417 3.82165C1.84161 4.13421 1.66602 4.55814 1.66602 5.00016V8.3335C2.10804 8.3335 2.53197 8.50909 2.84453 8.82165C3.15709 9.13421 3.33268 9.55814 3.33268 10.0002C3.33268 10.4422 3.15709 10.8661 2.84453 11.1787C2.53197 11.4912 2.10804 11.6668 1.66602 11.6668V15.0002C1.66602 15.4422 1.84161 15.8661 2.15417 16.1787C2.46673 16.4912 2.89065 16.6668 3.33268 16.6668H16.666C17.108 16.6668 17.532 16.4912 17.8445 16.1787C18.1571 15.8661 18.3327 15.4422 18.3327 15.0002V11.6668C17.8907 11.6668 17.4667 11.4912 17.1542 11.1787C16.8416 10.8661 16.666 10.4422 16.666 10.0002Z" fill="#28A745" />
+                            </svg>
+
+                            <span>Roundtrip Transportation</span>
                           </li>
                         </ul>
                       </div>
@@ -492,7 +525,7 @@ export default function TourDetailsPage() {
                               alt="Hotel pickup and drop-off"
                               className="w-5 h-5 text-red-500 mr-2 flex-shrink-0"
                             />
-                            <span>Breakfast and dinner</span>
+                            <span>Towels</span>
                           </li>
                           <li className="flex items-center text-[#191919] text-[14px] font-[400]">
                             <Image
@@ -502,7 +535,7 @@ export default function TourDetailsPage() {
                               alt="Hotel pickup and drop-off"
                               className="w-5 h-5 text-red-500 mr-2 flex-shrink-0"
                             />
-                            <span>Gratuities</span>
+                            <span>Lobster (Avaliable for an extra price)</span>
                           </li>
                           <li className="flex items-center text-[#191919] text-[14px] font-[400]">
                             <Image
@@ -512,7 +545,7 @@ export default function TourDetailsPage() {
                               alt="Hotel pickup and drop-off"
                               className="w-5 h-5 text-red-500 mr-2 flex-shrink-0"
                             />
-                            <span>Personal expenses</span>
+                            <span>Pictures (Avaliable for an extra price)</span>
                           </li>
                           <li className="flex items-center text-[#191919] text-[14px] font-[400]">
                             <Image
@@ -522,7 +555,18 @@ export default function TourDetailsPage() {
                               alt="Hotel pickup and drop-off"
                               className="w-5 h-5 text-red-500 mr-2 flex-shrink-0"
                             />
-                            <span>Alcoholic beverages</span>
+                            <span>Tips</span>
+                          </li>
+                          {/* Breakfast (Available with prior reservation) */}
+                          <li className="flex items-center text-[#191919] text-[14px] font-[400]">
+                            <Image
+                              src="/images/tours-id/mdi_beverages.png"
+                              width={50}
+                              height={50}
+                              alt="Hotel pickup and drop-off"
+                              className="w-5 h-5 text-red-500 mr-2 flex-shrink-0"
+                            />
+                            <span>Breakfast (Available with prior reservation)</span>
                           </li>
                         </ul>
                       </div>

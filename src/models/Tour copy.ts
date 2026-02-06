@@ -1,12 +1,6 @@
 // models/Tour.ts
 import mongoose, { Schema, model, models } from "mongoose";
 
-const ReviewSchema = new Schema({
-  user: String,
-  rating: Number,
-  comment: String,
-});
-
 const TourSchema = new Schema(
   {
     title: { type: String, required: true },
@@ -18,21 +12,17 @@ const TourSchema = new Schema(
     duration: String,
     pickup: String,
     category: String,
-
-    // ✅ Main thumbnail image
     image: String,
-
-    // ✅ ADD THIS → Gallery images array
-    gallery: {
-      type: [String],
-      default: [],
-    },
-
     overview: String,
     included: [String],
     excluded: [String],
-
-    reviews: [ReviewSchema],
+    reviews: [
+      {
+        user: String,
+        rating: Number,
+        comment: String,
+      },
+    ],
   },
   { timestamps: true }
 );

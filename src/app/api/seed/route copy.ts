@@ -1,5 +1,3 @@
-// app/api/seed/route.ts
-
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/mongodb";
 import Tour from "@/models/Tour";
@@ -19,29 +17,16 @@ export async function POST() {
       duration: "Half Day (4-6 hours)",
       pickup: "Punta Cana",
       category: "adventure",
-
       image: "/images/tours/Aventura-en-Buggys.png",
-
-      // ✅ Gallery Added
-      gallery: [
-        "/images/tours/Aventura-en-Buggys.png",
-        "/images/tours/Aventura-en-Buggys-2.png",
-        "/images/tours/Aventura-en-Buggys-3.png",
-        "/images/tours/Aventura-en-Buggys-4.png",
-      ],
-
       overview:
         "Drive through the countryside, see local villages, and experience adventure in Punta Cana.",
-
       included: ["Hotel Pickup", "Guide", "Safety Gear"],
       excluded: ["Meals", "Tips"],
-
       reviews: [
-        { user: "John Doe", rating: 5, comment: "Amazing buggy ride!" },
-        { user: "Jane Smith", rating: 4, comment: "Fun but a bit dusty." },
+        { name: "John Doe", rating: 5, text: "Amazing buggy ride!" },
+        { name: "Jane Smith", rating: 4, text: "Fun but a bit dusty." },
       ],
     },
-
     {
       title: "Santo Domingo City Tour",
       description:
@@ -53,32 +38,17 @@ export async function POST() {
       duration: "Full Day (8-10 hours)",
       pickup: "Santo Domingo",
       category: "culture",
-
       image: "/images/tours/Santo-Domingo-City-Tour-cityTour.png",
-
-      gallery: [
-        "/images/tours/Santo-Domingo-City-Tour-cityTour.png",
-        "/images/tours/Santo-Domingo-2.png",
-        "/images/tours/Santo-Domingo-3.png",
-        "/images/tours/Santo-Domingo-4.png",
-      ],
-
       overview:
         "Discover the Colonial Zone, local food, and cultural sites in Santo Domingo.",
-
       included: ["Guide", "Transport", "Entrance Fees"],
       excluded: ["Lunch", "Tips"],
-
-      reviews: [
-        { user: "Carlos M.", rating: 5, comment: "Beautiful historic city!" },
-      ],
+      reviews: [{ name: "Carlos M.", rating: 5, text: "Beautiful historic city!" }],
     },
-
     {
       title: "Saona Island Catamaran Tour",
       description:
-        "Saona Island, a paradise in the center of the Caribbean.",
-
+        "Saona Island, a paradise in the center of the Caribbean, its turquoise...",
       price: 65,
       originalPrice: 80,
       rating: 4,
@@ -86,40 +56,17 @@ export async function POST() {
       duration: "Full Day (10 hours)",
       pickup: "At your hotel lobby",
       category: "nature",
-
       image: "/images/tours/DJI_0659.jpg.jpeg",
-
-      gallery: [
-        "/images/tours/DJI_0659.jpg.jpeg",
-        "/images/tours/Saona-2.jpeg",
-        "/images/tours/Saona-3.jpeg",
-        "/images/tours/Saona-4.jpeg",
-        "/images/tours/Saona-5.jpeg",
-        "/images/tours/Saona-6.jpeg",
-        "/images/tours/Saona-7.jpeg",
-        "/images/tours/Saona-8.jpeg",
-        "/images/tours/Saona-9.jpeg",
-        "/images/tours/Saona-10.jpeg",
-        "/images/tours/Saona-11.jpeg",
-        "/images/tours/Saona-12.jpeg",
-      ],
-
       overview:
-        "Turquoise waters and white sands make Saona Island the most popular excursion in Punta Cana.",
-
+        "Saona Island, a paradise in the center of the Caribbean, its turquoise blue waters and fine white sands confirm why it is the most popular excursion in Punta Cana.",
       included: ["Boat Transfer", "Guide", "Drinks"],
       excluded: ["Extra Drinks", "Personal expenses"],
-
-      reviews: [
-        { user: "Alice", rating: 5, comment: "Paradise on earth!" },
-      ],
+      reviews: [{ name: "Alice", rating: 5, text: "Paradise on earth!" }],
     },
-
     {
       title: "Tapas Tour",
       description:
-        "Enjoy local Dominican flavors and tapas while exploring nightlife.",
-
+        "Enjoy local Dominican flavors and tapas while exploring the culture and nightlife.",
       price: 70,
       originalPrice: 100,
       rating: 4.7,
@@ -127,32 +74,17 @@ export async function POST() {
       duration: "Evening (3-4 hours)",
       pickup: "Santo Domingo",
       category: "food",
-
       image: "/images/tours/Tapas-Tour.png",
-
-      gallery: [
-        "/images/tours/Tapas-Tour.png",
-        "/images/tours/Tapas-2.png",
-        "/images/tours/Tapas-3.png",
-        "/images/tours/Tapas-4.png",
-      ],
-
       overview:
-        "A perfect blend of food, culture, and nightlife exploration.",
-
+        "A perfect blend of food, culture, and nightlife exploration in the heart of Santo Domingo.",
       included: ["Food Tasting", "Guide", "Drinks"],
       excluded: ["Extra Drinks", "Personal expenses"],
-
-      reviews: [
-        { user: "Michael B.", rating: 5, comment: "Delicious and fun!" },
-      ],
+      reviews: [{ name: "Michael B.", rating: 5, text: "Delicious and fun!" }],
     },
-
     {
       title: "From Santo Domingo to Punta Cana",
       description:
-        "A full-day journey from Santo Domingo to Punta Cana.",
-
+        "A full-day journey from Santo Domingo to Punta Cana with sightseeing and local experiences.",
       price: 120,
       originalPrice: 150,
       rating: 4.6,
@@ -160,32 +92,17 @@ export async function POST() {
       duration: "Full Day (8-10 hours)",
       pickup: "Santo Domingo",
       category: "culture",
-
       image: "/images/tours/From-Santo-Domingo.png",
-
-      gallery: [
-        "/images/tours/From-Santo-Domingo.png",
-        "/images/tours/SD-PC-2.png",
-        "/images/tours/SD-PC-3.png",
-        "/images/tours/SD-PC-4.png",
-      ],
-
       overview:
-        "Travel across the Dominican Republic with scenic views.",
-
+        "Travel across the Dominican Republic with scenic views and guided cultural stops.",
       included: ["Guide", "Transport", "Entrance Fees"],
       excluded: ["Lunch", "Tips"],
-
-      reviews: [
-        { user: "Carlos M.", rating: 5, comment: "Great cultural experience!" },
-      ],
+      reviews: [{ name: "Carlos M.", rating: 5, text: "Great cultural experience!" }],
     },
-
     {
       title: "Bike Tour",
       description:
-        "Cycle through beautiful landscapes and beaches.",
-
+        "Cycle through beautiful landscapes and beaches with a local guide.",
       price: 90,
       originalPrice: 120,
       rating: 4.9,
@@ -193,46 +110,27 @@ export async function POST() {
       duration: "Half Day (4-6 hours)",
       pickup: "Bayahibe",
       category: "nature",
-
       image: "/images/tours/Bike-Tour.png",
-
-      gallery: [
-        "/images/tours/Bike-Tour.png",
-        "/images/tours/Bike-2.png",
-        "/images/tours/Bike-3.png",
-        "/images/tours/Bike-4.png",
-      ],
-
       overview:
-        "Enjoy a scenic bike ride through countryside paths.",
-
+        "Enjoy a scenic bike ride through stunning Dominican countryside and coastal paths.",
       included: ["Bike", "Guide", "Safety Gear"],
       excluded: ["Meals", "Tips"],
-
-      reviews: [
-        { user: "Alice", rating: 5, comment: "Fun and refreshing!" },
-      ],
+      reviews: [{ name: "Alice", rating: 5, text: "Fun and refreshing!" }],
     },
   ];
 
   try {
     await Tour.deleteMany();
     await Tour.insertMany(tours);
-
     return NextResponse.json({
       success: true,
-      message: "✅ All tours seeded successfully with gallery!",
+      message: "✅ All tours seeded successfully!",
       count: tours.length,
     });
   } catch (error: unknown) {
     const message =
       error instanceof Error ? error.message : "Unknown error occurred.";
-
     console.error("❌ Seeding error:", message);
-
-    return NextResponse.json(
-      { success: false, error: message },
-      { status: 500 }
-    );
+    return NextResponse.json({ success: false, error: message }, { status: 500 });
   }
 }

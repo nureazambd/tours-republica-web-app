@@ -45,10 +45,25 @@ export default function TourHeader({ chosenTour }: TourHeaderProps) {
           </div>
 
           {/* “View on Map” button */}
-          <button className="flex items-center justify-center gap-2 px-4 py-2 border border-[#EE2552] rounded-lg bg-[rgba(238,37,82,0.05)] text-[#EE2552] text-[13px] font-[400] hover:bg-[#EE2552]/10 transition">
+          {/* <button className="flex items-center justify-center gap-2 px-4 py-2 border border-[#EE2552] rounded-lg bg-[rgba(238,37,82,0.05)] text-[#EE2552] text-[13px] font-[400] hover:bg-[#EE2552]/10 transition">
             <span>View on map</span>
             <MoveRight className="w-4 h-4 text-[#EE2552]" />
-          </button>
+          </button> */}
+
+          <button 
+  onClick={() =>
+    window.open(
+      "https://www.google.com/maps/place/18%C2%B009'12.4%22N+68%C2%B041'03.1%22W/@18.1534423,-68.6841995,17z/data=!3m1!4b1!4m4!3m3!8m2!3d18.1534423!4d-68.6841995?entry=ttu",
+      "_blank"
+    )
+  }
+  className="flex items-center justify-center gap-2 px-4 py-2 border mt-2 border-[#EE2552] rounded-lg bg-[rgba(238,37,82,0.05)] text-[#EE2552] text-[13px] font-[400] hover:bg-[#EE2552]/10 transition"
+>
+  <span>View on map</span>
+  <MoveRight className="w-4 h-4 text-[#EE2552]" />
+</button>
+
+
         </div>
       </div>
 

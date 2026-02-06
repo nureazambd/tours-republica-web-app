@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { FaGlobe, FaTags, FaBolt, FaSyncAlt } from "react-icons/fa";
 import { Play } from "lucide-react";
+import VideoSection from "./VideoSection";
 
 const benefits = [
   {
@@ -79,7 +80,7 @@ export default function WhySection() {
       </div>
 
       {/* Video / Image Block */}
-      <div
+      {/* <div
         className="relative w-full max-w-[1180px] h-[520px] rounded-[32px] overflow-hidden flex justify-center items-center"
         style={{
           backgroundImage:
@@ -88,9 +89,9 @@ export default function WhySection() {
           backgroundPosition: "center",
         }}
       >
-        {/* Play Button */}
+       
         <div className="flex items-center justify-center w-[60px] h-[60px] rounded-full ">
-          {/* <Play className="text-white w-[34px] h-[34px]" strokeWidth={2.5} /> */}
+         
           <svg width="35" height="38" viewBox="0 0 35 38" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clipPath="url(#clip0_755_41208)">
 <g clipPath="url(#clip1_755_41208)">
@@ -113,7 +114,9 @@ export default function WhySection() {
 </svg>
 
         </div>
-      </div>
+      </div> */}
+
+      <VideoSection/>
 
       {/* Features / Benefit Section */}
       <div className="flex flex-col items-start w-full max-w-[1180px] gap-[80px]">
