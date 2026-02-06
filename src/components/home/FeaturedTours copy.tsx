@@ -52,278 +52,86 @@ const FeaturedTours = () => {
 
   const tours = [
     {
-      "id": "698565aa873cfe6e964c4c95",
-      "title": "Saona Island Catamaran Tour",
-      "description": "Saona Island, a paradise in the center of the Caribbean.",
-      "price": 65,
-      "originalPrice": 80,
-      "rating": 4,
-      "reviewCount": 4,
-      "discount": 19,
-      "features": [CarIcon, LunchIcon, GuideIcon],
-      "schedule": 'Everyday (8am /11am /1pm)',
-      "duration": "Full Day (10 hours)",
-      "pickup": "At your hotel lobby",
-      "category": "nature",
-      "image": "/images/tours/DJI_0659.jpg.jpeg",
-      "gallery": [
-        "/images/tours/DJI_0659.jpg.jpeg",
-        "/images/tours/Saona-2.jpeg",
-        "/images/tours/Saona-3.jpeg",
-        "/images/tours/Saona-4.jpeg",
-        "/images/tours/Saona-5.jpeg",
-        "/images/tours/Saona-6.jpeg",
-        "/images/tours/Saona-7.jpeg",
-        "/images/tours/Saona-8.jpeg",
-        "/images/tours/Saona-9.jpeg",
-        "/images/tours/Saona-10.jpeg",
-        "/images/tours/Saona-11.jpeg",
-        "/images/tours/Saona-12.jpeg"
-      ],
-      "overview": "Turquoise waters and white sands make Saona Island the most popular excursion in Punta Cana.",
-      "included": [
-        "Boat Transfer",
-        "Guide",
-        "Drinks"
-      ],
-      "excluded": [
-        "Extra Drinks",
-        "Personal expenses"
-      ],
-      "reviews": [
-        {
-          "user": "Alice",
-          "rating": 5,
-          "comment": "Paradise on earth!",
-          "_id": "698565aa873cfe6e964c4c96"
-        }
-      ],
-      "__v": 0,
-      "createdAt": "2026-02-06T03:53:14.352Z",
-      "updatedAt": "2026-02-06T03:53:14.352Z"
+      id: '6907b35cfaf60167825d5a1e',
+      title: 'Aventura En Buggys',
+      description: 'Explore the highlights of Punta Cana in a thrilling half-day off-road dune buggy..',
+      price: 50,
+      originalPrice: 75,
+      discount: 30,
+      rating: 4.8,
+      reviewCount: 30,
+      duration: '4 Hours',
+      pickup: 'Punta Cana',
+      image: '/images/destinations/Aventura-En-Buggys.png',
+      category: 'Adventure',
+      schedule: 'Everyday (8am /11am /1pm)',
+      features: [CarIcon, LunchIcon, GuideIcon]
     },
     {
-      "id": "698565aa873cfe6e964c4c9b",
-      "title": "Bike Tour",
-      "description": "Cycle through beautiful landscapes and beaches.",
-      "price": 90,
-      "originalPrice": 120,
-      "discount": 30,
-      "features": [CarIcon, LunchIcon, GuideIcon],
-      "schedule": 'Everyday (8am /11am /1pm)',
-      "rating": 4.9,
-      "reviewCount": 45,
-      "duration": "Half Day (4-6 hours)",
-      "pickup": "Bayahibe",
-      "category": "nature",
-      "image": "/images/tours/Bike-Tour.png",
-      "gallery": [
-        "/images/tours/Bike-Tour.png",
-        "/images/tours/Bike-2.png",
-        "/images/tours/Bike-3.png",
-        "/images/tours/Bike-4.png"
-      ],
-      "overview": "Enjoy a scenic bike ride through countryside paths.",
-      "included": [
-        "Bike",
-        "Guide",
-        "Safety Gear"
-      ],
-      "excluded": [
-        "Meals",
-        "Tips"
-      ],
-      "reviews": [
-        {
-          "user": "Alice",
-          "rating": 5,
-          "comment": "Fun and refreshing!",
-          "_id": "698565aa873cfe6e964c4c9c"
-        }
-      ],
-      "__v": 0,
-      "createdAt": "2026-02-06T03:53:14.353Z",
-      "updatedAt": "2026-02-06T03:53:14.353Z"
+      id: '6907b35cfaf60167825d5a21',
+      title: 'Santo Domingo City Tour',
+      description: 'Explore the highlights of Punta Cana in a thrilling half-day off-road dune buggy..',
+      price: 50,
+      originalPrice: 75,
+      discount: 30,
+      rating: 4.8,
+      reviewCount: 15,
+      duration: '10 Hours',
+      pickup: 'Punta Cana',
+      image: '/images/destinations/Santo-Domingo-City-Tour.png',
+      category: 'Cultural City trips',
+      schedule: 'Everyday (8am /11am /1pm)',
+      features: [CarIcon, LunchIcon, GuideIcon]
     },
     {
-      "id": "698565aa873cfe6e964c4c90",
-      "title": "Aventura En Buggys",
-      "description": "Explore the highlights of Punta Cana in a thrilling half-day off-road dune buggy.",
-      "price": 50,
-      "originalPrice": 75,
-      "rating": 4.8,
-      "reviewCount": 30,
-      "discount": 30,
-      "features": [CarIcon, LunchIcon, GuideIcon],
-      "schedule": 'Everyday (8am /11am /1pm)',
-      "duration": "Half Day (4-6 hours)",
-      "pickup": "Punta Cana",
-      "category": "adventure",
-      "image": "/images/tours/Aventura-en-Buggys.png",
-      "gallery": [
-        "/images/tours/Aventura-en-Buggys.png",
-        "/images/tours/Aventura-en-Buggys-2.png",
-        "/images/tours/Aventura-en-Buggys-3.png",
-        "/images/tours/Aventura-en-Buggys-4.png"
-      ],
-      "overview": "Drive through the countryside, see local villages, and experience adventure in Punta Cana.",
-      "included": [
-        "Hotel Pickup",
-        "Guide",
-        "Safety Gear"
-      ],
-      "excluded": [
-        "Meals",
-        "Tips"
-      ],
-      "reviews": [
-        {
-          "user": "John Doe",
-          "rating": 5,
-          "comment": "Amazing buggy ride!",
-          "_id": "698565aa873cfe6e964c4c91"
-        },
-        {
-          "user": "Jane Smith",
-          "rating": 4,
-          "comment": "Fun but a bit dusty.",
-          "_id": "698565aa873cfe6e964c4c92"
-        }
-      ],
-      "__v": 0,
-      "createdAt": "2026-02-06T03:53:14.350Z",
-      "updatedAt": "2026-02-06T03:53:14.350Z"
+      id: '6907b35cfaf60167825d5a23',
+      title: 'Saona Island Day Trip Lunch',
+      description: 'Explore the highlights of Punta Cana in a thrilling half-day off-road dune buggy..',
+      price: 50,
+      originalPrice: 75,
+      discount: 30,
+      rating: 4.9,
+      reviewCount: 32,
+      duration: '10 Hours',
+      pickup: 'Punta Cana',
+      image: '/images/destinations/Saona-Island-Day-Trip-Lunch.png',
+      category: 'Nature and Boat Trip',
+      schedule: 'Everyday (8am /11am /1pm)',
+      features: [CarIcon, LunchIcon, GuideIcon]
+    },
+    // Adding more tours to ensure the loop is visible (must have more than CARDS_PER_PAGE)
+    {
+      id: '6907b35cfaf60167825d5a1e1',
+      title: 'Aventura En Buggys',
+      description: 'Explore the highlights of Punta Cana in a thrilling half-day off-road dune buggy..',
+      price: 50,
+      originalPrice: 75,
+      discount: 30,
+      rating: 4.8,
+      reviewCount: 30,
+      duration: '4 Hours',
+      pickup: 'Punta Cana',
+      image: '/images/destinations/Aventura-En-Buggys.png',
+      category: 'Adventure',
+      schedule: 'Everyday (8am /11am /1pm)',
+      features: [CarIcon, LunchIcon, GuideIcon]
     },
     {
-      "id": "698565aa873cfe6e964c4c93",
-      "title": "Santo Domingo City Tour",
-      "description": "Explore the highlights of Santo Domingo in a thrilling cultural city trip.",
-      "price": 120,
-      "originalPrice": 150,
-      "rating": 4.6,
-      "reviewCount": 22,
-      "discount": 30,
-      "features": [CarIcon, LunchIcon, GuideIcon],
-      "schedule": 'Everyday (8am /11am /1pm)',
-      "duration": "Full Day (8-10 hours)",
-      "pickup": "Santo Domingo",
-      "category": "culture",
-      "image": "/images/tours/Santo-Domingo-City-Tour-cityTour.png",
-      "gallery": [
-        "/images/tours/Santo-Domingo-City-Tour-cityTour.png",
-        "/images/tours/Santo-Domingo-2.png",
-        "/images/tours/Santo-Domingo-3.png",
-        "/images/tours/Santo-Domingo-4.png"
-      ],
-      "overview": "Discover the Colonial Zone, local food, and cultural sites in Santo Domingo.",
-      "included": [
-        "Guide",
-        "Transport",
-        "Entrance Fees"
-      ],
-      "excluded": [
-        "Lunch",
-        "Tips"
-      ],
-      "reviews": [
-        {
-          "user": "Carlos M.",
-          "rating": 5,
-          "comment": "Beautiful historic city!",
-          "_id": "698565aa873cfe6e964c4c94"
-        }
-      ],
-      "__v": 0,
-      "createdAt": "2026-02-06T03:53:14.352Z",
-      "updatedAt": "2026-02-06T03:53:14.352Z"
-    },
-    {
-      "id": "698565aa873cfe6e964c4c99",
-      "title": "From Santo Domingo to Punta Cana",
-      "description": "A full-day journey from Santo Domingo to Punta Cana.",
-      "price": 120,
-      "originalPrice": 150,
-      "rating": 4.6,
-      "reviewCount": 22,
-      "discount": 30,
-      "features": [CarIcon, LunchIcon, GuideIcon],
-      "schedule": 'Everyday (8am /11am /1pm)',
-      "duration": "Full Day (8-10 hours)",
-      "pickup": "Santo Domingo",
-      "category": "culture",
-      "image": "/images/tours/From-Santo-Domingo.png",
-      "gallery": [
-        "/images/tours/From-Santo-Domingo.png",
-        "/images/tours/SD-PC-2.png",
-        "/images/tours/SD-PC-3.png",
-        "/images/tours/SD-PC-4.png"
-      ],
-      "overview": "Travel across the Dominican Republic with scenic views.",
-      "included": [
-        "Guide",
-        "Transport",
-        "Entrance Fees"
-      ],
-      "excluded": [
-        "Lunch",
-        "Tips"
-      ],
-      "reviews": [
-        {
-          "user": "Carlos M.",
-          "rating": 5,
-          "comment": "Great cultural experience!",
-          "_id": "698565aa873cfe6e964c4c9a"
-        }
-      ],
-      "__v": 0,
-      "createdAt": "2026-02-06T03:53:14.352Z",
-      "updatedAt": "2026-02-06T03:53:14.352Z"
-    },
-    {
-      "id": "698565aa873cfe6e964c4c97",
-      "title": "Tapas Tour",
-      "description": "Enjoy local Dominican flavors and tapas while exploring nightlife.",
-      "price": 70,
-      "originalPrice": 100,
-      "rating": 4.7,
-      "reviewCount": 20,
-      "discount": 30,
-      "features": [CarIcon, LunchIcon, GuideIcon],
-      "schedule": 'Everyday (8am /11am /1pm)',
-      "duration": "Evening (3-4 hours)",
-      "pickup": "Santo Domingo",
-      "category": "food",
-      "image": "/images/tours/Tapas-Tour.png",
-      "gallery": [
-        "/images/tours/Tapas-Tour.png",
-        "/images/tours/Tapas-2.png",
-        "/images/tours/Tapas-3.png",
-        "/images/tours/Tapas-4.png"
-      ],
-      "overview": "A perfect blend of food, culture, and nightlife exploration.",
-      "included": [
-        "Food Tasting",
-        "Guide",
-        "Drinks"
-      ],
-      "excluded": [
-        "Extra Drinks",
-        "Personal expenses"
-      ],
-      "reviews": [
-        {
-          "user": "Michael B.",
-          "rating": 5,
-          "comment": "Delicious and fun!",
-          "_id": "698565aa873cfe6e964c4c98"
-        }
-      ],
-      "__v": 0,
-      "createdAt": "2026-02-06T03:53:14.352Z",
-      "updatedAt": "2026-02-06T03:53:14.352Z"
+      id: '6907b35cfaf60167825d5a232',
+      title: 'Saona Island Day Trip Lunch',
+      description: 'Explore the highlights of Punta Cana in a thrilling half-day off-road dune buggy..',
+      price: 50,
+      originalPrice: 75,
+      discount: 30,
+      rating: 4.9,
+      reviewCount: 32,
+      duration: '10 Hours',
+      pickup: 'Punta Cana',
+      image: '/images/destinations/Saona-Island-Day-Trip-Lunch.png',
+      category: 'Nature and Boat Trip',
+      schedule: 'Everyday (8am /11am /1pm)',
+      features: [CarIcon, LunchIcon, GuideIcon]
     }
-    
   ];
 
   const CARDS_PER_PAGE = 3;
